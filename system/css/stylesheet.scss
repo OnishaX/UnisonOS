@@ -80,7 +80,7 @@ button {
   .icon {
     width: 1.1em;
     height: 1.1em;
-    border-radius: 0.1em;
+    border-radius: 0.25em !important;
   }
 }
 
@@ -332,11 +332,7 @@ button {
   align-items: left;
   gap: 0.1em;
 }
-// .ToolGroup button :only-child{
-//   justify-content: center;
-//   text-align: center;
-//   width: 3em;
-// }
+
 .Toolbar .ToolGroup :first-child {
   border-top-left-radius: 0.5em;
   border-bottom-left-radius: 0.5em;

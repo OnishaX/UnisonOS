@@ -1,0 +1,9 @@
+#WriteApp button {
+  background-color: #2A449E80;
+  color: white;
+}
+
+#WriteApp button :active {
+  background-color: #2A449E;
+}
+/*# sourceMappingURL=appstyle.css.map */

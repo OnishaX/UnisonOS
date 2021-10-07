@@ -119,7 +119,7 @@ button {
 button .icon {
   width: 1.1em;
   height: 1.1em;
-  border-radius: 0.1em;
+  border-radius: 0.25em !important;
 }
 
 #Display {

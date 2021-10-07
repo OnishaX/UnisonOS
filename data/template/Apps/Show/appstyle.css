@@ -1,0 +1,9 @@
+#ShowApp button {
+  background-color: #6F350080;
+  color: white;
+}
+
+#ShowApp button :active {
+  background-color: #6F3500;
+}
+/*# sourceMappingURL=appstyle.css.map */
