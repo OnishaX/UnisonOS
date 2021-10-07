@@ -1,0 +1,11 @@
+#MusicApp button {
+  background-color: #46007cAA;
+  color: white;
+  -webkit-box-shadow: #46007C;
+          box-shadow: #46007C;
+}
+
+#MusicApp button :active {
+  background-color: #46007C;
+}
+/*# sourceMappingURL=appstyle.css.map */

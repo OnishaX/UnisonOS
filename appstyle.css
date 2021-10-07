@@ -1,0 +1,30 @@
+#BootApp .App {
+  background-color: white;
+}
+
+#BootApp button {
+  background-color: #7C000090;
+  color: white;
+  -webkit-box-shadow: #7C0000 !important;
+          box-shadow: #7C0000 !important;
+}
+
+#BootApp button :hover {
+  background-color: #7C000050;
+  -webkit-box-shadow: #7C0000 !important;
+          box-shadow: #7C0000 !important;
+}
+
+#BootApp button :active {
+  background-color: #7C0000;
+  -webkit-box-shadow: #7C0000;
+          box-shadow: #7C0000;
+}
+
+#BootApp .Contents {
+  display: block;
+  margin-top: auto;
+  margin-bottom: auto;
+  text-align: center;
+}
+/*# sourceMappingURL=appstyle.css.map */

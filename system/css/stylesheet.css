@@ -1,0 +1,681 @@
+html {
+  height: 100vh;
+  width: 100vw;
+  margin: 0px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("/system/fonts/Roboto/Roboto-Regular.ttf") format("truetype");
+}
+
+.search {
+  width: 100%;
+}
+
+.WindowsOverview {
+  -ms-grid-rows: unset;
+      grid-template-rows: unset;
+}
+
+.WindowsOverview #Drawer {
+  height: 50vh !important;
+  padding: 0.5em;
+}
+
+.WindowsOverview #Drawer #Dock {
+  background: rgba(255, 255, 255, 0.75);
+  -webkit-backdrop-filter: blur(1em);
+          backdrop-filter: blur(1em);
+}
+
+.WindowsNormal {
+  -ms-grid-rows: 1fr min-content;
+      grid-template-rows: 1fr -webkit-min-content;
+      grid-template-rows: 1fr min-content;
+}
+
+.WindowsNormal #Drawer {
+  padding: 0em;
+  height: 4em;
+}
+
+#AllApps {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  border-radius: 1em;
+  overflow-y: scroll;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+#Drawer {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  border-radius: 1em;
+  overflow: hidden;
+  -webkit-transition: all 150ms ease-out;
+  transition: all 150ms ease-out;
+  height: 4em;
+  background: rgba(255, 255, 255, 0.75);
+  -webkit-backdrop-filter: blur(1em);
+          backdrop-filter: blur(1em);
+}
+
+body {
+  font-family: "Roboto";
+  margin: 0px;
+  height: 100vh;
+  width: 100vw;
+  display: -ms-grid;
+  display: grid;
+  grid-auto-columns: 1fr;
+  grid-auto-rows: 1fr;
+  -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
+  -ms-grid-rows: 1fr;
+      grid-template-rows: 1fr;
+  gap: 0.5em 0px;
+      grid-template-areas: "Display";
+}
+
+button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: left;
+      -ms-flex-pack: left;
+          justify-content: left;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 0.5em;
+  text-align: left;
+  padding: 0.5em;
+  border: none;
+  height: 3em;
+  border-radius: 0.5em;
+  white-space: nowrap;
+}
+
+button .icon {
+  width: 1.1em;
+  height: 1.1em;
+  border-radius: 0.1em;
+}
+
+#Display {
+  height: 100vh;
+  overflow: hidden;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
+  -ms-grid-rows: 1fr min-content;
+      grid-template-rows: 1fr -webkit-min-content;
+      grid-template-rows: 1fr min-content;
+  gap: 0.5em;
+      grid-template-areas: "Windows" "Dock";
+  -ms-grid-column-align: stretch;
+      justify-self: stretch;
+  -ms-grid-row-align: stretch;
+      align-self: stretch;
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: Display;
+  padding: 0.5em;
+  background-size: cover;
+}
+
+.ghost {
+  opacity: 0;
+}
+
+#Windows {
+  -webkit-transition: scale 150ms ease-out;
+  transition: scale 150ms ease-out;
+  display: -ms-grid;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-rows: 1fr;
+  gap: 0.5em 0.5em;
+  -webkit-box-pack: stretch;
+      -ms-flex-pack: stretch;
+          justify-content: stretch;
+  -ms-flex-line-pack: stretch;
+      align-content: stretch;
+  justify-items: stretch;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+  -ms-grid-column-align: stretch;
+      justify-self: stretch;
+  -ms-grid-row-align: stretch;
+      align-self: stretch;
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: Windows;
+}
+
+#Dock {
+  -webkit-transition: background-color ease-out 150ms;
+  transition: background-color ease-out 150ms;
+  overflow: hidden;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+  -ms-grid-rows: 1fr;
+      grid-template-rows: 1fr;
+  gap: 0px 0px;
+      grid-template-areas: "AppList System";
+  -ms-grid-row-align: end;
+      align-self: end;
+  padding: 0em 0.25em;
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+  grid-area: Dock;
+  border-radius: 1em;
+  height: 4em;
+}
+
+@-webkit-keyframes attention {
+  0% {
+    -webkit-transform: translateX(0em);
+            transform: translateX(0em);
+  }
+  25% {
+    -webkit-transform: translateX(-10em);
+            transform: translateX(-10em);
+  }
+  50% {
+    -webkit-transform: translateX(10em);
+            transform: translateX(10em);
+  }
+  100% {
+    scale: 1;
+  }
+}
+
+@keyframes attention {
+  0% {
+    -webkit-transform: translateX(0em);
+            transform: translateX(0em);
+  }
+  25% {
+    -webkit-transform: translateX(-10em);
+            transform: translateX(-10em);
+  }
+  50% {
+    -webkit-transform: translateX(10em);
+            transform: translateX(10em);
+  }
+  100% {
+    scale: 1;
+  }
+}
+
+@-webkit-keyframes openApp {
+  0% {
+    scale: 0;
+  }
+  100% {
+    scale: 1;
+  }
+}
+
+@keyframes openApp {
+  0% {
+    scale: 0;
+  }
+  100% {
+    scale: 1;
+  }
+}
+
+.AppContainer {
+  -webkit-animation-name: openApp;
+          animation-name: openApp;
+  -webkit-animation-duration: 300ms;
+          animation-duration: 300ms;
+  -webkit-animation-delay: 0ms;
+          animation-delay: 0ms;
+  background: rgba(255, 255, 255, 0.75);
+  -webkit-backdrop-filter: blur(1em);
+          backdrop-filter: blur(1em);
+  border-radius: 1em;
+  border: none;
+  display: -ms-grid;
+  display: grid;
+  grid-auto-columns: 1fr;
+  grid-auto-rows: 1fr;
+  -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
+  -ms-grid-rows: 1fr;
+      grid-template-rows: 1fr;
+  overflow: hidden;
+  gap: 1em 0px;
+      grid-template-areas: "App";
+}
+
+.AppContainer body {
+  background-color: none !important;
+}
+
+.App {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: min-content 1fr;
+      grid-template-columns: -webkit-min-content 1fr;
+      grid-template-columns: min-content 1fr;
+  -ms-grid-rows: 4em 1fr;
+      grid-template-rows: 4em 1fr;
+  gap: 0px 0px;
+  width: 100%;
+  height: 100%;
+      grid-template-areas: "Sidebar Toolbar" "Sidebar Contents";
+  -webkit-box-pack: stretch;
+      -ms-flex-pack: stretch;
+          justify-content: stretch;
+  -ms-flex-line-pack: stretch;
+      align-content: stretch;
+  justify-items: stretch;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+  -webkit-animation-timing-function: ease-out;
+          animation-timing-function: ease-out;
+}
+
+.App button {
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+.Sidebar {
+  gap: 0.5em;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  justify-self: start;
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 2;
+  -ms-grid-column: 1;
+  grid-area: Sidebar;
+  border-radius: 1em;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  padding: 0.5em;
+  -webkit-box-flex: 0;
+      -ms-flex: none;
+          flex: none;
+  -webkit-box-ordinal-group: 1;
+      -ms-flex-order: 0;
+          order: 0;
+  -ms-flex-item-align: stretch;
+      align-self: stretch;
+  -ms-flex-positive: 0;
+      flex-grow: 0;
+  margin: 0px 0px;
+}
+
+.Sidebar button {
+  width: 100%;
+}
+
+.Sidebar .ToolGroup {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 0.1em;
+}
+
+.Sidebar .ToolGroup :first-child {
+  border-top-left-radius: 0.5em;
+  border-top-right-radius: 0.5em;
+  border-bottom-right-radius: 0em;
+  border-bottom-left-radius: 0em;
+}
+
+.Sidebar .ToolGroup :not(:first-child) {
+  border-top-left-radius: 0em;
+  border-bottom-left-radius: 0em;
+  border-top-right-radius: 0em;
+  border-bottom-right-radius: 0em;
+}
+
+.Sidebar .ToolGroup :last-child {
+  border-top-left-radius: 0em;
+  border-bottom-left-radius: 0.5em;
+  border-top-right-radius: 0em;
+  border-bottom-right-radius: 0.5em;
+}
+
+.Sidebar .ToolGroup :only-child {
+  border-top-left-radius: 0.5em;
+  border-bottom-left-radius: 0.5em;
+  border-top-right-radius: 0.5em;
+  border-bottom-right-radius: 0.5em;
+}
+
+.Toolbar {
+  padding: 0.5em;
+  background: rgba(255, 255, 255, 0.75);
+  -webkit-backdrop-filter: blur(1em);
+          backdrop-filter: blur(1em);
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr min-content;
+      grid-template-columns: 1fr -webkit-min-content;
+      grid-template-columns: 1fr min-content;
+  -ms-grid-rows: 1fr;
+      grid-template-rows: 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  justify-items: start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+      grid-template-areas: "Tools Controls";
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+  grid-area: Toolbar;
+}
+
+.Toolbar button {
+  text-align: left;
+  -webkit-column-break-inside: avoid;
+          break-inside: avoid;
+}
+
+.Controls {
+  gap: 0.1em;
+  justify-self: end;
+  -ms-flex-item-align: center;
+      align-self: center;
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+  grid-area: Controls;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.Controls button {
+  padding: 0.5em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 3em;
+}
+
+.Controls :first-child {
+  border-top-left-radius: 0.5em;
+  border-bottom-left-radius: 0.5em;
+  border-top-right-radius: 0em;
+  border-bottom-right-radius: 0em;
+}
+
+.Controls :not(:first-child) {
+  border-top-left-radius: 0em;
+  border-bottom-left-radius: 0em;
+  border-top-right-radius: 0em;
+  border-bottom-right-radius: 0em;
+}
+
+.Controls :last-child {
+  border-top-left-radius: 0em;
+  border-bottom-left-radius: 0em;
+  border-top-right-radius: 0.5em;
+  border-bottom-right-radius: 0.5em;
+}
+
+.Controls :only-child {
+  border-top-left-radius: 0.5em;
+  border-bottom-left-radius: 0.5em;
+  border-top-right-radius: 0.5em;
+  border-bottom-right-radius: 0.5em;
+}
+
+.Tools {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: Tools;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 0.5em;
+}
+
+.Tools button {
+  padding: 0.5em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: left;
+          flex-direction: left;
+  -webkit-box-pack: left;
+      -ms-flex-pack: left;
+          justify-content: left;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: unset;
+}
+
+.Toolbar .ToolGroup {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: left;
+      -ms-flex-align: left;
+          align-items: left;
+  gap: 0.1em;
+}
+
+.Toolbar .ToolGroup :first-child {
+  border-top-left-radius: 0.5em;
+  border-bottom-left-radius: 0.5em;
+  border-top-right-radius: 0em;
+  border-bottom-right-radius: 0em;
+}
+
+.Toolbar .ToolGroup :not(:first-child) {
+  border-top-left-radius: 0em;
+  border-bottom-left-radius: 0em;
+  border-top-right-radius: 0em;
+  border-bottom-right-radius: 0em;
+}
+
+.Toolbar .ToolGroup :last-child {
+  border-top-left-radius: 0em;
+  border-bottom-left-radius: 0em;
+  border-top-right-radius: 0.5em;
+  border-bottom-right-radius: 0.5em;
+}
+
+.Toolbar .ToolGroup :only-child {
+  border-top-left-radius: 0.5em;
+  border-bottom-left-radius: 0.5em;
+  border-top-right-radius: 0.5em;
+  border-bottom-right-radius: 0.5em;
+}
+
+.Contents {
+  padding: 0.5em;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+  -ms-grid-rows: 1fr;
+      grid-template-rows: 1fr;
+  gap: 0.5 0px;
+  grid-auto-flow: row;
+      grid-template-areas: "Body Preview";
+  -ms-grid-row: 2;
+  -ms-grid-column: 2;
+  grid-area: Contents;
+  background: rgba(255, 255, 255, 0.75);
+  -webkit-backdrop-filter: blur(1em);
+          backdrop-filter: blur(1em);
+}
+
+.Preview {
+  background: rgba(255, 255, 255, 0.75);
+  -ms-grid-column-align: end;
+      justify-self: end;
+  -ms-flex-item-align: stretch;
+      -ms-grid-row-align: stretch;
+      align-self: stretch;
+  border-radius: 1em;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 0.5em;
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+  grid-area: Preview;
+  background: rgba(255, 255, 255, 0.75);
+  -webkit-backdrop-filter: blur(1em);
+          backdrop-filter: blur(1em);
+}
+
+.Body {
+  -ms-grid-column-align: stretch;
+      justify-self: stretch;
+  -ms-flex-item-align: stretch;
+      -ms-grid-row-align: stretch;
+      align-self: stretch;
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: Body;
+  gap: 0.5em;
+  overflow: visible;
+}
+
+#System {
+  -ms-grid-column-align: end;
+      justify-self: end;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+  grid-area: System;
+  vertical-align: middle;
+}
+
+#AppList {
+  overflow-x: scroll;
+  -ms-grid-column-align: start;
+      justify-self: start;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: AppList;
+  vertical-align: middle;
+}
+
+.DockAppIcon {
+  display: inline-block;
+  vertical-align: middle;
+  height: 3em;
+  border-radius: 0.5em;
+  width: 3em;
+  margin: 0.5em 0.25em;
+  background-size: cover;
+  -webkit-transition: translate 300ms ease-out;
+  transition: translate 300ms ease-out;
+}
+
+.DockIconGhost {
+  display: inline-block;
+  vertical-align: middle;
+  background-image: unset !important;
+  height: 3em;
+  width: 3em;
+  background-size: cover;
+}
+
+.DockSystemIcon {
+  display: inline-block;
+  vertical-align: middle;
+  height: 3em;
+  border-radius: 0.5em;
+  width: 3em;
+  margin: 0.5em 0.25em;
+  background-size: cover;
+  -webkit-transition: translate 300ms ease-out;
+  transition: translate 300ms ease-out;
+}
+/*# sourceMappingURL=stylesheet.css.map */

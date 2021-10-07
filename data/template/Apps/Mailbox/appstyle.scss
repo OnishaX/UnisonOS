@@ -1,0 +1,28 @@
+
+#MailboxApp {
+	.App{
+	.Contents {
+		grid-template-columns: 1fr;
+		grid-template-areas: "Body";
+		body {				
+			padding: 0em !important;
+				font: inherit;
+				background: inherit;
+				background-repeat: no-repeat;
+				color: #555;
+				-webkit-font-smoothing: antialiased;
+			  }
+					#search {
+						display: none;
+					}
+				}
+			
+}
+	button {
+	background-color: #00417C80;
+	color: white;
+  }
+  button :active {
+	  background-color: #00417C;
+  }
+}

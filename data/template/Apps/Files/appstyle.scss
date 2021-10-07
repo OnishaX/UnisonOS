@@ -1,0 +1,19 @@
+#FilesApp {
+	.App{
+	.Contents {
+		grid-template-columns: 1fr;
+		grid-template-areas: "Body";
+					#search {
+						display: none;
+					}
+				}
+			
+}
+	button {
+	background-color: #00000090;
+	color: white;
+  }
+  button :active {
+	  background-color: #000000;
+  }
+}

@@ -1,0 +1,11 @@
+#SettingsApp button {
+  background-color: #00000090;
+  color: white;
+  -webkit-box-shadow: #000000;
+          box-shadow: #000000;
+}
+
+#SettingsApp button :active {
+  background-color: #000000;
+}
+/*# sourceMappingURL=appstyle.css.map */

@@ -1,0 +1,27 @@
+#BootApp {
+	.App {
+		background-color: white;
+	}
+	button {
+	background-color: #7C000090;
+	color: white;
+	box-shadow: #7C0000 !important;
+	
+  }
+  button :hover {
+	background-color: #7C000050;
+	box-shadow: #7C0000 !important;
+}
+  button :active {
+	  background-color: #7C0000;
+	  box-shadow: #7C0000;
+  }
+  .Contents {
+	  display: block;
+	  margin-top: auto;
+	  margin-bottom: auto;
+	  text-align: center;
+	  
+  }
+
+}

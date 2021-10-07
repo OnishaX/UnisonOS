@@ -1,0 +1,36 @@
+#ErrorApp .App {
+  background-color: white;
+}
+
+#ErrorApp button {
+  background-color: #7C000090;
+  color: white;
+  -webkit-box-shadow: #7C0000 !important;
+          box-shadow: #7C0000 !important;
+}
+
+#ErrorApp button :hover {
+  background-color: #7C000050;
+  -webkit-box-shadow: #7C0000 !important;
+          box-shadow: #7C0000 !important;
+}
+
+#ErrorApp button :active {
+  background-color: #7C0000;
+  -webkit-box-shadow: #7C0000;
+          box-shadow: #7C0000;
+}
+
+#ErrorApp .Contents {
+  display: block;
+  margin-top: auto;
+  margin-bottom: auto;
+  text-align: center;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+/*# sourceMappingURL=appstyle.css.map */

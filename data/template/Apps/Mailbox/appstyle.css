@@ -1,0 +1,28 @@
+#MailboxApp .App .Contents {
+  -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
+      grid-template-areas: "Body";
+}
+
+#MailboxApp .App .Contents body {
+  padding: 0em !important;
+  font: inherit;
+  background: inherit;
+  background-repeat: no-repeat;
+  color: #555;
+  -webkit-font-smoothing: antialiased;
+}
+
+#MailboxApp .App .Contents #search {
+  display: none;
+}
+
+#MailboxApp button {
+  background-color: #00417C80;
+  color: white;
+}
+
+#MailboxApp button :active {
+  background-color: #00417C;
+}
+/*# sourceMappingURL=appstyle.css.map */
