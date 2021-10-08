@@ -109,16 +109,20 @@ button {
           align-items: center;
   gap: 0.5em;
   text-align: left;
-  padding: 0.5em;
+  padding: 1em 0.5em;
   border: none;
   height: 3em;
   border-radius: 0.5em;
   white-space: nowrap;
+  -webkit-box-shadow: inset 0px -0.1em 0.1em rgba(0, 0, 0, 0.1), inset 0px 0.1em 0.1em rgba(255, 255, 255, 0.1);
+          box-shadow: inset 0px -0.1em 0.1em rgba(0, 0, 0, 0.1), inset 0px 0.1em 0.1em rgba(255, 255, 255, 0.1);
+  -webkit-transition: all 300em linear;
+  transition: all 300em linear;
 }
 
-button .icon {
-  width: 1.1em;
-  height: 1.1em;
+button img {
+  width: 1.5em;
+  height: 1.5em;
   border-radius: 0.25em !important;
 }
 
@@ -508,7 +512,6 @@ button .icon {
 }
 
 .Tools button {
-  padding: 0.5em;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -653,6 +656,7 @@ button .icon {
   border-radius: 0.5em;
   width: 3em;
   margin: 0.5em 0.25em;
+  border-style: none;
   background-size: cover;
   -webkit-transition: translate 300ms ease-out;
   transition: translate 300ms ease-out;
@@ -670,6 +674,7 @@ button .icon {
 .DockSystemIcon {
   display: inline-block;
   vertical-align: middle;
+  border-style: none;
   height: 3em;
   border-radius: 0.5em;
   width: 3em;

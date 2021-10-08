@@ -1,10 +1,35 @@
 #MusicApp {
-	button {
-	background-color: #46007cAA;
-	color: white;
-	box-shadow: #46007C
+  --PrimaryAppColor: #46007c;
+  --SecondartAppColor: #c7b3d8;
+  --HoverAppColor: #ece5f2;
+
+
+
+
+  
+  box-sizing: border-box;
+  button {
+    color: var(--PrimaryAppColor);
+    background: var(--SecondartAppColor);
+    border: 0.1em solid var(--SecondartAppColor);
   }
-  button :active {
-	  background-color: #46007C;
+  button:hover {
+    border: 0.1em solid var(--PrimaryAppColor);
+    box-shadow: 0px 0px 0.5em 0em var(--PrimaryAppColor),
+      inset 0px -0.1em 0.1em rgba(0, 0, 0, 0.1),
+      inset 0px 0.1em 0.1em rgba(255, 255, 255, 0.1);
+    color: var(--PrimaryAppColor);
+    background-color: var(--HoverAppColor);
+  }
+  button:active {
+    background-color: var(--PrimaryAppColor);
+
+    background: linear-gradient(
+        0deg,
+        var(--SecondartAppColor),
+        var(--SecondartAppColor)
+      ),
+      #ffffff;
+    box-shadow: inset 0px 0px 0.5em 0em var(--PrimaryAppColor);
   }
 }

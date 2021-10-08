@@ -72,14 +72,17 @@ button {
   align-items: center;
   gap: 0.5em;
   text-align: left;
-  padding: 0.5em;
+  padding: 1em 0.5em;
   border: none;
   height: 3em;
   border-radius: 0.5em;
   white-space: nowrap;
-  .icon {
-    width: 1.1em;
-    height: 1.1em;
+box-shadow: inset 0px -0.1em 0.1em rgba(0, 0, 0, 0.1), inset 0px 0.1em 0.1em rgba(255, 255, 255, 0.1);
+transition: all 300em linear;
+
+img {
+    width: 1.5em;
+    height: 1.5em;
     border-radius: 0.25em !important;
   }
 }
@@ -317,7 +320,6 @@ button {
   align-items: center;
   gap: 0.5em;
   button {
-    padding: 0.5em;
     display: flex;
     flex-direction: left;
     justify-content: left;
@@ -411,6 +413,7 @@ button {
   border-radius: 0.5em;
   width: 3em;
   margin: 0.5em 0.25em;
+  border-style: none;
   background-size: cover;
   transition: translate 300ms ease-out;
 }
@@ -425,6 +428,7 @@ button {
 .DockSystemIcon {
   display: inline-block;
   vertical-align: middle;
+  border-style: none;
   height: 3em;
   border-radius: 0.5em;
   width: 3em;
