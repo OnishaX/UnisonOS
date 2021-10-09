@@ -6,24 +6,33 @@ let RunningApps = []
 let temp
 let user = "template"
 
+function FillWindow() {
+  if ( temp = (document.getElementById("Display").className) == "DisplayNormal") {
+  document.getElementById("Display").className = "DisplayFullscreen";
+  } else {
+    document.getElementById("Drawer").className = "DrawerClosed";
+      document.getElementById("Display").className = "DisplayNormal";
+  }
+  
+}
+
 function MinimiseWindow(minimisingApp) {
   minimisingApp.String
   temp = String("#" + minimisingApp)
   $(temp + "App").css({ "display": "none" })
-
+  document.getElementById("Drawer").className = "DrawerClosed";
+      document.getElementById("Display").className = "DisplayNormal";
 }
 
 function LaunchSystem(systemApp) {
-  temp = (document.getElementById("Drawer").className)
   console.log(temp)
   if (systemApp === "AppDrawer") {
     if ( temp = (document.getElementById("Drawer").className) == "DrawerClosed") {
       document.getElementById("Drawer").className = "DrawerOpen";
-      document.getElementById("Display").className = "WindowsOverview";
       console.log(temp)
     } else {
       document.getElementById("Drawer").className = "DrawerClosed";
-      document.getElementById("Display").className = "WindowsNormal";
+      document.getElementById("Display").className = "DisplayNormal";
       console.log(temp)
     }
 
@@ -35,10 +44,10 @@ function CloseWindow(closingApp) {
   temp = String("#" + closingApp)
   $(temp + "App").remove()
   RunningApps.splice(RunningApps.indexOf(closingApp, 0), 1)
+  document.getElementById("Display").className = "DisplayNormal";
 }
 
 function LaunchWindow(launchingApp) {
-  
   temp = String(launchingApp)
   if (RunningApps.includes(temp, 0) == false) {
     RunningApps.push(launchingApp)
@@ -52,10 +61,12 @@ function LaunchWindow(launchingApp) {
     console.log(temp + " is already running")
   }
   document.getElementById("Drawer").className = "DrawerClosed";
-  document.getElementById("Display").className = "WindowsNormal";
+      document.getElementById("Display").className = "DisplayNormal";
 }
 
 function init() {
+  FillWindow()
+  FillWindow()
   console.log(RunningApps)
   document.getElementById("Display").style.backgroundImage = String("url(/data/" + user + "/Backgrounds/1.jpg)");
 

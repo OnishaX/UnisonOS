@@ -1,30 +1,23 @@
 #SettingsApp {
-  --PrimaryAppColor: #000000;
-  --SecondartAppColor: #b6b6b6;
-  --HoverAppColor: #ececec;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  --PrimaryAppColor: #6F6F6F;
+  --ActiveAppColor: #4b4b4b;
+  --HoverAppColor: #dbdbdb;
 }
 
 #SettingsApp button {
-  font-size: 1.1em;
-  color: var(--PrimaryAppColor);
-  background: var(--SecondartAppColor);
-  border: 0.1em solid var(--SecondartAppColor);
+  font-size: 1em;
+  color: var(--HoverAppColor);
+  background: var(--PrimaryAppColor);
 }
 
 #SettingsApp button:hover {
-  border: 0.1em solid var(--PrimaryAppColor);
-  -webkit-box-shadow: 0px 0px 0.5em 0em var(--PrimaryAppColor), inset 0px -0.1em 0.1em rgba(0, 0, 0, 0.1), inset 0px 0.1em 0.1em rgba(255, 255, 255, 0.1);
-          box-shadow: 0px 0px 0.5em 0em var(--PrimaryAppColor), inset 0px -0.1em 0.1em rgba(0, 0, 0, 0.1), inset 0px 0.1em 0.1em rgba(255, 255, 255, 0.1);
   color: var(--PrimaryAppColor);
   background-color: var(--HoverAppColor);
 }
 
 #SettingsApp button:active {
-  background-color: var(--PrimaryAppColor);
-  background: -webkit-gradient(linear, left bottom, left top, from(var(--SecondartAppColor)), to(var(--SecondartAppColor))), #ffffff;
-  background: linear-gradient(0deg, var(--SecondartAppColor), var(--SecondartAppColor)), #ffffff;
+  background-color: var(--ActiveAppColor);
+  color: var(--HoverAppColor);
   -webkit-box-shadow: inset 0px 0px 0.5em 0em var(--PrimaryAppColor);
           box-shadow: inset 0px 0px 0.5em 0em var(--PrimaryAppColor);
 }

@@ -1,28 +1,29 @@
-
 #MailboxApp {
-	.App{
-	.Contents {
-		grid-template-columns: 1fr;
-		grid-template-areas: "Body";
-		body {				
-			padding: 0em !important;
-				font: inherit;
-				background: inherit;
-				background-repeat: no-repeat;
-				color: #555;
-				-webkit-font-smoothing: antialiased;
-			  }
-					#search {
-						display: none;
-					}
-				}
-			
-}
-	button {
-	background-color: #00417C80;
-	color: white;
+	--PrimaryAppColor: #5C86AB;
+	--ActiveAppColor: #345775;
+	--HoverAppColor: #e5ebf2;
+	--White: #ffffff;
+  
+	.Preview {
+		width: 100%;
+	}
+  
+  
+  // --- Dont edit past this point ---
+	
+  button {
+	font-size: 1em;
+	color: var(--HoverAppColor);
+	background: var(--PrimaryAppColor);
   }
-  button :active {
-	  background-color: #00417C;
+  button:hover {
+	color: var(--PrimaryAppColor);
+	background-color: var(--HoverAppColor);
   }
-}
+  button:active {
+	background-color: var(--ActiveAppColor);
+	color: var(--HoverAppColor);
+	box-shadow: inset 0px 0px 0.5em 0em var(--PrimaryAppColor);
+  }
+  }
+  

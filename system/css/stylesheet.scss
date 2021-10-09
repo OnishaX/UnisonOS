@@ -12,31 +12,25 @@ html {
   width: 100%;
 }
 
-.WindowsOverview {
-  grid-template-rows: unset;
-
-  #Drawer {
-    height: 50vh !important;
-    padding: 0.5em;
+.DrawerOpen {
+    height: fit-content !important;
+    padding: 0.5em !important;
     #Dock {
       background: rgba(255, 255, 255, 0.75);
       backdrop-filter: blur(1em);
     }
   }
-}
 
-.WindowsNormal {
-  grid-template-rows: 1fr min-content;
-  #Drawer {
-    padding: 0em;
-    height: 4em;
-  }
+.DrawerClosed {
+  height: 3em !important;
+  padding: 0em !important;
 }
 
 #AllApps {
+  padding-top: 0.5em;
   flex-direction: column;
   align-items: flex-start;
-  border-radius: 1em;
+  border-radius: 0.25em;
   overflow-y: scroll;
   flex-wrap: wrap;
 }
@@ -44,12 +38,11 @@ html {
 #Drawer {
   flex-direction: column;
   align-items: flex-start;
-  border-radius: 1em;
+  border-radius: 0.25em;
   overflow: hidden;
-  transition: all 150ms ease-out;
-  height: 4em;
   background: rgba(255, 255, 255, 0.75);
   backdrop-filter: blur(1em);
+  transition: all 150ms ease-out;
 }
 
 body {
@@ -73,26 +66,29 @@ button {
   gap: 0.5em;
   text-align: left;
   padding: 1em 0.5em;
+  line-height: 1em;
   border: none;
-  height: 3em;
-  border-radius: 0.5em;
+  height: 2em;
+  border-radius: 0.25em;
   white-space: nowrap;
-box-shadow: inset 0px -0.1em 0.1em rgba(0, 0, 0, 0.1), inset 0px 0.1em 0.1em rgba(255, 255, 255, 0.1);
 transition: all 300em linear;
 
 img {
-    width: 1.5em;
-    height: 1.5em;
+    width: 1.1em;
+    height: 1.1em;
     border-radius: 0.25em !important;
   }
 }
 
 #Display {
+  transition: all 150ms ease-out;
+  padding: 0.5em;
   height: 100vh;
   overflow: hidden;
   display: grid;
-  grid-template-columns: 1fr;
+  transition: all 150ms ease-out;
   grid-template-rows: 1fr min-content;
+  grid-template-columns: 1fr;
   gap: 0.5em;
   grid-template-areas:
     "Windows"
@@ -100,14 +96,29 @@ img {
   justify-self: stretch;
   align-self: stretch;
   grid-area: Display;
-  padding: 0.5em;
   background-size: cover;
 }
+
+.DisplayNormal {
+  grid-template-rows: 1fr min-content !important;
+  padding: 0.5em !important;
+}
+.DisplayFullscreen {
+  grid-template-rows: 100vh min-content !important;
+  padding: 0em !important;
+  #Windows {
+    gap: 0.1em !important;
+    .AppContainer {
+    border-radius: 0em;
+  }
+}
+}
+
 .ghost {
   opacity: 0;
 }
 #Windows {
-  transition: scale 150ms ease-out;
+  transition: all 150ms ease-out;
   display: grid;
   grid-auto-flow: column;
   grid-auto-rows: 1fr;
@@ -129,10 +140,10 @@ img {
   gap: 0px 0px;
   grid-template-areas: "AppList System";
   align-self: end;
-  padding: 0em 0.25em;
+  padding: 0.25em;
   grid-area: Dock;
-  border-radius: 1em;
-  height: 4em;
+  border-radius: 0.25em;
+  height: 3em;
 }
 @keyframes attention {
   0% {
@@ -166,7 +177,7 @@ img {
   }
   background: rgba(255, 255, 255, 0.75);
   backdrop-filter: blur(1em);
-  border-radius: 1em;
+  border-radius: 0.25em;
   border: none;
   display: grid;
   grid-auto-columns: 1fr;
@@ -180,11 +191,10 @@ img {
 .App {
   display: grid;
   grid-template-columns: min-content 1fr;
-  grid-template-rows: 4em 1fr;
+  grid-template-rows: 3em 1fr;
   gap: 0px 0px;
   width: 100%;
   height: 100%;
-
   grid-template-areas:
     "Sidebar Toolbar"
     "Sidebar Contents";
@@ -193,10 +203,6 @@ img {
   justify-items: stretch;
   align-items: stretch;
   animation-timing-function: ease-out;
-  button {
-    padding-left: 1em;
-    padding-right: 1em;
-  }
 }
 
 .Sidebar {
@@ -226,8 +232,8 @@ img {
     gap: 0.1em;
   }
   .ToolGroup :first-child {
-    border-top-left-radius: 0.5em;
-    border-top-right-radius: 0.5em;
+    border-top-left-radius: 0.25em;
+    border-top-right-radius: 0.25em;
     border-bottom-right-radius: 0em;
     border-bottom-left-radius: 0em;
   }
@@ -239,15 +245,15 @@ img {
   }
   .ToolGroup :last-child {
     border-top-left-radius: 0em;
-    border-bottom-left-radius: 0.5em;
+    border-bottom-left-radius: 0.25em;
     border-top-right-radius: 0em;
-    border-bottom-right-radius: 0.5em;
+    border-bottom-right-radius: 0.25em;
   }
   .ToolGroup :only-child {
-    border-top-left-radius: 0.5em;
-    border-bottom-left-radius: 0.5em;
-    border-top-right-radius: 0.5em;
-    border-bottom-right-radius: 0.5em;
+    border-top-left-radius: 0.25em;
+    border-bottom-left-radius: 0.25em;
+    border-top-right-radius: 0.25em;
+    border-bottom-right-radius: 0.25em;
   }
 }
 
@@ -285,12 +291,12 @@ img {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 3em;
+    width: 2em;
   }
 }
 .Controls :first-child {
-  border-top-left-radius: 0.5em;
-  border-bottom-left-radius: 0.5em;
+  border-top-left-radius: 0.25em;
+  border-bottom-left-radius: 0.25em;
   border-top-right-radius: 0em;
   border-bottom-right-radius: 0em;
 }
@@ -303,14 +309,14 @@ img {
 .Controls :last-child {
   border-top-left-radius: 0em;
   border-bottom-left-radius: 0em;
-  border-top-right-radius: 0.5em;
-  border-bottom-right-radius: 0.5em;
+  border-top-right-radius: 0.25em;
+  border-bottom-right-radius: 0.25em;
 }
 .Controls :only-child {
-  border-top-left-radius: 0.5em;
-  border-bottom-left-radius: 0.5em;
-  border-top-right-radius: 0.5em;
-  border-bottom-right-radius: 0.5em;
+  border-top-left-radius: 0.25em;
+  border-bottom-left-radius: 0.25em;
+  border-top-right-radius: 0.25em;
+  border-bottom-right-radius: 0.25em;
 }
 
 .Tools {
@@ -336,8 +342,8 @@ img {
 }
 
 .Toolbar .ToolGroup :first-child {
-  border-top-left-radius: 0.5em;
-  border-bottom-left-radius: 0.5em;
+  border-top-left-radius: 0.25em;
+  border-bottom-left-radius: 0.25em;
   border-top-right-radius: 0em;
   border-bottom-right-radius: 0em;
 }
@@ -350,14 +356,14 @@ img {
 .Toolbar .ToolGroup :last-child {
   border-top-left-radius: 0em;
   border-bottom-left-radius: 0em;
-  border-top-right-radius: 0.5em;
-  border-bottom-right-radius: 0.5em;
+  border-top-right-radius: 0.25em;
+  border-bottom-right-radius: 0.25em;
 }
 .Toolbar .ToolGroup :only-child {
-  border-top-left-radius: 0.5em;
-  border-bottom-left-radius: 0.5em;
-  border-top-right-radius: 0.5em;
-  border-bottom-right-radius: 0.5em;
+  border-top-left-radius: 0.25em;
+  border-bottom-left-radius: 0.25em;
+  border-top-right-radius: 0.25em;
+  border-bottom-right-radius: 0.25em;
 }
 
 .Contents {
@@ -409,10 +415,9 @@ img {
 .DockAppIcon {
   display: inline-block;
   vertical-align: middle;
-  height: 3em;
-  border-radius: 0.5em;
-  width: 3em;
-  margin: 0.5em 0.25em;
+  height: 2.5em;
+  border-radius: 0.25em;
+  width: 2.5em;
   border-style: none;
   background-size: cover;
   transition: translate 300ms ease-out;
@@ -421,17 +426,17 @@ img {
   display: inline-block;
   vertical-align: middle;
   background-image: unset !important;
-  height: 3em;
-  width: 3em;
+  height: 2.5em;
+  width: 2.5em;
   background-size: cover;
 }
 .DockSystemIcon {
   display: inline-block;
   vertical-align: middle;
   border-style: none;
-  height: 3em;
-  border-radius: 0.5em;
-  width: 3em;
+  height: 2.5em;
+  border-radius: 0.25em;
+  width: 2.5em;
   margin: 0.5em 0.25em;
   background-size: cover;
   transition: translate 300ms ease-out;
