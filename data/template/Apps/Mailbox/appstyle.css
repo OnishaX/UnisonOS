@@ -2,7 +2,6 @@
   --PrimaryAppColor: #5C86AB;
   --ActiveAppColor: #345775;
   --HoverAppColor: #e5ebf2;
-  --White: #ffffff;
 }
 
 #MailboxApp .Preview {
@@ -10,8 +9,6 @@
 }
 
 #MailboxApp button {
-  font-size: 1em;
-  color: var(--HoverAppColor);
   background: var(--PrimaryAppColor);
 }
 
@@ -22,8 +19,5 @@
 
 #MailboxApp button:active {
   background-color: var(--ActiveAppColor);
-  color: var(--HoverAppColor);
-  -webkit-box-shadow: inset 0px 0px 0.5em 0em var(--PrimaryAppColor);
-          box-shadow: inset 0px 0px 0.5em 0em var(--PrimaryAppColor);
 }
 /*# sourceMappingURL=appstyle.css.map */

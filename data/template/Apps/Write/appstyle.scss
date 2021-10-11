@@ -1,10 +1,20 @@
-
 #WriteApp {
-	button {
-	background-color: #2A449E80;
-	color: white;
-  }
-  button :active {
-	  background-color: #2A449E;
-  }
-}
+	--PrimaryAppColor: #6F6F6F;
+	--ActiveAppColor: #4b4b4b;
+	--HoverAppColor: #dbdbdb;
+  
+  
+  
+  // --- Dont edit past this point ---
+	
+  button {
+		background: var(--PrimaryAppColor);
+	  }
+	  button:hover {
+		color: var(--PrimaryAppColor);
+		background-color: var(--HoverAppColor);
+	  }
+	  button:active {
+		background-color: var(--ActiveAppColor);
+	  }
+	}

@@ -1,24 +1,24 @@
+#ErrorApp {
+  --PrimaryAppColor: #6F6F6F;
+  --ActiveAppColor: #4b4b4b;
+  --HoverAppColor: #dbdbdb;
+}
+
 #ErrorApp .App {
   background-color: white;
 }
 
 #ErrorApp button {
-  background-color: #7C000090;
-  color: white;
-  -webkit-box-shadow: #7C0000 !important;
-          box-shadow: #7C0000 !important;
+  background: var(--PrimaryAppColor);
 }
 
-#ErrorApp button :hover {
-  background-color: #7C000050;
-  -webkit-box-shadow: #7C0000 !important;
-          box-shadow: #7C0000 !important;
+#ErrorApp button:hover {
+  color: var(--PrimaryAppColor);
+  background-color: var(--HoverAppColor);
 }
 
-#ErrorApp button :active {
-  background-color: #7C0000;
-  -webkit-box-shadow: #7C0000;
-          box-shadow: #7C0000;
+#ErrorApp button:active {
+  background-color: var(--ActiveAppColor);
 }
 
 #ErrorApp .Contents {

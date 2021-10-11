@@ -72,12 +72,17 @@ button {
   border-radius: 0.25em;
   white-space: nowrap;
 transition: all 300em linear;
+	font-size: 1em;
+	color: #ffffff;
 
 img {
     width: 1.1em;
     height: 1.1em;
     border-radius: 0.25em !important;
   }
+}
+button:active {
+  color: #ffffff !important;
 }
 
 #Display {

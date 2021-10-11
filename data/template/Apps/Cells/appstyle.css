@@ -1,9 +1,19 @@
-#CellsApp button {
-  background-color: #70AE7A80;
-  color: white;
+#CellsApp {
+  --PrimaryAppColor: #6F6F6F;
+  --ActiveAppColor: #4b4b4b;
+  --HoverAppColor: #dbdbdb;
 }
 
-#CellsApp button :active {
-  background-color: #70AE7A;
+#CellsApp button {
+  background: var(--PrimaryAppColor);
+}
+
+#CellsApp button:hover {
+  color: var(--PrimaryAppColor);
+  background-color: var(--HoverAppColor);
+}
+
+#CellsApp button:active {
+  background-color: var(--ActiveAppColor);
 }
 /*# sourceMappingURL=appstyle.css.map */

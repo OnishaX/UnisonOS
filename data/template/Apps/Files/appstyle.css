@@ -1,3 +1,9 @@
+#FilesApp {
+  --PrimaryAppColor: #6F6F6F;
+  --ActiveAppColor: #4b4b4b;
+  --HoverAppColor: #dbdbdb;
+}
+
 #FilesApp .App .Contents {
   -ms-grid-columns: 1fr;
       grid-template-columns: 1fr;
@@ -9,11 +15,15 @@
 }
 
 #FilesApp button {
-  background-color: #00000090;
-  color: white;
+  background: var(--PrimaryAppColor);
 }
 
-#FilesApp button :active {
-  background-color: #000000;
+#FilesApp button:hover {
+  color: var(--PrimaryAppColor);
+  background-color: var(--HoverAppColor);
+}
+
+#FilesApp button:active {
+  background-color: var(--ActiveAppColor);
 }
 /*# sourceMappingURL=appstyle.css.map */

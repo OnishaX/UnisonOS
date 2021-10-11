@@ -1,9 +1,19 @@
-#ShowApp button {
-  background-color: #6F350080;
-  color: white;
+#ShowApp {
+  --PrimaryAppColor: #6F6F6F;
+  --ActiveAppColor: #4b4b4b;
+  --HoverAppColor: #dbdbdb;
 }
 
-#ShowApp button :active {
-  background-color: #6F3500;
+#ShowApp button {
+  background: var(--PrimaryAppColor);
+}
+
+#ShowApp button:hover {
+  color: var(--PrimaryAppColor);
+  background-color: var(--HoverAppColor);
+}
+
+#ShowApp button:active {
+  background-color: var(--ActiveAppColor);
 }
 /*# sourceMappingURL=appstyle.css.map */

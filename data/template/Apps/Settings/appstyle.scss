@@ -7,19 +7,14 @@
   
   // --- Dont edit past this point ---
 	
-	button {
-	  font-size: 1em;
-	  color: var(--HoverAppColor);
-	  background: var(--PrimaryAppColor);
-	}
-	button:hover {
-	  color: var(--PrimaryAppColor);
-	  background-color: var(--HoverAppColor);
-	}
-	button:active {
-	  background-color: var(--ActiveAppColor);
-	  color: var(--HoverAppColor);
-	  box-shadow: inset 0px 0px 0.5em 0em var(--PrimaryAppColor);
-	}
+  button {
+	background: var(--PrimaryAppColor);
   }
-  
+  button:hover {
+	color: var(--PrimaryAppColor);
+	background-color: var(--HoverAppColor);
+  }
+  button:active {
+	background-color: var(--ActiveAppColor);
+  }
+  }

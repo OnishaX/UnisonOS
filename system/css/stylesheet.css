@@ -108,12 +108,18 @@ button {
   white-space: nowrap;
   -webkit-transition: all 300em linear;
   transition: all 300em linear;
+  font-size: 1em;
+  color: #ffffff;
 }
 
 button img {
   width: 1.1em;
   height: 1.1em;
   border-radius: 0.25em !important;
+}
+
+button:active {
+  color: #ffffff !important;
 }
 
 #Display {

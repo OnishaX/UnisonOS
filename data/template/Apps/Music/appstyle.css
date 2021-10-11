@@ -6,8 +6,6 @@
 }
 
 #MusicApp button {
-  font-size: 1em;
-  color: var(--HoverAppColor);
   background: var(--PrimaryAppColor);
 }
 
@@ -18,8 +16,5 @@
 
 #MusicApp button:active {
   background-color: var(--ActiveAppColor);
-  color: var(--HoverAppColor);
-  -webkit-box-shadow: inset 0px 0px 0.5em 0em var(--PrimaryAppColor);
-          box-shadow: inset 0px 0px 0.5em 0em var(--PrimaryAppColor);
 }
 /*# sourceMappingURL=appstyle.css.map */

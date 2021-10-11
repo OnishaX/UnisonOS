@@ -1,4 +1,13 @@
 #FilesApp {
+	--PrimaryAppColor: #6F6F6F;
+	--ActiveAppColor: #4b4b4b;
+	--HoverAppColor: #dbdbdb;
+  
+  
+  
+  // --- Dont edit past this point ---
+	
+  
 	.App{
 	.Contents {
 		grid-template-columns: 1fr;
@@ -9,11 +18,14 @@
 				}
 			
 }
-	button {
-	background-color: #00000090;
-	color: white;
+button {
+	background: var(--PrimaryAppColor);
   }
-  button :active {
-	  background-color: #000000;
+  button:hover {
+	color: var(--PrimaryAppColor);
+	background-color: var(--HoverAppColor);
   }
-}
+  button:active {
+	background-color: var(--ActiveAppColor);
+  }
+  }

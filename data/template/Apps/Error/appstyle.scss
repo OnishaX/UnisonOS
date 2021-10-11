@@ -1,21 +1,26 @@
 #ErrorApp {
+		--PrimaryAppColor: #6F6F6F;
+	--ActiveAppColor: #4b4b4b;
+	--HoverAppColor: #dbdbdb;
+  
+  
+  
+  // --- Dont edit past this point ---
+	
+  
 	.App {
 		background-color: white;
 	}
 	button {
-	background-color: #7C000090;
-	color: white;
-	box-shadow: #7C0000 !important;
-	
-  }
-  button :hover {
-	background-color: #7C000050;
-	box-shadow: #7C0000 !important;
-}
-  button :active {
-	  background-color: #7C0000;
-	  box-shadow: #7C0000;
-  }
+		background: var(--PrimaryAppColor);
+	  }
+	  button:hover {
+		color: var(--PrimaryAppColor);
+		background-color: var(--HoverAppColor);
+	  }
+	  button:active {
+		background-color: var(--ActiveAppColor);
+	  }
   .Contents {
 	  display: block;
 	  margin-top: auto;
