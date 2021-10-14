@@ -13,13 +13,13 @@ html {
 }
 
 .DrawerOpen {
-    height: fit-content !important;
-    padding: 0.5em !important;
-    #Dock {
-      background: rgba(255, 255, 255, 0.75);
-      backdrop-filter: blur(1em);
-    }
+  height: fit-content !important;
+  padding: 0.5em !important;
+  #Dock {
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(1em);
   }
+}
 
 .DrawerClosed {
   height: 3em !important;
@@ -71,11 +71,11 @@ button {
   height: 2em;
   border-radius: 0.25em;
   white-space: nowrap;
-transition: all 300em linear;
-	font-size: 1em;
-	color: #ffffff;
+  transition: all 300em linear;
+  font-size: 1em;
+  color: #ffffff;
 
-img {
+  img {
     width: 1.1em;
     height: 1.1em;
     border-radius: 0.25em !important;
@@ -114,9 +114,9 @@ button:active {
   #Windows {
     gap: 0.1em !important;
     .AppContainer {
-    border-radius: 0em;
+      border-radius: 0em;
+    }
   }
-}
 }
 
 .ghost {
@@ -175,7 +175,7 @@ button:active {
 }
 .AppContainer {
   animation-name: openApp;
-  animation-duration: 300ms;
+  animation-duration: 250ms;
   animation-delay: 0ms;
   body {
     background-color: none !important;
@@ -260,7 +260,41 @@ button:active {
     border-top-right-radius: 0.25em;
     border-bottom-right-radius: 0.25em;
   }
+
+  .ToolGroupH {
+    display: flex;
+    width: 100%;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    align-items: stretch;
+    gap: 0.1em;
+  }
+  .ToolGroupH :first-child {
+    border-top-left-radius: 0.25em;
+    border-bottom-left-radius: 0.25em;
+    border-top-right-radius: 0em;
+    border-bottom-right-radius: 0em;
+  }
+  .ToolGroupH :not(:first-child) {
+    border-top-left-radius: 0em;
+    border-bottom-left-radius: 0em;
+    border-top-right-radius: 0em;
+    border-bottom-right-radius: 0em;
+  }
+  .ToolGroupH :last-child {
+    border-top-left-radius: 0em;
+    border-bottom-left-radius: 0em;
+    border-top-right-radius: 0.25em;
+    border-bottom-right-radius: 0.25em;
+  }
+  .ToolGroupH :only-child {
+    border-top-left-radius: 0.25em;
+    border-bottom-left-radius: 0.25em;
+    border-top-right-radius: 0.25em;
+    border-bottom-right-radius: 0.25em;
+  }
 }
+
 
 .Toolbar {
   padding: 0.5em;
@@ -425,7 +459,7 @@ button:active {
   width: 2.5em;
   border-style: none;
   background-size: cover;
-  transition: translate 300ms ease-out;
+  transition: translate 250ms ease-out;
 }
 .DockIconGhost {
   display: inline-block;
@@ -444,5 +478,5 @@ button:active {
   width: 2.5em;
   margin: 0.5em 0.25em;
   background-size: cover;
-  transition: translate 300ms ease-out;
+  transition: translate 250ms ease-out;
 }

@@ -1,0 +1,53 @@
+	  
+	 <!doctype html>
+	 <html lang='en-GB'>
+	 <head>
+	   <meta charset='utf-8'>
+	   <title>Music</title>
+	   <link rel="stylesheet" href="/system/css/stylesheet.css">
+	   <link rel="stylesheet" href="/users/template/Apps/Music/appstyle.css">
+	   <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+
+	 </head>
+	 <body>
+		 <div class="App">
+		  <div class="Sidebar">
+		<button button type="button"><img class="icon" src="/users/template/Apps/Music/icons/NowPlaying.svg"> Now Playing</button>
+		<div class="ToolGroup">
+			<button button type="button"><img class="icon" src="/users/template/Apps/Music/icons/Person.svg">Artists</button>
+			<button button type="button"><img class="icon" src="/users/template/Apps/Music/icons/Album.svg">Albums</button>
+			<button button type="button"><img class="icon" src="/users/template/Apps/Music/icons/Song.svg">Songs</button>
+		</div>
+	  </div>
+	  <div class="Toolbar">
+		<div class="Controls">
+			<button type="button" button  onClick="MinimiseWindow('Music')"><img class="icon" src="/system/icons/Minus.svg"></button>
+			<button type="button" button onclick="FillWindow()"><img class="icon" src="/system/icons/Plus.svg"></button>
+			<button type="button" button onClick="CloseWindow('Music')"><img class="icon" src="/system/icons/Close.svg"></button>
+		</div>
+		<div class="Tools">
+			<div class="ToolGroup">
+				<button button style="width: 2em; background-size: cover; background-image: url(/users/template/Apps/Music/AppIcon.svg)"></button>
+			</div>
+			<div class="ToolGroup">
+				<button button type="button"><img class="icon" src="/users/template/Apps/Music/icons/Sort.svg">Sort</button>
+				<button button type="button"><img class="icon" src="/system/icons/View.svg">View</button>
+			</div>
+			<div class="ToolGroup">
+				<button button type="button" class="search"><img class="icon" src="/users/template/Apps/Music/icons/Search.svg">Search</button>
+			</div>
+		</div>
+	  </div>
+	  <div class="Contents">
+		<div class="Preview">
+			<p>Preview Item</p>
+		</div>
+		<div class="Body">
+			<p>BodyItem</p>
+		</div>
+	  </div>
+	</div>
+</div>
+	 </body>
+	 </html>

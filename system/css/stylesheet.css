@@ -279,8 +279,8 @@ button:active {
 .AppContainer {
   -webkit-animation-name: openApp;
           animation-name: openApp;
-  -webkit-animation-duration: 300ms;
-          animation-duration: 300ms;
+  -webkit-animation-duration: 250ms;
+          animation-duration: 250ms;
   -webkit-animation-delay: 0ms;
           animation-delay: 0ms;
   background: rgba(255, 255, 255, 0.75);
@@ -405,6 +405,51 @@ button:active {
 }
 
 .Sidebar .ToolGroup :only-child {
+  border-top-left-radius: 0.25em;
+  border-bottom-left-radius: 0.25em;
+  border-top-right-radius: 0.25em;
+  border-bottom-right-radius: 0.25em;
+}
+
+.Sidebar .ToolGroupH {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+  gap: 0.1em;
+}
+
+.Sidebar .ToolGroupH :first-child {
+  border-top-left-radius: 0.25em;
+  border-bottom-left-radius: 0.25em;
+  border-top-right-radius: 0em;
+  border-bottom-right-radius: 0em;
+}
+
+.Sidebar .ToolGroupH :not(:first-child) {
+  border-top-left-radius: 0em;
+  border-bottom-left-radius: 0em;
+  border-top-right-radius: 0em;
+  border-bottom-right-radius: 0em;
+}
+
+.Sidebar .ToolGroupH :last-child {
+  border-top-left-radius: 0em;
+  border-bottom-left-radius: 0em;
+  border-top-right-radius: 0.25em;
+  border-bottom-right-radius: 0.25em;
+}
+
+.Sidebar .ToolGroupH :only-child {
   border-top-left-radius: 0.25em;
   border-bottom-left-radius: 0.25em;
   border-top-right-radius: 0.25em;
@@ -673,8 +718,8 @@ button:active {
   width: 2.5em;
   border-style: none;
   background-size: cover;
-  -webkit-transition: translate 300ms ease-out;
-  transition: translate 300ms ease-out;
+  -webkit-transition: translate 250ms ease-out;
+  transition: translate 250ms ease-out;
 }
 
 .DockIconGhost {
@@ -695,7 +740,7 @@ button:active {
   width: 2.5em;
   margin: 0.5em 0.25em;
   background-size: cover;
-  -webkit-transition: translate 300ms ease-out;
-  transition: translate 300ms ease-out;
+  -webkit-transition: translate 250ms ease-out;
+  transition: translate 250ms ease-out;
 }
 /*# sourceMappingURL=stylesheet.css.map */

@@ -1,0 +1,22 @@
+{
+  "name": "unisonos",
+  "version": "1.0.0",
+  "description": "UnisonOS is an in-development platform build for entry-level devices for those who want a consistent and local web app experience.",
+  "main": "/system/js/windowManager.js",
+  "scripts": {
+    "test": "init()"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OnishaX/UnisonOS.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/OnishaX/UnisonOS/issues"
+  },
+  "homepage": "https://github.com/OnishaX/UnisonOS#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}

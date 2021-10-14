@@ -53,7 +53,7 @@ function LaunchWindow(launchingApp) {
     RunningApps.push(launchingApp)
     temp = RunningApps[RunningApps.length - 1]
     $("#Windows").append('<div class="AppContainer" id="' + temp + 'App"></div>');
-    $('#' + String(temp + 'App')).load('/data/' + user + '/Apps/' + temp + '/App.html');
+    $('#' + String(temp + 'App')).load('/users/' + user + '/Apps/' + temp + '/App.html');
   }
   else {
     temp = String("#" + launchingApp)
@@ -65,10 +65,9 @@ function LaunchWindow(launchingApp) {
 }
 
 function init() {
-  FillWindow()
-  FillWindow()
+
   console.log(RunningApps)
-  document.getElementById("Display").style.backgroundImage = String("url(/data/" + user + "/Backgrounds/1.jpg)");
+  document.getElementById("Display").style.backgroundImage = String("url(/users/" + user + "/Backgrounds/1.jpg)");
 
   displayPinnedList(Applist);
   displayAppList(InstalledApps);
@@ -98,7 +97,7 @@ function displayPinnedList(Applist) {
   let html = "";
   for (let app of Applist) {
     html += `
-				<button type="button" class="DockAppIcon" id="${app}AppIcon" onClick='LaunchWindow(` + `"` + `${app}` + `"` + `)' style="background-image: url(/data/` + user + `/Apps/${app}/AppIcon.svg)"></button>`;
+				<button type="button" class="DockAppIcon" id="${app}AppIcon" onClick='LaunchWindow(` + `"` + `${app}` + `"` + `)' style="background-image: url(/users/` + user + `/Apps/${app}/AppIcon.svg)"></button>`;
   }
   console.log("dock appended")
   $("#AppList").html(html)
@@ -108,7 +107,7 @@ function displayAppList(InstalledApps) {
   let html = "";
   for (let app of InstalledApps) {
     html += `
-				<button type="button" class="DockAppIcon" id="${app}AppIcon" onClick='LaunchWindow(` + `"` + `${app}` + `"` + `)' style="background-image: url(/data/` + user + `/Apps/${app}/AppIcon.svg)"></button>`;
+				<button type="button" class="DockAppIcon" id="${app}AppIcon" onClick='LaunchWindow(` + `"` + `${app}` + `"` + `)' style="background-image: url(/users/` + user + `/Apps/${app}/AppIcon.svg)"></button>`;
   }
   console.log("dock appended")
   $("#AllApps").html(html)
@@ -119,7 +118,7 @@ function displaySystem(Systemlist) {
   let html = "";
   for (let app of Systemlist) {
     html += `
-				<button type="button" class="DockAppIcon" id="${app}" onClick='LaunchSystem(` + `"` + `${app}` + `"` + `)' style="background-image: url(/data/` + user + `/System/${app}/AppIcon.svg)"></button>`;
+				<button type="button" class="DockAppIcon" id="${app}" onClick='LaunchSystem(` + `"` + `${app}` + `"` + `)' style="background-image: url(/users/` + user + `/System/${app}/AppIcon.svg)"></button>`;
   }
   console.log("dock appended")
   $("#System").html(html)
