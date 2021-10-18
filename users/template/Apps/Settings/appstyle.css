@@ -1,7 +1,35 @@
 #SettingsApp {
   --PrimaryAppColor: #6F6F6F;
+  --AccentAppColor: #6F6F6F30;
   --ActiveAppColor: #4b4b4b;
   --HoverAppColor: #dbdbdb;
+}
+
+#SettingsApp .Contents {
+      grid-template-areas: "Body" !important;
+  -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
+}
+
+#SettingsApp .ListSection {
+  background: var(--AccentAppColor);
+}
+
+#SettingsApp .ListSection button {
+  color: var(--PrimaryAppColor);
+  background: none;
+}
+
+#SettingsApp .ListSection button:hover {
+  background-color: var(--AccentAppColor);
+}
+
+#SettingsApp .ListSection button:active {
+  background-color: var(--ActiveAppColor);
+}
+
+#SettingsApp h2 {
+  color: --PrimaryAppColor;
 }
 
 #SettingsApp button {

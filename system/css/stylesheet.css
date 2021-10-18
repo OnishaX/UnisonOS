@@ -17,6 +17,24 @@ html {
   width: 100%;
 }
 
+h2 {
+  font-size: 1em;
+  font-weight: bold;
+  margin-top: unset;
+  margin-bottom: unset;
+  padding-bottom: 0.5em;
+}
+
+.DisplayFullscreen {
+  -webkit-animation: fullscreen 0.1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+          animation: fullscreen 0.1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+.DisplayNormal {
+  -webkit-animation: DisplayNormal 0.1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+          animation: DisplayNormal 0.1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
 .DrawerOpen {
   height: -webkit-fit-content !important;
   height: -moz-fit-content !important;
@@ -59,7 +77,7 @@ html {
       -ms-flex-align: start;
           align-items: flex-start;
   border-radius: 0.25em;
-  overflow: hidden;
+  overflow: visible;
   background: rgba(255, 255, 255, 0.75);
   -webkit-backdrop-filter: blur(1em);
           backdrop-filter: blur(1em);
@@ -148,30 +166,8 @@ button:active {
   background-size: cover;
 }
 
-.DisplayNormal {
-  -ms-grid-rows: 1fr min-content !important;
-      grid-template-rows: 1fr -webkit-min-content !important;
-      grid-template-rows: 1fr min-content !important;
-  padding: 0.5em !important;
-}
-
-.DisplayFullscreen {
-  -ms-grid-rows: 100vh min-content !important;
-      grid-template-rows: 100vh -webkit-min-content !important;
-      grid-template-rows: 100vh min-content !important;
-  padding: 0em !important;
-}
-
-.DisplayFullscreen #Windows {
-  gap: 0.1em !important;
-}
-
-.DisplayFullscreen #Windows .AppContainer {
-  border-radius: 0em;
-}
-
 .ghost {
-  opacity: 0;
+  opacity: 0.1;
 }
 
 #Windows {
@@ -203,7 +199,7 @@ button:active {
 #Dock {
   -webkit-transition: background-color ease-out 150ms;
   transition: background-color ease-out 150ms;
-  overflow: hidden;
+  overflow: visible;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 1fr 1fr;
@@ -222,67 +218,534 @@ button:active {
   height: 3em;
 }
 
-@-webkit-keyframes attention {
+/**
+ * ----------------------------------------
+ * animation scale-in-center
+ * ----------------------------------------
+ */
+@-webkit-keyframes scale-in-center {
   0% {
-    -webkit-transform: translateX(0em);
-            transform: translateX(0em);
-  }
-  25% {
-    -webkit-transform: translateX(-10em);
-            transform: translateX(-10em);
-  }
-  50% {
-    -webkit-transform: translateX(10em);
-            transform: translateX(10em);
+    -webkit-transform: scale(0);
+            transform: scale(0);
+    opacity: 1;
   }
   100% {
-    scale: 1;
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    opacity: 1;
+  }
+}
+@keyframes scale-in-center {
+  0% {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    opacity: 1;
   }
 }
 
-@keyframes attention {
+/**
+ * ----------------------------------------
+ * animation scale-in-bottom
+ * ----------------------------------------
+ */
+@-webkit-keyframes scale-in-bottom {
   0% {
-    -webkit-transform: translateX(0em);
-            transform: translateX(0em);
-  }
-  25% {
-    -webkit-transform: translateX(-10em);
-            transform: translateX(-10em);
-  }
-  50% {
-    -webkit-transform: translateX(10em);
-            transform: translateX(10em);
+    -webkit-transform: scale(0);
+            transform: scale(0);
+    -webkit-transform-origin: 50% 100%;
+            transform-origin: 50% 100%;
+    opacity: 1;
   }
   100% {
-    scale: 1;
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    -webkit-transform-origin: 50% 100%;
+            transform-origin: 50% 100%;
+    opacity: 1;
+  }
+}
+@keyframes scale-in-bottom {
+  0% {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+    -webkit-transform-origin: 50% 100%;
+            transform-origin: 50% 100%;
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    -webkit-transform-origin: 50% 100%;
+            transform-origin: 50% 100%;
+    opacity: 1;
   }
 }
 
-@-webkit-keyframes openApp {
-  0% {
-    scale: 0;
-  }
+/**
+ * ----------------------------------------
+ * animation shake-bottom
+ * ----------------------------------------
+ */
+@-webkit-keyframes shake-bottom {
+  0%,
   100% {
-    scale: 1;
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+    -webkit-transform-origin: 50% 100%;
+            transform-origin: 50% 100%;
+  }
+  10% {
+    -webkit-transform: rotate(2deg);
+            transform: rotate(2deg);
+  }
+  20%,
+  40%,
+  60% {
+    -webkit-transform: rotate(-4deg);
+            transform: rotate(-4deg);
+  }
+  30%,
+  50%,
+  70% {
+    -webkit-transform: rotate(4deg);
+            transform: rotate(4deg);
+  }
+  80% {
+    -webkit-transform: rotate(-2deg);
+            transform: rotate(-2deg);
+  }
+  90% {
+    -webkit-transform: rotate(2deg);
+            transform: rotate(2deg);
+  }
+}
+@keyframes shake-bottom {
+  0%,
+  100% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+    -webkit-transform-origin: 50% 100%;
+            transform-origin: 50% 100%;
+  }
+  10% {
+    -webkit-transform: rotate(2deg);
+            transform: rotate(2deg);
+  }
+  20%,
+  40%,
+  60% {
+    -webkit-transform: rotate(-4deg);
+            transform: rotate(-4deg);
+  }
+  30%,
+  50%,
+  70% {
+    -webkit-transform: rotate(4deg);
+            transform: rotate(4deg);
+  }
+  80% {
+    -webkit-transform: rotate(-2deg);
+            transform: rotate(-2deg);
+  }
+  90% {
+    -webkit-transform: rotate(2deg);
+            transform: rotate(2deg);
   }
 }
 
-@keyframes openApp {
+@-webkit-keyframes fullscreen {
   0% {
-    scale: 0;
+    grid-template-rows: 1fr -webkit-min-content;
+    grid-template-rows: 1fr min-content;
+    gap: 0.5em;
+    padding: 0.5em;
   }
   100% {
-    scale: 1;
+    gap: 0em;
+    padding: 0em;
+    grid-template-rows: 100vh -webkit-min-content;
+    grid-template-rows: 100vh min-content;
   }
+}
+
+@keyframes fullscreen {
+  0% {
+    -ms-grid-rows: 1fr min-content;
+        grid-template-rows: 1fr -webkit-min-content;
+        grid-template-rows: 1fr min-content;
+    gap: 0.5em;
+    padding: 0.5em;
+  }
+  100% {
+    gap: 0em;
+    padding: 0em;
+    -ms-grid-rows: 100vh min-content;
+        grid-template-rows: 100vh -webkit-min-content;
+        grid-template-rows: 100vh min-content;
+  }
+}
+
+@-webkit-keyframes Displaynormal {
+  0% {
+    gap: 0em;
+    padding: 0em;
+    grid-template-rows: 100vh -webkit-min-content;
+    grid-template-rows: 100vh min-content;
+  }
+  100% {
+    grid-template-rows: 1fr -webkit-min-content;
+    grid-template-rows: 1fr min-content;
+    gap: 0.5em;
+    padding: 0.5em;
+  }
+}
+
+@keyframes Displaynormal {
+  0% {
+    gap: 0em;
+    padding: 0em;
+    -ms-grid-rows: 100vh min-content;
+        grid-template-rows: 100vh -webkit-min-content;
+        grid-template-rows: 100vh min-content;
+  }
+  100% {
+    -ms-grid-rows: 1fr min-content;
+        grid-template-rows: 1fr -webkit-min-content;
+        grid-template-rows: 1fr min-content;
+    gap: 0.5em;
+    padding: 0.5em;
+  }
+}
+
+/**
+ * ----------------------------------------
+ * animation tracking-in-expand
+ * ----------------------------------------
+ */
+@-webkit-keyframes tracking-in-expand {
+  0% {
+    letter-spacing: -0.5em;
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes tracking-in-expand {
+  0% {
+    letter-spacing: -0.5em;
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/**
+ * ----------------------------------------
+ * animation scale-out-center
+ * ----------------------------------------
+ */
+@-webkit-keyframes scale-out-center {
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+    opacity: 0;
+  }
+}
+@keyframes scale-out-center {
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+    opacity: 0;
+  }
+}
+
+/**
+ * ----------------------------------------
+ * animation scale-out-bottom
+ * ----------------------------------------
+ */
+@-webkit-keyframes scale-out-bottom {
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    -webkit-transform-origin: 50% 100%;
+            transform-origin: 50% 100%;
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+    -webkit-transform-origin: 50% 100%;
+            transform-origin: 50% 100%;
+    opacity: 0;
+  }
+}
+@keyframes scale-out-bottom {
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    -webkit-transform-origin: 50% 100%;
+            transform-origin: 50% 100%;
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+    -webkit-transform-origin: 50% 100%;
+            transform-origin: 50% 100%;
+    opacity: 0;
+  }
+}
+
+/**
+ * ----------------------------------------
+ * animation bounce-top
+ * ----------------------------------------
+ */
+@-webkit-keyframes bounce-top {
+  0% {
+    -webkit-transform: translateY(-45px);
+            transform: translateY(-45px);
+    -webkit-animation-timing-function: ease-in;
+            animation-timing-function: ease-in;
+    opacity: 1;
+  }
+  24% {
+    opacity: 1;
+  }
+  40% {
+    -webkit-transform: translateY(-24px);
+            transform: translateY(-24px);
+    -webkit-animation-timing-function: ease-in;
+            animation-timing-function: ease-in;
+  }
+  65% {
+    -webkit-transform: translateY(-12px);
+            transform: translateY(-12px);
+    -webkit-animation-timing-function: ease-in;
+            animation-timing-function: ease-in;
+  }
+  82% {
+    -webkit-transform: translateY(-6px);
+            transform: translateY(-6px);
+    -webkit-animation-timing-function: ease-in;
+            animation-timing-function: ease-in;
+  }
+  93% {
+    -webkit-transform: translateY(-4px);
+            transform: translateY(-4px);
+    -webkit-animation-timing-function: ease-in;
+            animation-timing-function: ease-in;
+  }
+  25%,
+  55%,
+  75%,
+  87% {
+    -webkit-transform: translateY(0px);
+            transform: translateY(0px);
+    -webkit-animation-timing-function: ease-out;
+            animation-timing-function: ease-out;
+  }
+  100% {
+    -webkit-transform: translateY(0px);
+            transform: translateY(0px);
+    -webkit-animation-timing-function: ease-out;
+            animation-timing-function: ease-out;
+    opacity: 1;
+  }
+}
+@keyframes bounce-top {
+  0% {
+    -webkit-transform: translateY(-45px);
+            transform: translateY(-45px);
+    -webkit-animation-timing-function: ease-in;
+            animation-timing-function: ease-in;
+    opacity: 1;
+  }
+  24% {
+    opacity: 1;
+  }
+  40% {
+    -webkit-transform: translateY(-24px);
+            transform: translateY(-24px);
+    -webkit-animation-timing-function: ease-in;
+            animation-timing-function: ease-in;
+  }
+  65% {
+    -webkit-transform: translateY(-12px);
+            transform: translateY(-12px);
+    -webkit-animation-timing-function: ease-in;
+            animation-timing-function: ease-in;
+  }
+  82% {
+    -webkit-transform: translateY(-6px);
+            transform: translateY(-6px);
+    -webkit-animation-timing-function: ease-in;
+            animation-timing-function: ease-in;
+  }
+  93% {
+    -webkit-transform: translateY(-4px);
+            transform: translateY(-4px);
+    -webkit-animation-timing-function: ease-in;
+            animation-timing-function: ease-in;
+  }
+  25%,
+  55%,
+  75%,
+  87% {
+    -webkit-transform: translateY(0px);
+            transform: translateY(0px);
+    -webkit-animation-timing-function: ease-out;
+            animation-timing-function: ease-out;
+  }
+  100% {
+    -webkit-transform: translateY(0px);
+            transform: translateY(0px);
+    -webkit-animation-timing-function: ease-out;
+            animation-timing-function: ease-out;
+    opacity: 1;
+  }
+}
+
+.Body {
+  justify-self: stretch;
+  -ms-flex-item-align: stretch;
+      align-self: stretch;
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: Body;
+  gap: 0.5em;
+  width: 100%;
+  border-radius: 1em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-flex: 0;
+      -ms-flex: none;
+          flex: none;
+  -ms-flex-positive: 0;
+      flex-grow: 0;
+}
+
+.ListSection {
+  gap: 0.5em;
+  width: 100%;
+  -ms-grid-column-align: start;
+      justify-self: start;
+  border-radius: 0.5em;
+  overflow-y: hidden;
+  overflow-x: scroll;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  padding: 1em;
+  -webkit-box-flex: 0;
+      -ms-flex: none;
+          flex: none;
+  -ms-flex-item-align: initial;
+      -ms-grid-row-align: initial;
+      align-self: initial;
+  -ms-flex-positive: 0;
+      flex-grow: 0;
+}
+
+.ListSection .HList {
+  gap: 0.5em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: left;
+      -ms-flex-align: left;
+          align-items: left;
+}
+
+.HListItem {
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 0.5em;
+}
+
+.HListItem .ListItemIcon {
+  height: 3em;
+  width: 3em;
+  border-radius: 0.25em;
+}
+
+.bounce-top {
+  -webkit-animation: bounce-top 0.9s both;
+          animation: bounce-top 0.9s both;
+}
+
+.unMiniApp {
+  -webkit-animation: scale-in-bottom 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+          animation: scale-in-bottom 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+.openApp {
+  -webkit-animation: scale-in-center 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 100ms both;
+          animation: scale-in-center 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 100ms both;
+}
+
+.closeApp {
+  -webkit-animation: scale-out-center 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
+          animation: scale-out-center 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
+}
+
+.miniApp {
+  -webkit-animation: scale-out-bottom 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
+          animation: scale-out-bottom 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
 }
 
 .AppContainer {
-  -webkit-animation-name: openApp;
-          animation-name: openApp;
-  -webkit-animation-duration: 250ms;
-          animation-duration: 250ms;
-  -webkit-animation-delay: 0ms;
-          animation-delay: 0ms;
   background: rgba(255, 255, 255, 0.75);
   -webkit-backdrop-filter: blur(1em);
           backdrop-filter: blur(1em);
@@ -299,6 +762,8 @@ button:active {
   overflow: hidden;
   gap: 1em 0px;
       grid-template-areas: "App";
+  -webkit-transition: width 300ms ease-in-out;
+  transition: width 300ms ease-in-out;
 }
 
 .AppContainer body {
@@ -468,7 +933,6 @@ button:active {
       grid-template-columns: 1fr min-content;
   -ms-grid-rows: 1fr;
       grid-template-rows: 1fr;
-  gap: 0px 0px;
   grid-auto-flow: row;
   justify-items: start;
   -webkit-box-align: center;
@@ -672,19 +1136,6 @@ button:active {
           backdrop-filter: blur(1em);
 }
 
-.Body {
-  -ms-grid-column-align: stretch;
-      justify-self: stretch;
-  -ms-flex-item-align: stretch;
-      -ms-grid-row-align: stretch;
-      align-self: stretch;
-  -ms-grid-row: 1;
-  -ms-grid-column: 1;
-  grid-area: Body;
-  gap: 0.5em;
-  overflow: visible;
-}
-
 #System {
   -ms-grid-column-align: end;
       justify-self: end;
@@ -698,7 +1149,6 @@ button:active {
 }
 
 #AppList {
-  overflow-x: scroll;
   -ms-grid-column-align: start;
       justify-self: start;
   -ms-flex-item-align: center;
