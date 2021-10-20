@@ -1,0 +1,42 @@
+#ScourApp {
+	--PrimaryAppColor: #4CB88B;
+  --AccentAppColor: #4CB88B30;
+	--ActiveAppColor: #004629;
+	--HoverAppColor: #98f0cb;
+
+  .Contents {
+    grid-template-areas: "Body" !important;
+    grid-template-columns: 1fr;
+  }
+  
+  
+  // --- Dont edit past this point ---
+  .ListSection {
+    background: var(--AccentAppColor);
+    button {
+      color: var(--PrimaryAppColor);
+      background: none;
+      }
+      button:hover {
+        background-color: var(--AccentAppColor);
+        }
+        button:active {
+          background-color: var(--ActiveAppColor);
+          }
+      }
+        
+  h2 {
+    color: (--PrimaryAppColor);
+  }
+	
+  button {
+	background: var(--PrimaryAppColor);
+  }
+  button:hover {
+	color: var(--PrimaryAppColor);
+	background-color: var(--HoverAppColor);
+  }
+  button:active {
+	background-color: var(--ActiveAppColor);
+  }
+  }

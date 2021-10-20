@@ -1,10 +1,12 @@
-let Applist = ["Music", "Mailbox", "Settings"]
+let Applist = ["Scour", "Music", "Mailbox", "Settings"]
 let InstalledApps = ["Music", "Error", "Files", "Mailbox", "Cells", "Write", "Show", "Settings"]
 let Systemlist = ["Clock", "AppDrawer"]
 let wallpaper = "1.jpg"
 let RunningApps = []
 let temp
 let user = "template"
+
+
 
 function FillWindow() {
   if (temp = (document.getElementById("Display").className) == "DisplayNormal") {

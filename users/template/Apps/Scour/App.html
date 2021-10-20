@@ -1,0 +1,52 @@
+	  
+	 <!doctype html>
+	 <html lang='en-GB'>
+	 <head>
+		
+		<script src="/users/template/Apps/Scour/appscript.js" defer></script>
+	   <meta charset='utf-8'>
+	   <title>Scour</title>
+	   <link rel="stylesheet" href="/system/css/stylesheet.css">
+	   <link rel="stylesheet" href="/users/template/Apps/Scour/appstyle.css">
+	   <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+	 </head>
+	 <body>
+		 <div class="App">
+	  <div class="Toolbar">
+		<div class="Controls">
+			<button type="button" onClick="MinimiseWindow('Scour')"><img class="icon" src="/system/icons/Minus.svg"></button>
+			<button type="button" button onclick="FillWindow()"><img class="icon" src="/system/icons/Plus.svg"></button>
+			<button type="button" onClick="CloseWindow('Scour')"><img class="icon" src="/system/icons/Close.svg"></button>
+		</div>
+		<div class="Tools">
+			<div class="ToolGroup">
+				<div class="dropdown">
+				<button onclick="menu()" id="ScourAppMenu" class="AppMenuButton" style="width: 2em; background-size: cover; background-image: url(/users/template/Apps/Scour/AppIcon.svg)"></button>
+
+			</div>
+			</div>
+			
+			<div class="ToolGroup">
+				<button type="button" style="width: 2em;justify-content: center;"><img class="icon" src="/system/icons/Back.svg"></button>
+					<button type="button" style="width: 2em; justify-content: center;"><img class="icon" src="/system/icons/Forwards.svg"></button>
+			</div>
+			<div class="ToolGroup">
+				<button type="button">Search</button>
+			</div>
+		</div>
+	  </div>
+	  <div id="ScourAppMenuContent" class="dropdown-content">
+		<div class="ToolGroup">
+			<button type="button" onclick="LaunchWindow('Settings')"><img class="icon" style="width: 1.1em;" src="/users/template/Apps/Settings/AppIcon.svg">Settings</button>
+		<button type="button">About Scour</button>
+		</div>
+	  </div>
+	  <div class="Contents">
+		<div class="Body" id="ScourBody">
+			<iframe src="https://google.com/" style="width: 100%; height: 100%; overflow: scroll; border-radius: 0.5em; border: none;"></iframe>
+		</div>
+	  </div>
+	</div>
+</div>
+	 </body>
+	 </html>

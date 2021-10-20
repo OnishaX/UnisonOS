@@ -1,0 +1,47 @@
+#ScourApp {
+  --PrimaryAppColor: #4CB88B;
+  --AccentAppColor: #4CB88B30;
+  --ActiveAppColor: #004629;
+  --HoverAppColor: #98f0cb;
+}
+
+#ScourApp .Contents {
+      grid-template-areas: "Body" !important;
+  -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
+}
+
+#ScourApp .ListSection {
+  background: var(--AccentAppColor);
+}
+
+#ScourApp .ListSection button {
+  color: var(--PrimaryAppColor);
+  background: none;
+}
+
+#ScourApp .ListSection button:hover {
+  background-color: var(--AccentAppColor);
+}
+
+#ScourApp .ListSection button:active {
+  background-color: var(--ActiveAppColor);
+}
+
+#ScourApp h2 {
+  color: --PrimaryAppColor;
+}
+
+#ScourApp button {
+  background: var(--PrimaryAppColor);
+}
+
+#ScourApp button:hover {
+  color: var(--PrimaryAppColor);
+  background-color: var(--HoverAppColor);
+}
+
+#ScourApp button:active {
+  background-color: var(--ActiveAppColor);
+}
+/*# sourceMappingURL=appstyle.css.map */

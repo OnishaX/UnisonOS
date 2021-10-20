@@ -642,7 +642,7 @@ button:active {
 .Contents {
   padding: 0.5em;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr min-content;
   grid-template-rows: 1fr;
   gap: 0.5 0px;
   grid-auto-flow: row;
@@ -705,3 +705,49 @@ button:active {
   background-size: cover;
   transition: translate 250ms ease-out;
 }
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(1em);
+  border-radius: 0.25em;
+  margin-top: 3em;
+  margin-left: 0.5em;
+  display: none;
+  position: absolute;
+  overflow: auto;
+  z-index: 10;
+  padding: 0.25em;
+  .ToolGroup :first-child {
+    width: 100%;
+    border-top-left-radius: 0.25em;
+    border-top-right-radius: 0.25em;
+    border-bottom-right-radius: 0em;
+    border-bottom-left-radius: 0em;
+  }
+  .ToolGroup :not(:first-child) {
+    width: 100%;
+    border-top-left-radius: 0em;
+    border-bottom-left-radius: 0em;
+    border-top-right-radius: 0em;
+    border-bottom-right-radius: 0em;
+  }
+  .ToolGroup :last-child {
+    width: 100%;
+    border-top-left-radius: 0em;
+    border-bottom-left-radius: 0.25em;
+    border-top-right-radius: 0em;
+    border-bottom-right-radius: 0.25em;
+  }
+  .ToolGroup :only-child {
+    width: 100%;
+    border-top-left-radius: 0.25em;
+    border-bottom-left-radius: 0.25em;
+    border-top-right-radius: 0.25em;
+    border-bottom-right-radius: 0.25em;
+  }
+}
+.show {display: block;}

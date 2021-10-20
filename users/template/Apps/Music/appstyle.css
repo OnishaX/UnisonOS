@@ -1,8 +1,29 @@
 #MusicApp {
   --PrimaryAppColor: #7D4CA3;
+  --AccentAppColor: #7D4CA330;
   --ActiveAppColor: #693094;
   --HoverAppColor: #ece5f2;
-  --White: #ffffff;
+}
+
+#MusicApp .ListSection {
+  background: var(--AccentAppColor);
+}
+
+#MusicApp .ListSection button {
+  color: var(--PrimaryAppColor);
+  background: none;
+}
+
+#MusicApp .ListSection button:hover {
+  background-color: var(--AccentAppColor);
+}
+
+#MusicApp .ListSection button:active {
+  background-color: var(--ActiveAppColor);
+}
+
+#MusicApp h2 {
+  color: var(--PrimaryAppColor);
 }
 
 #MusicApp button {
