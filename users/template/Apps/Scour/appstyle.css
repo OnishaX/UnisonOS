@@ -1,14 +1,5 @@
 #ScourApp {
   --PrimaryAppColor: #0089CD;
-  --AccentAppColor: #0089CD10;
-  --ActiveAppColor: #005580;
-  --HoverAppColor: #AED0E0;
-}
-
-#ScourApp .Contents {
-      grid-template-areas: "Body" !important;
-  -ms-grid-columns: 1fr;
-      grid-template-columns: 1fr;
 }
 
 #ScourApp .Toolbar {
@@ -16,7 +7,8 @@
 }
 
 #ScourApp .ListSection {
-  background: var(--AccentAppColor);
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0.9)), to(rgba(255, 255, 255, 0.9))), -webkit-gradient(linear, left top, left bottom, from(var(--PrimaryAppColor)), to(var(--PrimaryAppColor)));
+  background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), linear-gradient(var(--PrimaryAppColor), var(--PrimaryAppColor));
 }
 
 #ScourApp .ListSection button {
@@ -25,15 +17,18 @@
 }
 
 #ScourApp .ListSection button:hover {
-  background-color: var(--AccentAppColor);
+  color: white;
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0.5)), to(rgba(255, 255, 255, 0.5))), -webkit-gradient(linear, left top, left bottom, from(var(--PrimaryAppColor)), to(var(--PrimaryAppColor)));
+  background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), linear-gradient(var(--PrimaryAppColor), var(--PrimaryAppColor));
 }
 
 #ScourApp .ListSection button:active {
-  background-color: var(--ActiveAppColor);
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.25)), to(rgba(0, 0, 0, 0.25))), -webkit-gradient(linear, left top, left bottom, from(var(--PrimaryAppColor)), to(var(--PrimaryAppColor)));
+  background: linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)), linear-gradient(var(--PrimaryAppColor), var(--PrimaryAppColor));
 }
 
 #ScourApp h2 {
-  color: --PrimaryAppColor;
+  color: var(--PrimaryAppColor);
 }
 
 #ScourApp button {
@@ -41,11 +36,12 @@
 }
 
 #ScourApp button:hover {
-  color: var(--PrimaryAppColor);
-  background-color: var(--HoverAppColor);
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0.5)), to(rgba(255, 255, 255, 0.5))), -webkit-gradient(linear, left top, left bottom, from(var(--PrimaryAppColor)), to(var(--PrimaryAppColor)));
+  background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), linear-gradient(var(--PrimaryAppColor), var(--PrimaryAppColor));
 }
 
 #ScourApp button:active {
-  background-color: var(--ActiveAppColor);
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.25)), to(rgba(0, 0, 0, 0.25))), -webkit-gradient(linear, left top, left bottom, from(var(--PrimaryAppColor)), to(var(--PrimaryAppColor)));
+  background: linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)), linear-gradient(var(--PrimaryAppColor), var(--PrimaryAppColor));
 }
 /*# sourceMappingURL=appstyle.css.map */

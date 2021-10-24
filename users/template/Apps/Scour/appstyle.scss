@@ -1,44 +1,39 @@
 #ScourApp {
 	--PrimaryAppColor: #0089CD;
-  --AccentAppColor: #0089CD10;
-	--ActiveAppColor: #005580;
-	--HoverAppColor: #AED0E0;
-
-  .Contents {
-    grid-template-areas: "Body" !important;
-    grid-template-columns: 1fr;
-  }
-  
-  // --- Dont edit past this point ---
-  .Toolbar {
-    background-color: var(--PrimaryAppColor);
-  }
-  .ListSection {
-    background: var(--AccentAppColor);
-    button {
-      color: var(--PrimaryAppColor);
-      background: none;
-      }
-      button:hover {
-        background-color: var(--AccentAppColor);
-        }
-        button:active {
-          background-color: var(--ActiveAppColor);
-          }
-      }
-        
-  h2 {
-    color: (--PrimaryAppColor);
-  }
-	
+// --- Dont edit past this point ---
+.Toolbar {
+  background-color: var(--PrimaryAppColor);
+}
+.ListSection {
+  background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255,255,255,0.9)),
+                  linear-gradient(var(--PrimaryAppColor), var(--PrimaryAppColor));
   button {
+    color: var(--PrimaryAppColor);
+    background: none;
+    }
+    button:hover {
+      color: white;
+      background: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)),
+                  linear-gradient(var(--PrimaryAppColor), var(--PrimaryAppColor));
+      }
+      button:active {
+        background: linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.25)),
+        linear-gradient(var(--PrimaryAppColor), var(--PrimaryAppColor));
+    }
+    }
+      
+h2 {
+  color: var(--PrimaryAppColor);
+}
+button {
 	background: var(--PrimaryAppColor);
   }
   button:hover {
-	color: var(--PrimaryAppColor);
-	background-color: var(--HoverAppColor);
-  }
+		background: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)),
+                linear-gradient(var(--PrimaryAppColor), var(--PrimaryAppColor));
+	  }
   button:active {
-	background-color: var(--ActiveAppColor);
-  }
+    background: linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.25)),
+    linear-gradient(var(--PrimaryAppColor), var(--PrimaryAppColor));
+}
   }

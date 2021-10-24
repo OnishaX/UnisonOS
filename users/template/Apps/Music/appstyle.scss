@@ -1,26 +1,25 @@
 #MusicApp {
   --PrimaryAppColor: #800080;
-  --AccentAppColor: #80008010;
-  --ActiveAppColor: #7000BF;
-  --HoverAppColor: #E0BBF0;
-
-
 // --- Dont edit past this point ---
 .Toolbar {
   background-color: var(--PrimaryAppColor);
 }
 .ListSection {
-  background: var(--AccentAppColor);
+  background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255,255,255,0.9)),
+                  linear-gradient(var(--PrimaryAppColor), var(--PrimaryAppColor));
   button {
     color: var(--PrimaryAppColor);
     background: none;
     }
     button:hover {
-      background-color: var(--AccentAppColor);
+      color: white;
+      background: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)),
+                  linear-gradient(var(--PrimaryAppColor), var(--PrimaryAppColor));
       }
       button:active {
-        background-color: var(--ActiveAppColor);
-        }
+        background: linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.25)),
+        linear-gradient(var(--PrimaryAppColor), var(--PrimaryAppColor));
+    }
     }
       
 h2 {
@@ -30,10 +29,11 @@ button {
 	background: var(--PrimaryAppColor);
   }
   button:hover {
-	color: var(--PrimaryAppColor);
-	background-color: var(--HoverAppColor);
-  }
+		background: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)),
+                linear-gradient(var(--PrimaryAppColor), var(--PrimaryAppColor));
+	  }
   button:active {
-	background-color: var(--ActiveAppColor);
-  }
+    background: linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.25)),
+    linear-gradient(var(--PrimaryAppColor), var(--PrimaryAppColor));
+}
   }

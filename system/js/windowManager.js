@@ -7,7 +7,6 @@ let temp
 let user = "template"
 
 
-
 function FillWindow() {
   if (temp = (document.getElementById("Display").className) == "DisplayNormal") {
     document.getElementById("Display").className = "DisplayFullscreen";

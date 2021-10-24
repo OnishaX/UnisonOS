@@ -1,22 +1,40 @@
 #PitchApp {
 	--PrimaryAppColor: #6F6F6F;
-	--ActiveAppColor: #4b4b4b;
-	--HoverAppColor: #dbdbdb;
-  
-  
-  
-  // --- Dont edit past this point ---
-  .Toolbar {
-    background-color: var(--PrimaryAppColor);
+// --- Dont edit past this point ---
+.Toolbar {
+	background-color: var(--PrimaryAppColor);
   }
-  button {
-		background: var(--PrimaryAppColor);
+  .ListSection {
+	background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255,255,255,0.9)),
+					linear-gradient(var(--PrimaryAppColor), var(--PrimaryAppColor));
+	button {
+	  color: var(--PrimaryAppColor);
+	  background: none;
 	  }
 	  button:hover {
-		color: var(--PrimaryAppColor);
-		background-color: var(--HoverAppColor);
+		color: white;
+		background: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)),
+					linear-gradient(var(--PrimaryAppColor), var(--PrimaryAppColor));
+		}
+		button:active {
+		  background: linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.25)),
+		  linear-gradient(var(--PrimaryAppColor), var(--PrimaryAppColor));
 	  }
-	  button:active {
-		background-color: var(--ActiveAppColor);
 	  }
-	  }
+		
+  h2 {
+	color: var(--PrimaryAppColor);
+  }
+  button {
+	  background: var(--PrimaryAppColor);
+	}
+	button:hover {
+		  background: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)),
+				  linear-gradient(var(--PrimaryAppColor), var(--PrimaryAppColor));
+		}
+	button:active {
+	  background: linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.25)),
+	  linear-gradient(var(--PrimaryAppColor), var(--PrimaryAppColor));
+  }
+	}
+  

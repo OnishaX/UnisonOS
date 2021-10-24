@@ -1,7 +1,5 @@
 #MailboxApp {
-  --PrimaryAppColor: #5C86AB;
-  --ActiveAppColor: #345775;
-  --HoverAppColor: #e5ebf2;
+  --PrimaryAppColor: #007FBF;
 }
 
 #MailboxApp .Preview {
@@ -12,16 +10,42 @@
   background-color: var(--PrimaryAppColor);
 }
 
+#MailboxApp .ListSection {
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0.9)), to(rgba(255, 255, 255, 0.9))), -webkit-gradient(linear, left top, left bottom, from(var(--PrimaryAppColor)), to(var(--PrimaryAppColor)));
+  background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), linear-gradient(var(--PrimaryAppColor), var(--PrimaryAppColor));
+}
+
+#MailboxApp .ListSection button {
+  color: var(--PrimaryAppColor);
+  background: none;
+}
+
+#MailboxApp .ListSection button:hover {
+  color: white;
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0.5)), to(rgba(255, 255, 255, 0.5))), -webkit-gradient(linear, left top, left bottom, from(var(--PrimaryAppColor)), to(var(--PrimaryAppColor)));
+  background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), linear-gradient(var(--PrimaryAppColor), var(--PrimaryAppColor));
+}
+
+#MailboxApp .ListSection button:active {
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.25)), to(rgba(0, 0, 0, 0.25))), -webkit-gradient(linear, left top, left bottom, from(var(--PrimaryAppColor)), to(var(--PrimaryAppColor)));
+  background: linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)), linear-gradient(var(--PrimaryAppColor), var(--PrimaryAppColor));
+}
+
+#MailboxApp .ListSection h2 {
+  color: var(--PrimaryAppColor);
+}
+
 #MailboxApp button {
   background: var(--PrimaryAppColor);
 }
 
 #MailboxApp button:hover {
-  color: var(--PrimaryAppColor);
-  background-color: var(--HoverAppColor);
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0.5)), to(rgba(255, 255, 255, 0.5))), -webkit-gradient(linear, left top, left bottom, from(var(--PrimaryAppColor)), to(var(--PrimaryAppColor)));
+  background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), linear-gradient(var(--PrimaryAppColor), var(--PrimaryAppColor));
 }
 
 #MailboxApp button:active {
-  background-color: var(--ActiveAppColor);
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.25)), to(rgba(0, 0, 0, 0.25))), -webkit-gradient(linear, left top, left bottom, from(var(--PrimaryAppColor)), to(var(--PrimaryAppColor)));
+  background: linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)), linear-gradient(var(--PrimaryAppColor), var(--PrimaryAppColor));
 }
 /*# sourceMappingURL=appstyle.css.map */

@@ -1,27 +1,43 @@
 #MailboxApp {
-	--PrimaryAppColor: #5C86AB;
-	--ActiveAppColor: #345775;
-	--HoverAppColor: #e5ebf2;
-  
+	--PrimaryAppColor: #007FBF;
+
 	.Preview {
 		width: 100%;
 	}
-  
-  
-  // --- Dont edit past this point ---
-  .Toolbar {
-    background-color: var(--PrimaryAppColor);
+// --- Dont edit past this point ---
+.Toolbar {
+	background-color: var(--PrimaryAppColor);
   }
-	
-  button {
-	background: var(--PrimaryAppColor);
-  }
-  button:hover {
+  .ListSection {
+	background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255,255,255,0.9)),
+					linear-gradient(var(--PrimaryAppColor), var(--PrimaryAppColor));
+	button {
+	  color: var(--PrimaryAppColor);
+	  background: none;
+	  }
+	  button:hover {
+		color: white;
+		background: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)),
+					linear-gradient(var(--PrimaryAppColor), var(--PrimaryAppColor));
+		}
+		button:active {
+		  background: linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.25)),
+		  linear-gradient(var(--PrimaryAppColor), var(--PrimaryAppColor));
+	  }
+
+  h2 {
 	color: var(--PrimaryAppColor);
-	background-color: var(--HoverAppColor);
   }
-  button:active {
-	background-color: var(--ActiveAppColor);
+}
+  button {
+	  background: var(--PrimaryAppColor);
+	}
+	button:hover {
+		  background: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)),
+				  linear-gradient(var(--PrimaryAppColor), var(--PrimaryAppColor));
+		}
+	button:active {
+	  background: linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.25)),
+	  linear-gradient(var(--PrimaryAppColor), var(--PrimaryAppColor));
   }
-  }
-  
+	}
