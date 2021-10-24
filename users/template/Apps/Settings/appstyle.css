@@ -1,14 +1,18 @@
 #SettingsApp {
-  --PrimaryAppColor: #6F6F6F;
-  --AccentAppColor: #6F6F6F30;
-  --ActiveAppColor: #4b4b4b;
-  --HoverAppColor: #dbdbdb;
+  --PrimaryAppColor: #5F5F5F;
+  --AccentAppColor: #BDBDBD10;
+  --ActiveAppColor: #000000;
+  --HoverAppColor: #BDBDBD;
 }
 
 #SettingsApp .Contents {
       grid-template-areas: "Body" !important;
   -ms-grid-columns: 1fr;
       grid-template-columns: 1fr;
+}
+
+#SettingsApp .Toolbar {
+  background-color: var(--PrimaryAppColor);
 }
 
 #SettingsApp .ListSection {

@@ -1,4 +1,4 @@
-#ShowApp {
+#PitchApp {
 	--PrimaryAppColor: #6F6F6F;
 	--ActiveAppColor: #4b4b4b;
 	--HoverAppColor: #dbdbdb;
@@ -6,7 +6,9 @@
   
   
   // --- Dont edit past this point ---
-	
+  .Toolbar {
+    background-color: var(--PrimaryAppColor);
+  }
   button {
 		background: var(--PrimaryAppColor);
 	  }

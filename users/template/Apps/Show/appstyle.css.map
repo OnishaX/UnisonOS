@@ -1,9 +1,0 @@
-{
-    "version": 3,
-    "mappings": "AAAA,AAAA,QAAQ,CAAC;EACR,iBAAiB,CAAA,QAAC;EAClB,gBAAgB,CAAA,QAAC;EACjB,eAAe,CAAA,QAAC;CAgBb;;AAnBJ,AASE,QATM,CASN,MAAM,CAAC;EACP,UAAU,EAAE,sBAAsB;CAChC;;AAXJ,AAYG,QAZK,CAYL,MAAM,AAAA,MAAM,CAAC;EACd,KAAK,EAAE,sBAAsB;EAC7B,gBAAgB,EAAE,oBAAoB;CACpC;;AAfJ,AAgBG,QAhBK,CAgBL,MAAM,AAAA,OAAO,CAAC;EACf,gBAAgB,EAAE,qBAAqB;CACrC",
-    "sources": [
-        "appstyle.scss"
-    ],
-    "names": [],
-    "file": "appstyle.css"
-}

@@ -6,7 +6,9 @@
   
   
   // --- Dont edit past this point ---
-	
+  .Toolbar {
+    background-color: var(--PrimaryAppColor);
+  }	
   button {
 		background: var(--PrimaryAppColor);
 	  }

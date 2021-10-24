@@ -4,6 +4,10 @@
   --HoverAppColor: #dbdbdb;
 }
 
+#WriteApp .Toolbar {
+  background-color: var(--PrimaryAppColor);
+}
+
 #WriteApp button {
   background: var(--PrimaryAppColor);
 }

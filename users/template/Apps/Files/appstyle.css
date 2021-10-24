@@ -4,6 +4,10 @@
   --HoverAppColor: #dbdbdb;
 }
 
+#FilesApp .Toolbar {
+  background-color: var(--PrimaryAppColor);
+}
+
 #FilesApp .App .Contents {
   -ms-grid-columns: 1fr;
       grid-template-columns: 1fr;

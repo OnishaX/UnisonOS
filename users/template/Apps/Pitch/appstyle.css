@@ -1,19 +1,23 @@
-#ShowApp {
+#PitchApp {
   --PrimaryAppColor: #6F6F6F;
   --ActiveAppColor: #4b4b4b;
   --HoverAppColor: #dbdbdb;
 }
 
-#ShowApp button {
+#PitchApp .Toolbar {
+  background-color: var(--PrimaryAppColor);
+}
+
+#PitchApp button {
   background: var(--PrimaryAppColor);
 }
 
-#ShowApp button:hover {
+#PitchApp button:hover {
   color: var(--PrimaryAppColor);
   background-color: var(--HoverAppColor);
 }
 
-#ShowApp button:active {
+#PitchApp button:active {
   background-color: var(--ActiveAppColor);
 }
 /*# sourceMappingURL=appstyle.css.map */

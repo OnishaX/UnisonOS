@@ -1,12 +1,14 @@
 #MusicApp {
-  --PrimaryAppColor: #7D4CA3;
-  --AccentAppColor: #7D4CA330;
-  --ActiveAppColor: #693094;
-  --HoverAppColor: #ece5f2;
-
+  --PrimaryAppColor: #800080;
+  --AccentAppColor: #80008010;
+  --ActiveAppColor: #7000BF;
+  --HoverAppColor: #E0BBF0;
 
 
 // --- Dont edit past this point ---
+.Toolbar {
+  background-color: var(--PrimaryAppColor);
+}
 .ListSection {
   background: var(--AccentAppColor);
   button {

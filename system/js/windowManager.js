@@ -1,5 +1,5 @@
 let Applist = ["Scour", "Music", "Mailbox", "Settings"]
-let InstalledApps = ["Music", "Error", "Files", "Mailbox", "Cells", "Write", "Show", "Settings"]
+let InstalledApps = ["Music", "Error", "Files", "Mailbox", "Cells", "Write", "Pitch", "Settings"]
 let Systemlist = ["Clock", "AppDrawer"]
 let wallpaper = "1.jpg"
 let RunningApps = []

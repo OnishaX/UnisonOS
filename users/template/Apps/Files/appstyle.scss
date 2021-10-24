@@ -6,8 +6,9 @@
   
   
   // --- Dont edit past this point ---
-	
-  
+  .Toolbar {
+    background-color: var(--PrimaryAppColor);
+  }  
 	.App{
 	.Contents {
 		grid-template-columns: 1fr;

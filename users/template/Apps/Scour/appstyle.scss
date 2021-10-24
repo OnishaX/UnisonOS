@@ -1,16 +1,18 @@
 #ScourApp {
-	--PrimaryAppColor: #4CB88B;
-  --AccentAppColor: #4CB88B30;
-	--ActiveAppColor: #004629;
-	--HoverAppColor: #98f0cb;
+	--PrimaryAppColor: #0089CD;
+  --AccentAppColor: #0089CD10;
+	--ActiveAppColor: #005580;
+	--HoverAppColor: #AED0E0;
 
   .Contents {
     grid-template-areas: "Body" !important;
     grid-template-columns: 1fr;
   }
   
-  
   // --- Dont edit past this point ---
+  .Toolbar {
+    background-color: var(--PrimaryAppColor);
+  }
   .ListSection {
     background: var(--AccentAppColor);
     button {

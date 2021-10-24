@@ -4,6 +4,10 @@
   --HoverAppColor: #dbdbdb;
 }
 
+#CellsApp .Toolbar {
+  background-color: var(--PrimaryAppColor);
+}
+
 #CellsApp button {
   background: var(--PrimaryAppColor);
 }

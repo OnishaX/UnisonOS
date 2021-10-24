@@ -1,8 +1,8 @@
 #SettingsApp {
-	--PrimaryAppColor: #6F6F6F;
-  --AccentAppColor: #6F6F6F30;
-	--ActiveAppColor: #4b4b4b;
-	--HoverAppColor: #dbdbdb;
+	--PrimaryAppColor: #5F5F5F;
+  --AccentAppColor: #BDBDBD10;
+	--ActiveAppColor: #000000;
+	--HoverAppColor: #BDBDBD;
 
   .Contents {
     grid-template-areas: "Body" !important;
@@ -11,6 +11,9 @@
   
   
   // --- Dont edit past this point ---
+  .Toolbar {
+    background-color: var(--PrimaryAppColor);
+  }
   .ListSection {
     background: var(--AccentAppColor);
     button {
