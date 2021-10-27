@@ -8,15 +8,6 @@
 <path d="M32.7091 -12C36.9661 -4.27243 45.3619 2.02057 56 5.55441V2.34999C47.6036 -0.78495 40.9084 -5.85164 37.1315 -12H32.7091Z" fill="url(#paint5_linear_306:7440)"/>
 <path d="M40.5478 -12C43.8848 -7.04977 49.2965 -2.91638 56 -0.146574V-4.03421C51.8001 -6.11417 48.3001 -8.83811 45.7949 -12H40.5478Z" fill="url(#paint6_linear_306:7440)"/>
 <path d="M48.733 -12C50.6637 -9.80178 53.128 -7.85684 56 -6.2531V-10C56 -11.1046 55.1941 -12 54.2 -12H48.733Z" fill="url(#paint7_linear_306:7440)"/>
-<path fill-rule="evenodd" clip-rule="evenodd" d="M25 44.1923C27.8676 44.1923 30.1923 41.8676 30.1923 39C30.1923 36.1324 27.8676 33.8077 25 33.8077C22.1324 33.8077 19.8077 36.1324 19.8077 39C19.8077 41.8676 22.1324 44.1923 25 44.1923ZM25 43.8077C27.6552 43.8077 29.8077 41.6552 29.8077 39C29.8077 36.3448 27.6552 34.1923 25 34.1923C22.3448 34.1923 20.1923 36.3448 20.1923 39C20.1923 41.6552 22.3448 43.8077 25 43.8077Z" fill="url(#paint8_radial_306:7440)"/>
-<path fill-rule="evenodd" clip-rule="evenodd" d="M25 43.2308C27.3366 43.2308 29.2308 41.3366 29.2308 39C29.2308 36.6634 27.3366 34.7692 25 34.7692C22.6634 34.7692 20.7692 36.6634 20.7692 39C20.7692 41.3366 22.6634 43.2308 25 43.2308ZM25 42.9174C27.1635 42.9174 28.9174 41.1635 28.9174 39C28.9174 36.8365 27.1635 35.0826 25 35.0826C22.8365 35.0826 21.0826 36.8365 21.0826 39C21.0826 41.1635 22.8365 42.9174 25 42.9174Z" fill="url(#paint9_radial_306:7440)"/>
-<path fill-rule="evenodd" clip-rule="evenodd" d="M25 45.1538C28.3987 45.1538 31.1538 42.3987 31.1538 39C31.1538 35.6013 28.3987 32.8462 25 32.8462C21.6013 32.8462 18.8462 35.6013 18.8462 39C18.8462 42.3987 21.6013 45.1538 25 45.1538ZM25 44.698C28.1469 44.698 30.698 42.1469 30.698 39C30.698 35.8531 28.1469 33.302 25 33.302C21.8531 33.302 19.302 35.8531 19.302 39C19.302 42.1469 21.8531 44.698 25 44.698Z" fill="url(#paint10_radial_306:7440)"/>
-<path fill-rule="evenodd" clip-rule="evenodd" d="M25 46.1154C28.9297 46.1154 32.1154 42.9297 32.1154 39C32.1154 35.0703 28.9297 31.8846 25 31.8846C21.0703 31.8846 17.8846 35.0703 17.8846 39C17.8846 42.9297 21.0703 46.1154 25 46.1154ZM25 45.5883C28.6386 45.5883 31.5883 42.6386 31.5883 39C31.5883 35.3614 28.6386 32.4117 25 32.4117C21.3614 32.4117 18.4117 35.3614 18.4117 39C18.4117 42.6386 21.3614 45.5883 25 45.5883Z" fill="url(#paint11_radial_306:7440)"/>
-<path fill-rule="evenodd" clip-rule="evenodd" d="M25 47.0769C29.4608 47.0769 33.0769 43.4608 33.0769 39C33.0769 34.5392 29.4608 30.9231 25 30.9231C20.5392 30.9231 16.9231 34.5392 16.9231 39C16.9231 43.4608 20.5392 47.0769 25 47.0769ZM25 46.4786C29.1303 46.4786 32.4786 43.1303 32.4786 39C32.4786 34.8697 29.1303 31.5214 25 31.5214C20.8697 31.5214 17.5214 34.8697 17.5214 39C17.5214 43.1303 20.8697 46.4786 25 46.4786Z" fill="url(#paint12_radial_306:7440)"/>
-<path fill-rule="evenodd" clip-rule="evenodd" d="M25 48.0385C29.9918 48.0385 34.0385 43.9918 34.0385 39C34.0385 34.0082 29.9918 29.9615 25 29.9615C20.0082 29.9615 15.9615 34.0082 15.9615 39C15.9615 43.9918 20.0082 48.0385 25 48.0385ZM25 47.3689C29.622 47.3689 33.3689 43.622 33.3689 39C33.3689 34.378 29.622 30.631 25 30.631C20.378 30.631 16.631 34.378 16.631 39C16.631 43.622 20.378 47.3689 25 47.3689Z" fill="url(#paint13_radial_306:7440)"/>
-<path fill-rule="evenodd" clip-rule="evenodd" d="M25 49C30.5228 49 35 44.5228 35 39C35 33.4772 30.5228 29 25 29C19.4772 29 15 33.4772 15 39C15 44.5228 19.4772 49 25 49ZM25 48.2593C30.1137 48.2593 34.2593 44.1137 34.2593 39C34.2593 33.8862 30.1137 29.7407 25 29.7407C19.8862 29.7407 15.7407 33.8862 15.7407 39C15.7407 44.1137 19.8862 48.2593 25 48.2593Z" fill="url(#paint14_radial_306:7440)"/>
-<path d="M20.1656 10.1534C20.0763 8.99181 20.9947 8 22.1598 8H27.8402C29.0053 8 29.9237 8.9918 29.8344 10.1534L28.142 32.1534C28.0619 33.1954 27.193 34 26.1479 34H23.8521C22.807 34 21.9381 33.1954 21.858 32.1534L20.1656 10.1534Z" fill="white"/>
-<circle cx="25" cy="39" r="3" fill="white"/>
 </g>
 <defs>
 <linearGradient id="paint0_linear_306:7440" x1="25" y1="0" x2="25" y2="50" gradientUnits="userSpaceOnUse">
@@ -51,34 +42,6 @@
 <stop stop-color="white"/>
 <stop offset="1" stop-color="white" stop-opacity="0"/>
 </linearGradient>
-<radialGradient id="paint8_radial_306:7440" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(25 39) rotate(-46.7357) scale(10.3757)">
-<stop offset="0.253706" stop-color="#E78F8F"/>
-<stop offset="1" stop-color="#B67070" stop-opacity="0"/>
-</radialGradient>
-<radialGradient id="paint9_radial_306:7440" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(25 39) rotate(-46.7357) scale(10.3757)">
-<stop offset="0.253706" stop-color="#E78F8F"/>
-<stop offset="1" stop-color="#B67070" stop-opacity="0"/>
-</radialGradient>
-<radialGradient id="paint10_radial_306:7440" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(25 39) rotate(-46.7357) scale(10.3757)">
-<stop offset="0.253706" stop-color="#E78F8F"/>
-<stop offset="1" stop-color="#B67070" stop-opacity="0"/>
-</radialGradient>
-<radialGradient id="paint11_radial_306:7440" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(25 39) rotate(-46.7357) scale(10.3757)">
-<stop offset="0.253706" stop-color="#E78F8F"/>
-<stop offset="1" stop-color="#B67070" stop-opacity="0"/>
-</radialGradient>
-<radialGradient id="paint12_radial_306:7440" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(25 39) rotate(-46.7357) scale(10.3757)">
-<stop offset="0.253706" stop-color="#E78F8F"/>
-<stop offset="1" stop-color="#B67070" stop-opacity="0"/>
-</radialGradient>
-<radialGradient id="paint13_radial_306:7440" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(25 39) rotate(-46.7357) scale(10.3757)">
-<stop offset="0.253706" stop-color="#E78F8F"/>
-<stop offset="1" stop-color="#B67070" stop-opacity="0"/>
-</radialGradient>
-<radialGradient id="paint14_radial_306:7440" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(25 39) rotate(-46.7357) scale(10.3757)">
-<stop offset="0.253706" stop-color="#E78F8F"/>
-<stop offset="1" stop-color="#B67070" stop-opacity="0"/>
-</radialGradient>
 <clipPath id="clip0_306:7440">
 <rect width="50" height="50" fill="white"/>
 </clipPath>

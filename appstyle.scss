@@ -17,11 +17,10 @@
 	  box-shadow: #7C0000;
   }
   .Contents {
-	  display: block;
-	  margin-top: auto;
-	  margin-bottom: auto;
-	  text-align: center;
-	  width: 100%;
-  }
+	flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 }

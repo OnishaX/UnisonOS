@@ -37,13 +37,10 @@
 	  linear-gradient(var(--PrimaryAppColor), var(--PrimaryAppColor));
   }   
   .Contents {
-	  display: block;
-	  margin-top: auto;
-	  margin-bottom: auto;
-	  text-align: center;
-	  width: 100%;
-	  justify-content: center;
-	  
+	  flex-direction: column;
+	display: flex;
+	justify-content: center;
+	align-items: center;
   }
 
 }

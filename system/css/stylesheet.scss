@@ -1,9 +1,3 @@
-html {
-  height: 100vh;
-  width: 100vw;
-  margin: 0px;
-  user-select: none;
-}
 @font-face {
   font-family: "Roboto";
   src: url("/system/fonts/Roboto/Roboto-Regular.ttf") format("truetype");
@@ -43,11 +37,13 @@ padding-bottom: 0.5em;
 
 #AllApps {
   padding-top: 0.5em;
-  flex-direction: column;
+  flex-direction: row;
   align-items: flex-start;
   border-radius: 0.25em;
-  overflow-y: scroll;
-  flex-wrap: wrap;
+  overflow-y: scroll; 
+  display: flex;
+width: 100%;
+gap: 0.5em;
 }
 
 #Drawer {
@@ -63,7 +59,6 @@ padding-bottom: 0.5em;
 body {
   font-family: "Roboto";
   margin: 0px;
-  height: 100vh;
   width: 100vw;
   display: grid;
   grid-auto-columns: 1fr;
@@ -127,7 +122,7 @@ button:active {
   display: grid;
   grid-auto-flow: column;
   grid-auto-rows: 1fr;
-  gap: 0.5em 0.5em;
+  gap: 0.5em;
   justify-content: stretch;
   align-content: stretch;
   justify-items: stretch;
@@ -140,7 +135,7 @@ button:active {
   transition: background-color ease-out 150ms;
   overflow: visible;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr min-content;
   grid-template-rows: 1fr;
   gap: 0px 0px;
   grid-template-areas: "AppList System";
@@ -347,7 +342,12 @@ button:active {
     opacity: 1;
   }
 }
-
+.AppPage {
+  overflow-x: hidden;
+overflow: auto;
+overflow-y: scroll;
+overflow-wrap: unset;
+}
 .Body {
   justify-self: stretch;
   align-self: stretch;
@@ -363,23 +363,33 @@ button:active {
 }
 .ListSection {
   gap: 0.5em;
-  width: 100%;
-  justify-self: start;
+  overflow: scroll;
+  justify-self: stretch;
   border-radius: 0.5em;
-  overflow-y: hidden;
-  overflow-x: scroll;
   align-items: flex-start;
   padding: 1em;
   flex: none;
   align-self: initial;
   flex-grow: 0;
-  .HList {
-    gap: 0.5em;
-  display: flex;
-  flex-wrap: nowrap;
-  flex-direction: row;
-  align-items: left;
+  flex-shrink: 1;
+}
+.RowSnip {
+  height: fit-content !important;
+  html {
+  body {
+    height: fit-content !important;
   }
+}
+}
+.HList {
+  overflow: auto;
+            overflow-y: hidden;
+            white-space: nowrap;
+  gap: 0.5em;
+display: flex;
+flex-wrap: nowrap;
+flex-direction: row;
+align-items: left;
 }
 .HListItem {
   height: fit-content;
@@ -528,6 +538,16 @@ button:active {
     border-top-right-radius: 0.25em;
     border-bottom-right-radius: 0.25em;
   }
+  .ToolGroupH {
+    button {
+    display: flex;
+        justify-content: center;
+        align-items: center;
+        background-size: cover;
+        background-image: url(/users/template/Apps/Settings/AppIcon.svg);
+        color: white;
+  }
+}
 }
 
 
@@ -536,12 +556,13 @@ button:active {
   background: rgba(255, 255, 255, 0.75);
   backdrop-filter: blur(1em);
   display: grid;
-  grid-template-columns: 1fr min-content;
+  gap: 0.5em;
+  grid-template-columns: min-content 1fr min-content;
   grid-template-rows: 1fr;
   grid-auto-flow: row;
   justify-items: start;
   align-items: center;
-  grid-template-areas: "Tools Controls";
+  grid-template-areas: "AppIcon Tools Search Controls";
   grid-area: Toolbar;
   button {
     text-align: left;
@@ -591,11 +612,18 @@ button:active {
   border-top-right-radius: 0.25em;
   border-bottom-right-radius: 0.25em;
 }
+.AppMenuButton{
+  grid-area: AppIcon;
+}
+.search{
+  grid-area: Search;
+}
 
 .Tools {
   grid-area: Tools;
   display: flex;
   flex-direction: row;
+  justify-self: stretch;
   align-items: center;
   gap: 0.5em;
   button {
@@ -665,19 +693,33 @@ button:active {
 }
 
 #System {
+  gap: 1em;
   justify-self: end;
   align-self: center;
   grid-area: System;
   vertical-align: middle;
+  display: flex;
+width: 100%;
 }
 #AppList {
   justify-self: start;
-  align-self: center;
+  align-self: stretch;
+  flex-grow: 1;
+  gap: 0.5em;
+  display: flex;
+width: 100%;
   grid-area: AppList;
   vertical-align: middle;
+  flex-direction: row;
+  flex-wrap: nowrap;
 }
 .DockAppIcon {
-  display: inline-block;
+  display: flex;
+  flex-direction: row;
+  justify-self: stretch;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(1em);
   vertical-align: middle;
   height: 2.5em;
   border-radius: 0.25em;
@@ -701,7 +743,6 @@ button:active {
   height: 2.5em;
   border-radius: 0.25em;
   width: 2.5em;
-  margin: 0.5em 0.25em;
   background-size: cover;
   transition: translate 250ms ease-out;
 }

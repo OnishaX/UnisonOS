@@ -23,22 +23,22 @@
 	  </div>
 	  <div class="Toolbar">
 		<div class="Controls">
-			<button type="button" onClick="MinimiseWindow('Files')"><img class="icon" src="/system/icons/Minus.svg"</button>
-			<button type="button" button onclick="FillWindow()"><img class="icon" src="/system/icons/Plus.svg"></button>
-			<button type="button" onClick="CloseWindow('Files')"><img class="icon" src="/system/icons/Close.svg"</button>
+			<button type="button" onClick="MinimiseWindow('Files')"><i class="ri-subtract-fill"></i></button>
+			<button type="button" onClick="FillWindow()"><i class="ri-fullscreen-fill"></i></button>
+			<button type="button" onClick="CloseWindow('Files')"><i class="ri-close-fill"></i></button>
 		</div>
+		<button type="button" class="AppMenuButton" style="width: 2em; background-size: cover; background-image: url(/users/template/Apps/Files/AppIcon.svg)"><i class="ri-settings-5-fill"></i></button>
 		<div class="Tools">
 			<div class="ToolGroup">
-				<button type="button" target="dirView" href="javascript:history.back()">Back<View></button>
-					<button type="button" target="dirView" href="javascript:history.back()">Forwards<View></button>
+				<button type="button" style="width: 2em;justify-content: center;"><i class="ri-arrow-left-s-line"></i></button>
+					<button type="button" style="width: 2em; justify-content: center;"><i class="ri-arrow-right-s-line"></i></button>
 			</div>
 			<div class="ToolGroup">
-				<button type="button">View<View></button>
-					<button type="button">Sort</button>
+				<button type="button"><i class="ri-sort-desc"></i>Sort<i class="ri-arrow-drop-down-line"></i></button>
+				<button type="button"><i class="ri-list-check-2"></i>View<i class="ri-arrow-drop-down-line"></i></button>
 			</div>
-			<div class="ToolGroup">
-				<button type="button">Search<View></button>
-			</div>
+			
+			<button type="button" class="search"><i class="ri-search-line"></i>Search</button>
 		</div>
 	  </div>
 	  <div class="Contents">

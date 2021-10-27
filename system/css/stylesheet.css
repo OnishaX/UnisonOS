@@ -1,13 +1,3 @@
-html {
-  height: 100vh;
-  width: 100vw;
-  margin: 0px;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
-}
-
 @font-face {
   font-family: "Roboto";
   src: url("/system/fonts/Roboto/Roboto-Regular.ttf") format("truetype");
@@ -55,17 +45,20 @@ h2 {
 
 #AllApps {
   padding-top: 0.5em;
-  -webkit-box-orient: vertical;
+  -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+      -ms-flex-direction: row;
+          flex-direction: row;
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
   border-radius: 0.25em;
   overflow-y: scroll;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  gap: 0.5em;
 }
 
 #Drawer {
@@ -88,7 +81,6 @@ h2 {
 body {
   font-family: "Roboto";
   margin: 0px;
-  height: 100vh;
   width: 100vw;
   display: -ms-grid;
   display: grid;
@@ -177,7 +169,7 @@ button:active {
   display: grid;
   grid-auto-flow: column;
   grid-auto-rows: 1fr;
-  gap: 0.5em 0.5em;
+  gap: 0.5em;
   -webkit-box-pack: stretch;
       -ms-flex-pack: stretch;
           justify-content: stretch;
@@ -202,8 +194,9 @@ button:active {
   overflow: visible;
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 1fr 1fr;
-      grid-template-columns: 1fr 1fr;
+  -ms-grid-columns: 1fr min-content;
+      grid-template-columns: 1fr -webkit-min-content;
+      grid-template-columns: 1fr min-content;
   -ms-grid-rows: 1fr;
       grid-template-rows: 1fr;
   gap: 0px 0px;
@@ -630,6 +623,13 @@ button:active {
   }
 }
 
+.AppPage {
+  overflow-x: hidden;
+  overflow: auto;
+  overflow-y: scroll;
+  overflow-wrap: unset;
+}
+
 .Body {
   justify-self: stretch;
   -ms-flex-item-align: stretch;
@@ -659,12 +659,10 @@ button:active {
 
 .ListSection {
   gap: 0.5em;
-  width: 100%;
-  -ms-grid-column-align: start;
-      justify-self: start;
+  overflow: scroll;
+  -ms-grid-column-align: stretch;
+      justify-self: stretch;
   border-radius: 0.5em;
-  overflow-y: hidden;
-  overflow-x: scroll;
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
@@ -677,9 +675,26 @@ button:active {
       align-self: initial;
   -ms-flex-positive: 0;
       flex-grow: 0;
+  -ms-flex-negative: 1;
+      flex-shrink: 1;
 }
 
-.ListSection .HList {
+.RowSnip {
+  height: -webkit-fit-content !important;
+  height: -moz-fit-content !important;
+  height: fit-content !important;
+}
+
+.RowSnip html body {
+  height: -webkit-fit-content !important;
+  height: -moz-fit-content !important;
+  height: fit-content !important;
+}
+
+.HList {
+  overflow: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
   gap: 0.5em;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -921,6 +936,21 @@ button:active {
   border-bottom-right-radius: 0.25em;
 }
 
+.Sidebar .ToolGroupH button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-size: cover;
+  background-image: url(/users/template/Apps/Settings/AppIcon.svg);
+  color: white;
+}
+
 .Toolbar {
   padding: 0.5em;
   background: rgba(255, 255, 255, 0.75);
@@ -928,9 +958,10 @@ button:active {
           backdrop-filter: blur(1em);
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 1fr min-content;
-      grid-template-columns: 1fr -webkit-min-content;
-      grid-template-columns: 1fr min-content;
+  gap: 0.5em;
+  -ms-grid-columns: min-content 1fr min-content;
+      grid-template-columns: -webkit-min-content 1fr -webkit-min-content;
+      grid-template-columns: min-content 1fr min-content;
   -ms-grid-rows: 1fr;
       grid-template-rows: 1fr;
   grid-auto-flow: row;
@@ -938,7 +969,7 @@ button:active {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-      grid-template-areas: "Tools Controls";
+      grid-template-areas: "AppIcon Tools Search Controls";
   -ms-grid-row: 1;
   -ms-grid-column: 2;
   grid-area: Toolbar;
@@ -956,7 +987,7 @@ button:active {
   -ms-flex-item-align: center;
       align-self: center;
   -ms-grid-row: 1;
-  -ms-grid-column: 2;
+  -ms-grid-column: 4;
   grid-area: Controls;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1019,9 +1050,21 @@ button:active {
   border-bottom-right-radius: 0.25em;
 }
 
-.Tools {
+.AppMenuButton {
   -ms-grid-row: 1;
   -ms-grid-column: 1;
+  grid-area: AppIcon;
+}
+
+.search {
+  -ms-grid-row: 1;
+  -ms-grid-column: 3;
+  grid-area: Search;
+}
+
+.Tools {
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
   grid-area: Tools;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1030,6 +1073,7 @@ button:active {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
+  justify-self: stretch;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -1138,31 +1182,59 @@ button:active {
 }
 
 #System {
-  -ms-grid-column-align: end;
-      justify-self: end;
+  gap: 1em;
+  justify-self: end;
   -ms-flex-item-align: center;
-      -ms-grid-row-align: center;
       align-self: center;
   -ms-grid-row: 1;
   -ms-grid-column: 2;
   grid-area: System;
   vertical-align: middle;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
 }
 
 #AppList {
-  -ms-grid-column-align: start;
-      justify-self: start;
-  -ms-flex-item-align: center;
-      -ms-grid-row-align: center;
-      align-self: center;
+  justify-self: start;
+  -ms-flex-item-align: stretch;
+      align-self: stretch;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  gap: 0.5em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
   -ms-grid-row: 1;
   -ms-grid-column: 1;
   grid-area: AppList;
   vertical-align: middle;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
 }
 
 .DockAppIcon {
-  display: inline-block;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-self: stretch;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: rgba(255, 255, 255, 0.75);
+  -webkit-backdrop-filter: blur(1em);
+          backdrop-filter: blur(1em);
   vertical-align: middle;
   height: 2.5em;
   border-radius: 0.25em;
@@ -1189,7 +1261,6 @@ button:active {
   height: 2.5em;
   border-radius: 0.25em;
   width: 2.5em;
-  margin: 0.5em 0.25em;
   background-size: cover;
   -webkit-transition: translate 250ms ease-out;
   transition: translate 250ms ease-out;

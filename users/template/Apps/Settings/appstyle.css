@@ -1,5 +1,14 @@
 #SettingsApp {
-  --PrimaryAppColor: #5F5F5F;
+  --PrimaryAppColor: #383838;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 0.5em;
+  width: 100%;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 #SettingsApp .Toolbar {
@@ -11,17 +20,32 @@
   background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), linear-gradient(var(--PrimaryAppColor), var(--PrimaryAppColor));
 }
 
-#SettingsApp .ListSection button {
+#SettingsApp .HList button {
   color: var(--PrimaryAppColor);
   background: none;
 }
 
-#SettingsApp .ListSection button:hover {
+#SettingsApp .HList button .ListItemIcon {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-size: cover;
+  background-image: url(/users/template/Apps/Settings/AppIcon.svg);
+  color: white;
+}
+
+#SettingsApp .HList button:hover {
   background: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0.5)), to(rgba(255, 255, 255, 0.5))), -webkit-gradient(linear, left top, left bottom, from(var(--PrimaryAppColor)), to(var(--PrimaryAppColor)));
   background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), linear-gradient(var(--PrimaryAppColor), var(--PrimaryAppColor));
 }
 
-#SettingsApp .ListSection button:active {
+#SettingsApp .HList button:active {
   background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.25)), to(rgba(0, 0, 0, 0.25))), -webkit-gradient(linear, left top, left bottom, from(var(--PrimaryAppColor)), to(var(--PrimaryAppColor)));
   background: linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)), linear-gradient(var(--PrimaryAppColor), var(--PrimaryAppColor));
 }

@@ -14,43 +14,38 @@
 		 <div class="App">
 		  <div class="Sidebar">
 			<div class="ToolGroupH">
-				<button type="button">N</button>
-				<button type="button">S</button>
-				<button type="button">O</button>
+				<button type="button"><i class="ri-file-add-line"></i></button>
+				<button type="button"><i class="ri-save-2-line"></i></button>
+				<button type="button"><i class="ri-folder-open-line"></i></button>
 			</div>
 		<div class="ToolGroup">
-			<button type="button"><img class="icon" src="/users/template/Apps/Write/icons/Person.svg">Page 1</button>
-			<button type="button"><img class="icon" src="/users/template/Apps/Write/icons/Person.svg">Page 2</button>
+			<button type="button"><i class="ri-file-text-line"></i>Page 1</button>
+			<button type="button"><i class="ri-file-text-line"></i>Page 2</button>
 		</div>
 		<div class="ToolGroup">
-			<button type="button"><img class="icon" src="/system/icons/Plus.svg">New Page</button>
-
+			<button type="button"><i class="ri-add-line"></i>New Page</button>
 		</div>
 	  </div>
 	  <div class="Toolbar">
 		<div class="Controls">
-			<button type="button" onClick="MinimiseWindow('Write')"><img class="icon" src="/system/icons/Minus.svg"></button>
-			<button type="button"><img class="icon" src="/system/icons/Plus.svg"></button>
-			<button type="button" onClick="CloseWindow('Write')"><img class="icon" src="/system/icons/Close.svg"></button>
+			<button type="button"  onClick="MinimiseWindow('Write')"><i class="ri-subtract-fill"></i></button>
+			<button type="button" onclick="FillWindow()"><i class="ri-fullscreen-fill"></i></button>
+			<button type="button" onClick="CloseWindow('Write')"><i class="ri-close-fill"></i></button>
 		</div>
+		<button class="AppMenuButton" type="button" style="width: 2em; background-size: cover; background-image: url(/users/template/Apps/Write/AppIcon.svg)"><i class="ri-paragraph"></i></button>
 		<div class="Tools">
 			<div class="ToolGroup">
-				<button style="width: 2em; background-size: cover; background-image: url(/users/template/Apps/Write/AppIcon.svg)"></button>
+				<button type="button"><i class="ri-text"></i>Text</button>
+				<button type="button"><i class="ri-shape-line"></i>Shape</button>
+				<button type="button"><i class="ri-image-line"></i>Image</button>
+				<button type="button"><i class="ri-table-2"></i>Table</button>
 			</div>
 			<div class="ToolGroup">
-				<button type="button"><img class="icon" src="/users/template/Apps/Write/icons/Sort.svg">Text</button>
-				<button type="button"><img class="icon" src="/users/template/Apps/Write/icons/View.svg">Shape</button>
-				<button type="button"><img class="icon" src="/users/template/Apps/Write/icons/View.svg">Image</button>
-				<button type="button"><img class="icon" src="/users/template/Apps/Write/icons/View.svg">Sound</button>
-				<button type="button"><img class="icon" src="/users/template/Apps/Write/icons/View.svg">Video</button>
-				<button type="button"><img class="icon" src="/users/template/Apps/Write/icons/View.svg">Table</button>
-			</div>
-			<div class="ToolGroup">
-				<button type="button"><img class="icon" src="/users/template/Apps/Write/icons/Sort.svg">Export</button>
-				<button type="button"><img class="icon" src="/users/template/Apps/Write/icons/View.svg">Send</button>
-				<button type="button"><img class="icon" src="/users/template/Apps/Write/icons/View.svg">Print</button>
+				<button type="button"><i class="ri-printer-line"></i>Print</button>
+				<button type="button"><i class="ri-send-plane-2-line"></i>Send</button>
 			</div>
 		</div>
+		<button type="button" class="search"><i class="ri-search-line"></i>Search</button>
 	  </div>
 	  <div class="Contents">
 		<div class="Preview">

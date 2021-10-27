@@ -1,5 +1,5 @@
 let Applist = ["Scour", "Music", "Mailbox", "Settings"]
-let InstalledApps = ["Music", "Error", "Files", "Mailbox", "Cells", "Write", "Pitch", "Settings"]
+let InstalledApps = ["Scour", "Music", "Error", "Files", "Mailbox", "Cells", "Write", "Pitch", "Settings"]
 let Systemlist = ["Clock", "AppDrawer"]
 let wallpaper = "1.jpg"
 let RunningApps = []
@@ -47,6 +47,13 @@ const sleep = (milliseconds) => {
   return new Promise(resolve => setTimeout(resolve, milliseconds))
 }
 
+function DeepLaunch(mainapp,jumppage) {
+  LaunchWindow(mainapp)
+  sleep(500).then(() => {
+    LoadPage(mainapp,jumppage)
+  })
+}
+
 function CloseWindow(closingApp) {
   closingApp.String
   temp = String("#" + closingApp);
@@ -57,6 +64,14 @@ function CloseWindow(closingApp) {
     document.getElementById("Display").className = "DisplayNormal";
   })
 
+}
+function LoadPage(targetapp,newpage) {
+  var TargetApp = String(targetapp);
+	var NewPage = String(newpage);
+	$(String('#' + TargetApp + 'Body')).attr('src',String('/users/template/Apps/'+ TargetApp +'/Screens/'+ NewPage +'.html'))
+
+  console.log(String(TargetApp + 'Body'));
+  console.log(String('/users/template/Apps/'+ TargetApp +'/'+ NewPage +'.html'));
 }
 
 function LaunchWindow(launchingApp) {
@@ -121,23 +136,18 @@ function init() {
 
 function displayPinnedList(Applist) {
   console.log("displayAppList Triggered")
-  let html = "";
   for (let app of Applist) {
-    html += `
-				<button type="button" class="DockAppIcon" id="${app}AppIcon" onClick='LaunchWindow(` + `"` + `${app}` + `"` + `)' style="background-image: url(/users/` + user + `/Apps/${app}/AppIcon.svg)"></button>`;
+    $("#AppList").append('<div class="DockAppIcon" id="' + app + 'PinnedAppIcon"></div>');
+    $('#' + String(app + 'PinnedAppIcon')).load('/users/' + user + '/Apps/' + app + '/AppIcon.html');
   }
   console.log("dock appended")
-  $("#AppList").html(html)
 }
 function displayAppList(InstalledApps) {
   console.log("displayAppList Triggered")
-  let html = "";
   for (let app of InstalledApps) {
-    html += `
-				<button type="button" class="DockAppIcon" id="${app}AppIcon" onClick='LaunchWindow(` + `"` + `${app}` + `"` + `)' style="background-image: url(/users/` + user + `/Apps/${app}/AppIcon.svg)"></button>`;
+    $("#AllApps").append('<div class="DockAppIcon" id="' + app + 'AllAppIcon"></div>');
+    $('#' + String(app + 'AllAppIcon')).load('/users/' + user + '/Apps/' + app + '/AppIcon.html');
   }
-  console.log("dock appended")
-  $("#AllApps").html(html)
 }
 
 function displaySystem(Systemlist) {
@@ -145,7 +155,7 @@ function displaySystem(Systemlist) {
   let html = "";
   for (let app of Systemlist) {
     html += `
-				<button type="button" class="DockAppIcon" id="${app}" onClick='LaunchSystem(` + `"` + `${app}` + `"` + `)' style="background-image: url(/users/` + user + `/System/${app}/AppIcon.svg)"></button>`;
+				<button type="button" class="DockAppIcon" id="${app}" onClick='LaunchSystem(` + `"` + `${app}` + `"` + `)'></button>`;
   }
   console.log("dock appended")
   $("#System").html(html)
