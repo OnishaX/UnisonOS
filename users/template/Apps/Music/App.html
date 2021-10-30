@@ -4,21 +4,18 @@
 	 <head>
 	   <meta charset='utf-8'>
 	   <title>Music</title>
-	   <script src="/users/template/Apps/Music/appscript.js" defer></script>
 	   <link rel="stylesheet" href="/system/css/stylesheet.css">
 	   <link rel="stylesheet" href="/users/template/Apps/Music/appstyle.css">
 	   <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-
-
 	 </head>
 	 <body>
 		 <div class="App">
 		  <div class="Sidebar">
-		<button type="button"><i class="ri-rhythm-line"></i>Now Playing</button>
+		<button type="button" onclick="LoadPage('Music','nowPlaying')"><i class="ri-rhythm-line"></i>Now Playing</button>
 		<div class="ToolGroup">
-			<button type="button"><i class="ri-user-line"></i>Artists</button>
-			<button type="button"><i class="ri-album-line"></i>Albums</button>
-			<button type="button"><i class="ri-music-line"></i>Songs</button>
+			<button type="button" onclick="LoadPage('Music','artists')"><i class="ri-user-line"></i>Artists</button>
+			<button type="button" onclick="LoadPage('Music','albums')"><i class="ri-album-line"></i>Albums</button>
+			<button type="button" onclick="LoadPage('Music','songs')"><i class="ri-music-line"></i>Songs</button>
 		</div>
 	  </div>
 	  <div class="Toolbar">
@@ -37,14 +34,13 @@
 		</div>
 		<button type="button" class="search"><i class="ri-search-line"></i>Search</button>
 	  </div>
-	  <div class="Contents">
-		<div class="Preview">
-			<p>Preview Item</p>
-		</div>
-		<div class="Body" id="MusicBody">
+		<div class="Contents" id="MusicScreenContainer">
+			<embed name="MusicScreen" rel="preload"
+				style="width: 100%; height: 100%; overflow:scroll; border-radius: 0.5em; border: none;" class="Body"
+				id="MusicScreen" src="/users/template/Apps/Music/Screens/artists.html" onerror="alert('Page Missing');">
+				</embed>
 		</div>
 	  </div>
-	</div>
 </div>
 	 </body>
 	 </html>

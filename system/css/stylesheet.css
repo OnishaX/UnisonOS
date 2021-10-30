@@ -25,26 +25,106 @@ h2 {
           animation: DisplayNormal 0.1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 }
 
-.DrawerOpen {
-  height: -webkit-fit-content !important;
-  height: -moz-fit-content !important;
-  height: fit-content !important;
-  padding: 0.5em !important;
-}
-
-.DrawerOpen #Dock {
-  background: rgba(255, 255, 255, 0.75);
-  -webkit-backdrop-filter: blur(1em);
-          backdrop-filter: blur(1em);
-}
-
 .DrawerClosed {
   height: 3em !important;
   padding: 0em !important;
 }
 
+.DockDrawerOpen {
+  -webkit-transition: all 0.5s ease-out;
+  transition: all 0.5s ease-out;
+  overflow: visible;
+  display: -ms-grid;
+  display: grid;
+      grid-template-columns: 1fr -webkit-min-content;
+      grid-template-columns: 1fr min-content;
+      grid-template-rows: 1fr;
+  gap: 0px 0px;
+      grid-template-areas: "AppList System";
+      align-self: end;
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+  grid-area: Dock;
+  border-radius: 0.25em;
+  height: 3.5em !important;
+  padding: 0.5em !important;
+  background: rgba(255, 255, 255, 0.75);
+  -webkit-backdrop-filter: blur(1em);
+          backdrop-filter: blur(1em);
+}
+
+.WindowsDrawerOpen {
+  -webkit-transition: all 0.5s ease-out;
+  transition: all 0.5s ease-out;
+  display: -ms-grid;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-rows: 1fr;
+  gap: 0.5em;
+  -webkit-box-pack: stretch;
+      -ms-flex-pack: stretch;
+          justify-content: stretch;
+  -ms-flex-line-pack: stretch;
+      align-content: stretch;
+  justify-items: stretch;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+      justify-self: stretch;
+      align-self: stretch;
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: Windows;
+  -webkit-transform: scale(0.4) translatey(-66%);
+          transform: scale(0.4) translatey(-66%);
+}
+
+.DrawerDrawerOpen {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  border-radius: 0.25em;
+  overflow: visible;
+  background: rgba(255, 255, 255, 0.75);
+  -webkit-backdrop-filter: blur(1em);
+          backdrop-filter: blur(1em);
+  position: fixed;
+  bottom: 0.5em;
+  height: 50% !important;
+  right: 0.5em;
+  left: 0.5em;
+  -webkit-transition: all 0.5s ease-out;
+  transition: all 0.5s ease-out;
+}
+
+.AllAppsDrawerOpen {
+  -webkit-transition: all 0.5s ease-out;
+  transition: all 0.5s ease-out;
+  padding: 0.5em !important;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  border-radius: 0.25em;
+  overflow-y: scroll;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  gap: 0.5em;
+}
+
 #AllApps {
-  padding-top: 0.5em;
+  -webkit-transition: all 0.5s ease-out;
+  transition: all 0.5s ease-out;
+  padding: 0.75em;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
@@ -74,8 +154,8 @@ h2 {
   background: rgba(255, 255, 255, 0.75);
   -webkit-backdrop-filter: blur(1em);
           backdrop-filter: blur(1em);
-  -webkit-transition: all 150ms ease-out;
-  transition: all 150ms ease-out;
+  -webkit-transition: all 0.5s ease-out;
+  transition: all 0.5s ease-out;
 }
 
 body {
@@ -140,7 +220,6 @@ button:active {
   overflow: hidden;
   display: -ms-grid;
   display: grid;
-  transition: all 150ms ease-out;
   -ms-grid-rows: 1fr min-content;
       grid-template-rows: 1fr -webkit-min-content;
       grid-template-rows: 1fr min-content;
@@ -163,8 +242,8 @@ button:active {
 }
 
 #Windows {
-  -webkit-transition: all 150ms ease-out;
-  transition: all 150ms ease-out;
+  -webkit-transition: all 0.5s ease-out;
+  transition: all 0.5s ease-out;
   display: -ms-grid;
   display: grid;
   grid-auto-flow: column;
@@ -189,8 +268,8 @@ button:active {
 }
 
 #Dock {
-  -webkit-transition: background-color ease-out 150ms;
-  transition: background-color ease-out 150ms;
+  -webkit-transition: background-color ease-out 0.5s;
+  transition: background-color ease-out 0.5s;
   overflow: visible;
   display: -ms-grid;
   display: grid;
@@ -722,6 +801,7 @@ button:active {
   display: flex;
   -ms-flex-wrap: nowrap;
       flex-wrap: nowrap;
+  font-size: 0.8em;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -1182,18 +1262,25 @@ button:active {
 }
 
 #System {
-  gap: 1em;
-  justify-self: end;
-  -ms-flex-item-align: center;
-      align-self: center;
-  -ms-grid-row: 1;
-  -ms-grid-column: 2;
-  grid-area: System;
-  vertical-align: middle;
+  gap: 0.5em !important;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  width: 100%;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-self: flex-end;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  vertical-align: middle;
+  height: 2.5em;
+  border-radius: 0.25em;
+  border-style: none;
+  background-size: cover;
+  -webkit-transition: translate 250ms ease-out;
+  transition: translate 250ms ease-out;
 }
 
 #AppList {

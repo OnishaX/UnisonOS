@@ -6,6 +6,7 @@
 	   <link rel="stylesheet" href="/users/template/Apps/Settings/appstyle.css">
 	   <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script></head>
 	<div id="SettingsApp" class="AppPage">
+		
 <div class="ListSection">
 	<h2>Personalise</h2>
 	<div class="HList">
@@ -43,7 +44,7 @@
 			<div class="ListItemLabel">Mouse</div>
 		</button>
 		<button class="HListItem">
-			<div class="ListItemIcon"><i class="ri-volume-up-fill ri-lg ri-lg"></i></div>
+			<div class="ListItemIcon"></div>
 			<div class="ListItemLabel">Trackpad</div>
 		</button>
 		<button class="HListItem">
@@ -158,7 +159,7 @@
 			<div class="ListItemIcon" style="background-size: cover; background-image: url(/users/template/Apps/Music/AppIcon.svg)"><i class="ri-album-fill ri-lg"></i></div>
 			<div class="ListItemLabel">Music</div>
 		</button>
-		<button class="HListItem">
+		<button class="HListItem" onclick="LoadPage('Settings','Apps/Scour')">
 			<div class="ListItemIcon" style="background-size: cover; background-image: url(/users/template/Apps/Scour/AppIcon.svg)"><i class="ri-global-fill ri-lg"></i></div>
 			<div class="ListItemLabel">Scour</div>
 		</button>

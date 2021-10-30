@@ -53,10 +53,10 @@
 			</div>
 			<button type="button" class="search"><i class="ri-search-line"></i>Search</button>
 		</div>
-		<div class="Contents">
-			<iframe name="SettingsScreen" rel="preload"
+		<div class="Contents" id="SettingsScreenContainer">
+			<embed name="SettingsScreen" rel="preload"
 				style="width: 100%; height: 100%; overflow:scroll; border-radius: 0.5em; border: none;" class="Body"
-				id="SettingsBody" src="/users/template/Apps/Settings/Screens/index.html">
+				id="SettingsScreen" src="/users/template/Apps/Settings/Screens/index.html" onerror="alert('Page Missing');">
 				</embed>
 		</div>
 	</div>

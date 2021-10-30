@@ -4,7 +4,8 @@
   "description": "UnisonOS is an in-development platform build for entry-level devices for those who want a consistent and local web app experience.",
   "main": "/system/js/windowManager.js",
   "scripts": {
-    "test": "init()"
+    "test": "console.log('this is a test')",
+    "serve": "node app.js"
   },
   "repository": {
     "type": "git",
@@ -18,6 +19,7 @@
   "homepage": "https://github.com/OnishaX/UnisonOS#readme",
   "dependencies": {
     "express": "^4.17.1",
+    "localedb": "^1.1.3",
     "lowdb": "^3.0.0"
   }
 }

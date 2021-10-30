@@ -20,13 +20,12 @@
 				<button type="button" onclick="FillWindow()"><i class="ri-fullscreen-fill"></i></button>
 				<button type="button" onClick="CloseWindow('Scour')"><i class="ri-close-fill"></i></button>
 			</div>
+			<div class="ToolGroup dropdown">
+				<button onclick="menu()" id="AppMenuButton" class="AppMenuButton" type="button"
+					style="width: 2em; background-size: cover; background-image: url(/users/template/Apps/Scour/AppIcon.svg)"><i
+						class="ri-global-fill"></i></button>
+			</div>
 			<div class="Tools">
-				<div class="ToolGroup dropdown">
-					<button onclick="menu()" id="AppMenuButton" class="AppMenuButton" type="button"
-						style="width: 2em; background-size: cover; background-image: url(/users/template/Apps/Scour/AppIcon.svg)"><i
-							class="ri-global-fill"></i></button>
-				</div>
-
 				<div class="ToolGroup">
 					<button type="button" style="width: 2em;justify-content: center;"><i
 							class="ri-arrow-left-s-line"></i></button>
@@ -38,7 +37,7 @@
 		</div>
 		<div id="ScourAppMenuContent" class="dropdown-content">
 			<div class="ToolGroup">
-				<button type="button" onclick="DeepLaunch('Settings','Scour')">
+				<button type="button" onclick="DeepLaunch('Settings','Apps/Scour')">
 				<i class="ri-settings-5-fill"></i>Settings
 				</button>
 				<button type="button">About Scour</button>
@@ -46,7 +45,7 @@
 		</div>
 		<div class="Contents">
 			<div class="Body" id="ScourBody">
-				<iframe src="https://google.com/"
+				<iframe src=""
 					style="width: 100%; height: 100%; overflow: scroll; border-radius: 0.5em; border: none;"></iframe>
 			</div>
 		</div>

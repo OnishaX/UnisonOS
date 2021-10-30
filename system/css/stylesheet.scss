@@ -9,25 +9,16 @@ h2 {
   font-size: 1em;
   font-weight: bold;
   margin-top: unset;
-margin-bottom: unset;
-padding-bottom: 0.5em;
+  margin-bottom: unset;
+  padding-bottom: 0.5em;
 }
 
 .DisplayFullscreen {
-  animation: fullscreen 0.1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  animation: fullscreen 0.1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 }
 
 .DisplayNormal {
-  animation: DisplayNormal 0.1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-}
-
-.DrawerOpen {
-  height: fit-content !important;
-  padding: 0.5em !important;
-  #Dock {
-    background: rgba(255, 255, 255, 0.75);
-    backdrop-filter: blur(1em);
-  }
+  animation: DisplayNormal 0.1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 }
 
 .DrawerClosed {
@@ -35,15 +26,74 @@ padding-bottom: 0.5em;
   padding: 0em !important;
 }
 
-#AllApps {
-  padding-top: 0.5em;
+.DockDrawerOpen{
+  transition: all 0.5s ease-out;
+  overflow: visible;
+  display: grid;
+  grid-template-columns: 1fr min-content;
+  grid-template-rows: 1fr;
+  gap: 0px 0px;
+  grid-template-areas: "AppList System";
+  align-self: end;
+  grid-area: Dock;
+  border-radius: 0.25em;
+  height: 3.5em !important;
+  padding: 0.5em !important;
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(1em);
+}
+
+.WindowsDrawerOpen {
+  transition: all 0.5s ease-out;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-rows: 1fr;
+  gap: 0.5em;
+  justify-content: stretch;
+  align-content: stretch;
+  justify-items: stretch;
+  align-items: stretch;
+  justify-self: stretch;
+  align-self: stretch;
+  grid-area: Windows;
+  transform: scale(0.4) translatey(-66%);
+}
+.DrawerDrawerOpen {
+  flex-direction: column;
+  align-items: flex-start;
+  border-radius: 0.25em;
+  overflow: visible;
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(1em);
+  position: fixed;
+  bottom: 0.5em;
+  height: 50% !important;
+  right: 0.5em;
+  left: 0.5em;
+  transition: all 0.5s ease-out;
+}
+
+.AllAppsDrawerOpen {
+  transition: all 0.5s ease-out;
+  padding: 0.5em !important;
   flex-direction: row;
   align-items: flex-start;
   border-radius: 0.25em;
-  overflow-y: scroll; 
+  overflow-y: scroll;
   display: flex;
-width: 100%;
-gap: 0.5em;
+  width: 100%;
+  gap: 0.5em;
+}
+#AllApps {
+  transition: all 0.5s ease-out;
+  padding: 0.75em;
+  flex-direction: row;
+  align-items: flex-start;
+  border-radius: 0.25em;
+  overflow-y: scroll;
+  display: flex;
+  width: 100%;
+  gap: 0.5em;
 }
 
 #Drawer {
@@ -53,7 +103,7 @@ gap: 0.5em;
   overflow: visible;
   background: rgba(255, 255, 255, 0.75);
   backdrop-filter: blur(1em);
-  transition: all 150ms ease-out;
+  transition: all 0.5s ease-out;
 }
 
 body {
@@ -101,7 +151,6 @@ button:active {
   height: 100vh;
   overflow: hidden;
   display: grid;
-  transition: all 150ms ease-out;
   grid-template-rows: 1fr min-content;
   grid-template-columns: 1fr;
   gap: 0.5em;
@@ -118,7 +167,7 @@ button:active {
   opacity: 0.1;
 }
 #Windows {
-  transition: all 150ms ease-out;
+  transition: all 0.5s ease-out;
   display: grid;
   grid-auto-flow: column;
   grid-auto-rows: 1fr;
@@ -132,7 +181,7 @@ button:active {
   grid-area: Windows;
 }
 #Dock {
-  transition: background-color ease-out 150ms;
+  transition: background-color ease-out 0.5s;
   overflow: visible;
   display: grid;
   grid-template-columns: 1fr min-content;
@@ -151,7 +200,7 @@ button:active {
  * animation scale-in-center
  * ----------------------------------------
  */
- @keyframes scale-in-center {
+@keyframes scale-in-center {
   0% {
     transform: scale(0);
     opacity: 1;
@@ -212,9 +261,6 @@ button:active {
   }
 }
 
-
-
-
 // grid-template-rows: 100vh min-content !important;
 // padding: 0em !important;
 // #Windows {
@@ -223,30 +269,30 @@ button:active {
 //     border-radius: 0em;
 
 @keyframes fullscreen {
-0% {
-  grid-template-rows: 1fr min-content;
-  gap: 0.5em;
-  padding: 0.5em;
-}
-100% {
-  gap: 0em;
-  padding: 0em;
-  grid-template-rows: 100vh min-content
-}
+  0% {
+    grid-template-rows: 1fr min-content;
+    gap: 0.5em;
+    padding: 0.5em;
+  }
+  100% {
+    gap: 0em;
+    padding: 0em;
+    grid-template-rows: 100vh min-content;
+  }
 }
 
 @keyframes Displaynormal {
   0% {
     gap: 0em;
-  padding: 0em;
-  grid-template-rows: 100vh min-content
+    padding: 0em;
+    grid-template-rows: 100vh min-content;
   }
   100% {
     grid-template-rows: 1fr min-content;
-  gap: 0.5em;
-  padding: 0.5em;
+    gap: 0.5em;
+    padding: 0.5em;
   }
-  }
+}
 
 /**
  * ----------------------------------------
@@ -304,7 +350,7 @@ button:active {
  * animation bounce-top
  * ----------------------------------------
  */
- @keyframes bounce-top {
+@keyframes bounce-top {
   0% {
     transform: translateY(-45px);
     animation-timing-function: ease-in;
@@ -344,9 +390,9 @@ button:active {
 }
 .AppPage {
   overflow-x: hidden;
-overflow: auto;
-overflow-y: scroll;
-overflow-wrap: unset;
+  overflow: auto;
+  overflow-y: scroll;
+  overflow-wrap: unset;
 }
 .Body {
   justify-self: stretch;
@@ -376,26 +422,27 @@ overflow-wrap: unset;
 .RowSnip {
   height: fit-content !important;
   html {
-  body {
-    height: fit-content !important;
+    body {
+      height: fit-content !important;
+    }
   }
-}
 }
 .HList {
   overflow: auto;
-            overflow-y: hidden;
-            white-space: nowrap;
+  overflow-y: hidden;
+  white-space: nowrap;
   gap: 0.5em;
-display: flex;
-flex-wrap: nowrap;
-flex-direction: row;
-align-items: left;
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  align-items: left;
 }
 .HListItem {
   height: fit-content;
   width: fit-content;
   display: flex;
   flex-wrap: nowrap;
+  font-size: 0.8em;
   flex-direction: column;
   padding: 0.5em;
   .ListItemIcon {
@@ -403,22 +450,22 @@ align-items: left;
     width: 3em;
     border-radius: 0.25em;
   }
-  
 }
 .bounce-top {
-	animation: bounce-top 0.9s both;
+  animation: bounce-top 0.9s both;
 }
 .unMiniApp {
-	animation: scale-in-bottom 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  animation: scale-in-bottom 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 }
 .openApp {
-  animation: scale-in-center 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) 100ms both;
+  animation: scale-in-center 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 100ms
+    both;
 }
 .closeApp {
-  animation: scale-out-center 0.5s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+  animation: scale-out-center 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
 }
 .miniApp {
-  animation: scale-out-bottom 0.5s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+  animation: scale-out-bottom 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
 }
 .AppContainer {
   body {
@@ -540,16 +587,15 @@ align-items: left;
   }
   .ToolGroupH {
     button {
-    display: flex;
-        justify-content: center;
-        align-items: center;
-        background-size: cover;
-        background-image: url(/users/template/Apps/Settings/AppIcon.svg);
-        color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-size: cover;
+      background-image: url(/users/template/Apps/Settings/AppIcon.svg);
+      color: white;
+    }
   }
 }
-}
-
 
 .Toolbar {
   padding: 0.5em;
@@ -612,10 +658,10 @@ align-items: left;
   border-top-right-radius: 0.25em;
   border-bottom-right-radius: 0.25em;
 }
-.AppMenuButton{
+.AppMenuButton {
   grid-area: AppIcon;
 }
-.search{
+.search {
   grid-area: Search;
 }
 
@@ -634,6 +680,12 @@ align-items: left;
     border-radius: unset;
   }
 }
+
+// .ToolGroup:hover {
+//   border: #ffffff50 solid 0.1em !important;
+//   background: #ffffff10;
+//   border-radius: 0.35em;
+// }
 .Toolbar .ToolGroup {
   display: flex;
   flex-wrap: nowrap;
@@ -693,13 +745,17 @@ align-items: left;
 }
 
 #System {
-  gap: 1em;
-  justify-self: end;
-  align-self: center;
-  grid-area: System;
-  vertical-align: middle;
+  gap: 0.5em !important;
   display: flex;
-width: 100%;
+  flex-direction: row;
+  justify-self: flex-end;
+  align-items: flex-end;
+  vertical-align: middle;
+  height: 2.5em;
+  border-radius: 0.25em;  
+  border-style: none;
+  background-size: cover;
+  transition: translate 250ms ease-out;
 }
 #AppList {
   justify-self: start;
@@ -707,7 +763,7 @@ width: 100%;
   flex-grow: 1;
   gap: 0.5em;
   display: flex;
-width: 100%;
+  width: 100%;
   grid-area: AppList;
   vertical-align: middle;
   flex-direction: row;
@@ -791,4 +847,6 @@ width: 100%;
     border-bottom-right-radius: 0.25em;
   }
 }
-.show {display: block;}
+.show {
+  display: block;
+}

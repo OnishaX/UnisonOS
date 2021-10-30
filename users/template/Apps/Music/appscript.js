@@ -1,4 +1,4 @@
 function init() {
-	$("#MusicBody").load('/users/template/Apps/Music/artists.html');
+	$("#MusicBody").load('/users/template/Apps/Music/screens/artists.html.html');
 }
 init();
