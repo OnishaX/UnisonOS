@@ -77,6 +77,17 @@ function MinimiseWindow(minimisingApp) {
     $(temp + "App").removeClass('miniApp')
   })
 }
+function ToggleSearch (searchApp) {
+  temp = String("#" + searchApp + "Search")
+  console.log(temp)
+
+    if (document.getElementById(searchApp + "Search").className == "search") {
+      $(temp).replaceWith(`'<button id="`+ searchApp + 'Search"  type="button" class="searchOpen"><i onclick="ToggleSearch('+ '`' + searchApp+ '`' + ')" class="ri-close-circle-line"></i><input autofocus="autofocus"type="text"</button>')
+    } else {
+      $(temp).replaceWith(`'<button id="`+ searchApp + 'Search" onclick="ToggleSearch('+ '`' + searchApp+ '`' + ')" type="button" class="search"><i class="ri-search-line"></i>Search</button>')
+    }
+
+}
 
 function LaunchSystem(systemApp) {
   console.log(temp)

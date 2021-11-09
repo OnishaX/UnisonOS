@@ -24,9 +24,11 @@ h2 {
 .DrawerClosed {
   height: 3em !important;
   padding: 0em !important;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
 }
 
 .DockDrawerOpen{
+  
   transition: all 0.5s ease-out;
   overflow: visible;
   display: grid;
@@ -71,9 +73,11 @@ h2 {
   right: 0.5em;
   left: 0.5em;
   transition: all 0.5s ease-out;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
 }
 
 .AllAppsDrawerOpen {
+  box-shadow: 1em 1em 1em -0.5em rgba(0, 0, 0, 0.2);
   transition: all 0.5s ease-out;
   padding: 0.5em !important;
   flex-direction: row;
@@ -91,12 +95,14 @@ h2 {
   align-items: flex-start;
   border-radius: 0.25em;
   overflow-y: scroll;
+  height: 100%;
   display: flex;
   width: 100%;
   gap: 0.5em;
 }
 
 #Drawer {
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
   flex-direction: column;
   align-items: flex-start;
   border-radius: 0.25em;
@@ -134,6 +140,7 @@ button {
   transition: all 300em linear;
   font-size: 1em;
   color: #ffffff;
+  
 
   img {
     width: 1.1em;
@@ -193,6 +200,7 @@ button:active {
   grid-area: Dock;
   border-radius: 0.25em;
   height: 3em;
+
 }
 
 /**
@@ -291,6 +299,23 @@ button:active {
     grid-template-rows: 1fr min-content;
     gap: 0.5em;
     padding: 0.5em;
+  }
+}
+
+/**
+ * ----------------------------------------
+ * animation fade in
+ * ----------------------------------------
+ */
+ @keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 1;
   }
 }
 
@@ -408,6 +433,8 @@ button:active {
   flex-grow: 0;
 }
 .ListSection {
+
+  animation: fade-in 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
   gap: 0.5em;
   overflow: scroll;
   justify-self: stretch;
@@ -468,9 +495,11 @@ button:active {
   animation: scale-out-bottom 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
 }
 .AppContainer {
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
   body {
     background-color: none !important;
   }
+  
   background: rgba(255, 255, 255, 0.75);
   backdrop-filter: blur(1em);
   border-radius: 0.25em;
@@ -500,6 +529,7 @@ button:active {
   justify-items: stretch;
   align-items: stretch;
   animation-timing-function: ease-out;
+  
 }
 
 .Sidebar {
@@ -663,6 +693,16 @@ button:active {
 }
 .search {
   grid-area: Search;
+}
+.searchOpen {
+  grid-area: Search;
+}
+input {
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  color: black;
+  border-radius: 0.25em;
+  border: none;
 }
 
 .Tools {

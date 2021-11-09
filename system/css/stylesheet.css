@@ -28,6 +28,8 @@ h2 {
 .DrawerClosed {
   height: 3em !important;
   padding: 0em !important;
+  -webkit-box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
+          box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
 }
 
 .DockDrawerOpen {
@@ -99,9 +101,13 @@ h2 {
   left: 0.5em;
   -webkit-transition: all 0.5s ease-out;
   transition: all 0.5s ease-out;
+  -webkit-box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
+          box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
 }
 
 .AllAppsDrawerOpen {
+  -webkit-box-shadow: 1em 1em 1em -0.5em rgba(0, 0, 0, 0.2);
+          box-shadow: 1em 1em 1em -0.5em rgba(0, 0, 0, 0.2);
   -webkit-transition: all 0.5s ease-out;
   transition: all 0.5s ease-out;
   padding: 0.5em !important;
@@ -134,6 +140,7 @@ h2 {
           align-items: flex-start;
   border-radius: 0.25em;
   overflow-y: scroll;
+  height: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -142,6 +149,8 @@ h2 {
 }
 
 #Drawer {
+  -webkit-box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
+          box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -496,6 +505,34 @@ button:active {
 
 /**
  * ----------------------------------------
+ * animation fade in
+ * ----------------------------------------
+ */
+@-webkit-keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/**
+ * ----------------------------------------
  * animation tracking-in-expand
  * ----------------------------------------
  */
@@ -737,6 +774,8 @@ button:active {
 }
 
 .ListSection {
+  -webkit-animation: fade-in 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
+          animation: fade-in 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
   gap: 0.5em;
   overflow: scroll;
   -ms-grid-column-align: stretch;
@@ -841,6 +880,8 @@ button:active {
 }
 
 .AppContainer {
+  -webkit-box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
+          box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
   background: rgba(255, 255, 255, 0.75);
   -webkit-backdrop-filter: blur(1em);
           backdrop-filter: blur(1em);
@@ -1140,6 +1181,20 @@ button:active {
   -ms-grid-row: 1;
   -ms-grid-column: 3;
   grid-area: Search;
+}
+
+.searchOpen {
+  -ms-grid-row: 1;
+  -ms-grid-column: 3;
+  grid-area: Search;
+}
+
+input {
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  color: black;
+  border-radius: 0.25em;
+  border: none;
 }
 
 .Tools {
