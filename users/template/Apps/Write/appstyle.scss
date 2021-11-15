@@ -1,40 +1,53 @@
 #WriteApp {
-	--PrimaryAppColor: #132FBF;
-// --- Dont edit past this point ---
-.Toolbar {
-	background-color: var(--PrimaryAppColor);
+	.Contents {
+		grid-template-columns: 1fr min-content;
+grid-template-areas: "Body Preview";
+	}
+  --PrimaryAppColor: #132fbf;
+  // --- Dont edit past this point ---
+  .Toolbar {
+    background-color: var(--PrimaryAppColor);
   }
+
   .ListSection {
-	background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255,255,255,0.9)),
-					linear-gradient(var(--PrimaryAppColor), var(--PrimaryAppColor));
-	button {
-	  color: var(--PrimaryAppColor);
-	  background: none;
-	  }
-	  button:hover {
-		color: white;
-		background: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)),
-					linear-gradient(var(--PrimaryAppColor), var(--PrimaryAppColor));
-		}
-		button:active {
-		  background: linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.25)),
-		  linear-gradient(var(--PrimaryAppColor), var(--PrimaryAppColor));
-	  }
-	  }
-		
+    background: linear-gradient(
+        rgba(255, 255, 255, 0.9),
+        rgba(255, 255, 255, 0.9)
+      ),
+      linear-gradient(var(--PrimaryAppColor), var(--PrimaryAppColor));
+    button {
+      color: var(--PrimaryAppColor);
+      background: none;
+    }
+    button:hover {
+      color: white;
+      background: linear-gradient(
+          rgba(255, 255, 255, 0.5),
+          rgba(255, 255, 255, 0.5)
+        ),
+        linear-gradient(var(--PrimaryAppColor), var(--PrimaryAppColor));
+    }
+    button:active {
+      background: linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)),
+        linear-gradient(var(--PrimaryAppColor), var(--PrimaryAppColor));
+    }
+  }
+
   h2 {
-	color: var(--PrimaryAppColor);
+    color: var(--PrimaryAppColor);
   }
   button {
-	  background: var(--PrimaryAppColor);
-	}
-	button:hover {
-		  background: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)),
-				  linear-gradient(var(--PrimaryAppColor), var(--PrimaryAppColor));
-		}
-	button:active {
-	  background: linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.25)),
-	  linear-gradient(var(--PrimaryAppColor), var(--PrimaryAppColor));
+    background: var(--PrimaryAppColor);
   }
-	}
-  
+  button:hover {
+    background: linear-gradient(
+        rgba(255, 255, 255, 0.5),
+        rgba(255, 255, 255, 0.5)
+      ),
+      linear-gradient(var(--PrimaryAppColor), var(--PrimaryAppColor));
+  }
+  button:active {
+    background: linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)),
+      linear-gradient(var(--PrimaryAppColor), var(--PrimaryAppColor));
+  }
+}

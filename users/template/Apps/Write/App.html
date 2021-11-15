@@ -1,61 +1,127 @@
-	  
-	 <!doctype html>
-	 <html lang='en-GB'>
-	 <head>
-	   <meta charset='utf-8'>
-	   <title>Write</title>
-	   <link rel="stylesheet" href="/system/css/stylesheet.css">
-	   <link rel="stylesheet" href="/users/template/Apps/Write/appstyle.css">
-	   <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<!doctype html>
+<html lang='en-GB'>
 
+<head>
+	<meta charset='utf-8'>
+	<title>Write</title>
+	<link rel="stylesheet" href="/system/css/stylesheet.css">
+	<link rel="stylesheet" href="/users/template/Apps/Write/appstyle.css">
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+		integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
-	 </head>
-	 <body>
-		 <div class="App">
-		  <div class="Sidebar">
+</head>
+
+<body>
+	<div class="App">
+		<div class="Sidebar">
 			<div class="ToolGroupH">
 				<button type="button"><i class="ri-file-add-line"></i></button>
 				<button type="button"><i class="ri-save-2-line"></i></button>
 				<button type="button"><i class="ri-folder-open-line"></i></button>
 			</div>
-		<div class="ToolGroup">
-			<button type="button"><i class="ri-file-text-line"></i>Page 1</button>
-			<button type="button"><i class="ri-file-text-line"></i>Page 2</button>
-		</div>
-		<div class="ToolGroup">
-			<button type="button"><i class="ri-add-line"></i>New Page</button>
-		</div>
-	  </div>
-	  <div class="Toolbar">
-		<div class="Controls">
-			<button type="button"  onClick="MinimiseWindow('Write')"><i class="ri-subtract-fill"></i></button>
-			<button type="button" onclick="FillWindow()"><i class="ri-fullscreen-fill"></i></button>
-			<button type="button" onClick="CloseWindow('Write')"><i class="ri-close-fill"></i></button>
-		</div>
-		<button class="AppMenuButton" type="button" style="width: 2em; background-size: cover; background-image: url(/users/template/Apps/Write/AppIcon.svg)"><i class="ri-paragraph"></i></button>
-		<div class="Tools">
 			<div class="ToolGroup">
-				<button type="button"><i class="ri-text"></i>Text</button>
-				<button type="button"><i class="ri-shape-line"></i>Shape</button>
-				<button type="button"><i class="ri-image-line"></i>Image</button>
-				<button type="button"><i class="ri-table-2"></i>Table</button>
+				<button type="button"><i class="ri-file-text-line"></i>Page 1</button>
+				<button type="button"><i class="ri-file-text-line"></i>Page 2</button>
 			</div>
 			<div class="ToolGroup">
-				<button type="button"><i class="ri-printer-line"></i>Print</button>
-				<button type="button"><i class="ri-send-plane-2-line"></i>Send</button>
+				<button type="button"><i class="ri-add-line"></i>New Page</button>
 			</div>
 		</div>
-		<button type="button" class="search"><i class="ri-search-line"></i>Search</button>
-	  </div>
-	  <div class="Contents">
-		<div class="Preview">
-			<p>Edit</p>
+		<div class="Toolbar">
+			<div class="Controls">
+				<button type="button" onClick="MinimiseWindow('Write')"><i class="ri-subtract-fill"></i></button>
+				<button type="button" onclick="FillWindow()"><i class="ri-fullscreen-fill"></i></button>
+				<button type="button" onClick="CloseWindow('Write')"><i class="ri-close-fill"></i></button>
+			</div>
+			<button class="AppMenuButton" type="button"
+				style="width: 2em; background-size: cover; background-image: url(/users/template/Apps/Write/AppIcon.svg)"><i
+					class="ri-paragraph"></i></button>
+			<div class="Tools">
+				<div class="ToolGroupH">
+					<button data-action="undo" title="Undo">
+						<i class="ri-arrow-go-back-line"></i>
+					</button>
+					</div>
+				<div class="ToolGroupH">
+					<button type="button"><i class="ri-text"></i>Text</button>
+					<button type="button"><i class="ri-shape-line"></i>Shape</button>
+					<button type="button"><i class="ri-image-line"></i>Image</button>
+					<button type="button"><i class="ri-table-2"></i>Table</button>
+					<button type="button"><i class="ri-separator"></i>Separator</button>
+				</div>
+				<div class="ToolGroupH">
+					<button type="button"><i class="ri-printer-line"></i>Print</button>
+					<button type="button"><i class="ri-send-plane-2-line"></i>Send</button>
+				</div>
+			</div>
+			<button id="WriteSearch" onclick="ToggleSearch('Write')" type="button" class="search"><i class="ri-search-line"></i>Search</button>
+		</div>
+		<div class="Contents" id="WriteScreenContainer">
+			<div class="Preview">
+				<div class="ToolGroupH">
+					<button data-action="bold" data-tag-name="b" title="Bold">
+						<i class="ri-bold"></i>
+					</button>
+					<button data-action="italic" data-tag-name="i" title="Italic">
+						<i class="ri-italic"></i>
+					</button>
+					<button data-action="underline" data-tag-name="u" title="Underline">
+						<i class="ri-underline"></i>
+					</button>
+					<button data-action="strikeThrough" data-tag-name="strike" title="Strike through">
+						<i class="ri-strikethrough"></i>
+					</button>
+				</div>
+				<hr>
+				<div class="ToolGroupH">
+					<button data-action="justifyLeft" data-style="textAlign:left" title="Justify left">
+						<i class="ri-align-left"></i>
+					</button>
+					<button data-action="justifyCenter" data-style="textAlign:center" title="Justify center">
+						<i class="ri-align-center"></i>
+					</button>
+					<button data-action="justifyRight" data-style="textAlign:right" title="Justify right">
+						<i class="ri-align-right"></i>
+					</button>
+					<button data-action="formatBlock" data-style="textAlign:justify" title="Justify block">
+						<i class="ri-align-justify"></i>
+					</button>
+				</div>
+				<hr>
+				<div class="ToolGroupH">
+					<button data-action="insertOrderedList" data-tag-name="ol" title="Insert ordered list">
+						<i class="ri-list-ordered"></i>
+					</button>
+					<button data-action="insertUnorderedList" data-tag-name="ul" title="Insert unordered list">
+						<i class="ri-list-unordered"></i>
+					</button>
+					</div>
+					<div class="ToolGroup">
+						<button data-action="indent" title="Indent">
+							<i class="ri-indent-increase"></i>Indent
+						</button>
+					<button data-action="outdent" title="Outdent">
+						<i class="ri-indent-decrease"></i>Outdent
+					</button>
+				</div>
+				<hr>
+				<div class="ToolGroupH">
+					<button data-action="createLink" title="Insert Link">
+						<i class="ri-link"></i>
+					</button>
+					<button data-action="unlink" data-tag-name="a" title="Unlink">
+						<i class="ri-link-unlink"></i>
+					</button>
+				</div>
 		</div>
 		<div class="Body">
-			<p>BodyItem</p>
+			<embed name="WriteScreen" rel="preload"
+				style="width: 100%; height: 100%; overflow:scroll; border-radius: 0.5em; border: none;" class="Body"
+				id="WriteScreen" src="/users/template/Apps/Write/Screens/editor.html" onerror="alert('Page Missing');">
+			</embed>
 		</div>
-	  </div>
 	</div>
-</div>
-	 </body>
-	 </html>
+	</div>
+</body>
+
+</html>

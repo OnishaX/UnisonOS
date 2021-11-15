@@ -414,12 +414,15 @@ button:active {
   }
 }
 .AppPage {
+  height: 100vh;
+  width: 100%;
   overflow-x: hidden;
   overflow: auto;
   overflow-y: scroll;
   overflow-wrap: unset;
 }
 .Body {
+  border: none;
   justify-self: stretch;
   align-self: stretch;
   grid-area: Body;
@@ -453,6 +456,12 @@ button:active {
       height: fit-content !important;
     }
   }
+}
+hr {
+  margin-top: 1em;
+  margin-bottom: 1em;
+  margin-left: 0.5em;
+  margin-right: 0.5em;
 }
 .HList {
   overflow: auto;
@@ -552,79 +561,7 @@ button:active {
   button {
     width: 100%;
   }
-  .ToolGroup {
-    flex-direction: column;
-    width: 100%;
-    display: flex;
-    gap: 0.1em;
-  }
-  .ToolGroup :first-child {
-    border-top-left-radius: 0.25em;
-    border-top-right-radius: 0.25em;
-    border-bottom-right-radius: 0em;
-    border-bottom-left-radius: 0em;
-  }
-  .ToolGroup :not(:first-child) {
-    border-top-left-radius: 0em;
-    border-bottom-left-radius: 0em;
-    border-top-right-radius: 0em;
-    border-bottom-right-radius: 0em;
-  }
-  .ToolGroup :last-child {
-    border-top-left-radius: 0em;
-    border-bottom-left-radius: 0.25em;
-    border-top-right-radius: 0em;
-    border-bottom-right-radius: 0.25em;
-  }
-  .ToolGroup :only-child {
-    border-top-left-radius: 0.25em;
-    border-bottom-left-radius: 0.25em;
-    border-top-right-radius: 0.25em;
-    border-bottom-right-radius: 0.25em;
-  }
-
-  .ToolGroupH {
-    display: flex;
-    width: 100%;
-    flex-wrap: nowrap;
-    flex-direction: row;
-    align-items: stretch;
-    gap: 0.1em;
-  }
-  .ToolGroupH :first-child {
-    border-top-left-radius: 0.25em;
-    border-bottom-left-radius: 0.25em;
-    border-top-right-radius: 0em;
-    border-bottom-right-radius: 0em;
-  }
-  .ToolGroupH :not(:first-child) {
-    border-top-left-radius: 0em;
-    border-bottom-left-radius: 0em;
-    border-top-right-radius: 0em;
-    border-bottom-right-radius: 0em;
-  }
-  .ToolGroupH :last-child {
-    border-top-left-radius: 0em;
-    border-bottom-left-radius: 0em;
-    border-top-right-radius: 0.25em;
-    border-bottom-right-radius: 0.25em;
-  }
-  .ToolGroupH :only-child {
-    border-top-left-radius: 0.25em;
-    border-bottom-left-radius: 0.25em;
-    border-top-right-radius: 0.25em;
-    border-bottom-right-radius: 0.25em;
-  }
-  .ToolGroupH {
-    button {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background-size: cover;
-      background-image: url(/users/template/Apps/Settings/AppIcon.svg);
-      color: white;
-    }
-  }
+  
 }
 
 .Toolbar {
@@ -709,9 +646,14 @@ input {
   grid-area: Tools;
   display: flex;
   flex-direction: row;
-  justify-self: stretch;
+  justify-content: start;
   align-items: center;
-  gap: 0.5em;
+  gap: 1em;
+  .ToolGroupH {
+    button {
+      width: unset;
+    }
+  }
   button {
     display: flex;
     flex-direction: left;
@@ -720,45 +662,82 @@ input {
     border-radius: unset;
   }
 }
-
-// .ToolGroup:hover {
-//   border: #ffffff50 solid 0.1em !important;
-//   background: #ffffff10;
-//   border-radius: 0.35em;
-// }
-.Toolbar .ToolGroup {
+button:hover {
+  cursor: pointer;
+}
+.ToolGroup {
+  flex-direction: column;
+  width: 100%;
   display: flex;
-  flex-wrap: nowrap;
-  flex-direction: row;
-  align-items: left;
   gap: 0.1em;
 }
-
-.Toolbar .ToolGroup :first-child {
+.ToolGroup :first-child {
   border-top-left-radius: 0.25em;
-  border-bottom-left-radius: 0.25em;
-  border-top-right-radius: 0em;
+  border-top-right-radius: 0.25em;
   border-bottom-right-radius: 0em;
+  border-bottom-left-radius: 0em;
 }
-.Toolbar .ToolGroup :not(:first-child) {
+.ToolGroup :not(:first-child) {
   border-top-left-radius: 0em;
   border-bottom-left-radius: 0em;
   border-top-right-radius: 0em;
   border-bottom-right-radius: 0em;
 }
-.Toolbar .ToolGroup :last-child {
+.ToolGroup :last-child {
   border-top-left-radius: 0em;
-  border-bottom-left-radius: 0em;
-  border-top-right-radius: 0.25em;
+  border-bottom-left-radius: 0.25em;
+  border-top-right-radius: 0em;
   border-bottom-right-radius: 0.25em;
 }
-.Toolbar .ToolGroup :only-child {
+.ToolGroup :only-child {
   border-top-left-radius: 0.25em;
   border-bottom-left-radius: 0.25em;
   border-top-right-radius: 0.25em;
   border-bottom-right-radius: 0.25em;
 }
 
+.ToolGroupH {
+  display: flex;
+  width: 100%;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  align-items: stretch;
+  gap: 0.1em;
+}
+.ToolGroupH :first-child {
+  border-top-left-radius: 0.25em;
+  border-bottom-left-radius: 0.25em;
+  border-top-right-radius: 0em;
+  border-bottom-right-radius: 0em;
+}
+.ToolGroupH :not(:first-child) {
+  border-top-left-radius: 0em;
+  border-bottom-left-radius: 0em;
+  border-top-right-radius: 0em;
+  border-bottom-right-radius: 0em;
+}
+.ToolGroupH :last-child {
+  border-top-left-radius: 0em;
+  border-bottom-left-radius: 0em;
+  border-top-right-radius: 0.25em;
+  border-bottom-right-radius: 0.25em;
+}
+.ToolGroupH :only-child {
+  border-top-left-radius: 0.25em;
+  border-bottom-left-radius: 0.25em;
+  border-top-right-radius: 0.25em;
+  border-bottom-right-radius: 0.25em;
+}
+.ToolGroupH {
+  button {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-size: cover;
+    color: white;
+  }
+}
 .Contents {
   padding: 0.5em;
   display: grid;
@@ -773,6 +752,7 @@ input {
 }
 
 .Preview {
+  gap: 0.5em !important;
   background: rgba(255, 255, 255, 0.75);
   justify-self: end;
   align-self: stretch;
@@ -858,35 +838,96 @@ input {
   overflow: auto;
   z-index: 10;
   padding: 0.25em;
-  .ToolGroup :first-child {
-    width: 100%;
-    border-top-left-radius: 0.25em;
-    border-top-right-radius: 0.25em;
-    border-bottom-right-radius: 0em;
-    border-bottom-left-radius: 0em;
-  }
-  .ToolGroup :not(:first-child) {
-    width: 100%;
-    border-top-left-radius: 0em;
-    border-bottom-left-radius: 0em;
-    border-top-right-radius: 0em;
-    border-bottom-right-radius: 0em;
-  }
-  .ToolGroup :last-child {
-    width: 100%;
-    border-top-left-radius: 0em;
-    border-bottom-left-radius: 0.25em;
-    border-top-right-radius: 0em;
-    border-bottom-right-radius: 0.25em;
-  }
-  .ToolGroup :only-child {
-    width: 100%;
-    border-top-left-radius: 0.25em;
-    border-bottom-left-radius: 0.25em;
-    border-top-right-radius: 0.25em;
-    border-bottom-right-radius: 0.25em;
-  }
 }
 .show {
   display: block;
+}
+[data-tooltip] {
+  position: relative;
+  cursor: pointer;
+}
+[data-tooltip]:before,
+[data-tooltip]:after {
+  line-height: 1;
+  font-size: .9em;
+  pointer-events: none;
+  position: absolute;
+  box-sizing: border-box;
+  display: none;
+  opacity: 0;
+}
+[data-tooltip]:before {
+  content: "";
+  z-index: 100;
+}
+[data-tooltip]:after {
+  content: attr(data-tooltip);
+  text-align: center;
+  min-width: 3em;
+  max-width: 21em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 0.5em 1em;
+  border-radius: 0.25em;
+  color: #000000;
+  z-index: 99;
+}
+[data-tooltip]:hover:before,
+[data-tooltip]:hover:after {
+  display: block;
+  opacity: 1;
+}
+[data-tooltip]:not([data-flow])::before,
+[data-tooltip][data-flow="top"]::before {
+  bottom: 100%;
+}
+[data-tooltip]:not([data-flow])::after,
+[data-tooltip][data-flow="top"]::after {
+  bottom: calc(100% + 5px);
+}
+[data-tooltip]:not([data-flow])::before, [tooltip]:not([data-flow])::after,
+[data-tooltip][data-flow="top"]::before,
+[data-tooltip][data-flow="top"]::after {
+  left: 50%;
+  -webkit-transform: translate(-50%, -0.5em);
+          transform: translate(-50%, -0.5em);
+}
+[data-tooltip][data-flow="bottom"]::before {
+  top: 100%;
+}
+[data-tooltip][data-flow="bottom"]::after {
+  top: calc(100% + 5px);
+}
+[data-tooltip][data-flow="bottom"]::before, [data-tooltip][data-flow="bottom"]::after {
+  left: 50%;
+  -webkit-transform: translate(-50%, 0.75em);
+          transform: translate(-50%, 0.75em);
+}
+[data-tooltip][data-flow="left"]::before {
+  top: 50%;
+  left: calc(0em - 5px);
+  -webkit-transform: translate(-0.75em, -50%);
+          transform: translate(-0.75em, -50%);
+}
+[data-tooltip][data-flow="left"]::after {
+  top: 50%;
+  right: calc(100% + 5px);
+  -webkit-transform: translate(-0.75em, -50%);
+          transform: translate(-0.75em, -50%);
+}
+[data-tooltip][data-flow="right"]::before {
+  top: 50%;
+  right: calc(0em - 5px);
+  -webkit-transform: translate(0.75em, -50%);
+          transform: translate(0.75em, -50%);
+}
+[data-tooltip][data-flow="right"]::after {
+  top: 50%;
+  left: calc(100% + 5px);
+  -webkit-transform: translate(0.75em, -50%);
+          transform: translate(0.75em, -50%);
+}
+[data-tooltip=""]::after, [data-tooltip=""]::before {
+  display: none !important;
 }

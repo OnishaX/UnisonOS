@@ -10,53 +10,45 @@
 <div id="SettingsApp" class="AppPage">
 	<div class="ListSection" style="background:none;">
 		<div class="HList">
-			<button class="AppMenuButton" type="button" onClick='LaunchWindow(`Scour`)' style="width: 5em; height:5em; display: flex; align-items: middle; padding-top: 0px !important;
+			<button class="AppMenuButton" type="button" style="width: 5em; height:5em; display: flex; align-items: middle; padding-top: 0px !important;
 				padding-bottom: 0px !important;
-				background-size: cover; background-image: url(/users/template/Apps/Scour/AppIcon.svg)"><i
-					class="ri-global-fill ri-2x" style="margin: auto; color: white;"></i></button>
-			<h2>Scour</h2>
-		</div>
-	</div>
-
-	<div class="ListSection">
-		<h2>General</h2>
-		<div class="HList">
-			<button class="HListItem">
-				<div class="ListItemIcon"></div>
-				<div class="ListItemLabel">Setting</div>
-			</button>
-			<button class="HListItem">
-				<div class="ListItemIcon"></div>
-				<div class="ListItemLabel">Setting</div>
-			</button>
-			<button class="HListItem">
-				<div class="ListItemIcon"></div>
-				<div class="ListItemLabel">Setting</div>
-			</button>
-			<button class="HListItem">
-				<div class="ListItemIcon"></div>
-				<div class="ListItemLabel">Setting</div>
-			</button>
-			<button class="HListItem">
-				<div class="ListItemIcon"></div>
-				<div class="ListItemLabel">Setting</div>
-			</button>
-			<button class="HListItem">
-				<div class="ListItemIcon"></div>
-				<div class="ListItemLabel">Setting</div>
-			</button>
+				background-size: cover; background-image: url(/users/template/Apps/Settings/AppIcon.svg)"><i
+					class="ri-volume-up-fill ri-2x" style="margin: auto; color: white;"></i></button>
+			<h2>Sounds</h2>
 		</div>
 	</div>
 	<div class="ListSection">
-		<h2>Notifications</h2>
+		<h2>Volume</h2>
+		<div class="HList">
+			<input type="range" min="0" max="100" value="50" class="slider">
+		</div>
+	</div>
+	<div class="ListSection">
+		<h2>Play Sounds During:</h2>
 		<div class="HList">
 			<button class="HListItem">
 				<div class="ListItemIcon"></div>
-				<div class="ListItemLabel">Sounds</div>
+				<div class="ListItemLabel">Startup</div>
 			</button>
 			<button class="HListItem">
 				<div class="ListItemIcon"></div>
-				<div class="ListItemLabel">Alerts</div>
+				<div class="ListItemLabel">Login</div>
+			</button>
+			<button class="HListItem">
+				<div class="ListItemIcon"></div>
+				<div class="ListItemLabel">Logoff</div>
+			</button>
+			<button class="HListItem">
+				<div class="ListItemIcon"></div>
+				<div class="ListItemLabel">Alert</div>
+			</button>
+			<button class="HListItem">
+				<div class="ListItemIcon"></div>
+				<div class="ListItemLabel">Error</div>
+			</button>
+			<button class="HListItem">
+				<div class="ListItemIcon"></div>
+				<div class="ListItemLabel">Shutdown</div>
 			</button>
 		</div>
 	</div>

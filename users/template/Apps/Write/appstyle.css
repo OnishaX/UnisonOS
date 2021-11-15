@@ -1,5 +1,12 @@
 #WriteApp {
-  --PrimaryAppColor: #132FBF;
+  --PrimaryAppColor: #132fbf;
+}
+
+#WriteApp .Contents {
+  -ms-grid-columns: 1fr min-content;
+      grid-template-columns: 1fr -webkit-min-content;
+      grid-template-columns: 1fr min-content;
+      grid-template-areas: "Body Preview";
 }
 
 #WriteApp .Toolbar {

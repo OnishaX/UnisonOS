@@ -740,6 +740,8 @@ button:active {
 }
 
 .AppPage {
+  height: 100vh;
+  width: 100%;
   overflow-x: hidden;
   overflow: auto;
   overflow-y: scroll;
@@ -747,6 +749,7 @@ button:active {
 }
 
 .Body {
+  border: none;
   justify-self: stretch;
   -ms-flex-item-align: stretch;
       align-self: stretch;
@@ -807,6 +810,13 @@ button:active {
   height: -webkit-fit-content !important;
   height: -moz-fit-content !important;
   height: fit-content !important;
+}
+
+hr {
+  margin-top: 1em;
+  margin-bottom: 1em;
+  margin-left: 0.5em;
+  margin-right: 0.5em;
 }
 
 .HList {
@@ -972,106 +982,6 @@ button:active {
   width: 100%;
 }
 
-.Sidebar .ToolGroup {
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  gap: 0.1em;
-}
-
-.Sidebar .ToolGroup :first-child {
-  border-top-left-radius: 0.25em;
-  border-top-right-radius: 0.25em;
-  border-bottom-right-radius: 0em;
-  border-bottom-left-radius: 0em;
-}
-
-.Sidebar .ToolGroup :not(:first-child) {
-  border-top-left-radius: 0em;
-  border-bottom-left-radius: 0em;
-  border-top-right-radius: 0em;
-  border-bottom-right-radius: 0em;
-}
-
-.Sidebar .ToolGroup :last-child {
-  border-top-left-radius: 0em;
-  border-bottom-left-radius: 0.25em;
-  border-top-right-radius: 0em;
-  border-bottom-right-radius: 0.25em;
-}
-
-.Sidebar .ToolGroup :only-child {
-  border-top-left-radius: 0.25em;
-  border-bottom-left-radius: 0.25em;
-  border-top-right-radius: 0.25em;
-  border-bottom-right-radius: 0.25em;
-}
-
-.Sidebar .ToolGroupH {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  width: 100%;
-  -ms-flex-wrap: nowrap;
-      flex-wrap: nowrap;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-align: stretch;
-      -ms-flex-align: stretch;
-          align-items: stretch;
-  gap: 0.1em;
-}
-
-.Sidebar .ToolGroupH :first-child {
-  border-top-left-radius: 0.25em;
-  border-bottom-left-radius: 0.25em;
-  border-top-right-radius: 0em;
-  border-bottom-right-radius: 0em;
-}
-
-.Sidebar .ToolGroupH :not(:first-child) {
-  border-top-left-radius: 0em;
-  border-bottom-left-radius: 0em;
-  border-top-right-radius: 0em;
-  border-bottom-right-radius: 0em;
-}
-
-.Sidebar .ToolGroupH :last-child {
-  border-top-left-radius: 0em;
-  border-bottom-left-radius: 0em;
-  border-top-right-radius: 0.25em;
-  border-bottom-right-radius: 0.25em;
-}
-
-.Sidebar .ToolGroupH :only-child {
-  border-top-left-radius: 0.25em;
-  border-bottom-left-radius: 0.25em;
-  border-top-right-radius: 0.25em;
-  border-bottom-right-radius: 0.25em;
-}
-
-.Sidebar .ToolGroupH button {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  background-size: cover;
-  background-image: url(/users/template/Apps/Settings/AppIcon.svg);
-  color: white;
-}
-
 .Toolbar {
   padding: 0.5em;
   background: rgba(255, 255, 255, 0.75);
@@ -1208,11 +1118,17 @@ input {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  justify-self: stretch;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  gap: 0.5em;
+  gap: 1em;
+}
+
+.Tools .ToolGroupH button {
+  width: unset;
 }
 
 .Tools button {
@@ -1232,48 +1148,108 @@ input {
   border-radius: unset;
 }
 
-.Toolbar .ToolGroup {
+button:hover {
+  cursor: pointer;
+}
+
+.ToolGroup {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  gap: 0.1em;
+}
+
+.ToolGroup :first-child {
+  border-top-left-radius: 0.25em;
+  border-top-right-radius: 0.25em;
+  border-bottom-right-radius: 0em;
+  border-bottom-left-radius: 0em;
+}
+
+.ToolGroup :not(:first-child) {
+  border-top-left-radius: 0em;
+  border-bottom-left-radius: 0em;
+  border-top-right-radius: 0em;
+  border-bottom-right-radius: 0em;
+}
+
+.ToolGroup :last-child {
+  border-top-left-radius: 0em;
+  border-bottom-left-radius: 0.25em;
+  border-top-right-radius: 0em;
+  border-bottom-right-radius: 0.25em;
+}
+
+.ToolGroup :only-child {
+  border-top-left-radius: 0.25em;
+  border-bottom-left-radius: 0.25em;
+  border-top-right-radius: 0.25em;
+  border-bottom-right-radius: 0.25em;
+}
+
+.ToolGroupH {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
   -ms-flex-wrap: nowrap;
       flex-wrap: nowrap;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  -webkit-box-align: left;
-      -ms-flex-align: left;
-          align-items: left;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
   gap: 0.1em;
 }
 
-.Toolbar .ToolGroup :first-child {
+.ToolGroupH :first-child {
   border-top-left-radius: 0.25em;
   border-bottom-left-radius: 0.25em;
   border-top-right-radius: 0em;
   border-bottom-right-radius: 0em;
 }
 
-.Toolbar .ToolGroup :not(:first-child) {
+.ToolGroupH :not(:first-child) {
   border-top-left-radius: 0em;
   border-bottom-left-radius: 0em;
   border-top-right-radius: 0em;
   border-bottom-right-radius: 0em;
 }
 
-.Toolbar .ToolGroup :last-child {
+.ToolGroupH :last-child {
   border-top-left-radius: 0em;
   border-bottom-left-radius: 0em;
   border-top-right-radius: 0.25em;
   border-bottom-right-radius: 0.25em;
 }
 
-.Toolbar .ToolGroup :only-child {
+.ToolGroupH :only-child {
   border-top-left-radius: 0.25em;
   border-bottom-left-radius: 0.25em;
   border-top-right-radius: 0.25em;
   border-bottom-right-radius: 0.25em;
+}
+
+.ToolGroupH button {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-size: cover;
+  color: white;
 }
 
 .Contents {
@@ -1297,6 +1273,7 @@ input {
 }
 
 .Preview {
+  gap: 0.5em !important;
   background: rgba(255, 255, 255, 0.75);
   -ms-grid-column-align: end;
       justify-self: end;
@@ -1427,39 +1404,113 @@ input {
   padding: 0.25em;
 }
 
-.dropdown-content .ToolGroup :first-child {
-  width: 100%;
-  border-top-left-radius: 0.25em;
-  border-top-right-radius: 0.25em;
-  border-bottom-right-radius: 0em;
-  border-bottom-left-radius: 0em;
-}
-
-.dropdown-content .ToolGroup :not(:first-child) {
-  width: 100%;
-  border-top-left-radius: 0em;
-  border-bottom-left-radius: 0em;
-  border-top-right-radius: 0em;
-  border-bottom-right-radius: 0em;
-}
-
-.dropdown-content .ToolGroup :last-child {
-  width: 100%;
-  border-top-left-radius: 0em;
-  border-bottom-left-radius: 0.25em;
-  border-top-right-radius: 0em;
-  border-bottom-right-radius: 0.25em;
-}
-
-.dropdown-content .ToolGroup :only-child {
-  width: 100%;
-  border-top-left-radius: 0.25em;
-  border-bottom-left-radius: 0.25em;
-  border-top-right-radius: 0.25em;
-  border-bottom-right-radius: 0.25em;
-}
-
 .show {
   display: block;
+}
+
+[data-tooltip] {
+  position: relative;
+  cursor: pointer;
+}
+
+[data-tooltip]:before,
+[data-tooltip]:after {
+  line-height: 1;
+  font-size: .9em;
+  pointer-events: none;
+  position: absolute;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  display: none;
+  opacity: 0;
+}
+
+[data-tooltip]:before {
+  content: "";
+  z-index: 100;
+}
+
+[data-tooltip]:after {
+  content: attr(data-tooltip);
+  text-align: center;
+  min-width: 3em;
+  max-width: 21em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 0.5em 1em;
+  border-radius: 0.25em;
+  color: #000000;
+  z-index: 99;
+}
+
+[data-tooltip]:hover:before,
+[data-tooltip]:hover:after {
+  display: block;
+  opacity: 1;
+}
+
+[data-tooltip]:not([data-flow])::before,
+[data-tooltip][data-flow="top"]::before {
+  bottom: 100%;
+}
+
+[data-tooltip]:not([data-flow])::after,
+[data-tooltip][data-flow="top"]::after {
+  bottom: calc(100% + 5px);
+}
+
+[data-tooltip]:not([data-flow])::before, [tooltip]:not([data-flow])::after,
+[data-tooltip][data-flow="top"]::before,
+[data-tooltip][data-flow="top"]::after {
+  left: 50%;
+  -webkit-transform: translate(-50%, -0.5em);
+  transform: translate(-50%, -0.5em);
+}
+
+[data-tooltip][data-flow="bottom"]::before {
+  top: 100%;
+}
+
+[data-tooltip][data-flow="bottom"]::after {
+  top: calc(100% + 5px);
+}
+
+[data-tooltip][data-flow="bottom"]::before, [data-tooltip][data-flow="bottom"]::after {
+  left: 50%;
+  -webkit-transform: translate(-50%, 0.75em);
+  transform: translate(-50%, 0.75em);
+}
+
+[data-tooltip][data-flow="left"]::before {
+  top: 50%;
+  left: calc(0em - 5px);
+  -webkit-transform: translate(-0.75em, -50%);
+  transform: translate(-0.75em, -50%);
+}
+
+[data-tooltip][data-flow="left"]::after {
+  top: 50%;
+  right: calc(100% + 5px);
+  -webkit-transform: translate(-0.75em, -50%);
+  transform: translate(-0.75em, -50%);
+}
+
+[data-tooltip][data-flow="right"]::before {
+  top: 50%;
+  right: calc(0em - 5px);
+  -webkit-transform: translate(0.75em, -50%);
+  transform: translate(0.75em, -50%);
+}
+
+[data-tooltip][data-flow="right"]::after {
+  top: 50%;
+  left: calc(100% + 5px);
+  -webkit-transform: translate(0.75em, -50%);
+  transform: translate(0.75em, -50%);
+}
+
+[data-tooltip=""]::after, [data-tooltip=""]::before {
+  display: none !important;
 }
 /*# sourceMappingURL=stylesheet.css.map */
