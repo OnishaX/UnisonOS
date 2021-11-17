@@ -33,31 +33,21 @@ h2 {
 }
 
 .DockDrawerOpen {
-  -webkit-transition: all 0.5s ease-out;
-  transition: all 0.5s ease-out;
-  overflow: visible;
-  display: -ms-grid;
-  display: grid;
+  -webkit-transition: all 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out;
+  -ms-grid-columns: 1fr min-content;
       grid-template-columns: 1fr -webkit-min-content;
       grid-template-columns: 1fr min-content;
+  -ms-grid-rows: 1fr;
       grid-template-rows: 1fr;
-  gap: 0px 0px;
-      grid-template-areas: "AppList System";
-      align-self: end;
-  -ms-grid-row: 2;
-  -ms-grid-column: 1;
-  grid-area: Dock;
-  border-radius: 0.25em;
-  height: 3.5em !important;
-  padding: 0.5em !important;
   background: rgba(255, 255, 255, 0.75);
   -webkit-backdrop-filter: blur(1em);
           backdrop-filter: blur(1em);
 }
 
 .WindowsDrawerOpen {
-  -webkit-transition: all 0.5s ease-out;
-  transition: all 0.5s ease-out;
+  -webkit-transition: all 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out;
   display: -ms-grid;
   display: grid;
   grid-auto-flow: column;
@@ -82,55 +72,27 @@ h2 {
 }
 
 .DrawerDrawerOpen {
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
-  border-radius: 0.25em;
-  overflow: visible;
-  background: rgba(255, 255, 255, 0.75);
-  -webkit-backdrop-filter: blur(1em);
-          backdrop-filter: blur(1em);
   position: fixed;
   bottom: 0.5em;
   height: 50% !important;
   right: 0.5em;
   left: 0.5em;
-  -webkit-transition: all 0.5s ease-out;
-  transition: all 0.5s ease-out;
+  -webkit-transition: all 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out;
   -webkit-box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
           box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
 }
 
 .AllAppsDrawerOpen {
-  -webkit-box-shadow: 1em 1em 1em -0.5em rgba(0, 0, 0, 0.2);
-          box-shadow: 1em 1em 1em -0.5em rgba(0, 0, 0, 0.2);
-  -webkit-transition: all 0.5s ease-out;
-  transition: all 0.5s ease-out;
-  padding: 0.5em !important;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
-  border-radius: 0.25em;
-  overflow-y: scroll;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  width: 100%;
-  gap: 0.5em;
+  -webkit-transition: all 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out;
+  overflow: scroll;
 }
 
 #AllApps {
-  -webkit-transition: all 0.5s ease-out;
-  transition: all 0.5s ease-out;
-  padding: 0.75em;
+  -webkit-transition: all 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out;
+  padding: 0.5em;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
@@ -139,13 +101,13 @@ h2 {
       -ms-flex-align: start;
           align-items: flex-start;
   border-radius: 0.25em;
-  overflow-y: scroll;
+  overflow: hidden;
   height: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   width: 100%;
-  gap: 0.5em;
+  gap: 0.25em;
 }
 
 #Drawer {
@@ -163,8 +125,8 @@ h2 {
   background: rgba(255, 255, 255, 0.75);
   -webkit-backdrop-filter: blur(1em);
           backdrop-filter: blur(1em);
-  -webkit-transition: all 0.5s ease-out;
-  transition: all 0.5s ease-out;
+  -webkit-transition: all 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out;
 }
 
 body {
@@ -205,8 +167,8 @@ button {
   height: 2em;
   border-radius: 0.25em;
   white-space: nowrap;
-  -webkit-transition: all 300em linear;
-  transition: all 300em linear;
+  -webkit-transition: all 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out;
   font-size: 1em;
   color: #ffffff;
 }
@@ -222,23 +184,28 @@ button:active {
 }
 
 #Display {
-  -webkit-transition: all 150ms ease-out;
-  transition: all 150ms ease-out;
+  -webkit-transition: all 2.5s ease-in-out;
+  transition: all 2.5s ease-in-out;
   padding: 0.5em;
   height: 100vh;
   overflow: hidden;
-  display: -ms-grid;
-  display: grid;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   -ms-grid-rows: 1fr min-content;
       grid-template-rows: 1fr -webkit-min-content;
       grid-template-rows: 1fr min-content;
-  -ms-grid-columns: 1fr;
-      grid-template-columns: 1fr;
+  -ms-grid-columns: 1fr min-content;
+      grid-template-columns: 1fr -webkit-min-content;
+      grid-template-columns: 1fr min-content;
   gap: 0.5em;
       grid-template-areas: "Windows" "Dock";
-  -ms-grid-column-align: stretch;
-      justify-self: stretch;
-  -ms-grid-row-align: stretch;
+  justify-self: stretch;
+  -ms-flex-item-align: stretch;
       align-self: stretch;
   -ms-grid-row: 1;
   -ms-grid-column: 1;
@@ -251,8 +218,9 @@ button:active {
 }
 
 #Windows {
-  -webkit-transition: all 0.5s ease-out;
-  transition: all 0.5s ease-out;
+  height: 100%;
+  -webkit-transition: all 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out;
   display: -ms-grid;
   display: grid;
   grid-auto-flow: column;
@@ -277,8 +245,8 @@ button:active {
 }
 
 #Dock {
-  -webkit-transition: background-color ease-out 0.5s;
-  transition: background-color ease-out 0.5s;
+  -webkit-transition: all 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out;
   overflow: visible;
   display: -ms-grid;
   display: grid;
@@ -675,14 +643,14 @@ button:active {
   87% {
     -webkit-transform: translateY(0px);
             transform: translateY(0px);
-    -webkit-animation-timing-function: ease-out;
-            animation-timing-function: ease-out;
+    -webkit-animation-timing-function: ease-in-out;
+            animation-timing-function: ease-in-out;
   }
   100% {
     -webkit-transform: translateY(0px);
             transform: translateY(0px);
-    -webkit-animation-timing-function: ease-out;
-            animation-timing-function: ease-out;
+    -webkit-animation-timing-function: ease-in-out;
+            animation-timing-function: ease-in-out;
     opacity: 1;
   }
 }
@@ -727,14 +695,14 @@ button:active {
   87% {
     -webkit-transform: translateY(0px);
             transform: translateY(0px);
-    -webkit-animation-timing-function: ease-out;
-            animation-timing-function: ease-out;
+    -webkit-animation-timing-function: ease-in-out;
+            animation-timing-function: ease-in-out;
   }
   100% {
     -webkit-transform: translateY(0px);
             transform: translateY(0px);
-    -webkit-animation-timing-function: ease-out;
-            animation-timing-function: ease-out;
+    -webkit-animation-timing-function: ease-in-out;
+            animation-timing-function: ease-in-out;
     opacity: 1;
   }
 }
@@ -937,8 +905,8 @@ hr {
   -webkit-box-align: stretch;
       -ms-flex-align: stretch;
           align-items: stretch;
-  -webkit-animation-timing-function: ease-out;
-          animation-timing-function: ease-out;
+  -webkit-animation-timing-function: ease-in-out;
+          animation-timing-function: ease-in-out;
 }
 
 .Sidebar {
@@ -1261,7 +1229,7 @@ button:hover {
       grid-template-columns: 1fr min-content;
   -ms-grid-rows: 1fr;
       grid-template-rows: 1fr;
-  gap: 0.5 0px;
+  gap: 0.5em;
   grid-auto-flow: row;
       grid-template-areas: "Body Preview";
   -ms-grid-row: 2;
@@ -1273,12 +1241,17 @@ button:hover {
 }
 
 .Preview {
-  gap: 0.5em !important;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 0.5em;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   background: rgba(255, 255, 255, 0.75);
-  -ms-grid-column-align: end;
-      justify-self: end;
+  justify-self: end;
   -ms-flex-item-align: stretch;
-      -ms-grid-row-align: stretch;
       align-self: stretch;
   border-radius: 1em;
   width: -webkit-fit-content;
@@ -1294,7 +1267,7 @@ button:hover {
 }
 
 #System {
-  gap: 0.5em !important;
+  gap: 0.25em;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1311,8 +1284,8 @@ button:hover {
   border-radius: 0.25em;
   border-style: none;
   background-size: cover;
-  -webkit-transition: translate 250ms ease-out;
-  transition: translate 250ms ease-out;
+  -webkit-transition: translate 250ms ease-in-out;
+  transition: translate 250ms ease-in-out;
 }
 
 #AppList {
@@ -1322,7 +1295,7 @@ button:hover {
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
-  gap: 0.5em;
+  gap: 0.25em;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1360,8 +1333,8 @@ button:hover {
   width: 2.5em;
   border-style: none;
   background-size: cover;
-  -webkit-transition: translate 250ms ease-out;
-  transition: translate 250ms ease-out;
+  -webkit-transition: translate 250ms ease-in-out;
+  transition: translate 250ms ease-in-out;
 }
 
 .DockIconGhost {
@@ -1381,8 +1354,8 @@ button:hover {
   border-radius: 0.25em;
   width: 2.5em;
   background-size: cover;
-  -webkit-transition: translate 250ms ease-out;
-  transition: translate 250ms ease-out;
+  -webkit-transition: translate 250ms ease-in-out;
+  transition: translate 250ms ease-in-out;
 }
 
 .dropdown {

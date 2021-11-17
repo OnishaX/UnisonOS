@@ -28,25 +28,15 @@ h2 {
 }
 
 .DockDrawerOpen{
-  
-  transition: all 0.5s ease-out;
-  overflow: visible;
-  display: grid;
+  transition: all 0.25s ease-in-out;
   grid-template-columns: 1fr min-content;
   grid-template-rows: 1fr;
-  gap: 0px 0px;
-  grid-template-areas: "AppList System";
-  align-self: end;
-  grid-area: Dock;
-  border-radius: 0.25em;
-  height: 3.5em !important;
-  padding: 0.5em !important;
   background: rgba(255, 255, 255, 0.75);
   backdrop-filter: blur(1em);
 }
 
 .WindowsDrawerOpen {
-  transition: all 0.5s ease-out;
+  transition: all 0.25s ease-in-out;
   display: grid;
   grid-auto-flow: column;
   grid-auto-rows: 1fr;
@@ -61,44 +51,30 @@ h2 {
   transform: scale(0.4) translatey(-66%);
 }
 .DrawerDrawerOpen {
-  flex-direction: column;
-  align-items: flex-start;
-  border-radius: 0.25em;
-  overflow: visible;
-  background: rgba(255, 255, 255, 0.75);
-  backdrop-filter: blur(1em);
   position: fixed;
   bottom: 0.5em;
   height: 50% !important;
   right: 0.5em;
   left: 0.5em;
-  transition: all 0.5s ease-out;
+  transition: all 0.25s ease-in-out;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
 }
 
 .AllAppsDrawerOpen {
-  box-shadow: 1em 1em 1em -0.5em rgba(0, 0, 0, 0.2);
-  transition: all 0.5s ease-out;
-  padding: 0.5em !important;
-  flex-direction: row;
-  align-items: flex-start;
-  border-radius: 0.25em;
-  overflow-y: scroll;
-  display: flex;
-  width: 100%;
-  gap: 0.5em;
+  transition: all 0.25s ease-in-out;
+  overflow: scroll;
 }
 #AllApps {
-  transition: all 0.5s ease-out;
-  padding: 0.75em;
+  transition: all 0.25s ease-in-out;
+  padding: 0.5em;
   flex-direction: row;
   align-items: flex-start;
   border-radius: 0.25em;
-  overflow-y: scroll;
+  overflow: hidden;
   height: 100%;
   display: flex;
   width: 100%;
-  gap: 0.5em;
+  gap: 0.25em;
 }
 
 #Drawer {
@@ -109,7 +85,7 @@ h2 {
   overflow: visible;
   background: rgba(255, 255, 255, 0.75);
   backdrop-filter: blur(1em);
-  transition: all 0.5s ease-out;
+  transition: all 0.25s ease-in-out;
 }
 
 body {
@@ -137,7 +113,7 @@ button {
   height: 2em;
   border-radius: 0.25em;
   white-space: nowrap;
-  transition: all 300em linear;
+  transition: all 0.25s ease-in-out;
   font-size: 1em;
   color: #ffffff;
   
@@ -153,13 +129,14 @@ button:active {
 }
 
 #Display {
-  transition: all 150ms ease-out;
+  transition: all 2.5s ease-in-out;
   padding: 0.5em;
   height: 100vh;
   overflow: hidden;
-  display: grid;
+  display: flex;
+  flex-direction: column;
   grid-template-rows: 1fr min-content;
-  grid-template-columns: 1fr;
+  grid-template-columns: 1fr min-content;
   gap: 0.5em;
   grid-template-areas:
     "Windows"
@@ -174,7 +151,8 @@ button:active {
   opacity: 0.1;
 }
 #Windows {
-  transition: all 0.5s ease-out;
+  height: 100%;
+  transition: all 0.25s ease-in-out;
   display: grid;
   grid-auto-flow: column;
   grid-auto-rows: 1fr;
@@ -188,7 +166,7 @@ button:active {
   grid-area: Windows;
 }
 #Dock {
-  transition: background-color ease-out 0.5s;
+  transition: all 0.25s ease-in-out;
   overflow: visible;
   display: grid;
   grid-template-columns: 1fr min-content;
@@ -405,11 +383,11 @@ button:active {
   75%,
   87% {
     transform: translateY(0px);
-    animation-timing-function: ease-out;
+    animation-timing-function: ease-in-out;
   }
   100% {
     transform: translateY(0px);
-    animation-timing-function: ease-out;
+    animation-timing-function: ease-in-out;
     opacity: 1;
   }
 }
@@ -537,7 +515,7 @@ hr {
   align-content: stretch;
   justify-items: stretch;
   align-items: stretch;
-  animation-timing-function: ease-out;
+  animation-timing-function: ease-in-out;
   
 }
 
@@ -743,7 +721,7 @@ button:hover {
   display: grid;
   grid-template-columns: 1fr min-content;
   grid-template-rows: 1fr;
-  gap: 0.5 0px;
+  gap: 0.5em;
   grid-auto-flow: row;
   grid-template-areas: "Body Preview";
   grid-area: Contents;
@@ -752,7 +730,9 @@ button:hover {
 }
 
 .Preview {
-  gap: 0.5em !important;
+  display: flex;
+  gap: 0.5em;
+  flex-direction: column;
   background: rgba(255, 255, 255, 0.75);
   justify-self: end;
   align-self: stretch;
@@ -765,7 +745,7 @@ button:hover {
 }
 
 #System {
-  gap: 0.5em !important;
+  gap: 0.25em;
   display: flex;
   flex-direction: row;
   justify-self: flex-end;
@@ -775,13 +755,13 @@ button:hover {
   border-radius: 0.25em;  
   border-style: none;
   background-size: cover;
-  transition: translate 250ms ease-out;
+  transition: translate 250ms ease-in-out;
 }
 #AppList {
   justify-self: start;
   align-self: stretch;
   flex-grow: 1;
-  gap: 0.5em;
+  gap: 0.25em;
   display: flex;
   width: 100%;
   grid-area: AppList;
@@ -802,7 +782,7 @@ button:hover {
   width: 2.5em;
   border-style: none;
   background-size: cover;
-  transition: translate 250ms ease-out;
+  transition: translate 250ms ease-in-out;
 }
 .DockIconGhost {
   display: inline-block;
@@ -820,7 +800,7 @@ button:hover {
   border-radius: 0.25em;
   width: 2.5em;
   background-size: cover;
-  transition: translate 250ms ease-out;
+  transition: translate 250ms ease-in-out;
 }
 .dropdown {
   position: relative;
