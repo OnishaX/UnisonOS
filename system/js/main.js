@@ -6,7 +6,12 @@ let Usersettings = {
   Username: "template",
   Firstname: "Template",
   Lastname: "User",
-  Wallpaper: "Swirl.png",
+  Wallpaper: {
+    Wallpaper: "Swirl",
+    Variant: "Dark",
+    Ext: "png",
+    Auto: false,
+  },  
   Sounds: {
     Startup: true,
     Login: false,
@@ -55,9 +60,7 @@ function init() {
 
   console.log("Init Triggered");
   console.log(RunningApps)
-  temp = document.getElementById("Display");
-  temp.style.backgroundImage = String("url(/users/" + Usersettings.Username + "/Backgrounds/" + Usersettings.Wallpaper);
-
+  SetWallpaper(Usersettings.Wallpaper.Wallpaper,Usersettings.Wallpaper.Variant, Usersettings.Wallpaper.Ext)
   displayPinnedList();
   displayAppList();
   displaySystem();
@@ -80,8 +83,6 @@ function init() {
     ghostClass: "DockAppIconGhost"
   });
 
-
-
   if (Usersettings.Sounds.Login == true) {
     var audio = new Audio('/system/sounds/Login.mp3');
     audio.play();
@@ -89,6 +90,20 @@ function init() {
 
   console.log("Init Complete");
 }
+function SetWallpaper(selection,variant,ext){
+  if (selection != null) {
+  Usersettings.Wallpaper.Wallpaper = selection
+  }
+  if (variant != null) {
+  Usersettings.Wallpaper.Variant = variant
+  }
+  if (ext != null) {
+  Usersettings.Wallpaper.Ext = ext
+  }
+  temp = document.getElementById("Display");
+  temp.style.backgroundImage = String("url(/users/" + Usersettings.Username + "/Backgrounds/" + Usersettings.Wallpaper.Wallpaper + "/" + Usersettings.Wallpaper.Variant + "." + Usersettings.Wallpaper.Ext);
+  console.log(String("url(/users/" + Usersettings.Username + "/Backgrounds/" + Usersettings.Wallpaper.Wallpaper + "/" + Usersettings.Wallpaper.Variant + "." + Usersettings.Wallpaper.Ext))
+  }
 
 function AdjustWindowTiling() {
   // if (RunningApps.length == 1) {
@@ -194,12 +209,9 @@ function LoadPage(targetapp, newpage) {
 
   $('#' + TargetApp + "ScreenContainer").empty();
   $('#' + TargetApp + "ScreenContainer").append('<embed name="' + TargetApp + 'Screen" rel="preload" style="width: 100%; height: 100%; overflow:scroll; border-radius: 0.5em; border: none;" class="Body" id="' + TargetApp + 'Screen" src="/users/' + Usersettings.Username + '/Apps/' + TargetApp + '/Screens/' + NewPage + '.html"></embed>');
-
-  console.log(String(TargetApp + 'Body'));
-  console.log(String(TargetApp + 'ScreenContainer'));
-  console.log(String(TargetApp + 'Screen'));
-  console.log(String('/users/' + Usersettings.Username + '/Apps/' + TargetApp + '/Screens/' + NewPage + '.html'));
-  History.push(TargetApp(NewPage));
+  temp = History.indexOf(TargetApp)
+  History[temp].push(NewPage)
+  console.log(History);
 }
 
 function LaunchWindow(launchingApp) {
@@ -268,6 +280,7 @@ function displayAppList() {
   for (let app of Usersettings.InstalledApps) {
     $("#AllApps").append('<div class="DockAppIcon" id="' + app + 'AllAppIcon"></div>');
     $('#' + String(app + 'AllAppIcon')).load('/users/' + Usersettings.Username + '/Apps/' + app + '/AppIcon.html');
+    History.push(app)
   }
 }
 

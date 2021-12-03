@@ -8,9 +8,10 @@
 }
 
 h2 {
+  margin-top: 1em;
+  margin-left: 1em;
   font-size: 1em;
   font-weight: bold;
-  margin-top: unset;
   margin-bottom: unset;
   padding-bottom: 0.5em;
 }
@@ -28,8 +29,8 @@ h2 {
 .DrawerClosed {
   height: 3em !important;
   padding: 0em !important;
-  -webkit-box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
-          box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
+  -webkit-box-shadow: 0em 1em 1.5em -0.5em rgba(0, 0, 0, 0.1);
+          box-shadow: 0em 1em 1.5em -0.5em rgba(0, 0, 0, 0.1);
 }
 
 .DockDrawerOpen {
@@ -79,8 +80,8 @@ h2 {
   left: 0.5em;
   -webkit-transition: all 0.25s ease-in-out;
   transition: all 0.25s ease-in-out;
-  -webkit-box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
-          box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
+  -webkit-box-shadow: 0em 1em 1.5em -0.5em rgba(0, 0, 0, 0.1);
+          box-shadow: 0em 1em 1.5em -0.5em rgba(0, 0, 0, 0.1);
 }
 
 .AllAppsDrawerOpen {
@@ -111,8 +112,8 @@ h2 {
 }
 
 #Drawer {
-  -webkit-box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
-          box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
+  -webkit-box-shadow: 0em 1em 1.5em -0.5em rgba(0, 0, 0, 0.1);
+          box-shadow: 0em 1em 1.5em -0.5em rgba(0, 0, 0, 0.1);
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -122,7 +123,9 @@ h2 {
           align-items: flex-start;
   border-radius: 0.25em;
   overflow: visible;
-  background: rgba(255, 255, 255, 0.75);
+  background-image: url(/system/images/white-brushed.png);
+  background-repeat: repeat;
+  background-color: rgba(255, 255, 255, 0.5);
   -webkit-backdrop-filter: blur(1em);
           backdrop-filter: blur(1em);
   -webkit-transition: all 0.25s ease-in-out;
@@ -184,8 +187,8 @@ button:active {
 }
 
 #Display {
-  -webkit-transition: all 2.5s ease-in-out;
-  transition: all 2.5s ease-in-out;
+  -webkit-transition: all 1s ease-in-out;
+  transition: all 1s ease-in-out;
   padding: 0.5em;
   height: 100vh;
   overflow: hidden;
@@ -745,6 +748,8 @@ button:active {
 }
 
 .ListSection {
+  border: 0.1em solid #00000008;
+  min-height: 8em;
   -webkit-animation: fade-in 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
           animation: fade-in 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
   gap: 0.5em;
@@ -755,7 +760,7 @@ button:active {
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
-  padding: 1em;
+  padding: 0em;
   -webkit-box-flex: 0;
       -ms-flex: none;
           flex: none;
@@ -787,9 +792,26 @@ hr {
   margin-right: 0.5em;
 }
 
+.ScreenHeaderSection {
+  height: 8em;
+  white-space: nowrap;
+  gap: 0.5em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: left;
+      -ms-flex-align: left;
+          align-items: left;
+}
+
 .HList {
-  overflow: auto;
-  overflow-y: hidden;
+  overflow: scroll;
   white-space: nowrap;
   gap: 0.5em;
   display: -webkit-box;
@@ -832,6 +854,14 @@ hr {
   border-radius: 0.25em;
 }
 
+.HListItem:first-child {
+  margin-left: 1em;
+}
+
+.HListItem:last-child {
+  margin-right: 1em;
+}
+
 .bounce-top {
   -webkit-animation: bounce-top 0.9s both;
           animation: bounce-top 0.9s both;
@@ -858,9 +888,11 @@ hr {
 }
 
 .AppContainer {
-  -webkit-box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
-          box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
-  background: rgba(255, 255, 255, 0.75);
+  -webkit-box-shadow: 0em 1em 1.5em -0.5em rgba(0, 0, 0, 0.1);
+          box-shadow: 0em 1em 1.5em -0.5em rgba(0, 0, 0, 0.1);
+  background-image: url(/system/images/white-brushed.png);
+  background-repeat: repeat;
+  background-color: rgba(255, 255, 255, 0.5);
   -webkit-backdrop-filter: blur(1em);
           backdrop-filter: blur(1em);
   border-radius: 0.25em;
@@ -878,10 +910,6 @@ hr {
       grid-template-areas: "App";
   -webkit-transition: width 300ms ease-in-out;
   transition: width 300ms ease-in-out;
-}
-
-.AppContainer body {
-  background-color: none !important;
 }
 
 .App {
@@ -952,7 +980,7 @@ hr {
 
 .Toolbar {
   padding: 0.5em;
-  background: rgba(255, 255, 255, 0.75);
+  background-color: rgba(255, 255, 255, 0.5);
   -webkit-backdrop-filter: blur(1em);
           backdrop-filter: blur(1em);
   display: -ms-grid;
@@ -1053,6 +1081,33 @@ hr {
   -ms-grid-row: 1;
   -ms-grid-column: 1;
   grid-area: AppIcon;
+}
+
+.ScreenHeaderIcon {
+  width: 8em;
+  height: 8em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 0.5em;
+  text-align: center;
+  line-height: 1em;
+  border: none;
+  border-radius: 0.25em;
+  white-space: nowrap;
+  font-size: 1em;
+  color: #ffffff;
+  background-size: cover;
 }
 
 .search {
@@ -1389,7 +1444,7 @@ button:hover {
 [data-tooltip]:before,
 [data-tooltip]:after {
   line-height: 1;
-  font-size: .9em;
+  font-size: 0.9em;
   pointer-events: none;
   position: absolute;
   -webkit-box-sizing: border-box;
@@ -1433,7 +1488,8 @@ button:hover {
   bottom: calc(100% + 5px);
 }
 
-[data-tooltip]:not([data-flow])::before, [tooltip]:not([data-flow])::after,
+[data-tooltip]:not([data-flow])::before,
+[tooltip]:not([data-flow])::after,
 [data-tooltip][data-flow="top"]::before,
 [data-tooltip][data-flow="top"]::after {
   left: 50%;
@@ -1449,7 +1505,8 @@ button:hover {
   top: calc(100% + 5px);
 }
 
-[data-tooltip][data-flow="bottom"]::before, [data-tooltip][data-flow="bottom"]::after {
+[data-tooltip][data-flow="bottom"]::before,
+[data-tooltip][data-flow="bottom"]::after {
   left: 50%;
   -webkit-transform: translate(-50%, 0.75em);
   transform: translate(-50%, 0.75em);
@@ -1483,7 +1540,8 @@ button:hover {
   transform: translate(0.75em, -50%);
 }
 
-[data-tooltip=""]::after, [data-tooltip=""]::before {
+[data-tooltip=""]::after,
+[data-tooltip=""]::before {
   display: none !important;
 }
 /*# sourceMappingURL=stylesheet.css.map */

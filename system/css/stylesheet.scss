@@ -6,9 +6,10 @@
   width: 100%;
 }
 h2 {
+  margin-top: 1em;
+  margin-left: 1em;
   font-size: 1em;
   font-weight: bold;
-  margin-top: unset;
   margin-bottom: unset;
   padding-bottom: 0.5em;
 }
@@ -24,10 +25,10 @@ h2 {
 .DrawerClosed {
   height: 3em !important;
   padding: 0em !important;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
+  box-shadow: 0em 1em 1.5em -0.5em rgba(0, 0, 0, 0.1);
 }
 
-.DockDrawerOpen{
+.DockDrawerOpen {
   transition: all 0.25s ease-in-out;
   grid-template-columns: 1fr min-content;
   grid-template-rows: 1fr;
@@ -57,7 +58,7 @@ h2 {
   right: 0.5em;
   left: 0.5em;
   transition: all 0.25s ease-in-out;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
+  box-shadow: 0em 1em 1.5em -0.5em rgba(0, 0, 0, 0.1);
 }
 
 .AllAppsDrawerOpen {
@@ -78,12 +79,14 @@ h2 {
 }
 
 #Drawer {
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
+  box-shadow: 0em 1em 1.5em -0.5em rgba(0, 0, 0, 0.1);
   flex-direction: column;
   align-items: flex-start;
   border-radius: 0.25em;
   overflow: visible;
-  background: rgba(255, 255, 255, 0.75);
+  background-image: url(/system/images/white-brushed.png);
+  background-repeat: repeat;
+  background-color: rgba(255, 255, 255, 0.5);
   backdrop-filter: blur(1em);
   transition: all 0.25s ease-in-out;
 }
@@ -116,7 +119,6 @@ button {
   transition: all 0.25s ease-in-out;
   font-size: 1em;
   color: #ffffff;
-  
 
   img {
     width: 1.1em;
@@ -129,7 +131,7 @@ button:active {
 }
 
 #Display {
-  transition: all 2.5s ease-in-out;
+  transition: all 1s ease-in-out;
   padding: 0.5em;
   height: 100vh;
   overflow: hidden;
@@ -178,7 +180,6 @@ button:active {
   grid-area: Dock;
   border-radius: 0.25em;
   height: 3em;
-
 }
 
 /**
@@ -285,7 +286,7 @@ button:active {
  * animation fade in
  * ----------------------------------------
  */
- @keyframes fade-in {
+@keyframes fade-in {
   0% {
     opacity: 0;
   }
@@ -414,14 +415,15 @@ button:active {
   flex-grow: 0;
 }
 .ListSection {
-
+  border: 0.1em solid #00000008;
+  min-height: 8em;
   animation: fade-in 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
   gap: 0.5em;
   overflow: scroll;
   justify-self: stretch;
   border-radius: 0.5em;
   align-items: flex-start;
-  padding: 1em;
+  padding: 0em;
   flex: none;
   align-self: initial;
   flex-grow: 0;
@@ -441,9 +443,17 @@ hr {
   margin-left: 0.5em;
   margin-right: 0.5em;
 }
+.ScreenHeaderSection {
+  height: 8em;
+  white-space: nowrap;
+  gap: 0.5em;
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  align-items: left;
+}
 .HList {
-  overflow: auto;
-  overflow-y: hidden;
+  overflow: scroll;
   white-space: nowrap;
   gap: 0.5em;
   display: flex;
@@ -465,6 +475,12 @@ hr {
     border-radius: 0.25em;
   }
 }
+.HListItem:first-child {
+  margin-left: 1em;
+}
+.HListItem:last-child {
+  margin-right: 1em;
+}
 .bounce-top {
   animation: bounce-top 0.9s both;
 }
@@ -482,12 +498,11 @@ hr {
   animation: scale-out-bottom 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
 }
 .AppContainer {
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
-  body {
-    background-color: none !important;
-  }
-  
-  background: rgba(255, 255, 255, 0.75);
+  box-shadow: 0em 1em 1.5em -0.5em rgba(0, 0, 0, 0.1);
+  background-image: url(/system/images/white-brushed.png);
+  background-repeat: repeat;
+  background-color: rgba(255, 255, 255, 0.5);
+
   backdrop-filter: blur(1em);
   border-radius: 0.25em;
   border: none;
@@ -516,7 +531,6 @@ hr {
   justify-items: stretch;
   align-items: stretch;
   animation-timing-function: ease-in-out;
-  
 }
 
 .Sidebar {
@@ -539,12 +553,11 @@ hr {
   button {
     width: 100%;
   }
-  
 }
 
 .Toolbar {
   padding: 0.5em;
-  background: rgba(255, 255, 255, 0.75);
+  background-color: rgba(255, 255, 255, 0.5);
   backdrop-filter: blur(1em);
   display: grid;
   gap: 0.5em;
@@ -605,6 +618,23 @@ hr {
 }
 .AppMenuButton {
   grid-area: AppIcon;
+}
+.ScreenHeaderIcon {
+  width: 8em;
+  height: 8em;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5em;
+  text-align: center;
+  line-height: 1em;
+  border: none;
+  border-radius: 0.25em;
+  white-space: nowrap;
+  font-size: 1em;
+  color: #ffffff;
+  background-size: cover;
 }
 .search {
   grid-area: Search;
@@ -752,7 +782,7 @@ button:hover {
   align-items: flex-end;
   vertical-align: middle;
   height: 2.5em;
-  border-radius: 0.25em;  
+  border-radius: 0.25em;
   border-style: none;
   background-size: cover;
   transition: translate 250ms ease-in-out;
@@ -829,7 +859,7 @@ button:hover {
 [data-tooltip]:before,
 [data-tooltip]:after {
   line-height: 1;
-  font-size: .9em;
+  font-size: 0.9em;
   pointer-events: none;
   position: absolute;
   box-sizing: border-box;
@@ -866,12 +896,13 @@ button:hover {
 [data-tooltip][data-flow="top"]::after {
   bottom: calc(100% + 5px);
 }
-[data-tooltip]:not([data-flow])::before, [tooltip]:not([data-flow])::after,
+[data-tooltip]:not([data-flow])::before,
+[tooltip]:not([data-flow])::after,
 [data-tooltip][data-flow="top"]::before,
 [data-tooltip][data-flow="top"]::after {
   left: 50%;
   -webkit-transform: translate(-50%, -0.5em);
-          transform: translate(-50%, -0.5em);
+  transform: translate(-50%, -0.5em);
 }
 [data-tooltip][data-flow="bottom"]::before {
   top: 100%;
@@ -879,35 +910,37 @@ button:hover {
 [data-tooltip][data-flow="bottom"]::after {
   top: calc(100% + 5px);
 }
-[data-tooltip][data-flow="bottom"]::before, [data-tooltip][data-flow="bottom"]::after {
+[data-tooltip][data-flow="bottom"]::before,
+[data-tooltip][data-flow="bottom"]::after {
   left: 50%;
   -webkit-transform: translate(-50%, 0.75em);
-          transform: translate(-50%, 0.75em);
+  transform: translate(-50%, 0.75em);
 }
 [data-tooltip][data-flow="left"]::before {
   top: 50%;
   left: calc(0em - 5px);
   -webkit-transform: translate(-0.75em, -50%);
-          transform: translate(-0.75em, -50%);
+  transform: translate(-0.75em, -50%);
 }
 [data-tooltip][data-flow="left"]::after {
   top: 50%;
   right: calc(100% + 5px);
   -webkit-transform: translate(-0.75em, -50%);
-          transform: translate(-0.75em, -50%);
+  transform: translate(-0.75em, -50%);
 }
 [data-tooltip][data-flow="right"]::before {
   top: 50%;
   right: calc(0em - 5px);
   -webkit-transform: translate(0.75em, -50%);
-          transform: translate(0.75em, -50%);
+  transform: translate(0.75em, -50%);
 }
 [data-tooltip][data-flow="right"]::after {
   top: 50%;
   left: calc(100% + 5px);
   -webkit-transform: translate(0.75em, -50%);
-          transform: translate(0.75em, -50%);
+  transform: translate(0.75em, -50%);
 }
-[data-tooltip=""]::after, [data-tooltip=""]::before {
+[data-tooltip=""]::after,
+[data-tooltip=""]::before {
   display: none !important;
 }
