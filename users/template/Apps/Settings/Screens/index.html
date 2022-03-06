@@ -44,7 +44,7 @@
 			<div class="ListItemLabel">Mouse</div>
 		</button>
 		<button class="HListItem">
-			<div class="ListItemIcon"></div>
+			<div class="ListItemIcon"><i class="ri-layout-bottom-fill ri-lg"></i></div>
 			<div class="ListItemLabel">Trackpad</div>
 		</button>
 		<button class="HListItem">
@@ -140,40 +140,7 @@
 		</button>
 	</div>
 </div>
-<div class="ListSection">
+<div class="ListSection" onclick="parent.SettingsAppList()">
 	<h2>Apps</h2>
-	<div class="HList">
-		<button class="HListItem">
-			<div class="ListItemIcon" style="background-size: cover; background-image: url(/users/template/Apps/Cells/AppIcon.svg)"><i class="ri-pie-chart-2-fill ri-lg"></i></div>
-			<div class="ListItemLabel">Cells</div>
-		</button>
-		<button class="HListItem">
-			<div class="ListItemIcon" style="background-size: cover; background-image: url(/users/template/Apps/Files/AppIcon.svg)"><i class="ri-folder-fill ri-lg"></i></div>
-			<div class="ListItemLabel">Files</div>
-		</button>
-		<button class="HListItem">
-			<div class="ListItemIcon" style="background-size: cover; background-image: url(/users/template/Apps/Mailbox/AppIcon.svg)"><i class="ri-mail-fill ri-lg"></i></div>
-			<div class="ListItemLabel">Mailbox</div>
-		</button>
-		<button class="HListItem">
-			<div class="ListItemIcon" style="background-size: cover; background-image: url(/users/template/Apps/Music/AppIcon.svg)"><i class="ri-album-fill ri-lg"></i></div>
-			<div class="ListItemLabel">Music</div>
-		</button>
-		<button class="HListItem" onclick="parent.LoadPage('Settings','Apps/Scour/Index')">
-			<div class="ListItemIcon" style="background-size: cover; background-image: url(/users/template/Apps/Scour/AppIcon.svg)"><i class="ri-global-fill ri-lg"></i></div>
-			<div class="ListItemLabel">Scour</div>
-		</button>
-		<button class="HListItem">
-			<div class="ListItemIcon" style="background-size: cover; background-image: url(/users/template/Apps/Settings/AppIcon.svg)"><i class="ri-settings-5-fill ri-lg"></i></div>
-			<div class="ListItemLabel">Settings</div>
-		</button>
-		<button class="HListItem">
-			<div class="ListItemIcon" style="background-size: cover; background-image: url(/users/template/Apps/Pitch/AppIcon.svg)"><i class="ri-slideshow-fill ri-lg"></i></div>
-			<div class="ListItemLabel">Pitch</div>
-		</button>
-		<button class="HListItem">
-			<div class="ListItemIcon" style="background-size: cover; background-image: url(/users/template/Apps/Write/AppIcon.svg)"><i class="ri-paragraph ri-lg"></i></div>
-			<div class="ListItemLabel">Write</div>
-		</button>
+	<div class="HList" name="SettingsAppHList" id="SettingsAppHList">
 	</div>
-</div></div>

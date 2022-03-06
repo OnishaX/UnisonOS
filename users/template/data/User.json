@@ -1,6 +1,43 @@
 {
 	"Username": "template",
-	"FullName": "User Template",
-	"Password": "",
-	"Wallpaper": "1.jpg"
+	"Firstname": "Template",
+	"Lastname": "User",
+	"Wallpaper": {
+		"Wallpaper": "Aura",
+		"Variant": "Light",
+		"Ext": "svg",
+		"Auto": false
+	},
+	"Sounds": {
+		"Startup": true,
+		"Login": true,
+		"Logout": true,
+		"Shutdown": true,
+		"Alert": true,
+		"Error": true,
+		"Wake": false,
+		"Sleep": false
+	},
+	"PinnedApps": [
+		"Scour",
+		"Music",
+		"Mailbox",
+		"Settings"
+	],
+	"SystemApps": [
+		"Clock",
+		"AppDrawer"
+	],
+	"InstalledApps": [
+		"Scour",
+		"Music",
+		"Error",
+		"Files",
+		"Mailbox",
+		"Cells",
+		"Write",
+		"Pitch",
+		"Cinema",
+		"Settings"
+	]
 }

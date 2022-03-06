@@ -4,6 +4,7 @@
 <head>
   <meta charset='utf-8'>
   <title>Unison Desktop</title>
+  <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline' 'unsafe-eval' data: blob:;">
   <link rel="stylesheet" href="/system/css/stylesheet.css">
   <link rel="stylesheet" href="/system/css/Reset.css">
   <link rel="stylesheet" href="/system/icons/remixicon.css">
@@ -16,7 +17,7 @@
   <!-- <meta http-equiv="Content-Security-Policy" content="'unsafe-inline';"> -->
 </head>
 
-<body style="height: 100vh;">
+<body style="height: 100vh;" onload="init();">
   <div id="Display" class="DisplayNormal">
     <div id="Windows">
     </div>
@@ -31,7 +32,6 @@
   </div>
   </div>
   <script>
-
   </script>
 </body>
 

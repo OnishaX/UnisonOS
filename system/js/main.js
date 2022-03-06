@@ -1,70 +1,13 @@
 let temp
 let RunningApps = []
 let History = []
-let AppModel
-let Usersettings = {
-  Username: "template",
-  Firstname: "Template",
-  Lastname: "User",
-  Wallpaper: {
-    Wallpaper: "Swirl",
-    Variant: "Dark",
-    Ext: "png",
-    Auto: false,
-  },  
-  Sounds: {
-    Startup: true,
-    Login: false,
-    Logout: true,
-    Shutdown: true,
-    Alert: true,
-    Error: true
-  },
-  PinnedApps: [
-    "Scour",
-    "Music",
-    "Mailbox",
-    "Settings",
-    "Write"
-  ],
-  SystemApps: [
-    "Clock",
-    "AppDrawer"
-  ],
-  InstalledApps: [
-    "Scour",
-    "Music",
-    "Error",
-    "Files",
-    "Mailbox",
-    "Cells",
-    "Write",
-    "Pitch",
-    "Settings"]
-}
+let UserSettings =[]
+let CurrentUserName = "template"
 
 function init() {
-
-  // import { LowSync, LocalStorage } from 'lowdb'
-
-  // const adapter = new LocalStorage('db')
-  // const db = new LowSync(adapter)
-
-  // db.read()
-  // db.data ||= { posts: [] }
-
-  // db.data.posts.push({ title: 'lowdb' })
-
-  // db.write()
-
-
   console.log("Init Triggered");
-  console.log(RunningApps)
-  SetWallpaper(Usersettings.Wallpaper.Wallpaper,Usersettings.Wallpaper.Variant, Usersettings.Wallpaper.Ext)
-  displayPinnedList();
-  displayAppList();
-  displaySystem();
-
+  console.log("Loading " + CurrentUserName + " User Data");
+  LoadUserData()
 
   new Sortable(AppList, {
     animation: 300,
@@ -83,27 +26,48 @@ function init() {
     ghostClass: "DockAppIconGhost"
   });
 
-  if (Usersettings.Sounds.Login == true) {
+
+  SetWallpaper(UserSettings.Wallpaper.Wallpaper, UserSettings.Wallpaper.Variant, UserSettings.Wallpaper.Ext)
+  displayPinnedList();
+  displayAppList("AllApps");
+  displaySystem();
+
+  if (UserSettings.Sounds.Login == true) {
     var audio = new Audio('/system/sounds/Login.mp3');
     audio.play();
   }
 
   console.log("Init Complete");
 }
-function SetWallpaper(selection,variant,ext){
+function LoadUserData() {
+  var PathToSettings = "/users/" + CurrentUserName + "/data/User.json";
+  var jsonFile = new XMLHttpRequest();
+  jsonFile.open("GET", PathToSettings, true);
+  jsonFile.send();
+
+  jsonFile.onreadystatechange = function () {
+    if (jsonFile.readyState == 4 && jsonFile.status == 200) {
+      UserSettings = JSON.parse(jsonFile.responseText)
+    }
+  }
+
+  console.log("User Data:");
+  console.log(UserSettings)
+}
+function SetWallpaper(selection, variant, ext) {
   if (selection != null) {
-  Usersettings.Wallpaper.Wallpaper = selection
+    UserSettings.Wallpaper.Wallpaper = selection
   }
   if (variant != null) {
-  Usersettings.Wallpaper.Variant = variant
+    UserSettings.Wallpaper.Variant = variant
   }
   if (ext != null) {
-  Usersettings.Wallpaper.Ext = ext
+    UserSettings.Wallpaper.Ext = ext
   }
   temp = document.getElementById("Display");
-  temp.style.backgroundImage = String("url(/users/" + Usersettings.Username + "/Backgrounds/" + Usersettings.Wallpaper.Wallpaper + "/" + Usersettings.Wallpaper.Variant + "." + Usersettings.Wallpaper.Ext);
-  console.log(String("url(/users/" + Usersettings.Username + "/Backgrounds/" + Usersettings.Wallpaper.Wallpaper + "/" + Usersettings.Wallpaper.Variant + "." + Usersettings.Wallpaper.Ext))
-  }
+  temp.style.backgroundImage = String("url(/users/" + UserSettings.Username + "/Backgrounds/" + UserSettings.Wallpaper.Wallpaper + "/" + UserSettings.Wallpaper.Variant + "." + UserSettings.Wallpaper.Ext);
+  console.log(String("url(/users/" + UserSettings.Username + "/Backgrounds/" + UserSettings.Wallpaper.Wallpaper + "/" + UserSettings.Wallpaper.Variant + "." + UserSettings.Wallpaper.Ext))
+}
 
 function AdjustWindowTiling() {
   // if (RunningApps.length == 1) {
@@ -188,6 +152,7 @@ function DeepLaunch(mainapp, jumppage) {
   sleep(500).then(() => {
     LoadPage(mainapp, jumppage)
   })
+  UpdateAppRunningIndicator(mainapp)
 }
 
 function CloseWindow(closingApp) {
@@ -199,6 +164,7 @@ function CloseWindow(closingApp) {
     $(temp + "RunningAppIcon").remove();
     RunningApps.splice(RunningApps.indexOf(closingApp, 0), 1)
     document.getElementById("Display").className = "DisplayNormal";
+    UpdateAppRunningIndicator(closingApp)
   })
   AdjustWindowTiling()
 
@@ -206,12 +172,31 @@ function CloseWindow(closingApp) {
 function LoadPage(targetapp, newpage) {
   var TargetApp = String(targetapp);
   var NewPage = String(newpage);
-
+  console.log("Loading Page")
   $('#' + TargetApp + "ScreenContainer").empty();
-  $('#' + TargetApp + "ScreenContainer").append('<embed name="' + TargetApp + 'Screen" rel="preload" style="width: 100%; height: 100%; overflow:scroll; border-radius: 0.5em; border: none;" class="Body" id="' + TargetApp + 'Screen" src="/users/' + Usersettings.Username + '/Apps/' + TargetApp + '/Screens/' + NewPage + '.html"></embed>');
-  temp = History.indexOf(TargetApp)
-  History[temp].push(NewPage)
-  console.log(History);
+  $('#' + TargetApp + "ScreenContainer").append('<embed name="' + TargetApp + 'Screen" rel="preload" style="width: 100%; height: 100%; overflow:scroll; border-radius: 0.5em; border: none;" class="Body" id="' + TargetApp + 'Screen" src="/users/' + UserSettings.Username + '/Apps/' + TargetApp + '/Screens/' + NewPage + '.html"></embed>');
+  // temp = History.indexOf(TargetApp)
+  // History[temp].push(NewPage)
+  // console.log(History);
+}
+
+function UpdateAppRunningIndicator(app) {
+  if (RunningApps.includes(app, 0) == true) {
+    if (UserSettings.PinnedApps.includes(app, 0) == false) {
+      $('#' + app + 'RunningAppIcon').addClass("AppRunning")
+    }
+    if (UserSettings.PinnedApps.includes(app, 0) == true) {
+      $('#' + app + 'PinnedAppIcon').addClass("AppRunning")
+    }
+  }
+  if (RunningApps.includes(app, 0) == false) {
+    if (UserSettings.PinnedApps.includes(app, 0) == false) {
+      $('#' + app + 'RunningAppIcon').removeClass("AppRunning")
+    }
+    if (UserSettings.PinnedApps.includes(app, 0) == true) {
+      $('#' + app + 'PinnedAppIcon').removeClass("AppRunning")
+    }
+  }
 }
 
 function LaunchWindow(launchingApp) {
@@ -219,31 +204,24 @@ function LaunchWindow(launchingApp) {
   // $('#' + String(temp + 'AppIcon')).addClass('bounce-top');
   // AdjustWindowTiling()
 
-  if (Usersettings.PinnedApps.includes(temp, 0) == false) {
+  if (UserSettings.PinnedApps.includes(temp, 0) == false) {
     $("#AppList").append('<div class="DockAppIcon" id="' + launchingApp + 'RunningAppIcon"></div>');
-    $('#' + String(launchingApp + 'RunningAppIcon')).load('/users/' + Usersettings.Username + '/Apps/' + launchingApp + '/AppIcon.html');
+    $('#' + String(launchingApp + 'RunningAppIcon')).load('/users/' + UserSettings.Username + '/Apps/' + launchingApp + '/AppIcon.html');
   }
 
   if (RunningApps.includes(temp, 0) == false) {
     // AdjustWindowTiling()
     RunningApps.push(launchingApp)
     temp = RunningApps[RunningApps.length - 1]
-
-    
-
     $("#Windows").append('<div class="AppContainer openApp" id="' + launchingApp + 'App"></div>');
-    $('#' + String(temp + 'App')).load('/users/' + Usersettings.Username + '/Apps/' + temp + '/App.html');
-
+    $('#' + String(temp + 'App')).load('/users/' + UserSettings.Username + '/Apps/' + temp + '/App.html');
     $(temp + "App").removeClass("openApp");
-
-
 
   }
   else {
     temp = String("#" + launchingApp);
     $(temp + "App").addClass('unMiniApp');
     $(temp + "App").css({ "display": "grid" })
-
     sleep(500).then(() => {
       $(temp + "App").removeClass("unMiniApp");
       console.log(temp + " is already running");
@@ -259,39 +237,47 @@ function LaunchWindow(launchingApp) {
   sleep(500).then(() => {
     $(String(temp + 'App')).removeClass('openApp');
   })
+  UpdateAppRunningIndicator(launchingApp)
 }
 
 function displayPinnedList() {
   console.log("displayAppList Triggered")
   $("#AppList").html('')
-  for (let app of Usersettings.PinnedApps) {
+  for (let app of UserSettings.PinnedApps) {
     $("#AppList").append('<div class="DockAppIcon" id="' + app + 'PinnedAppIcon"></div>');
-    $('#' + String(app + 'PinnedAppIcon')).load('/users/' + Usersettings.Username + '/Apps/' + app + '/AppIcon.html');
+    $('#' + String(app + 'PinnedAppIcon')).load('/users/' + UserSettings.Username + '/Apps/' + app + '/AppIcon.html');
   }
   console.log("dock appended")
   for (let app of RunningApps) {
     $("#AppList").append('<div class="DockAppIcon" id="' + app + 'RunningAppIcon"></div>');
-    $('#' + String(app + 'RunningAppIcon')).load('/users/' + Usersettings.Username + '/Apps/' + app + '/AppIcon.html');
+    $('#' + String(app + 'RunningAppIcon')).load('/users/' + UserSettings.Username + '/Apps/' + app + '/AppIcon.html');
   }
   console.log("runningapp appended")
 }
-function displayAppList() {
+function displayAppList(location) {
   console.log("displayAppList Triggered")
-  for (let app of Usersettings.InstalledApps) {
-    $("#AllApps").append('<div class="DockAppIcon" id="' + app + 'AllAppIcon"></div>');
-    $('#' + String(app + 'AllAppIcon')).load('/users/' + Usersettings.Username + '/Apps/' + app + '/AppIcon.html');
-    History.push(app)
+  if (location == "AllApps") {
+    for (let app of UserSettings.InstalledApps) {
+      $("#" + location).append('<button class="HListItem"><div class="DockAppIcon" id="' + app + 'AllAppIcon"></div><div class="ListItemLabel">' + app + '</div></button>');
+      $('#' + String(app + 'AllAppIcon')).load('/users/' + UserSettings.Username + '/Apps/' + app + '/AppIcon.html');
+      // History.push(app)
+    }
   }
 }
-
+function SettingsAppList() {
+  console.log("list apps in settings")
+  for (let app of UserSettings.InstalledApps) {
+    console.log(app)
+    $("#SettingsHAppList:SettingsScreen").append('<button class="HListItem" onclick="parent.LoadPage(`Settings`,`Apps/`' + app + '`/Index`)"><div class="DockAppIcon" id="' + app + 'AllAppIcon"></div><div class="ListItemLabel">' + app + '</div></button>');
+    $('#' + String(app + 'AllAppIcon')).load('/users/' + UserSettings.Username + '/Apps/' + app + '/AppIcon.html');
+  }
+}
 function displaySystem() {
   console.log("displaySystemList Triggered")
-  for (let app of Usersettings.SystemApps) {
+  for (let app of UserSettings.SystemApps) {
     $("#System").append('<div class="DockAppIcon" id="' + app + 'PinnedAppIcon"></div>');
-    $('#' + String(app + 'PinnedAppIcon')).load('/users/' + Usersettings.Username + '/System/' + app + '/AppIcon.html');
+    $('#' + String(app + 'PinnedAppIcon')).load('/users/' + UserSettings.Username + '/System/' + app + '/AppIcon.html');
   }
   console.log("dock appended")
 }
-
-init();
-console.log("Init Trigger")
+onload(init());
