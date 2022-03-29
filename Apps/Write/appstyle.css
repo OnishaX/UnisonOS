@@ -1,0 +1,50 @@
+#WriteApp {
+  --PrimaryAppColor: #132fbf;
+}
+
+#WriteApp .Contents {
+  -ms-grid-columns: 1fr min-content;
+      grid-template-columns: 1fr -webkit-min-content;
+      grid-template-columns: 1fr min-content;
+      grid-template-areas: "Body Preview";
+}
+
+#WriteApp .ListSection {
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0.9)), to(rgba(255, 255, 255, 0.9))), -webkit-gradient(linear, left top, left bottom, from(var(--PrimaryAppColor)), to(var(--PrimaryAppColor)));
+  background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), linear-gradient(var(--PrimaryAppColor), var(--PrimaryAppColor));
+}
+
+#WriteApp .ListSection button {
+  color: var(--PrimaryAppColor);
+  background: none;
+}
+
+#WriteApp .ListSection button:hover {
+  color: white;
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0.5)), to(rgba(255, 255, 255, 0.5))), -webkit-gradient(linear, left top, left bottom, from(var(--PrimaryAppColor)), to(var(--PrimaryAppColor)));
+  background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), linear-gradient(var(--PrimaryAppColor), var(--PrimaryAppColor));
+}
+
+#WriteApp .ListSection button:active {
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.25)), to(rgba(0, 0, 0, 0.25))), -webkit-gradient(linear, left top, left bottom, from(var(--PrimaryAppColor)), to(var(--PrimaryAppColor)));
+  background: linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)), linear-gradient(var(--PrimaryAppColor), var(--PrimaryAppColor));
+}
+
+#WriteApp h2 {
+  color: var(--PrimaryAppColor);
+}
+
+#WriteApp button {
+  background: var(--PrimaryAppColor);
+}
+
+#WriteApp button:hover {
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0.5)), to(rgba(255, 255, 255, 0.5))), -webkit-gradient(linear, left top, left bottom, from(var(--PrimaryAppColor)), to(var(--PrimaryAppColor)));
+  background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), linear-gradient(var(--PrimaryAppColor), var(--PrimaryAppColor));
+}
+
+#WriteApp button:active {
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.25)), to(rgba(0, 0, 0, 0.25))), -webkit-gradient(linear, left top, left bottom, from(var(--PrimaryAppColor)), to(var(--PrimaryAppColor)));
+  background: linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)), linear-gradient(var(--PrimaryAppColor), var(--PrimaryAppColor));
+}
+/*# sourceMappingURL=appstyle.css.map */

@@ -13,7 +13,23 @@ h2 {
   margin-bottom: unset;
   padding-bottom: 0.5em;
 }
-
+#Dash {
+  font-size: 1em;
+  color: #ffffff;
+  position: absolute;
+  z-index: 100;
+  top: 2em;
+  left: 4.5em;
+  width:60em;
+  height:40em;
+  background-color: rgba(17, 17, 17, 0.75);
+  backdrop-filter: blur(0.5em);
+  padding: 0;
+  border: 1px solid rgba(244, 244, 244, 0.1);
+  border-left-width: 0em;
+  border-top-width: 0em;
+  border-radius: 0 0 6px 0;
+}
 .DisplayFullscreen {
   animation: fullscreen 0.1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 }
@@ -24,48 +40,7 @@ h2 {
 .AppRunning {
   transform: scale(1) !important;
 }
-.DrawerClosed {
-  height: 3.25em !important;
-  padding: 0em !important;
-  box-shadow: 0em 1em 1.5em -0.5em rgba(0, 0, 0, 0.1);
-}
 
-.DockDrawerOpen {
-  transition: all 0.25s ease-in-out;
-  grid-template-columns: 1fr min-content;
-  grid-template-rows: 1fr;
-  background: rgba(255, 255, 255, 1);
-}
-
-.WindowsDrawerOpen {
-  transition: all 0.25s ease-in-out;
-  display: grid;
-  grid-auto-flow: column;
-  grid-auto-rows: 1fr;
-  gap: 0.5em;
-  justify-content: stretch;
-  align-content: stretch;
-  justify-items: stretch;
-  align-items: stretch;
-  justify-self: stretch;
-  align-self: stretch;
-  grid-area: Windows;
-  transform: scale(0.4) translatey(-66%);
-}
-.DrawerDrawerOpen {
-  position: fixed;
-  bottom: 0.5em;
-  height: 50% !important;
-  right: 0.5em;
-  left: 0.5em;
-  transition: all 0.25s ease-in-out;
-  box-shadow: 0em 1em 1.5em -0.5em rgba(0, 0, 0, 0.1);
-}
-
-.AllAppsDrawerOpen {
-  transition: all 0.25s ease-in-out;
-  overflow: scroll;
-}
 #AllApps {
   transition: all 0.25s ease-in-out;
   padding: 0.25em;
@@ -88,19 +63,6 @@ h2 {
   .HListItem:hover {
     background-color: rgba(255, 255, 255, 1);
   }
-}
-
-#Drawer {
-  box-shadow: 0em 1em 1.5em -0.5em rgba(0, 0, 0, 0.1);
-  flex-direction: column;
-  align-items: flex-start;
-  border-radius: 0.25em;
-  overflow: hidden;
-  background-image: url(/system/images/white-brushed.png);
-  background-repeat: repeat;
-  background-color: rgba(255, 255, 255, 0.75);
-  backdrop-filter: blur(1em);
-  transition: all 0.25s ease-in-out;
 }
 
 body {
@@ -144,19 +106,13 @@ button:active {
 
 #Display {
   transition: all 1s ease-in-out;
-  padding: 0.5em;
   height: 100vh;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  grid-template-rows: 1fr min-content;
-  grid-template-columns: 1fr min-content;
-  gap: 0.5em;
+  display: grid;
+  grid-template-columns: min-content 1fr;
+  grid-template-rows: 2em 1fr;
   grid-template-areas:
-    "Windows"
-    "Dock";
-  justify-self: stretch;
-  align-self: stretch;
+    "TopBar TopBar"
+    "Launcher Desktop";
   grid-area: Display;
   background-size: cover;
 }
@@ -164,36 +120,35 @@ button:active {
 .ghost {
   opacity: 0;
 }
-#Windows {
+#TopBar {
+  grid-area: TopBar;
+  background-color: black;
+}
+#Desktop {
   height: 100%;
   transition: all 0.25s ease-in-out;
-  display: grid;
-  grid-auto-flow: column;
-  grid-auto-rows: 1fr;
-  gap: 0.5em;
-  justify-content: stretch;
-  align-content: stretch;
-  justify-items: stretch;
-  align-items: stretch;
-  justify-self: stretch;
-  align-self: stretch;
-  grid-area: Windows;
+  grid-area: Desktop;
+  display: inline-block;
 }
 #Dock {
+  background-color: #111111;
   transition: all 0.25s ease-in-out;
   overflow: visible;
   display: grid;
-  grid-template-columns: 1fr min-content;
-  grid-template-rows: 1fr;
-  gap: 0px 0px;
-  grid-template-areas: "AppList System";
-  align-self: end;
+  grid-template-columns: 1fr;
+  grid-template-rows: min-content 1fr;
+  gap: 0.5em 0px;
   padding: 0.25em;
-  grid-area: Dock;
-  border-radius: 0.25em;
-  height: 3em;
+  grid-template-areas:
+    "DashIcon"
+    "AppList";
+  grid-area: Launcher;
+  height: 100%;
 }
-
+.DashAppIcon {
+  grid-area: DashIcon;
+  margin-bottom: 0.5em;
+}
 /**
  * ----------------------------------------
  * animation scale-in-center
@@ -208,7 +163,7 @@ button:active {
     opacity: 0;
   }
   100% {
-    transform: scale(1);
+    transform: unset;
     opacity: 1;
   }
 }
@@ -228,7 +183,7 @@ button:active {
     opacity: 0;
   }
   100% {
-    transform: scale(1);
+    transform: unset;
     transform-origin: 50% 100%;
     opacity: 1;
   }
@@ -266,44 +221,6 @@ button:active {
   }
 }
 
-// grid-template-rows: 100vh min-content !important;
-// padding: 0em !important;
-// #Windows {
-//   gap: 0.1em !important;
-//   .AppContainer {
-//     border-radius: 0em;
-
-@keyframes fullscreen {
-  0% {
-    grid-template-rows: 1fr min-content;
-    gap: 0.5em;
-    padding: 0.5em;
-  }
-  100% {
-    gap: 0em;
-    padding: 0em;
-    grid-template-rows: 100vh min-content !important;
-    #Windows {
-      border-radius: 0em !important;
-      .AppContainer {
-        border-radius: 0em !important;
-      }
-    }
-  }
-}
-
-@keyframes Displaynormal {
-  0% {
-    gap: 0em;
-    padding: 0em;
-    grid-template-rows: 100vh min-content;
-  }
-  100% {
-    grid-template-rows: 1fr min-content !important;
-    gap: 0.5em;
-    padding: 0.5em;
-  }
-}
 
 /**
  * ----------------------------------------
@@ -503,6 +420,7 @@ hr {
     height: 3em;
     width: 3em;
     border-radius: 0.25em;
+    background-size: contain !important;
   }
 }
 .HListItem:first-child {
@@ -532,75 +450,85 @@ hr {
   animation: scale-out-bottom 1s cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
 }
 .AppContainer {
+  display: inline-block;
+  touch-action: none;
+  position: relative;
+  user-select: none;
   box-shadow: 0em 1em 1.5em -0.5em rgba(0, 0, 0, 0.1);
-  background-image: url(/system/images/white-brushed.png);
   background-repeat: repeat;
-  background-color: rgba(255, 255, 255, 0.75);
-
-  backdrop-filter: blur(1em);
+  background-color: rgba(255, 255, 255, 1);
   border-radius: 0.25em;
+  width: 40em;
+  height: 30em;
   border: none;
-  display: grid;
-  grid-auto-columns: 1fr;
-  grid-auto-rows: 1fr;
-  grid-template-columns: 1fr;
-  grid-template-rows: 1fr;
   overflow: hidden;
-  gap: 1em 0px;
-  grid-template-areas: "App";
-  transition: width 300ms ease-in-out;
+  transition: all 0.25s ease-out;
+}
+
+.AppFullScreen {
+  transform: translate(0px, 0px);
+  border-radius: 0em;
+  width: 100% !important;
+  height: 100% !important;
 }
 .App {
   display: grid;
-  grid-template-columns: min-content 1fr;
-  grid-template-rows: 3em 1fr;
-  gap: 0px 0px;
-  width: 100%;
+  grid-area: App;
+  grid-template-columns: min-content 1fr; 
+  grid-template-rows: min-content 3em 1fr; 
   height: 100%;
-  grid-template-areas:
-    "Sidebar Toolbar"
-    "Sidebar Contents";
-  justify-content: stretch;
-  align-content: stretch;
-  justify-items: stretch;
-  align-items: stretch;
+  gap: 0px 0px;
+  grid-template-areas: 
+    "WindowDecoration WindowDecoration"
+    "Toolbar Toolbar"
+    "Sidebar Contents"; 
   animation-timing-function: ease-in-out;
 }
 
 .Sidebar {
+  min-width: 12.5em;
   gap: 0.5em;
   width: fit-content;
   justify-self: start;
   grid-area: Sidebar;
-  border-radius: 1em;
+  background: #F0F0F0;
   overflow-y: scroll;
   overflow-x: hidden;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding: 0.5em;
   flex: none;
   order: 0;
   align-self: stretch;
   flex-grow: 0;
   margin: 0px 0px;
   button {
+    border-radius: 0em;
     width: 100%;
   }
 }
 
+.WindowDecoration {
+  background: #141013;
+  grid-area: WindowDecoration;
+  grid-template-columns: min-content 1fr;
+  grid-template-rows: 1fr;
+  grid-auto-flow: row;
+  justify-items: start;
+  grid-template-areas: "Controls TitleAndMenu";
+}
+
 .Toolbar {
   padding: 0.5em;
-  background-color: rgba(255, 255, 255, 0.75);
-  backdrop-filter: blur(1em);
+  background: linear-gradient(180deg, #141013 0%, rgba(20, 16, 19, 0.9) 100%);
   display: grid;
   gap: 0.5em;
-  grid-template-columns: min-content 1fr min-content;
+  grid-template-columns: min-content 1fr;
   grid-template-rows: 1fr;
   grid-auto-flow: row;
   justify-items: start;
   align-items: center;
-  grid-template-areas: "AppIcon Tools Search Controls";
+  grid-template-areas: "Tools Search";
   grid-area: Toolbar;
   button {
     text-align: left;
@@ -608,52 +536,36 @@ hr {
   }
 }
 
+
 .Controls {
-  gap: 0.1em;
-  justify-self: end;
+  gap: 0.5em;
+  padding: 0.5em;
+  justify-self: start;
   align-self: center;
+  width: min-content;
   grid-area: Controls;
   display: flex;
   flex-direction: row;
-  justify-content: flex-end;
   align-items: center;
+  button:first-of-type{
+    background-color: #E95420 !important;
+  }
   button {
+    border-radius: 100%;
     padding: 0.5em;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 2em;
+    width: 1.25em;
+    height: 1.25em;
+    img {
+      width: 0.9em;
+      height: 0.9em;
+    }
   }
 }
-.Controls :first-child {
-  border-top-left-radius: 0.25em;
-  border-bottom-left-radius: 0.25em;
-  border-top-right-radius: 0em;
-  border-bottom-right-radius: 0em;
-}
-.Controls :not(:first-child) {
-  border-top-left-radius: 0em;
-  border-bottom-left-radius: 0em;
-  border-top-right-radius: 0em;
-  border-bottom-right-radius: 0em;
-}
-.Controls :last-child {
-  border-top-left-radius: 0em;
-  border-bottom-left-radius: 0em;
-  border-top-right-radius: 0.25em;
-  border-bottom-right-radius: 0.25em;
-}
-.Controls :only-child {
-  border-top-left-radius: 0.25em;
-  border-bottom-left-radius: 0.25em;
-  border-top-right-radius: 0.25em;
-  border-bottom-right-radius: 0.25em;
-}
-.AppMenuButton {
-  grid-area: AppIcon;
-}
 .ScreenHeaderIcon {
+  background-size: contain !important;
   width: 8em;
   height: 8em;
   display: flex;
@@ -668,7 +580,6 @@ hr {
   white-space: nowrap;
   font-size: 1em;
   color: #ffffff;
-  background-size: cover;
 }
 .search {
   grid-area: Search;
@@ -711,31 +622,7 @@ button:hover {
   flex-direction: column;
   width: 100%;
   display: flex;
-  gap: 0.1em;
-}
-.ToolGroup :first-child {
-  border-top-left-radius: 0.25em;
-  border-top-right-radius: 0.25em;
-  border-bottom-right-radius: 0em;
-  border-bottom-left-radius: 0em;
-}
-.ToolGroup :not(:first-child) {
-  border-top-left-radius: 0em;
-  border-bottom-left-radius: 0em;
-  border-top-right-radius: 0em;
-  border-bottom-right-radius: 0em;
-}
-.ToolGroup :last-child {
-  border-top-left-radius: 0em;
-  border-bottom-left-radius: 0.25em;
-  border-top-right-radius: 0em;
-  border-bottom-right-radius: 0.25em;
-}
-.ToolGroup :only-child {
-  border-top-left-radius: 0.25em;
-  border-bottom-left-radius: 0.25em;
-  border-top-right-radius: 0.25em;
-  border-bottom-right-radius: 0.25em;
+  gap: 0em;
 }
 
 .ToolGroupH {
@@ -819,11 +706,12 @@ button:hover {
 #System {
   gap: 0.25em;
   display: flex;
+  width: 10em;
   flex-direction: row;
   justify-self: flex-end;
   align-items: flex-end;
   vertical-align: middle;
-  height: 2.5em;
+  height: 1.5em;
   border-radius: 0.25em;
   border-style: none;
   background-size: cover;
@@ -837,24 +725,23 @@ button:hover {
   display: flex;
   width: 100%;
   grid-area: AppList;
+  overflow-y: scroll;
   vertical-align: middle;
-  flex-direction: row;
-  flex-wrap: nowrap;
+  flex-direction: column;
+  flex-wrap: wrap;
 }
 .DockAppIcon {
-  transform: scale(0.9);
   display: flex;
   flex-direction: row;
   justify-self: stretch;
   align-items: center;
-  background: rgba(255, 255, 255, 0.75);
-  backdrop-filter: blur(1em);
+  background-image: url('/Apps/Settings/AppIcon.svg');
+  background-color: unset !important;
   vertical-align: middle;
-  height: 2.5em;
+  height: 4em;
   border-radius: 0.25em;
-  width: 2.5em;
+  width: 4em;
   border-style: none;
-  background-size: cover;
   transition: all 250ms ease-in-out;
 }
 .DockIconGhost {
@@ -869,9 +756,9 @@ button:hover {
   display: inline-block;
   vertical-align: middle;
   border-style: none;
-  height: 2.5em;
+  height: 1.5em;
   border-radius: 0.25em;
-  width: 2.5em;
+  width: 1.5em;
   background-size: cover;
   transition: translate 250ms ease-in-out;
 }
@@ -987,7 +874,9 @@ button:hover {
 [data-tooltip=""]::before {
   display: none !important;
 }
-
+.Toolbar {
+  background-color: #eeeeee;
+}
 @keyframes SpinnerLoader {
   0% {
     opacity: 1;
@@ -998,10 +887,10 @@ button:hover {
 }
 
 .SpinnerLoader div {
-    flex-direction: column;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: absolute;
   animation: SpinnerLoader linear 0.5s infinite;
   width: 34.379999999999995px;
@@ -1066,9 +955,9 @@ button:hover {
 }
 .SpinnerLoader {
   flex-direction: column;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   height: 100%;
   position: relative;

@@ -7,11 +7,11 @@
   <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline' 'unsafe-eval' data: blob:;">
   <link rel="stylesheet" href="/system/css/stylesheet.css">
   <link rel="stylesheet" href="/system/css/Reset.css">
-  <link rel="stylesheet" href="/system/icons/remixicon.css">
+  <script src="https://unpkg.com/interactjs/dist/interact.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"
     integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-  <script src="/system/js/main.js"defer></script>
-  <script src="https://raw.githack.com/SortableJS/Sortable/master/Sortable.js"></script>
+  <script src="/system/js/main.js" defer></script>
+  <!-- <script src="https://raw.githack.com/SortableJS/Sortable/master/Sortable.js"></script> -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.2.20171210/classList.min.js"></script>
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" />
   <!-- <meta http-equiv="Content-Security-Policy" content="'unsafe-inline';"> -->
@@ -19,17 +19,23 @@
 
 <body style="height: 100vh;" onload="init();">
   <div id="Display" class="DisplayNormal">
-    <div id="Windows">
-    </div>
-    <div id="Drawer" class="DrawerClosed">
-    <div id="Dock">
+    <div id="TopBar">
+      <div id="TitleAndMenu"></div>
       <div id="System"></div>
+    </div>
+    <div id="Dash">
+      <textbox id="DashSearch"></textbox>
+    </div>
+    <div id="Desktop">
+      
+    </div>
+    <div id="Dock">
+      <div class="DockAppIcon" id="DashAppIcon" type="button" onclick="LaunchWindow(`Dash`)"
+        style="display: flex; background-size: cover; background-image: url(/Apps/Dash/AppIcon.svg)">
+      </div>
       <div id="AppList" class="grid">
       </div>
     </div>
-    <div id="AllApps"></div>
-  </div>
-  </div>
   </div>
   <script>
   </script>

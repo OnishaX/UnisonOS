@@ -1,0 +1,146 @@
+#SettingsApp {
+  --PrimaryAppColor: #383838;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 0.5em;
+  width: 100%;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+#SettingsApp .ListSection {
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0.9)), to(rgba(255, 255, 255, 0.9))), -webkit-gradient(linear, left top, left bottom, from(var(--PrimaryAppColor)), to(var(--PrimaryAppColor)));
+  background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), linear-gradient(var(--PrimaryAppColor), var(--PrimaryAppColor));
+}
+
+#SettingsApp .HList button {
+  color: var(--PrimaryAppColor);
+  background: none;
+}
+
+#SettingsApp .HList button .ListItemIcon {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-size: cover;
+  background-image: url(/Apps/Settings/AppIcon.svg);
+  color: white;
+}
+
+#SettingsApp .HList button:hover {
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0.5)), to(rgba(255, 255, 255, 0.5))), -webkit-gradient(linear, left top, left bottom, from(var(--PrimaryAppColor)), to(var(--PrimaryAppColor)));
+  background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), linear-gradient(var(--PrimaryAppColor), var(--PrimaryAppColor));
+}
+
+#SettingsApp .HList button:active {
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.25)), to(rgba(0, 0, 0, 0.25))), -webkit-gradient(linear, left top, left bottom, from(var(--PrimaryAppColor)), to(var(--PrimaryAppColor)));
+  background: linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)), linear-gradient(var(--PrimaryAppColor), var(--PrimaryAppColor));
+}
+
+#SettingsApp h2 {
+  color: var(--PrimaryAppColor);
+}
+
+#SettingsApp button {
+  background: var(--PrimaryAppColor);
+}
+
+#SettingsApp button:hover {
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0.5)), to(rgba(255, 255, 255, 0.5))), -webkit-gradient(linear, left top, left bottom, from(var(--PrimaryAppColor)), to(var(--PrimaryAppColor)));
+  background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), linear-gradient(var(--PrimaryAppColor), var(--PrimaryAppColor));
+}
+
+#SettingsApp button:active {
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.25)), to(rgba(0, 0, 0, 0.25))), -webkit-gradient(linear, left top, left bottom, from(var(--PrimaryAppColor)), to(var(--PrimaryAppColor)));
+  background: linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)), linear-gradient(var(--PrimaryAppColor), var(--PrimaryAppColor));
+}
+
+#SettingsApp .slider {
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0.5)), to(rgba(255, 255, 255, 0.5))), -webkit-gradient(linear, left top, left bottom, from(var(--PrimaryAppColor)), to(var(--PrimaryAppColor)));
+  background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), linear-gradient(var(--PrimaryAppColor), var(--PrimaryAppColor));
+}
+
+#SettingsApp .slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 3em;
+  height: 3em;
+  background: var(--PrimaryAppColor);
+  cursor: pointer;
+  border-radius: 0.25em;
+}
+
+#SettingsApp .slider::-moz-range-thumb {
+  width: 3em;
+  height: 3em;
+  background: var(--PrimaryAppColor);
+  cursor: pointer;
+  border-radius: 0.25em;
+}
+
+#SettingsApp [data-tooltip]:after {
+  background: var(--PrimaryAppColor);
+  color: #ffffff;
+}
+
+#SettingsApp .SpinnerLoader div {
+  background: var(--PrimaryAppColor);
+}
+
+#SettingsApp .SpinnerLoader div:nth-child(1) {
+  background: var(--PrimaryAppColor);
+}
+
+#SettingsApp .SpinnerLoader div:nth-child(2) {
+  background: var(--PrimaryAppColor);
+}
+
+#SettingsApp .SpinnerLoader div:nth-child(3) {
+  background: var(--PrimaryAppColor);
+}
+
+#SettingsApp .SpinnerLoader div:nth-child(4) {
+  background: var(--PrimaryAppColor);
+}
+
+#SettingsApp .SpinnerLoader div:nth-child(5) {
+  background: var(--PrimaryAppColor);
+}
+
+#SettingsApp .SpinnerLoader div:nth-child(6) {
+  background: var(--PrimaryAppColor);
+}
+
+#SettingsApp .SpinnerLoader div:nth-child(7) {
+  background: var(--PrimaryAppColor);
+}
+
+#SettingsApp .SpinnerLoader div:nth-child(8) {
+  background: var(--PrimaryAppColor);
+}
+
+#SettingsApp .SpinnerLoader div:nth-child(9) {
+  background: var(--PrimaryAppColor);
+}
+
+#SettingsApp .SpinnerLoader div:nth-child(10) {
+  background: var(--PrimaryAppColor);
+}
+
+#SettingsApp .SpinnerLoader div:nth-child(11) {
+  background: var(--PrimaryAppColor);
+}
+
+#SettingsApp .SpinnerLoader div:nth-child(12) {
+  background: var(--PrimaryAppColor);
+}
+/*# sourceMappingURL=appstyle.css.map */

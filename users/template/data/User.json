@@ -10,7 +10,7 @@
 	},
 	"Sounds": {
 		"Startup": true,
-		"Login": true,
+		"Login": false,
 		"Logout": true,
 		"Shutdown": true,
 		"Alert": true,
@@ -20,15 +20,22 @@
 	},
 	"PinnedApps": [
 		"Scour",
+		"Apps",
 		"Music",
+		"Error",
+		"Files",
 		"Mailbox",
+		"Cells",
+		"Write",
+		"Pitch",
+		"Cinema",
 		"Settings"
 	],
 	"SystemApps": [
-		"Clock",
-		"AppDrawer"
 	],
 	"InstalledApps": [
+		"Apps",
+		"Dash",
 		"Scour",
 		"Music",
 		"Error",

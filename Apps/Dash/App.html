@@ -1,0 +1,64 @@
+	  
+	 <!doctype html>
+	 <html lang='en-GB'>
+	 <head>
+	   <meta charset='utf-8'>
+	   <title>Dash</title>
+	   <link rel="stylesheet" href="/system/css/stylesheet.css">
+	   <link rel="stylesheet" href="/Apps/Dash/appstyle.css">
+	   <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+	 </head>
+	 <body>
+		 <div class="App">
+			<div id="DashWindowDecoration" class="WindowDecoration">
+				<div class="Controls">
+					<button type="button" onClick="CloseWindow('Dash')"><img src="/system/icons/window-close-symbolic.svg"></button>
+					<button type="button" onclick="FillWindow('Dash')"><img src="/system/icons/window-maximize-symbolic.svg"></button>
+					<button type="button" onClick="MinimiseWindow('Dash')"><img src="/system/icons/window-minimize-symbolic.svg"></button>
+				</div>
+			</div>
+		  <div class="Sidebar">
+			<div class="ToolGroupH">
+				<button type="button"><i class="ri-file-add-line"></i></button>
+				<button type="button"><i class="ri-save-2-line"></i></button>
+				<button type="button"><i class="ri-folder-open-line"></i></button>
+			</div>
+			<div class="ToolGroup">
+				<button type="button"><i class="ri-file-chart-2-line"></i>Sheet 1</button>
+				<button type="button"><i class="ri-file-chart-2-line"></i>Sheet 2</button>
+			</div>
+			<div class="ToolGroup">
+				<button type="button"><i class="ri-add-line"></i>New Sheet</button>
+			</div>
+	  </div>
+	  <div class="Toolbar">
+		<div class="Tools">
+			<div class="ToolGroupH">
+				<button type="button"><i class="ri-text"></i>Text</button>
+				<button type="button"><i class="ri-shape-line"></i>Shape</button>
+				<button type="button"><i class="ri-image-line"></i>Image</button>
+				<button type="button"><i class="ri-table-2"></i>Table</button>
+				<button type="button"><i class="ri-bar-chart-line"></i>Chart</button>
+			</div>
+			<div class="ToolGroupH">
+				<button type="button"><i class="ri-parentheses-line"></i>Formula</button>
+			</div>
+			<div class="ToolGroupH">
+				<button type="button"><i class="ri-printer-line"></i>Print</button>
+				<button type="button"><i class="ri-send-plane-2-line"></i>Send</button>
+			</div>
+		</div>
+		<button id="DashSearch" onclick="ToggleSearch('Dash')" type="button" class="search"><i class="ri-search-line"></i>Search</button>
+	  </div>
+	  <div class="Contents">
+		<div class="Preview">
+			<p>Edit</p>
+		</div>
+		<div class="Body">
+			<p>BodyItem</p>
+		</div>
+	  </div>
+	</div>
+</div>
+	 </body>
+	 </html>

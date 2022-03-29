@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang='en-GB'>
+
+<head>
+	<meta charset='utf-8'>
+	<title>Cinema</title>
+	<link rel="stylesheet" href="/system/css/stylesheet.css">
+	<link rel="stylesheet" href="/Apps/Cinema/appstyle.css">
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+		integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+
+</head>
+
+<body>
+	<div class="App">
+		<div id="CinemaWindowDecoration" class="WindowDecoration">
+			<div class="Controls">
+				<button type="button" onClick="CloseWindow('Cinema')"><img src="/system/icons/window-close-symbolic.svg"></button>
+				<button type="button" onclick="FillWindow('Cinema')"><img src="/system/icons/window-maximize-symbolic.svg"></button>
+				<button type="button" onClick="MinimiseWindow('Cinema')"><img src="/system/icons/window-minimize-symbolic.svg"></button>
+			</div>
+		</div>
+		<div class="Toolbar">
+			<div class="Controls">
+				<button type="button" onClick="MinimiseWindow('Cinema')"><i class="ri-subtract-fill"></i></button>
+				<button type="button" onclick="FillWindow()"><i class="ri-fullscreen-fill"></i></button>
+				<button type="button" onClick="CloseWindow('Cinema')"><i class="ri-close-fill"></i></button>
+			</div>
+			<div class="Tools">
+				<div class="ToolGroupH">
+					<button type="button"><i class="ri-play-fill"></i>Play</button>
+				</div>
+			</div>
+		</div>
+		<div class="Contents">
+			<div class="Body">
+			</div>
+		</div>
+	</div>
+	</div>
+</body>
+
+</html>

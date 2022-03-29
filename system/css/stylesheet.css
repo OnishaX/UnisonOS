@@ -16,6 +16,25 @@ h2 {
   padding-bottom: 0.5em;
 }
 
+#Dash {
+  font-size: 1em;
+  color: #ffffff;
+  position: absolute;
+  z-index: 100;
+  top: 2em;
+  left: 4.5em;
+  width: 60em;
+  height: 40em;
+  background-color: rgba(17, 17, 17, 0.75);
+  -webkit-backdrop-filter: blur(0.5em);
+          backdrop-filter: blur(0.5em);
+  padding: 0;
+  border: 1px solid rgba(244, 244, 244, 0.1);
+  border-left-width: 0em;
+  border-top-width: 0em;
+  border-radius: 0 0 6px 0;
+}
+
 .DisplayFullscreen {
   -webkit-animation: fullscreen 0.1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
           animation: fullscreen 0.1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
@@ -29,68 +48,6 @@ h2 {
 .AppRunning {
   -webkit-transform: scale(1) !important;
           transform: scale(1) !important;
-}
-
-.DrawerClosed {
-  height: 3.25em !important;
-  padding: 0em !important;
-  -webkit-box-shadow: 0em 1em 1.5em -0.5em rgba(0, 0, 0, 0.1);
-          box-shadow: 0em 1em 1.5em -0.5em rgba(0, 0, 0, 0.1);
-}
-
-.DockDrawerOpen {
-  -webkit-transition: all 0.25s ease-in-out;
-  transition: all 0.25s ease-in-out;
-  -ms-grid-columns: 1fr min-content;
-      grid-template-columns: 1fr -webkit-min-content;
-      grid-template-columns: 1fr min-content;
-  -ms-grid-rows: 1fr;
-      grid-template-rows: 1fr;
-  background: white;
-}
-
-.WindowsDrawerOpen {
-  -webkit-transition: all 0.25s ease-in-out;
-  transition: all 0.25s ease-in-out;
-  display: -ms-grid;
-  display: grid;
-  grid-auto-flow: column;
-  grid-auto-rows: 1fr;
-  gap: 0.5em;
-  -webkit-box-pack: stretch;
-      -ms-flex-pack: stretch;
-          justify-content: stretch;
-  -ms-flex-line-pack: stretch;
-      align-content: stretch;
-  justify-items: stretch;
-  -webkit-box-align: stretch;
-      -ms-flex-align: stretch;
-          align-items: stretch;
-      justify-self: stretch;
-      align-self: stretch;
-  -ms-grid-row: 1;
-  -ms-grid-column: 1;
-  grid-area: Windows;
-  -webkit-transform: scale(0.4) translatey(-66%);
-          transform: scale(0.4) translatey(-66%);
-}
-
-.DrawerDrawerOpen {
-  position: fixed;
-  bottom: 0.5em;
-  height: 50% !important;
-  right: 0.5em;
-  left: 0.5em;
-  -webkit-transition: all 0.25s ease-in-out;
-  transition: all 0.25s ease-in-out;
-  -webkit-box-shadow: 0em 1em 1.5em -0.5em rgba(0, 0, 0, 0.1);
-          box-shadow: 0em 1em 1.5em -0.5em rgba(0, 0, 0, 0.1);
-}
-
-.AllAppsDrawerOpen {
-  -webkit-transition: all 0.25s ease-in-out;
-  transition: all 0.25s ease-in-out;
-  overflow: scroll;
 }
 
 #AllApps {
@@ -125,27 +82,6 @@ h2 {
 
 #AllApps .HListItem:hover {
   background-color: white;
-}
-
-#Drawer {
-  -webkit-box-shadow: 0em 1em 1.5em -0.5em rgba(0, 0, 0, 0.1);
-          box-shadow: 0em 1em 1.5em -0.5em rgba(0, 0, 0, 0.1);
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
-  border-radius: 0.25em;
-  overflow: hidden;
-  background-image: url(/system/images/white-brushed.png);
-  background-repeat: repeat;
-  background-color: rgba(255, 255, 255, 0.75);
-  -webkit-backdrop-filter: blur(1em);
-          backdrop-filter: blur(1em);
-  -webkit-transition: all 0.25s ease-in-out;
-  transition: all 0.25s ease-in-out;
 }
 
 body {
@@ -205,27 +141,15 @@ button:active {
 #Display {
   -webkit-transition: all 1s ease-in-out;
   transition: all 1s ease-in-out;
-  padding: 0.5em;
   height: 100vh;
-  overflow: hidden;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -ms-grid-rows: 1fr min-content;
-      grid-template-rows: 1fr -webkit-min-content;
-      grid-template-rows: 1fr min-content;
-  -ms-grid-columns: 1fr min-content;
-      grid-template-columns: 1fr -webkit-min-content;
-      grid-template-columns: 1fr min-content;
-  gap: 0.5em;
-      grid-template-areas: "Windows" "Dock";
-  justify-self: stretch;
-  -ms-flex-item-align: stretch;
-      align-self: stretch;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: min-content 1fr;
+      grid-template-columns: -webkit-min-content 1fr;
+      grid-template-columns: min-content 1fr;
+  -ms-grid-rows: 2em 1fr;
+      grid-template-rows: 2em 1fr;
+      grid-template-areas: "TopBar TopBar" "Launcher Desktop";
   -ms-grid-row: 1;
   -ms-grid-column: 1;
   grid-area: Display;
@@ -236,54 +160,50 @@ button:active {
   opacity: 0;
 }
 
-#Windows {
+#TopBar {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-area: TopBar;
+  background-color: black;
+}
+
+#Desktop {
   height: 100%;
   -webkit-transition: all 0.25s ease-in-out;
   transition: all 0.25s ease-in-out;
-  display: -ms-grid;
-  display: grid;
-  grid-auto-flow: column;
-  grid-auto-rows: 1fr;
-  gap: 0.5em;
-  -webkit-box-pack: stretch;
-      -ms-flex-pack: stretch;
-          justify-content: stretch;
-  -ms-flex-line-pack: stretch;
-      align-content: stretch;
-  justify-items: stretch;
-  -webkit-box-align: stretch;
-      -ms-flex-align: stretch;
-          align-items: stretch;
-  -ms-grid-column-align: stretch;
-      justify-self: stretch;
-  -ms-grid-row-align: stretch;
-      align-self: stretch;
-  -ms-grid-row: 1;
-  -ms-grid-column: 1;
-  grid-area: Windows;
+  -ms-grid-row: 2;
+  -ms-grid-column: 2;
+  grid-area: Desktop;
+  display: inline-block;
 }
 
 #Dock {
+  background-color: #111111;
   -webkit-transition: all 0.25s ease-in-out;
   transition: all 0.25s ease-in-out;
   overflow: visible;
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 1fr min-content;
-      grid-template-columns: 1fr -webkit-min-content;
-      grid-template-columns: 1fr min-content;
-  -ms-grid-rows: 1fr;
-      grid-template-rows: 1fr;
-  gap: 0px 0px;
-      grid-template-areas: "AppList System";
-  -ms-grid-row-align: end;
-      align-self: end;
+  -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
+  -ms-grid-rows: min-content 1fr;
+      grid-template-rows: -webkit-min-content 1fr;
+      grid-template-rows: min-content 1fr;
+  gap: 0.5em 0px;
   padding: 0.25em;
+      grid-template-areas: "DashIcon" "AppList";
   -ms-grid-row: 2;
   -ms-grid-column: 1;
-  grid-area: Dock;
-  border-radius: 0.25em;
-  height: 3em;
+  grid-area: Launcher;
+  height: 100%;
+}
+
+.DashAppIcon {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: DashIcon;
+  margin-bottom: 0.5em;
 }
 
 /**
@@ -301,8 +221,8 @@ button:active {
     opacity: 0;
   }
   100% {
-    -webkit-transform: scale(1);
-            transform: scale(1);
+    -webkit-transform: unset;
+            transform: unset;
     opacity: 1;
   }
 }
@@ -316,8 +236,8 @@ button:active {
     opacity: 0;
   }
   100% {
-    -webkit-transform: scale(1);
-            transform: scale(1);
+    -webkit-transform: unset;
+            transform: unset;
     opacity: 1;
   }
 }
@@ -339,8 +259,8 @@ button:active {
     opacity: 0;
   }
   100% {
-    -webkit-transform: scale(1);
-            transform: scale(1);
+    -webkit-transform: unset;
+            transform: unset;
     -webkit-transform-origin: 50% 100%;
             transform-origin: 50% 100%;
     opacity: 1;
@@ -358,8 +278,8 @@ button:active {
     opacity: 0;
   }
   100% {
-    -webkit-transform: scale(1);
-            transform: scale(1);
+    -webkit-transform: unset;
+            transform: unset;
     -webkit-transform-origin: 50% 100%;
             transform-origin: 50% 100%;
     opacity: 1;
@@ -435,82 +355,6 @@ button:active {
   90% {
     -webkit-transform: rotate(2deg);
             transform: rotate(2deg);
-  }
-}
-
-@-webkit-keyframes fullscreen {
-  0% {
-    grid-template-rows: 1fr -webkit-min-content;
-    grid-template-rows: 1fr min-content;
-    gap: 0.5em;
-    padding: 0.5em;
-  }
-  100% {
-    gap: 0em;
-    padding: 0em;
-    grid-template-rows: 100vh -webkit-min-content !important;
-    grid-template-rows: 100vh min-content !important;
-    #Windows {
-      border-radius: 0em !important;
-      .AppContainer {
-        border-radius: 0em !important;
-      }
-    }
-  }
-}
-
-@keyframes fullscreen {
-  0% {
-    -ms-grid-rows: 1fr min-content;
-        grid-template-rows: 1fr -webkit-min-content;
-        grid-template-rows: 1fr min-content;
-    gap: 0.5em;
-    padding: 0.5em;
-  }
-  100% {
-    gap: 0em;
-    padding: 0em;
-    -ms-grid-rows: 100vh min-content !important;
-        grid-template-rows: 100vh -webkit-min-content !important;
-        grid-template-rows: 100vh min-content !important;
-    #Windows {
-      border-radius: 0em !important;
-      .AppContainer {
-        border-radius: 0em !important;
-      }
-    }
-  }
-}
-
-@-webkit-keyframes Displaynormal {
-  0% {
-    gap: 0em;
-    padding: 0em;
-    grid-template-rows: 100vh -webkit-min-content;
-    grid-template-rows: 100vh min-content;
-  }
-  100% {
-    grid-template-rows: 1fr -webkit-min-content !important;
-    grid-template-rows: 1fr min-content !important;
-    gap: 0.5em;
-    padding: 0.5em;
-  }
-}
-
-@keyframes Displaynormal {
-  0% {
-    gap: 0em;
-    padding: 0em;
-    -ms-grid-rows: 100vh min-content;
-        grid-template-rows: 100vh -webkit-min-content;
-        grid-template-rows: 100vh min-content;
-  }
-  100% {
-    -ms-grid-rows: 1fr min-content !important;
-        grid-template-rows: 1fr -webkit-min-content !important;
-        grid-template-rows: 1fr min-content !important;
-    gap: 0.5em;
-    padding: 0.5em;
   }
 }
 
@@ -904,6 +748,7 @@ hr {
   height: 3em;
   width: 3em;
   border-radius: 0.25em;
+  background-size: contain !important;
 }
 
 .HListItem:first-child {
@@ -945,66 +790,63 @@ hr {
 }
 
 .AppContainer {
+  display: inline-block;
+  -ms-touch-action: none;
+      touch-action: none;
+  position: relative;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
   -webkit-box-shadow: 0em 1em 1.5em -0.5em rgba(0, 0, 0, 0.1);
           box-shadow: 0em 1em 1.5em -0.5em rgba(0, 0, 0, 0.1);
-  background-image: url(/system/images/white-brushed.png);
   background-repeat: repeat;
-  background-color: rgba(255, 255, 255, 0.75);
-  -webkit-backdrop-filter: blur(1em);
-          backdrop-filter: blur(1em);
+  background-color: white;
   border-radius: 0.25em;
+  width: 40em;
+  height: 30em;
   border: none;
-  display: -ms-grid;
-  display: grid;
-  grid-auto-columns: 1fr;
-  grid-auto-rows: 1fr;
-  -ms-grid-columns: 1fr;
-      grid-template-columns: 1fr;
-  -ms-grid-rows: 1fr;
-      grid-template-rows: 1fr;
   overflow: hidden;
-  gap: 1em 0px;
-      grid-template-areas: "App";
-  -webkit-transition: width 300ms ease-in-out;
-  transition: width 300ms ease-in-out;
+  -webkit-transition: all 0.25s ease-out;
+  transition: all 0.25s ease-out;
+}
+
+.AppFullScreen {
+  -webkit-transform: translate(0px, 0px);
+          transform: translate(0px, 0px);
+  border-radius: 0em;
+  width: 100% !important;
+  height: 100% !important;
 }
 
 .App {
   display: -ms-grid;
   display: grid;
+  grid-area: App;
   -ms-grid-columns: min-content 1fr;
       grid-template-columns: -webkit-min-content 1fr;
       grid-template-columns: min-content 1fr;
-  -ms-grid-rows: 3em 1fr;
-      grid-template-rows: 3em 1fr;
-  gap: 0px 0px;
-  width: 100%;
+  -ms-grid-rows: min-content 3em 1fr;
+      grid-template-rows: -webkit-min-content 3em 1fr;
+      grid-template-rows: min-content 3em 1fr;
   height: 100%;
-      grid-template-areas: "Sidebar Toolbar" "Sidebar Contents";
-  -webkit-box-pack: stretch;
-      -ms-flex-pack: stretch;
-          justify-content: stretch;
-  -ms-flex-line-pack: stretch;
-      align-content: stretch;
-  justify-items: stretch;
-  -webkit-box-align: stretch;
-      -ms-flex-align: stretch;
-          align-items: stretch;
+  gap: 0px 0px;
+      grid-template-areas: "WindowDecoration WindowDecoration" "Toolbar Toolbar" "Sidebar Contents";
   -webkit-animation-timing-function: ease-in-out;
           animation-timing-function: ease-in-out;
 }
 
 .Sidebar {
+  min-width: 12.5em;
   gap: 0.5em;
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
   justify-self: start;
-  -ms-grid-row: 1;
-  -ms-grid-row-span: 2;
+  -ms-grid-row: 3;
   -ms-grid-column: 1;
   grid-area: Sidebar;
-  border-radius: 1em;
+  background: #F0F0F0;
   overflow-y: scroll;
   overflow-x: hidden;
   display: -webkit-box;
@@ -1017,7 +859,6 @@ hr {
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
-  padding: 0.5em;
   -webkit-box-flex: 0;
       -ms-flex: none;
           flex: none;
@@ -1032,20 +873,36 @@ hr {
 }
 
 .Sidebar button {
+  border-radius: 0em;
   width: 100%;
+}
+
+.WindowDecoration {
+  background: #141013;
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-area: WindowDecoration;
+  -ms-grid-columns: min-content 1fr;
+      grid-template-columns: -webkit-min-content 1fr;
+      grid-template-columns: min-content 1fr;
+  -ms-grid-rows: 1fr;
+      grid-template-rows: 1fr;
+  grid-auto-flow: row;
+  justify-items: start;
+      grid-template-areas: "Controls TitleAndMenu";
 }
 
 .Toolbar {
   padding: 0.5em;
-  background-color: rgba(255, 255, 255, 0.75);
-  -webkit-backdrop-filter: blur(1em);
-          backdrop-filter: blur(1em);
+  background: -webkit-gradient(linear, left top, left bottom, from(#141013), to(rgba(20, 16, 19, 0.9)));
+  background: linear-gradient(180deg, #141013 0%, rgba(20, 16, 19, 0.9) 100%);
   display: -ms-grid;
   display: grid;
   gap: 0.5em;
-  -ms-grid-columns: min-content 1fr min-content;
-      grid-template-columns: -webkit-min-content 1fr -webkit-min-content;
-      grid-template-columns: min-content 1fr min-content;
+  -ms-grid-columns: min-content 1fr;
+      grid-template-columns: -webkit-min-content 1fr;
+      grid-template-columns: min-content 1fr;
   -ms-grid-rows: 1fr;
       grid-template-rows: 1fr;
   grid-auto-flow: row;
@@ -1053,9 +910,10 @@ hr {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-      grid-template-areas: "AppIcon Tools Search Controls";
-  -ms-grid-row: 1;
-  -ms-grid-column: 2;
+      grid-template-areas: "Tools Search";
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
   grid-area: Toolbar;
 }
 
@@ -1066,12 +924,16 @@ hr {
 }
 
 .Controls {
-  gap: 0.1em;
-  justify-self: end;
+  gap: 0.5em;
+  padding: 0.5em;
+  justify-self: start;
   -ms-flex-item-align: center;
       align-self: center;
+  width: -webkit-min-content;
+  width: -moz-min-content;
+  width: min-content;
   -ms-grid-row: 1;
-  -ms-grid-column: 4;
+  -ms-grid-column: 1;
   grid-area: Controls;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1080,67 +942,38 @@ hr {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
 }
 
+.Controls button:first-of-type {
+  background-color: #E95420 !important;
+}
+
 .Controls button {
+  border-radius: 100%;
   padding: 0.5em;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  width: 2em;
+  width: 1.25em;
+  height: 1.25em;
 }
 
-.Controls :first-child {
-  border-top-left-radius: 0.25em;
-  border-bottom-left-radius: 0.25em;
-  border-top-right-radius: 0em;
-  border-bottom-right-radius: 0em;
-}
-
-.Controls :not(:first-child) {
-  border-top-left-radius: 0em;
-  border-bottom-left-radius: 0em;
-  border-top-right-radius: 0em;
-  border-bottom-right-radius: 0em;
-}
-
-.Controls :last-child {
-  border-top-left-radius: 0em;
-  border-bottom-left-radius: 0em;
-  border-top-right-radius: 0.25em;
-  border-bottom-right-radius: 0.25em;
-}
-
-.Controls :only-child {
-  border-top-left-radius: 0.25em;
-  border-bottom-left-radius: 0.25em;
-  border-top-right-radius: 0.25em;
-  border-bottom-right-radius: 0.25em;
-}
-
-.AppMenuButton {
-  -ms-grid-row: 1;
-  -ms-grid-column: 1;
-  grid-area: AppIcon;
+.Controls button img {
+  width: 0.9em;
+  height: 0.9em;
 }
 
 .ScreenHeaderIcon {
+  background-size: contain !important;
   width: 8em;
   height: 8em;
   display: -webkit-box;
@@ -1164,18 +997,17 @@ hr {
   white-space: nowrap;
   font-size: 1em;
   color: #ffffff;
-  background-size: cover;
 }
 
 .search {
   -ms-grid-row: 1;
-  -ms-grid-column: 3;
+  -ms-grid-column: 2;
   grid-area: Search;
 }
 
 .searchOpen {
   -ms-grid-row: 1;
-  -ms-grid-column: 3;
+  -ms-grid-column: 2;
   grid-area: Search;
 }
 
@@ -1189,7 +1021,7 @@ input {
 
 .Tools {
   -ms-grid-row: 1;
-  -ms-grid-column: 2;
+  -ms-grid-column: 1;
   grid-area: Tools;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1241,35 +1073,7 @@ button:hover {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  gap: 0.1em;
-}
-
-.ToolGroup :first-child {
-  border-top-left-radius: 0.25em;
-  border-top-right-radius: 0.25em;
-  border-bottom-right-radius: 0em;
-  border-bottom-left-radius: 0em;
-}
-
-.ToolGroup :not(:first-child) {
-  border-top-left-radius: 0em;
-  border-bottom-left-radius: 0em;
-  border-top-right-radius: 0em;
-  border-bottom-right-radius: 0em;
-}
-
-.ToolGroup :last-child {
-  border-top-left-radius: 0em;
-  border-bottom-left-radius: 0.25em;
-  border-top-right-radius: 0em;
-  border-bottom-right-radius: 0.25em;
-}
-
-.ToolGroup :only-child {
-  border-top-left-radius: 0.25em;
-  border-bottom-left-radius: 0.25em;
-  border-top-right-radius: 0.25em;
-  border-bottom-right-radius: 0.25em;
+  gap: 0em;
 }
 
 .ToolGroupH {
@@ -1344,7 +1148,7 @@ button:hover {
   gap: 0.5em;
   grid-auto-flow: row;
       grid-template-areas: "Body Preview";
-  -ms-grid-row: 2;
+  -ms-grid-row: 3;
   -ms-grid-column: 2;
   grid-area: Contents;
   background: rgba(255, 255, 255, 0.75);
@@ -1393,6 +1197,7 @@ button:hover {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  width: 10em;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
@@ -1402,7 +1207,7 @@ button:hover {
       -ms-flex-align: end;
           align-items: flex-end;
   vertical-align: middle;
-  height: 2.5em;
+  height: 1.5em;
   border-radius: 0.25em;
   border-style: none;
   background-size: cover;
@@ -1422,21 +1227,20 @@ button:hover {
   display: -ms-flexbox;
   display: flex;
   width: 100%;
-  -ms-grid-row: 1;
+  -ms-grid-row: 2;
   -ms-grid-column: 1;
   grid-area: AppList;
+  overflow-y: scroll;
   vertical-align: middle;
-  -webkit-box-orient: horizontal;
+  -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -ms-flex-wrap: nowrap;
-      flex-wrap: nowrap;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
 .DockAppIcon {
-  -webkit-transform: scale(0.9);
-          transform: scale(0.9);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1448,15 +1252,13 @@ button:hover {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background: rgba(255, 255, 255, 0.75);
-  -webkit-backdrop-filter: blur(1em);
-          backdrop-filter: blur(1em);
+  background-image: url("/Apps/Settings/AppIcon.svg");
+  background-color: unset !important;
   vertical-align: middle;
-  height: 2.5em;
+  height: 4em;
   border-radius: 0.25em;
-  width: 2.5em;
+  width: 4em;
   border-style: none;
-  background-size: cover;
   -webkit-transition: all 250ms ease-in-out;
   transition: all 250ms ease-in-out;
 }
@@ -1474,9 +1276,9 @@ button:hover {
   display: inline-block;
   vertical-align: middle;
   border-style: none;
-  height: 2.5em;
+  height: 1.5em;
   border-radius: 0.25em;
-  width: 2.5em;
+  width: 1.5em;
   background-size: cover;
   -webkit-transition: translate 250ms ease-in-out;
   transition: translate 250ms ease-in-out;
@@ -1612,6 +1414,10 @@ button:hover {
 [data-tooltip=""]::after,
 [data-tooltip=""]::before {
   display: none !important;
+}
+
+.Toolbar {
+  background-color: #eeeeee;
 }
 
 @-webkit-keyframes SpinnerLoader {
