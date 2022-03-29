@@ -17,10 +17,11 @@ h2 {
 }
 
 #Dash {
+  display: none;
   font-size: 1em;
   color: #ffffff;
   position: absolute;
-  z-index: 100;
+  z-index: 10000;
   top: 2em;
   left: 4.5em;
   width: 60em;
@@ -161,6 +162,7 @@ button:active {
 }
 
 #TopBar {
+  z-index: 1000;
   -ms-grid-row: 1;
   -ms-grid-column: 1;
   -ms-grid-column-span: 2;
@@ -170,8 +172,6 @@ button:active {
 
 #Desktop {
   height: 100%;
-  -webkit-transition: all 0.25s ease-in-out;
-  transition: all 0.25s ease-in-out;
   -ms-grid-row: 2;
   -ms-grid-column: 2;
   grid-area: Desktop;
@@ -179,6 +179,7 @@ button:active {
 }
 
 #Dock {
+  z-index: 1000;
   background-color: #111111;
   -webkit-transition: all 0.25s ease-in-out;
   transition: all 0.25s ease-in-out;
@@ -790,6 +791,8 @@ hr {
 }
 
 .AppContainer {
+  -webkit-transform: translate(0px, 0px);
+          transform: translate(0px, 0px);
   display: inline-block;
   -ms-touch-action: none;
       touch-action: none;
@@ -807,16 +810,16 @@ hr {
   height: 30em;
   border: none;
   overflow: hidden;
-  -webkit-transition: all 0.25s ease-out;
-  transition: all 0.25s ease-out;
 }
 
 .AppFullScreen {
-  -webkit-transform: translate(0px, 0px);
-          transform: translate(0px, 0px);
+  margin-left: 0px !important;
+  margin-top: 0px !important;
   border-radius: 0em;
   width: 100% !important;
   height: 100% !important;
+  -webkit-transition: all 0.25s ease-out;
+  transition: all 0.25s ease-out;
 }
 
 .App {
@@ -877,6 +880,24 @@ hr {
   width: 100%;
 }
 
+.TitleAndMenu {
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+  grid-area: TitleAndMenu;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  font-weight: bold;
+  color: white;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
 .WindowDecoration {
   background: #141013;
   -ms-grid-row: 1;
@@ -889,6 +910,7 @@ hr {
   -ms-grid-rows: 1fr;
       grid-template-rows: 1fr;
   grid-auto-flow: row;
+  gap: 1em;
   justify-items: start;
       grid-template-areas: "Controls TitleAndMenu";
 }
@@ -935,9 +957,9 @@ hr {
   -ms-grid-row: 1;
   -ms-grid-column: 1;
   grid-area: Controls;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
       -ms-flex-direction: row;

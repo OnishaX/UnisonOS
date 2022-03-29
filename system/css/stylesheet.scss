@@ -14,10 +14,11 @@ h2 {
   padding-bottom: 0.5em;
 }
 #Dash {
+  display: none;
   font-size: 1em;
   color: #ffffff;
   position: absolute;
-  z-index: 100;
+  z-index: 10000;
   top: 2em;
   left: 4.5em;
   width:60em;
@@ -121,16 +122,17 @@ button:active {
   opacity: 0;
 }
 #TopBar {
+  z-index: 1000;
   grid-area: TopBar;
   background-color: black;
 }
 #Desktop {
   height: 100%;
-  transition: all 0.25s ease-in-out;
   grid-area: Desktop;
   display: inline-block;
 }
 #Dock {
+  z-index: 1000;
   background-color: #111111;
   transition: all 0.25s ease-in-out;
   overflow: visible;
@@ -450,6 +452,7 @@ hr {
   animation: scale-out-bottom 1s cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
 }
 .AppContainer {
+  transform: translate(0px, 0px);
   display: inline-block;
   touch-action: none;
   position: relative;
@@ -462,14 +465,15 @@ hr {
   height: 30em;
   border: none;
   overflow: hidden;
-  transition: all 0.25s ease-out;
 }
 
 .AppFullScreen {
-  transform: translate(0px, 0px);
+  margin-left: 0px !important;
+  margin-top: 0px !important;
   border-radius: 0em;
   width: 100% !important;
   height: 100% !important;
+  transition: all 0.25s ease-out;
 }
 .App {
   display: grid;
@@ -507,6 +511,14 @@ hr {
     width: 100%;
   }
 }
+.TitleAndMenu {
+  grid-area: TitleAndMenu;
+  display: inline-flex;
+  font-weight: bold;
+  color: white;
+  flex-direction: row;
+  align-items: center;
+}
 
 .WindowDecoration {
   background: #141013;
@@ -514,6 +526,7 @@ hr {
   grid-template-columns: min-content 1fr;
   grid-template-rows: 1fr;
   grid-auto-flow: row;
+  gap: 1em;
   justify-items: start;
   grid-template-areas: "Controls TitleAndMenu";
 }
@@ -544,7 +557,7 @@ hr {
   align-self: center;
   width: min-content;
   grid-area: Controls;
-  display: flex;
+  display: inline-flex;
   flex-direction: row;
   align-items: center;
   button:first-of-type{

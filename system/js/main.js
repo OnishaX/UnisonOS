@@ -65,7 +65,7 @@ function AdjustWindowTiling() {
   //   AppMode = "Small"
   // }
 }
-
+const position = { x: 0, y: 0 }
 
 function FillWindow(temp) {
   if (document.getElementById(temp + "WindowDecoration").style.display != "none") {
@@ -82,51 +82,68 @@ function FillWindow(temp) {
 
 }
 
+function BringToFront(temp) {
+  (document.getElementById(temp + "App").style.zIndex = +1)
+}
+
+function dragMoveListener (event) {
+  var target = event.target,
+      // keep the dragged position in the data-x/data-y attributes
+      x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx,
+      y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy;
+
+  // translate the element
+  target.style.marginLeft = target.style.marginLeft = x + 'px'
+  target.style.marginTop = target.style.marginTop = y + 'px'
+
+  // update the posiion attributes
+  target.setAttribute('data-x', x);
+  target.setAttribute('data-y', y);
+}
 
 interact('.resize-drag')
-  .resizable({
-    // resize from all edges and corners
-    edges: { left: true, right: true, bottom: true, top: true },
-
-    listeners: {
-      move(event) {
-        var target = event.target
-        var x = (parseFloat(target.getAttribute('data-x')) || 0)
-        var y = (parseFloat(target.getAttribute('data-y')) || 0)
-
-        // update the element's style
-        target.style.width = event.rect.width + 'px'
-        target.style.height = event.rect.height + 'px'
-
-        // translate when resizing from top or left edges
-        x += event.deltaRect.left
-        y += event.deltaRect.top
-
-        target.style.transform = 'translate(' + x + 'px,' + y + 'px)'
-
-        target.setAttribute('data-x', x)
-        target.setAttribute('data-y', y)
-      }
-    },
+.draggable({
+  onmove: window.dragMoveListener,
+  inertia: true,
+    // keep the element within the area of it's parent
     modifiers: [
-      // keep the edges inside the parent
-      interact.modifiers.restrictEdges({
-        outer: 'parent'
-      }),
-
-      // minimum size
-      interact.modifiers.restrictSize({
-        min: { width: 100, height: 50 }
+      interact.modifiers.restrictRect({
+        restriction: 'parent',
+        endOnly: true
       })
     ],
+})
+.resizable({
+  edges: { left: true, right: true, bottom: true, top: true },
+  inertia: true,
+    // keep the element within the area of it's parent
+    modifiers: [
+      interact.modifiers.restrictRect({
+        restriction: 'parent',
+        endOnly: true
+      })
+    ],
+})
+.on('resizemove', function (event) {
+  var target = event.target;
+      x = (parseFloat(target.getAttribute('data-x')) || 0),
+      y = (parseFloat(target.getAttribute('data-y')) || 0);
 
-    inertia: true
-  })
-  .draggable({
-    listeners: { move: window.dragMoveListener },
-    allowFrom: '.WindowDecoration',
-    inertia: true,
-  })
+  // update the element's style
+  target.style.width  = event.rect.width + 'px';
+  target.style.height = event.rect.height + 'px';
+
+  // translate when resizing from top or left edges
+  x += event.deltaRect.left;
+  y += event.deltaRect.top;
+
+  target.style.marginLeft = target.style.marginLeft = x + 'px'
+  target.style.marginTop = target.style.marginTop = y + 'px'
+
+  target.setAttribute('data-x', x);
+  target.setAttribute('data-y', y);
+});
+
 
 function MinimiseWindow(minimisingApp) {
   minimisingApp.String
@@ -225,7 +242,7 @@ function LaunchWindow(launchingApp) {
       // AdjustWindowTiling()
       RunningApps.push(launchingApp)
       temp = RunningApps[RunningApps.length - 1]
-      $("#Desktop").append('<div class="AppContainer resize-drag openApp" id="' + launchingApp + 'App"></div>');
+      $("#Desktop").append('<div class="AppContainer resize-drag openApp" id="' + launchingApp + 'App" onClick"BringToFront(' + launchingApp +')"></div>');
       $('#' + String(temp + 'App')).load('/Apps/' + temp + '/App.html');
       $(temp + "App").removeClass("openApp");
     }
