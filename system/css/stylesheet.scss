@@ -2,9 +2,96 @@
   font-family: "Roboto";
   src: url("/system/fonts/Roboto/Roboto-Regular.ttf") format("truetype");
 }
-.search {
-  width: 100%;
+
+/* Colours */
+/* Light mode */
+@media (prefers-color-scheme: light) {
+  :root {
+    --black: #111111;
+    --white: #ffffff;
+
+    --background: #ffffff;
+    --foreground: #f7f7f7;
+
+    --text-regular: #111111;
+    --text-secondary: #5d5d5d;
+
+    --positive: #0e8420;
+    --negative: #c7162b;
+    --neutral: #cdcdcd;
+    --live: #335280;
+    --brand: #e95420;
+  }
 }
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --black: #111111;
+    --white: #ffffff;
+
+    --background: #111111;
+    --foreground: #3b3b3b;
+
+    --text-regular: #ffffff;
+    --text-secondary: #CDCDCD;
+
+    --positive: #3eb34f;
+    --negative: #ed3146;
+    --neutral: #cdcdcd;
+    --live: #19b6ee;
+    --brand: #e95420;
+  }
+}
+#BootStatus {
+  margin-top: 0px;
+  margin-right: auto;
+  margin-bottom: auto;
+  margin-left: auto;
+  height: max-content;
+  color: var(--text-regular);
+}
+#BootScreen {
+  display: flex;
+  height: 100vh;
+  position: fixed;
+  background-color: var(--background);
+  z-index: 10000;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 100vw;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  align-content: space-around;
+  overflow: auto;
+}
+
+.Spinner {
+  margin-top: auto;
+  margin-right: auto;
+  margin-bottom: 0px;
+  margin-left: auto;
+  width: 2em;
+  height: 2em;
+  display: block;
+  background-image: url(/System/Icons/Spinner.svg);
+  background-size: contain;
+  animation: rotate-center 1s linear infinite both;
+}
+@keyframes rotate-center {
+  0% {
+    -webkit-transform: rotate(0);
+    transform: rotate(0);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
 h2 {
   margin-top: 1em;
   margin-left: 1em;
@@ -12,18 +99,19 @@ h2 {
   font-weight: bold;
   margin-bottom: unset;
   padding-bottom: 0.5em;
+  color: var(--text-secondary);
 }
 #Dash {
   display: none;
   font-size: 1em;
-  color: #ffffff;
+  color: var(--text-regular);
   position: absolute;
   z-index: 10000;
   top: 2em;
   left: 4.5em;
-  width:60em;
-  height:40em;
-  background-color: rgba(17, 17, 17, 0.75);
+  width: 60em;
+  height: 40em;
+  background-color: rgba(11, 11, 11, 0.75);
   backdrop-filter: blur(0.5em);
   padding: 0;
   border: 1px solid rgba(244, 244, 244, 0.1);
@@ -53,17 +141,6 @@ h2 {
   display: flex;
   width: 100%;
   gap: 0.25em;
-  .HListItem:first-child {
-    margin-left: 0em;
-  }
-
-  .HListItem {
-    background-color: rgba(255, 255, 255, 0.75);
-    color: black;
-  }
-  .HListItem:hover {
-    background-color: rgba(255, 255, 255, 1);
-  }
 }
 
 body {
@@ -91,18 +168,24 @@ button {
   height: 2em;
   border-radius: 0.25em;
   white-space: nowrap;
-  transition: all 0.25s ease-in-out;
+  transition: all 0.1s ease-in-out;
   font-size: 1em;
-  color: #ffffff;
-
+  color: var(--text-regular);
+  background: var(--background);
   img {
     width: 1.1em;
     height: 1.1em;
     border-radius: 0.25em !important;
   }
 }
+button:hover {
+  color: var(--text-regular);
+  background: var(--foreground);
+}
+
 button:active {
-  color: #ffffff !important;
+  color: var(--background);
+  background: var(--brand);
 }
 
 #Display {
@@ -118,13 +201,10 @@ button:active {
   background-size: cover;
 }
 
-.ghost {
-  opacity: 0;
-}
 #TopBar {
   z-index: 1000;
   grid-area: TopBar;
-  background-color: black;
+  background-color: var(--black);
 }
 #Desktop {
   height: 100%;
@@ -133,7 +213,7 @@ button:active {
 }
 #Dock {
   z-index: 1000;
-  background-color: #111111;
+  background-color: var(--black);
   transition: all 0.25s ease-in-out;
   overflow: visible;
   display: grid;
@@ -222,7 +302,6 @@ button:active {
     transform: rotate(2deg);
   }
 }
-
 
 /**
  * ----------------------------------------
@@ -364,19 +443,22 @@ button:active {
   flex-grow: 0;
 }
 .ListSection {
-  border: 0.1em solid #00000008;
   min-height: 8em;
   animation: fade-in 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
   gap: 0.5em;
   overflow: scroll;
   justify-self: stretch;
-  border-radius: 0.5em;
   align-items: flex-start;
   padding: 0em;
   flex: none;
   align-self: initial;
   flex-grow: 0;
   flex-shrink: 1;
+  background: none;
+  margin-bottom: 0.5em;
+}
+ListSection:last-of-type {
+  margin-bottom: 0;
 }
 .RowSnip {
   height: fit-content !important;
@@ -400,6 +482,9 @@ hr {
   flex-wrap: nowrap;
   flex-direction: row;
   align-items: left;
+  h2 {
+    color: var(--text-regular);
+  }
 }
 .HList {
   overflow: scroll;
@@ -459,10 +544,10 @@ hr {
   user-select: none;
   box-shadow: 0em 1em 1.5em -0.5em rgba(0, 0, 0, 0.1);
   background-repeat: repeat;
-  background-color: rgba(255, 255, 255, 1);
+  background-color: var(--background);
   border-radius: 0.25em;
-  width: 40em;
-  height: 30em;
+  width: 60em;
+  height: 35em;
   border: none;
   overflow: hidden;
 }
@@ -478,24 +563,25 @@ hr {
 .App {
   display: grid;
   grid-area: App;
-  grid-template-columns: min-content 1fr; 
-  grid-template-rows: min-content 3em 1fr; 
+  grid-template-columns: min-content 1fr;
+  grid-template-rows: min-content 3em 1fr;
   height: 100%;
   gap: 0px 0px;
-  grid-template-areas: 
+  grid-template-areas:
     "WindowDecoration WindowDecoration"
     "Toolbar Toolbar"
-    "Sidebar Contents"; 
+    "Sidebar Contents";
   animation-timing-function: ease-in-out;
 }
 
 .Sidebar {
-  min-width: 12.5em;
+  cursor: default;
+  min-width: 10em;
   gap: 0.5em;
   width: fit-content;
   justify-self: start;
   grid-area: Sidebar;
-  background: #F0F0F0;
+  background: var(--foreground);
   overflow-y: scroll;
   overflow-x: hidden;
   display: flex;
@@ -509,8 +595,18 @@ hr {
   button {
     border-radius: 0em;
     width: 100%;
+    background: unset;
+  }
+  button:hover {
+    color: var(--text-regular);
+  background: var(--background);
+  }
+  button:active {
+    color: var(--background);
+    background: var(--brand);
   }
 }
+
 .TitleAndMenu {
   grid-area: TitleAndMenu;
   display: inline-flex;
@@ -521,6 +617,7 @@ hr {
 }
 
 .WindowDecoration {
+  cursor: grab;
   background: #141013;
   grid-area: WindowDecoration;
   grid-template-columns: min-content 1fr;
@@ -531,7 +628,12 @@ hr {
   grid-template-areas: "Controls TitleAndMenu";
 }
 
+.WindowDecoration:active {
+  cursor: grabbing;
+}
+
 .Toolbar {
+  cursor:default;
   padding: 0.5em;
   background: linear-gradient(180deg, #141013 0%, rgba(20, 16, 19, 0.9) 100%);
   display: grid;
@@ -549,7 +651,6 @@ hr {
   }
 }
 
-
 .Controls {
   gap: 0.5em;
   padding: 0.5em;
@@ -560,8 +661,9 @@ hr {
   display: inline-flex;
   flex-direction: row;
   align-items: center;
-  button:first-of-type{
-    background-color: #E95420 !important;
+
+  button:first-of-type {
+    background-color: var(--brand);
   }
   button {
     border-radius: 100%;
@@ -571,12 +673,15 @@ hr {
     align-items: center;
     width: 1.25em;
     height: 1.25em;
+    color: var(--text-regular);
+    background: var(--neutral);
     img {
       width: 0.9em;
       height: 0.9em;
     }
   }
 }
+
 .ScreenHeaderIcon {
   background-size: contain !important;
   width: 8em;
@@ -595,15 +700,23 @@ hr {
   color: #ffffff;
 }
 .search {
+  background: none;
+  color:white;
   grid-area: Search;
+  input {
+    background: none;
+  }
 }
 .searchOpen {
   grid-area: Search;
+  input {
+    background: none;
+  }
 }
 input {
   padding-left: 0.5em;
   padding-right: 0.5em;
-  color: black;
+  color: var(--text-regular);
   border-radius: 0.25em;
   border: none;
 }
@@ -615,72 +728,59 @@ input {
   justify-content: start;
   align-items: center;
   gap: 1em;
-  .ToolGroupH {
-    button {
-      width: unset;
-    }
-  }
   button {
-    display: flex;
-    flex-direction: left;
-    justify-content: left;
-    align-items: center;
-    border-radius: unset;
+    background: none;
   }
-}
-button:hover {
-  cursor: pointer;
-}
-.ToolGroup {
-  flex-direction: column;
-  width: 100%;
-  display: flex;
-  gap: 0em;
-}
-
-.ToolGroupH {
-  display: flex;
-  width: 100%;
-  flex-wrap: nowrap;
-  flex-direction: row;
-  align-items: stretch;
-  gap: 0.1em;
-}
-.ToolGroupH :first-child {
-  border-top-left-radius: 0.25em;
-  border-bottom-left-radius: 0.25em;
-  border-top-right-radius: 0em;
-  border-bottom-right-radius: 0em;
-}
-.ToolGroupH :not(:first-child) {
-  border-top-left-radius: 0em;
-  border-bottom-left-radius: 0em;
-  border-top-right-radius: 0em;
-  border-bottom-right-radius: 0em;
-}
-.ToolGroupH :last-child {
-  border-top-left-radius: 0em;
-  border-bottom-left-radius: 0em;
-  border-top-right-radius: 0.25em;
-  border-bottom-right-radius: 0.25em;
-}
-.ToolGroupH :only-child {
-  border-top-left-radius: 0.25em;
-  border-bottom-left-radius: 0.25em;
-  border-top-right-radius: 0.25em;
-  border-bottom-right-radius: 0.25em;
-}
-.ToolGroupH {
-  button {
+  button:hover {
+    cursor: pointer;
+    color: var(--text-regular);
+  background: var(--foreground);
+  }
+  .ToolGroup {
+    flex-direction: column;
     width: 100%;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    background-size: cover;
-    color: white;
+    gap: 0em;
+  }
+
+  .ToolGroupH {
+    display: flex;
+    width: 100%;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    align-items: stretch;
+    gap: 0.1em;
+  }
+  .ToolGroupH :first-child {
+    border-top-left-radius: 0.25em;
+    border-bottom-left-radius: 0.25em;
+    border-top-right-radius: 0em;
+    border-bottom-right-radius: 0em;
+  }
+  .ToolGroupH :not(:first-child) {
+    border-top-left-radius: 0em;
+    border-bottom-left-radius: 0em;
+    border-top-right-radius: 0em;
+    border-bottom-right-radius: 0em;
+  }
+  .ToolGroupH :last-child {
+    border-top-left-radius: 0em;
+    border-bottom-left-radius: 0em;
+    border-top-right-radius: 0.25em;
+    border-bottom-right-radius: 0.25em;
+  }
+  .ToolGroupH :only-child {
+    border-top-left-radius: 0.25em;
+    border-bottom-left-radius: 0.25em;
+    border-top-right-radius: 0.25em;
+    border-bottom-right-radius: 0.25em;
+  }
+  button {
+    color:var(--white);
   }
 }
 .Contents {
+  cursor: default;
   padding: 0.5em;
   display: grid;
   grid-template-columns: 1fr min-content;
@@ -689,23 +789,18 @@ button:hover {
   grid-auto-flow: row;
   grid-template-areas: "Body Preview";
   grid-area: Contents;
-  background: rgba(255, 255, 255, 0.75);
-  backdrop-filter: blur(1em);
 }
 
 .Preview {
   display: flex;
   gap: 0.5em;
   flex-direction: column;
-  background: rgba(255, 255, 255, 0.75);
+  background: var(--foreground);
   justify-self: end;
   align-self: stretch;
-  border-radius: 1em;
   width: fit-content;
   padding: 0.5em;
   grid-area: Preview;
-  background: rgba(255, 255, 255, 0.75);
-  backdrop-filter: blur(1em);
 }
 .slider {
   -webkit-appearance: none;
@@ -748,7 +843,7 @@ button:hover {
   flex-direction: row;
   justify-self: stretch;
   align-items: center;
-  background-image: url('/Apps/Settings/AppIcon.svg');
+  background-image: url("/Apps/Settings/AppIcon.svg");
   background-color: unset !important;
   vertical-align: middle;
   height: 4em;
@@ -823,7 +918,8 @@ button:hover {
   text-overflow: ellipsis;
   padding: 0.5em 1em;
   border-radius: 0.25em;
-  color: #000000;
+  background: var(--foreground);
+  color: var(--text-regular);
   z-index: 99;
 }
 [data-tooltip]:hover:before,
@@ -888,7 +984,7 @@ button:hover {
   display: none !important;
 }
 .Toolbar {
-  background-color: #eeeeee;
+  background-color: var(--background);
 }
 @keyframes SpinnerLoader {
   0% {

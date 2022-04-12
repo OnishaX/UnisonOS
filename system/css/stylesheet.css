@@ -3,8 +3,114 @@
   src: url("/system/fonts/Roboto/Roboto-Regular.ttf") format("truetype");
 }
 
-.search {
-  width: 100%;
+/* Colours */
+/* Light mode */
+@media (prefers-color-scheme: light) {
+  :root {
+    --black: #111111;
+    --white: #ffffff;
+    --background: #ffffff;
+    --foreground: #f7f7f7;
+    --text-regular: #111111;
+    --text-secondary: #5d5d5d;
+    --positive: #0e8420;
+    --negative: #c7162b;
+    --neutral: #cdcdcd;
+    --live: #335280;
+    --brand: #e95420;
+  }
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --black: #111111;
+    --white: #ffffff;
+    --background: #111111;
+    --foreground: #3b3b3b;
+    --text-regular: #ffffff;
+    --text-secondary: #CDCDCD;
+    --positive: #3eb34f;
+    --negative: #ed3146;
+    --neutral: #cdcdcd;
+    --live: #19b6ee;
+    --brand: #e95420;
+  }
+}
+
+#BootStatus {
+  margin-top: 0px;
+  margin-right: auto;
+  margin-bottom: auto;
+  margin-left: auto;
+  height: -webkit-max-content;
+  height: -moz-max-content;
+  height: max-content;
+  color: var(--text-regular);
+}
+
+#BootScreen {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100vh;
+  position: fixed;
+  background-color: var(--background);
+  z-index: 10000;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 100vw;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column nowrap;
+          flex-flow: column nowrap;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-line-pack: distribute;
+      align-content: space-around;
+  overflow: auto;
+}
+
+.Spinner {
+  margin-top: auto;
+  margin-right: auto;
+  margin-bottom: 0px;
+  margin-left: auto;
+  width: 2em;
+  height: 2em;
+  display: block;
+  background-image: url(/System/Icons/Spinner.svg);
+  background-size: contain;
+  -webkit-animation: rotate-center 1s linear infinite both;
+          animation: rotate-center 1s linear infinite both;
+}
+
+@-webkit-keyframes rotate-center {
+  0% {
+    -webkit-transform: rotate(0);
+    transform: rotate(0);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rotate-center {
+  0% {
+    -webkit-transform: rotate(0);
+    transform: rotate(0);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
 }
 
 h2 {
@@ -14,19 +120,20 @@ h2 {
   font-weight: bold;
   margin-bottom: unset;
   padding-bottom: 0.5em;
+  color: var(--text-secondary);
 }
 
 #Dash {
   display: none;
   font-size: 1em;
-  color: #ffffff;
+  color: var(--text-regular);
   position: absolute;
   z-index: 10000;
   top: 2em;
   left: 4.5em;
   width: 60em;
   height: 40em;
-  background-color: rgba(17, 17, 17, 0.75);
+  background-color: rgba(11, 11, 11, 0.75);
   -webkit-backdrop-filter: blur(0.5em);
           backdrop-filter: blur(0.5em);
   padding: 0;
@@ -72,19 +179,6 @@ h2 {
   gap: 0.25em;
 }
 
-#AllApps .HListItem:first-child {
-  margin-left: 0em;
-}
-
-#AllApps .HListItem {
-  background-color: rgba(255, 255, 255, 0.75);
-  color: black;
-}
-
-#AllApps .HListItem:hover {
-  background-color: white;
-}
-
 body {
   font-family: "Roboto";
   margin: 0px;
@@ -123,10 +217,11 @@ button {
   height: 2em;
   border-radius: 0.25em;
   white-space: nowrap;
-  -webkit-transition: all 0.25s ease-in-out;
-  transition: all 0.25s ease-in-out;
+  -webkit-transition: all 0.1s ease-in-out;
+  transition: all 0.1s ease-in-out;
   font-size: 1em;
-  color: #ffffff;
+  color: var(--text-regular);
+  background: var(--background);
 }
 
 button img {
@@ -135,8 +230,14 @@ button img {
   border-radius: 0.25em !important;
 }
 
+button:hover {
+  color: var(--text-regular);
+  background: var(--foreground);
+}
+
 button:active {
-  color: #ffffff !important;
+  color: var(--background);
+  background: var(--brand);
 }
 
 #Display {
@@ -157,17 +258,13 @@ button:active {
   background-size: cover;
 }
 
-.ghost {
-  opacity: 0;
-}
-
 #TopBar {
   z-index: 1000;
   -ms-grid-row: 1;
   -ms-grid-column: 1;
   -ms-grid-column-span: 2;
   grid-area: TopBar;
-  background-color: black;
+  background-color: var(--black);
 }
 
 #Desktop {
@@ -180,7 +277,7 @@ button:active {
 
 #Dock {
   z-index: 1000;
-  background-color: #111111;
+  background-color: var(--black);
   -webkit-transition: all 0.25s ease-in-out;
   transition: all 0.25s ease-in-out;
   overflow: visible;
@@ -645,7 +742,6 @@ button:active {
 }
 
 .ListSection {
-  border: 0.1em solid #00000008;
   min-height: 8em;
   -webkit-animation: fade-in 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
           animation: fade-in 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
@@ -653,7 +749,6 @@ button:active {
   overflow: scroll;
   -ms-grid-column-align: stretch;
       justify-self: stretch;
-  border-radius: 0.5em;
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
@@ -668,6 +763,12 @@ button:active {
       flex-grow: 0;
   -ms-flex-negative: 1;
       flex-shrink: 1;
+  background: none;
+  margin-bottom: 0.5em;
+}
+
+ListSection:last-of-type {
+  margin-bottom: 0;
 }
 
 .RowSnip {
@@ -705,6 +806,10 @@ hr {
   -webkit-box-align: left;
       -ms-flex-align: left;
           align-items: left;
+}
+
+.ScreenHeaderSection h2 {
+  color: var(--text-regular);
 }
 
 .HList {
@@ -804,10 +909,10 @@ hr {
   -webkit-box-shadow: 0em 1em 1.5em -0.5em rgba(0, 0, 0, 0.1);
           box-shadow: 0em 1em 1.5em -0.5em rgba(0, 0, 0, 0.1);
   background-repeat: repeat;
-  background-color: white;
+  background-color: var(--background);
   border-radius: 0.25em;
-  width: 40em;
-  height: 30em;
+  width: 60em;
+  height: 35em;
   border: none;
   overflow: hidden;
 }
@@ -840,7 +945,8 @@ hr {
 }
 
 .Sidebar {
-  min-width: 12.5em;
+  cursor: default;
+  min-width: 10em;
   gap: 0.5em;
   width: -webkit-fit-content;
   width: -moz-fit-content;
@@ -849,7 +955,7 @@ hr {
   -ms-grid-row: 3;
   -ms-grid-column: 1;
   grid-area: Sidebar;
-  background: #F0F0F0;
+  background: var(--foreground);
   overflow-y: scroll;
   overflow-x: hidden;
   display: -webkit-box;
@@ -878,6 +984,17 @@ hr {
 .Sidebar button {
   border-radius: 0em;
   width: 100%;
+  background: unset;
+}
+
+.Sidebar button:hover {
+  color: var(--text-regular);
+  background: var(--background);
+}
+
+.Sidebar button:active {
+  color: var(--background);
+  background: var(--brand);
 }
 
 .TitleAndMenu {
@@ -899,6 +1016,8 @@ hr {
 }
 
 .WindowDecoration {
+  cursor: -webkit-grab;
+  cursor: grab;
   background: #141013;
   -ms-grid-row: 1;
   -ms-grid-column: 1;
@@ -915,7 +1034,13 @@ hr {
       grid-template-areas: "Controls TitleAndMenu";
 }
 
+.WindowDecoration:active {
+  cursor: -webkit-grabbing;
+  cursor: grabbing;
+}
+
 .Toolbar {
+  cursor: default;
   padding: 0.5em;
   background: -webkit-gradient(linear, left top, left bottom, from(#141013), to(rgba(20, 16, 19, 0.9)));
   background: linear-gradient(180deg, #141013 0%, rgba(20, 16, 19, 0.9) 100%);
@@ -970,7 +1095,7 @@ hr {
 }
 
 .Controls button:first-of-type {
-  background-color: #E95420 !important;
+  background-color: var(--brand);
 }
 
 .Controls button {
@@ -987,6 +1112,8 @@ hr {
           align-items: center;
   width: 1.25em;
   height: 1.25em;
+  color: var(--text-regular);
+  background: var(--neutral);
 }
 
 .Controls button img {
@@ -1022,9 +1149,15 @@ hr {
 }
 
 .search {
+  background: none;
+  color: white;
   -ms-grid-row: 1;
   -ms-grid-column: 2;
   grid-area: Search;
+}
+
+.search input {
+  background: none;
 }
 
 .searchOpen {
@@ -1033,10 +1166,14 @@ hr {
   grid-area: Search;
 }
 
+.searchOpen input {
+  background: none;
+}
+
 input {
   padding-left: 0.5em;
   padding-right: 0.5em;
-  color: black;
+  color: var(--text-regular);
   border-radius: 0.25em;
   border: none;
 }
@@ -1061,32 +1198,17 @@ input {
   gap: 1em;
 }
 
-.Tools .ToolGroupH button {
-  width: unset;
-}
-
 .Tools button {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: left;
-          flex-direction: left;
-  -webkit-box-pack: left;
-      -ms-flex-pack: left;
-          justify-content: left;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  border-radius: unset;
+  background: none;
 }
 
-button:hover {
+.Tools button:hover {
   cursor: pointer;
+  color: var(--text-regular);
+  background: var(--foreground);
 }
 
-.ToolGroup {
+.Tools .ToolGroup {
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -1098,7 +1220,7 @@ button:hover {
   gap: 0em;
 }
 
-.ToolGroupH {
+.Tools .ToolGroupH {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1115,50 +1237,40 @@ button:hover {
   gap: 0.1em;
 }
 
-.ToolGroupH :first-child {
+.Tools .ToolGroupH :first-child {
   border-top-left-radius: 0.25em;
   border-bottom-left-radius: 0.25em;
   border-top-right-radius: 0em;
   border-bottom-right-radius: 0em;
 }
 
-.ToolGroupH :not(:first-child) {
+.Tools .ToolGroupH :not(:first-child) {
   border-top-left-radius: 0em;
   border-bottom-left-radius: 0em;
   border-top-right-radius: 0em;
   border-bottom-right-radius: 0em;
 }
 
-.ToolGroupH :last-child {
+.Tools .ToolGroupH :last-child {
   border-top-left-radius: 0em;
   border-bottom-left-radius: 0em;
   border-top-right-radius: 0.25em;
   border-bottom-right-radius: 0.25em;
 }
 
-.ToolGroupH :only-child {
+.Tools .ToolGroupH :only-child {
   border-top-left-radius: 0.25em;
   border-bottom-left-radius: 0.25em;
   border-top-right-radius: 0.25em;
   border-bottom-right-radius: 0.25em;
 }
 
-.ToolGroupH button {
-  width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  background-size: cover;
-  color: white;
+.Tools button {
+  color: var(--white);
 }
 
 .Contents {
+  cursor: default;
   padding: 0.5em;
   display: -ms-grid;
   display: grid;
@@ -1173,9 +1285,6 @@ button:hover {
   -ms-grid-row: 3;
   -ms-grid-column: 2;
   grid-area: Contents;
-  background: rgba(255, 255, 255, 0.75);
-  -webkit-backdrop-filter: blur(1em);
-          backdrop-filter: blur(1em);
 }
 
 .Preview {
@@ -1187,11 +1296,10 @@ button:hover {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  background: rgba(255, 255, 255, 0.75);
+  background: var(--foreground);
   justify-self: end;
   -ms-flex-item-align: stretch;
       align-self: stretch;
-  border-radius: 1em;
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
@@ -1199,9 +1307,6 @@ button:hover {
   -ms-grid-row: 1;
   -ms-grid-column: 2;
   grid-area: Preview;
-  background: rgba(255, 255, 255, 0.75);
-  -webkit-backdrop-filter: blur(1em);
-          backdrop-filter: blur(1em);
 }
 
 .slider {
@@ -1361,7 +1466,8 @@ button:hover {
   text-overflow: ellipsis;
   padding: 0.5em 1em;
   border-radius: 0.25em;
-  color: #000000;
+  background: var(--foreground);
+  color: var(--text-regular);
   z-index: 99;
 }
 
@@ -1439,7 +1545,7 @@ button:hover {
 }
 
 .Toolbar {
-  background-color: #eeeeee;
+  background-color: var(--background);
 }
 
 @-webkit-keyframes SpinnerLoader {

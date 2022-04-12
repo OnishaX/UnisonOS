@@ -1,0 +1,102 @@
+{
+	"AvailableSystemApps": [
+	],
+	"AvailableApps": {
+		"Apps": {
+			"Title": "Apps",
+			"Category": "System",
+			"Version": "0.1",
+			"Developer": "Onisha Juhl",
+			"Description": "Apps is the go-to place to and and remove all of your apps for UnisonOS",
+			"removable": false
+		},
+		"Dash": {
+			"Title": "Dash",
+			"Category": "System",
+			"Version": "0.1",
+			"Developer": "Onisha Juhl",
+			"Description": "Your hub for all of your apps",
+			"removable": false
+		},
+		"Scour": {
+			"Title": "Scour",
+			"Category": "Internet",
+			"Version": "0.1",
+			"Developer": "Onisha Juhl",
+			"Description": "Your hub for all of your apps",
+			"removable": false
+		},
+		"Music": {
+			"Title": "Music",
+			"Category": "Music",
+			"Version": "0.1",
+			"Developer": "Onisha Juhl",
+			"Description": "A player for your music.",
+			"removable": true
+		},
+		"Error": {
+			"Title": "Error",
+			"Category": "Utilities",
+			"Version": "0.1",
+			"Developer": "Onisha Juhl",
+			"Description": "View recent errors",
+			"removable": true
+		},
+		"Files": {
+			"Title": "Music",
+			"Category": "Utilities",
+			"Version": "0.1",
+			"Developer": "Onisha Juhl",
+			"Description": "Access your files.",
+			"removable": true
+		},
+		"Mailbox": {
+			"Title": "Mailbox",
+			"Category": "Internet",
+			"Version": "0.1",
+			"Developer": "Onisha Juhl",
+			"Description": "An email client for UnisonOS.",
+			"removable": true
+		},
+		"Cells": {
+			"Title": "Cells",
+			"Category": "Office",
+			"Version": "0.1",
+			"Developer": "Onisha Juhl",
+			"Description": "A spreadsheet app for your spreadsheet needs.",
+			"removable": true
+		},
+		"Write": {
+			"Title": "Write",
+			"Category": "Office",
+			"Version": "0.1",
+			"Developer": "Onisha Juhl",
+			"Description": "A rich text editor.",
+			"removable": true
+		},
+		"Pitch": {
+			"Title": "Pitch",
+			"Category": "Office",
+			"Version": "0.1",
+			"Developer": "Onisha Juhl",
+			"Description": "Make a great first impression with a Pitch presentation.",
+			"removable": true
+		},
+		"Cinema": {
+			"Title": "Cinema",
+			"Category": "Video",
+			"Version": "0.1",
+			"Developer": "Onisha Juhl",
+			"Description": "A player for your videos.",
+			"removable": true
+		},
+		"Settings": {
+			"Title": "Settings",
+			"Category": "System",
+			"Version": "0.1",
+			"Developer": "Onisha Juhl",
+			"Description": "All your settings in one place.",
+			"removable": false
+		}
+	}
+}

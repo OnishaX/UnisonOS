@@ -2,40 +2,65 @@ let temp
 let RunningApps = []
 let History = []
 let UserSettings = []
+let AppCatelogue = []
 let CurrentUserName = "template"
 let Active = "Desktop"
 
 function init() {
-  console.log("Init Triggered");
-  console.log("Loading " + CurrentUserName + " User Data");
-  var PathToSettings = "/users/" + CurrentUserName + "/data/User.json";
-  var jsonFile = new XMLHttpRequest();
-  jsonFile.open("GET", PathToSettings, true);
-  jsonFile.send();
+  // const request = new Request('/users/template/data/User.json');
+  // const response = await fetch(request);
+  // const userDataText = await response.text();
+  // UserSettings = JSON.parse(userDataText);
 
+
+  $('#BootStatus').text("Getting Ready");
+  ;
+  console.log("Init Triggered");
+
+  $('#BootStatus').text("Loading Account Data");
+  ;
+  console.log("Loading Account");
+
+  var jsonFile = new XMLHttpRequest();
+  jsonFile.open("GET", "/users/" + CurrentUserName + "/data/User.json", true);
+  jsonFile.send();
   jsonFile.onreadystatechange = function () {
     if (jsonFile.readyState == 4 && jsonFile.status == 200) {
       UserSettings = JSON.parse(jsonFile.responseText)
+      console.log("User Data:");
+      console.log(UserSettings)
+
+      console.log("Applying " + UserSettings.Firstname + "'s Settings")
+      
+      $('#BootStatus').text("Applying " + UserSettings.Firstname + "'s Settings");
+      SetWallpaper(UserSettings.Wallpaper.Wallpaper, UserSettings.Wallpaper.Variant, UserSettings.Wallpaper.Ext)
+      displayPinnedList();
+      displaySystem();
+
+      if (UserSettings.Sounds.Login == true) {
+        var audio = new Audio('/system/sounds/Login.mp3');
+        audio.play();
+      }
+      console.log("Init Complete");
+      $('#BootStatus').text("Ready!");
+      $('#BootScreen').remove();
     }
   }
 
-  console.log("User Data:");
-  console.log(UserSettings)
-
-  SetWallpaper(UserSettings.Wallpaper.Wallpaper, UserSettings.Wallpaper.Variant, UserSettings.Wallpaper.Ext)
-  displayPinnedList();
-  displaySystem();
-
-  if (UserSettings.Sounds.Login == true) {
-    var audio = new Audio('/system/sounds/Login.mp3');
-    audio.play();
-  }
-  console.log("Init Complete");
 }
 
-// function LoadUserData() {
+function SetActive(temp,appID) {
+  Active = String(temp)
+  document.getElementById("TitleAndMenu").innerHTML = String(`<div class="TitleAndMenu">`+String(temp)+`</div>`)
+  if (document.getElementById(String(temp + "WindowDecoration")).style.display != "none") {
+    document.getElementById("TitleAndMenu").innerHTML = String(`<div class="TitleAndMenu">`+String(temp)+`</div>`)
+  }
+  else {
+    document.getElementById("TitleAndMenu").innerHTML = document.getElementById(temp + "WindowDecoration").innerHTML = String(`<div class="TitleAndMenu">`+String(temp)+`</div>`);
+  }
+  
+}
 
-// }
 function SetWallpaper(selection, variant, ext) {
   if (selection != null) {
     UserSettings.Wallpaper.Wallpaper = selection
@@ -86,11 +111,11 @@ function BringToFront(temp) {
   (document.getElementById(temp + "App").style.zIndex = +1)
 }
 
-function dragMoveListener (event) {
+function dragMoveListener(event) {
   var target = event.target,
-      // keep the dragged position in the data-x/data-y attributes
-      x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx,
-      y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy;
+    // keep the dragged position in the data-x/data-y attributes
+    x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx,
+    y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy;
 
   // translate the element
   target.style.marginLeft = target.style.marginLeft = x + 'px'
@@ -102,9 +127,9 @@ function dragMoveListener (event) {
 }
 
 interact('.resize-drag')
-.draggable({
-  onmove: window.dragMoveListener,
-  inertia: true,
+  .draggable({
+    onmove: window.dragMoveListener,
+    inertia: true,
     // keep the element within the area of it's parent
     modifiers: [
       interact.modifiers.restrictRect({
@@ -112,10 +137,10 @@ interact('.resize-drag')
         endOnly: true
       })
     ],
-})
-.resizable({
-  edges: { left: true, right: true, bottom: true, top: true },
-  inertia: true,
+  })
+  .resizable({
+    edges: { left: true, right: true, bottom: true, top: true },
+    inertia: true,
     // keep the element within the area of it's parent
     modifiers: [
       interact.modifiers.restrictRect({
@@ -123,26 +148,26 @@ interact('.resize-drag')
         endOnly: true
       })
     ],
-})
-.on('resizemove', function (event) {
-  var target = event.target;
-      x = (parseFloat(target.getAttribute('data-x')) || 0),
+  })
+  .on('resizemove', function (event) {
+    var target = event.target;
+    x = (parseFloat(target.getAttribute('data-x')) || 0),
       y = (parseFloat(target.getAttribute('data-y')) || 0);
 
-  // update the element's style
-  target.style.width  = event.rect.width + 'px';
-  target.style.height = event.rect.height + 'px';
+    // update the element's style
+    target.style.width = event.rect.width + 'px';
+    target.style.height = event.rect.height + 'px';
 
-  // translate when resizing from top or left edges
-  x += event.deltaRect.left;
-  y += event.deltaRect.top;
+    // translate when resizing from top or left edges
+    x += event.deltaRect.left;
+    y += event.deltaRect.top;
 
-  target.style.marginLeft = target.style.marginLeft = x + 'px'
-  target.style.marginTop = target.style.marginTop = y + 'px'
+    target.style.marginLeft = target.style.marginLeft = x + 'px'
+    target.style.marginTop = target.style.marginTop = y + 'px'
 
-  target.setAttribute('data-x', x);
-  target.setAttribute('data-y', y);
-});
+    target.setAttribute('data-x', x);
+    target.setAttribute('data-y', y);
+  });
 
 
 function MinimiseWindow(minimisingApp) {
@@ -165,9 +190,9 @@ function ToggleSearch(searchApp) {
   console.log(temp)
 
   if (document.getElementById(searchApp + "Search").className == "search") {
-    $(temp).replaceWith(`'<button id="` + searchApp + 'Search"  type="button" class="searchOpen"><i onclick="ToggleSearch(' + '`' + searchApp + '`' + ')" class="ri-close-circle-line"></i><input autofocus="autofocus"type="text"</button>')
+    $(temp).replaceWith(`'<button id="` + searchApp + 'Search"  type="button" class="searchOpen"><img onclick="ToggleSearch(' + '`' + searchApp + '`' + ')" src="/system/icons/Actions/Clear.svg"><input autofocus="autofocus"type="text"</button>')
   } else {
-    $(temp).replaceWith(`'<button id="` + searchApp + 'Search" onclick="ToggleSearch(' + '`' + searchApp + '`' + ')" type="button" class="search"><i class="ri-search-line"></i>Search</button>')
+    $(temp).replaceWith(`'<button id="` + searchApp + 'Search" onclick="ToggleSearch(' + '`' + searchApp + '`' + ')" type="button" class="search"><img src="/system/icons/Actions/Search.svg">Search</button>')
   }
 
 }
@@ -207,9 +232,24 @@ function LoadPage(targetapp, newpage) {
   console.log("Loading Page")
   $('#' + TargetApp + "ScreenContainer").empty();
   $('#' + TargetApp + "ScreenContainer").append('<embed name="' + TargetApp + 'Screen" rel="preload" style="width: 100%; height: 100%; overflow:scroll; border-radius: 0.5em; border: none;" class="Body" id="' + TargetApp + 'Screen" src="/Apps/' + TargetApp + '/Screens/' + NewPage + '.html"></embed>');
-  // temp = History.indexOf(TargetApp)
-  // History[temp].push(NewPage)
-  // console.log(History);
+  if (NewPage != History[History.length-1]){
+  History.push(NewPage)
+  }
+  console.log(History)
+  }
+
+function HistoryBack(targetapp){
+  if (History.length > 1){
+  temp = History[History.length-2]
+  var TargetApp = String(targetapp);
+  var NewPage = String(temp);
+  History.pop(0)
+  console.log("Loading Page")
+  $('#' + TargetApp + "ScreenContainer").empty();
+  $('#' + TargetApp + "ScreenContainer").append('<embed name="' + TargetApp + 'Screen" rel="preload" style="width: 100%; height: 100%; overflow:scroll; border-radius: 0.5em; border: none;" class="Body" id="' + TargetApp + 'Screen" src="/Apps/' + TargetApp + '/Screens/' + NewPage + '.html"></embed>');
+  
+  console.log(History)
+  }
 }
 
 function UpdateAppRunningIndicator(app) {
@@ -242,8 +282,13 @@ function LaunchWindow(launchingApp) {
       // AdjustWindowTiling()
       RunningApps.push(launchingApp)
       temp = RunningApps[RunningApps.length - 1]
-      $("#Desktop").append('<div class="AppContainer resize-drag openApp" id="' + launchingApp + 'App" onClick"BringToFront(' + launchingApp +')"></div>');
-      $('#' + String(temp + 'App')).load('/Apps/' + temp + '/App.html');
+      LoadPage(launchingApp,"index")
+      $("#Desktop").append('<div class="AppContainer resize-drag openApp" id="' + launchingApp + 'App"></div>')
+      $('#' + String(temp + 'App')).attr("onload",String('SetActive("'+ launchingApp+'","'+ launchingApp + 'App")'))
+      $('#' + String(temp + 'App')).load('/Apps/' + temp + '/App.html')
+      $('#' + String(temp + 'App')).ready(SetActive(launchingApp,launchingApp + 'App'))
+      $('#' + String(temp + 'App')).attr("onclick",String('SetActive("'+ launchingApp+'","'+ launchingApp + 'App")'))
+      
       $(temp + "App").removeClass("openApp");
     }
     else {
@@ -257,6 +302,7 @@ function LaunchWindow(launchingApp) {
     }
     $(String(temp + 'App')).removeClass('openApp');
     UpdateAppRunningIndicator(launchingApp)
+    
   }
 
   else {
@@ -301,7 +347,6 @@ function displayAppList(location) {
       $("#" + location).append('<div class="HListItem"><div class="DockAppIcon" id="' + app + 'AllAppIcon"></div><div class="ListItemLabel">' + app + '</div></div>');
       temp = document.getElementById(String(app + 'AllAppIcon'));
       temp.style.backgroundImage = String('/Apps/' + app + '/AppIcon.svg');
-      // History.push(app)
     }
   }
 }
@@ -321,4 +366,11 @@ function displaySystem() {
   }
   console.log("dock appended")
 }
-onload(init());
+
+function pause(milliseconds) {
+  const date = Date.now();
+  let currentDate = null;
+  do {
+    currentDate = Date.now();
+  } while (currentDate - date < milliseconds);
+}

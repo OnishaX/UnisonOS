@@ -5,7 +5,6 @@
 	<meta charset='utf-8'>
 	<title>Error</title>
 	<link rel="stylesheet" href="/system/css/stylesheet.css">
-	<link rel="stylesheet" href="/Apps/Error/appstyle.css">
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"
 		integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 </head>
@@ -14,23 +13,19 @@
 	<div class="App">
 		<div id="ErrorWindowDecoration" class="WindowDecoration">
 			<div class="Controls">
-				<button type="button" onClick="CloseWindow('Error')"><img src="/system/icons/window-close-symbolic.svg"></button>
-				<button type="button" onclick="FillWindow('Error')"><img src="/system/icons/window-maximize-symbolic.svg"></button>
-				<button type="button" onClick="MinimiseWindow('Error')"><img src="/system/icons/window-minimize-symbolic.svg"></button>
+				<button type="button" onClick="CloseWindow('Error')"><img
+						src="/system/icons/windowControls/window-close-symbolic.svg"></button>
+				<button type="button" onclick="FillWindow('Error')"><img
+						src="/system/icons/windowControls/window-maximize-symbolic.svg"></button>
+				<button type="button" onClick="MinimiseWindow('Error')"><img
+						src="/system/icons/windowControls/window-minimize-symbolic.svg"></button>
 			</div>
 		</div>
-		<div class="Toolbar">
-			<button type="button" class="AppMenuButton" style="width: 2em; background-size: cover; background-image: url(/Apps/Error/AppIcon.svg)"></button>
-			<div class="Tools">
-			</div>
-		  </div>
 		<div class="Contents" style="grid-template-areas: '';">
-				<button style="background-size: cover; margin-bottom: 1em; margin-left:auto; margin-right: auto; background-image: url(/Apps/Error/AppIcon.svg);
-		width: 5em;
-		height:5em"></button>
-				<p>An error has occured.</p>
-			</div>
+			<img src="/Apps/Error/AppIcon.svg" style="width: 5em;
+		height:5em; margin:auto;"></img>
 		</div>
+	</div>
 
 	</div>
 	</div>

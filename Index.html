@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang='en-GB'>
+<html lang='en-GB' style="background-color:black">
 
 <head>
 	<meta name="apple-mobile-web-app-capable" content="yes">
@@ -7,31 +7,16 @@
 	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 	<meta charset='utf-8'>
 	<title>Boot</title>
-	<meta http-equiv="refresh" content="3; URL=/system/html/desktop.html" />
+	<meta http-equiv="refresh" content="1; URL=/system/html/desktop.html" />
 	<link rel="stylesheet" href="/system/css/stylesheet.css">
-	<link rel="stylesheet" href="/appstyle.css">
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"
 		integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 </head>
 
-<body style="height: 100vh;">
-	<div id="BootApp" class="AppContainer">
-		<div class="App">
-			<div class="Toolbar">
-				<div class="Controls">
-				</div>
-			</div>
-			<div class="Contents" style="grid-template-areas: '';">
-				<button style="background-size: cover; margin-bottom: 1em; margin-left:auto; margin-right: auto; background-image: url(/AppIcon.svg);
-		width: 5em;
-		height:5em"> </button>
-				<p>Loading.</p>
-			</div>
+<div id="BootScreen">
+	<img src="/AppIcon.svg">
+	<div class="Spinner"></div>
+				<p id="BootStatus">Redirecting</p>
+			</img>
 		</div>
-	</div>
-	</div>
-	</div>
-	</div>
-</body>
-
 </html>

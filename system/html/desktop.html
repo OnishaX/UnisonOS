@@ -8,16 +8,21 @@
   <link rel="stylesheet" href="/system/css/stylesheet.css">
   <link rel="stylesheet" href="/system/css/Reset.css">
   <script src="https://unpkg.com/interactjs/dist/interact.min.js"></script>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="/system/js/jquery-3.6.0.min.js"></script>
   <script src="/system/js/main.js" defer></script>
   <!-- <script src="https://raw.githack.com/SortableJS/Sortable/master/Sortable.js"></script> -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.2.20171210/classList.min.js"></script>
-  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="/system/css/bootstrap.min.css" />
   <!-- <meta http-equiv="Content-Security-Policy" content="'unsafe-inline';"> -->
 </head>
 
 <body style="height: 100vh;" onload="init();">
+  <div id="BootScreen">
+	<img src="/AppIcon.svg" style="height: 15em; margin:auto;">
+	<div class="Spinner"></div>
+				<p id="BootStatus"></p>
+			</img>
+		</div>
   <div id="Display" class="DisplayNormal">
     <div id="TopBar">
       <div id="TitleAndMenu"></div>

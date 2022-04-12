@@ -1,50 +1,50 @@
 {
-	"Username": "template",
-	"Firstname": "Template",
-	"Lastname": "User",
-	"Wallpaper": {
-		"Wallpaper": "Aura",
-		"Variant": "Light",
-		"Ext": "svg",
-		"Auto": false
-	},
-	"Sounds": {
-		"Startup": true,
-		"Login": false,
-		"Logout": true,
-		"Shutdown": true,
-		"Alert": true,
-		"Error": true,
-		"Wake": false,
-		"Sleep": false
-	},
-	"PinnedApps": [
-		"Scour",
-		"Apps",
-		"Music",
-		"Error",
-		"Files",
-		"Mailbox",
-		"Cells",
-		"Write",
-		"Pitch",
-		"Cinema",
-		"Settings"
-	],
-	"SystemApps": [
-	],
-	"InstalledApps": [
-		"Apps",
-		"Dash",
-		"Scour",
-		"Music",
-		"Error",
-		"Files",
-		"Mailbox",
-		"Cells",
-		"Write",
-		"Pitch",
-		"Cinema",
-		"Settings"
-	]
-}
+		"Username": "template",
+		"Enabled": true,
+		"Firstname": "Template",
+		"Lastname": "User",
+		"Wallpaper": {
+			"Wallpaper": "Aura",
+			"Variant": "Light",
+			"Ext": "svg",
+			"Auto": false
+		},
+		"Sounds": {
+			"Startup": true,
+			"Login": false,
+			"Logout": true,
+			"Shutdown": true,
+			"Alert": true,
+			"Error": true,
+			"Wake": false,
+			"Sleep": false
+		},
+		"PinnedApps": [
+			"Scour",
+			"Apps",
+			"Music",
+			"Error",
+			"Files",
+			"Mailbox",
+			"Cells",
+			"Write",
+			"Pitch",
+			"Cinema",
+			"Settings"
+		],
+		"SystemApps": [],
+		"InstalledApps": [
+			"Apps",
+			"Dash",
+			"Scour",
+			"Music",
+			"Error",
+			"Files",
+			"Mailbox",
+			"Cells",
+			"Write",
+			"Pitch",
+			"Cinema",
+			"Settings"
+		]
+	}
