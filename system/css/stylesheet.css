@@ -200,6 +200,7 @@ button {
   -webkit-transition: all 0.1s ease-in-out;
   transition: all 0.1s ease-in-out;
   font-size: 1em;
+  font-family: Ubuntu;
   color: var(--text-regular);
   background: var(--background);
 }
@@ -1449,11 +1450,17 @@ input {
 }
 
 #System {
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: end;
+  padding-right: 0.5em;
   gap: 0.25em;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  width: 10em;
+  width: -webkit-min-content;
+  width: -moz-min-content;
+  width: min-content;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
@@ -1840,5 +1847,15 @@ input {
 .SpinnerLoader div {
   -webkit-box-sizing: content-box;
           box-sizing: content-box;
+}
+
+.SystemIndicator {
+  margin: 0em;
+}
+
+.SystemIndicator p {
+  font-size: 1em;
+  font-family: Ubuntu;
+  color: var(--foreground);
 }
 /*# sourceMappingURL=stylesheet.css.map */

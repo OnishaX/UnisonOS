@@ -391,7 +391,7 @@ function displaySystem() {
   console.log("displaySystemList Triggered")
   for (let app of UserSettings.SystemApps) {
     $("#System").append('<div class="SystemIndicator" id="' + app + 'SystemIndicator"></div>');
-    $('#' + String(app + 'SystemIndicator')).load('/users/' + UserSettings.Username + '/System/' + app + '/SystemIndicator.html');
+    $('#' + String(app + 'SystemIndicator')).load('/Plugins/' + app + '/SystemIndicator.html');
   }
   console.log("dock appended")
 }

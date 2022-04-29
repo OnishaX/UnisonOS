@@ -6,22 +6,22 @@
 // /* Colours */
 // /* Light mode */
 // @media (prefers-color-scheme: light) {
-  :root {
-    --black: #111111;
-    --white: #ffffff;
+:root {
+  --black: #111111;
+  --white: #ffffff;
 
-    --background: #ffffff;
-    --foreground: #f7f7f7;
+  --background: #ffffff;
+  --foreground: #f7f7f7;
 
-    --text-regular: #111111;
-    --text-secondary: #5d5d5d;
+  --text-regular: #111111;
+  --text-secondary: #5d5d5d;
 
-    --positive: #0e8420;
-    --negative: #c7162b;
-    --neutral: #cdcdcd;
-    --live: #335280;
-    --brand: #e95420;
-  }
+  --positive: #0e8420;
+  --negative: #c7162b;
+  --neutral: #cdcdcd;
+  --live: #335280;
+  --brand: #e95420;
+}
 // }
 
 // /* Dark mode */
@@ -147,7 +147,7 @@ body {
   font-family: "Ubuntu";
   margin: 0px;
   width: 100vw;
-  height:100vh;
+  height: 100vh;
   display: grid;
   grid-auto-columns: 1fr;
   grid-auto-rows: 1fr;
@@ -171,6 +171,7 @@ button {
   white-space: nowrap;
   transition: all 0.1s ease-in-out;
   font-size: 1em;
+  font-family: Ubuntu;
   color: var(--text-regular);
   background: var(--background);
   img {
@@ -199,17 +200,17 @@ button:active {
   color: var(--background);
   background: var(--brand);
 }
-.DesktopSelector{
+.DesktopSelector {
   z-index: 100;
   width: 100%;
   height: 100%;
   position: absolute;
   display: none;
   opacity: 0.5;
-  background: var(--black)
+  background: var(--black);
 }
 .DesktopSelector:hover {
-  opacity: 0
+  opacity: 0;
 }
 #Display {
   background: var(--black);
@@ -234,8 +235,7 @@ button:active {
   grid-template-rows: 1fr;
   gap: 0.5em 0px;
   padding: 0.25em 0em;
-  grid-template-areas:
-    "TopBarControls Menu System";
+  grid-template-areas: "TopBarControls Menu System";
   background-color: var(--black);
 }
 #Desktop {
@@ -246,12 +246,12 @@ button:active {
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
   overflow: hidden;
-  width:200%;
+  width: 200%;
   height: 200%;
   transition: scale 0.3s ease-out;
   grid-template-areas:
     "Desktop1 Desktop2"
-    "Desktop3 Desktop4"
+    "Desktop3 Desktop4";
 }
 .Desktop {
   background-size: cover;
@@ -696,10 +696,10 @@ hr {
   }
   button:hover {
     color: var(--text-regular);
-  background: var(--background);
-  img {
-    filter:invert(1);
-  }
+    background: var(--background);
+    img {
+      filter: invert(1);
+    }
   }
   button:active {
     color: var(--background);
@@ -734,7 +734,7 @@ hr {
 }
 
 .Toolbar {
-  cursor:default;
+  cursor: default;
   padding: 0.5em;
   background: linear-gradient(180deg, #141013 0%, rgba(20, 16, 19, 0.9) 100%);
   display: grid;
@@ -752,7 +752,7 @@ hr {
   }
   button:hover {
     img {
-      filter:invert(1);
+      filter: invert(1);
     }
   }
 }
@@ -788,7 +788,7 @@ hr {
   }
   button:hover {
     img {
-      filter:invert(1);
+      filter: invert(1);
     }
   }
   button:active {
@@ -815,7 +815,7 @@ hr {
 }
 .search {
   background: none;
-  color:white;
+  color: white;
   grid-area: Search;
   input {
     background: none;
@@ -848,7 +848,7 @@ input {
   button:hover {
     cursor: pointer;
     color: var(--text-regular);
-  background: var(--foreground);
+    background: var(--foreground);
   }
   .ToolGroup {
     flex-direction: column;
@@ -890,7 +890,7 @@ input {
     border-bottom-right-radius: 0.25em;
   }
   button {
-    color:var(--white);
+    color: var(--white);
   }
 }
 .Contents {
@@ -926,9 +926,11 @@ input {
   outline: none;
 }
 #System {
+  justify-content: end;
+  padding-right: 0.5em;
   gap: 0.25em;
   display: flex;
-  width: 10em;
+  width: min-content;
   flex-direction: row;
   justify-self: flex-end;
   align-items: flex-end;
@@ -1190,4 +1192,12 @@ input {
 }
 .SpinnerLoader div {
   box-sizing: content-box;
+}
+.SystemIndicator {
+  margin: 0em;
+  p {
+    font-size: 1em;
+    font-family: Ubuntu;
+    color: var(--foreground);
+  }
 }

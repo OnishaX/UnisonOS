@@ -1,0 +1,10 @@
+<p class="SystemIndicator" id="ClockPlugin"></p>
+<script type="text/javascript" charset="utf-8">
+    let a;
+    let clock;
+    setInterval(() => {
+      a = new Date();
+      clock = a.getHours() + ':' + a.getMinutes() + ':' + a.getSeconds();
+      document.getElementById('ClockPlugin').innerHTML = clock;
+    }, 1000);
+  </script>

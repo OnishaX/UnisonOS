@@ -32,7 +32,9 @@
 			"Cinema",
 			"Settings"
 		],
-		"SystemApps": [],
+		"SystemApps": [
+			"Clock"
+		],
 		"InstalledApps": [
 			"Apps",
 			"Dash",
