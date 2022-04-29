@@ -1,140 +1,143 @@
 <head>
-	   <meta charset='utf-8'>
-	   <title>Settings</title>
-	   <link rel="stylesheet" href="/system/css/stylesheet.css">
-	   <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script></head>
-	<div id="SettingsApp" class="AppPage">
-		
-<div class="ListSection">
-	<h2>Personalise</h2>
-	<div class="HList">
-		<button class="HListItem">
-			<div class="ListItemIcon" style="background: url('/Apps/Settings/Icons/star.svg')"></div>
-			<div class="ListItemLabel">Defaults</div>
-		</button>
-		<button class="HListItem">
-			<div class="ListItemIcon" style="background: url('/Apps/Settings/Icons/privacy.svg')"></div>
-			<div class="ListItemLabel">Privacy</div>
-		</button>
-		<button class="HListItem" onclick="parent.LoadPage('Settings','Personalise/Sounds')">
-			<div class="ListItemIcon" style="background: url('/Apps/Settings/Icons/audio-speakers.svg')"></div>
-			<div class="ListItemLabel">Sounds</div>
-		</button>
-		<button class="HListItem">
-			<div class="ListItemIcon" style="background: url('/Apps/Settings/Icons/sync.svg')"></div>
-			<div class="ListItemLabel">Sync</div>
-		</button>
-		<button class="HListItem">
-			<div class="ListItemIcon" style="background: url('/Apps/Settings/Icons/mouse.svg')"></div>
-			<div class="ListItemLabel">Theme</div>
-		</button>
-		<button class="HListItem" onclick="parent.LoadPage('Settings','Personalise/Background')">
-			<div class="ListItemIcon" style="background: url('/Apps/Settings/Icons/wallpaper.svg')"></div>
-			<div class="ListItemLabel">Background</div>
-		</button>
+	<meta charset='utf-8'>
+	<title>Settings</title>
+	<link rel="stylesheet" href="/system/css/stylesheet.css">
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+		integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+</head>
+
+<div id="SettingsApp" class="AppPage">
+	<div class="ListSection">
+		<h2>Personalise</h2>
+		<div class="HList">
+			<button disabled class="HListItem">
+				<div class="ListItemIcon" style="background: url('/Apps/Settings/Icons/star.svg')"></div>
+				<div class="ListItemLabel">Defaults</div>
+			</button>
+			<button disabled class="HListItem">
+				<div class="ListItemIcon" style="background: url('/Apps/Settings/Icons/privacy.svg')"></div>
+				<div class="ListItemLabel">Privacy</div>
+			</button>
+			<button class="HListItem" onclick="parent.LoadPage('Settings','Personalise/Sounds')">
+				<div class="ListItemIcon" style="background: url('/Apps/Settings/Icons/audio-speakers.svg')"></div>
+				<div class="ListItemLabel">Sounds</div>
+			</button>
+			<button disabled class="HListItem">
+				<div class="ListItemIcon" style="background: url('/Apps/Settings/Icons/sync.svg')"></div>
+				<div class="ListItemLabel">Sync</div>
+			</button>
+			<button disabled class="HListItem">
+				<div class="ListItemIcon" style="background: url('/Apps/Settings/Icons/mouse.svg')"></div>
+				<div class="ListItemLabel">Theme</div>
+			</button>
+			<button class="HListItem" onclick="parent.LoadPage('Settings','Personalise/Background')">
+				<div class="ListItemIcon" style="background: url('/Apps/Settings/Icons/wallpaper.svg')"></div>
+				<div class="ListItemLabel">Background</div>
+			</button>
+		</div>
 	</div>
-</div>
-<div class="ListSection">
-	<h2>Accessories</h2>
-	<div class="HList">
-		<button class="HListItem">
-			<div class="ListItemIcon" style="background: url('/Apps/Settings/Icons/mouse.svg')"></div>
-			<div class="ListItemLabel">Mouse</div>
-		</button>
-		<button class="HListItem">
-			<div class="ListItemIcon" style="background: url('/Apps/Settings/Icons/keyboard.svg')"></div>
-			<div class="ListItemLabel">Keyboard</div>
-		</button>
-		<button class="HListItem">
-			<div class="ListItemIcon"><i class="ri-gamepad-fill ri-lg"></i></div>
-			<div class="ListItemLabel">Gamepad</div>
-		</button>
-		<button class="HListItem">
-			<div class="ListItemIcon" style="background: url('/Apps/Settings/Icons/printer.svg')"></div>
-			<div class="ListItemLabel">Printer</div>
-		</button>
+	<div class="ListSection">
+		<h2>Accessories</h2>
+		<div class="HList">
+			<button disabled class="HListItem">
+				<div class="ListItemIcon" style="background: url('/Apps/Settings/Icons/mouse.svg')"></div>
+				<div class="ListItemLabel">Mouse</div>
+			</button>
+			<button disabled class="HListItem">
+				<div class="ListItemIcon" style="background: url('/Apps/Settings/Icons/keyboard.svg')"></div>
+				<div class="ListItemLabel">Keyboard</div>
+			</button>
+			<button disabled class="HListItem">
+				<div class="ListItemIcon"><i class="ri-gamepad-fill ri-lg"></i></div>
+				<div class="ListItemLabel">Gamepad</div>
+			</button>
+			<button disabled class="HListItem">
+				<div class="ListItemIcon" style="background: url('/Apps/Settings/Icons/printer.svg')"></div>
+				<div class="ListItemLabel">Printer</div>
+			</button>
 		</div>
 
-</div>
-<div class="ListSection">
-	<h2>Hardware</h2>
-	<div class="HList">
-		<button class="HListItem">
-			<div class="ListItemIcon" style="background: url('/Apps/Settings/Icons/dippi.svg')"></div>
-			<div class="ListItemLabel">Display</div>
-		</button>
-		<button class="HListItem">
-			<div class="ListItemIcon" style="background: url('/Apps/Settings/Icons/audio-speakers.svg')"></div>
-			<div class="ListItemLabel">Speakers</div>
-		</button>
-		<button class="HListItem">
-			<div class="ListItemIcon" style="background: url('/Apps/Settings/Icons/audio-input-microphone.svg')"></div>
-			<div class="ListItemLabel">Mic</div>
-		</button>
-		<button class="HListItem">
-			<div class="ListItemIcon"><i class="ri-camera-fill ri-lg"></i></div>
-			<div class="ListItemLabel">Camera</div>
-		</button>
-		<button class="HListItem">
-			<div class="ListItemIcon"><i class="ri-global-fill ri-lg"></i></div>
-			<div class="ListItemLabel">Network</div>
-		</button>
-		<button class="HListItem">
-			<div class="ListItemIcon" style="background: url('/Apps/Settings/Icons/bluetooth.svg')"></div>
-			<div class="ListItemLabel">Bluetooth</div>
-		</button>
-		<button class="HListItem">
-			<div class="ListItemIcon" style="background: url('/Apps/Settings/Icons/audio-speakers.svg')"></div>
-			<div class="ListItemLabel">Storage</div>
-		</button>
 	</div>
-</div>
-<div class="ListSection">
-	<h2>System</h2>
-	<div class="HList">
-		<button class="HListItem">
-			<div class="ListItemIcon"></div>
-			<div class="ListItemLabel">About</div>
-		</button>
-		<button class="HListItem">
-			<div class="ListItemIcon"></div>
-			<div class="ListItemLabel">Users</div>
-		</button>
-		<button class="HListItem">
-			<div class="ListItemIcon" style="background: url('/Apps/Settings/Icons/plugin.svg')"></div>
-			<div class="ListItemLabel">Updates</div>
-		</button>
-		<button class="HListItem">
-			<div class="ListItemIcon" style="background: url('/Apps/Settings/Icons/plugin.svg')"></div>
-			<div class="ListItemLabel">Security</div>
-		</button>
-		<button class="HListItem">
-			<div class="ListItemIcon" style="background: url('/Apps/Settings/Icons/backups-app.svg')"></div>
-			<div class="ListItemLabel">Backup</div>
-		</button>
-		<button class="HListItem">
-			<div class="ListItemIcon" style="background: url('/Apps/Settings/Icons/power.svg')"></div>
-			<div class="ListItemLabel">Power</div>
-		</button>
-		<button class="HListItem">
-			<div class="ListItemIcon" style="background: url('/Apps/Settings/Icons/clock.svg')"></div>
-			<div class="ListItemLabel">Time</div>
-		</button>
-		<button class="HListItem">
-			<div class="ListItemIcon" style="background: url('/Apps/Settings/Icons/driver.svg')"></div>
-			<div class="ListItemLabel">Drivers</div>
-		</button>
-		<button class="HListItem">
-			<div class="ListItemIcon"><i class="ri-flag-fill ri-lg"></i></div>
-			<div class="ListItemLabel">Startup</div>
-		</button>
-		<button class="HListItem">
-			<div class="ListItemIcon"><i class="ri-terminal-box-fill ri-lg"></i></div>
-			<div class="ListItemLabel">Logs</div>
-		</button>
+	<div class="ListSection">
+		<h2>Hardware</h2>
+		<div class="HList">
+			<button disabled class="HListItem">
+				<div class="ListItemIcon" style="background: url('/Apps/Settings/Icons/dippi.svg')"></div>
+				<div class="ListItemLabel">Display</div>
+			</button>
+			<button disabled class="HListItem">
+				<div class="ListItemIcon" style="background: url('/Apps/Settings/Icons/audio-speakers.svg')"></div>
+				<div class="ListItemLabel">Speakers</div>
+			</button>
+			<button disabled class="HListItem">
+				<div class="ListItemIcon" style="background: url('/Apps/Settings/Icons/audio-input-microphone.svg')">
+				</div>
+				<div class="ListItemLabel">Mic</div>
+			</button>
+			<button disabled class="HListItem">
+				<div class="ListItemIcon"><i class="ri-camera-fill ri-lg"></i></div>
+				<div class="ListItemLabel">Camera</div>
+			</button>
+			<button disabled class="HListItem">
+				<div class="ListItemIcon"><i class="ri-global-fill ri-lg"></i></div>
+				<div class="ListItemLabel">Network</div>
+			</button>
+			<button disabled class="HListItem">
+				<div class="ListItemIcon" style="background: url('/Apps/Settings/Icons/bluetooth.svg')"></div>
+				<div class="ListItemLabel">Bluetooth</div>
+			</button>
+			<button disabled class="HListItem">
+				<div class="ListItemIcon" style="background: url('/Apps/Settings/Icons/audio-speakers.svg')"></div>
+				<div class="ListItemLabel">Storage</div>
+			</button>
+		</div>
 	</div>
-</div>
-<div class="ListSection" onclick="parent.SettingsAppList()">
-	<h2>Apps</h2>
-	<div class="HList" name="SettingsAppHList" id="SettingsAppHList">
+	<div class="ListSection">
+		<h2>System</h2>
+		<div class="HList">
+			<button disabled class="HListItem">
+				<div class="ListItemIcon"></div>
+				<div class="ListItemLabel">About</div>
+			</button>
+			<button disabled class="HListItem">
+				<div class="ListItemIcon"></div>
+				<div class="ListItemLabel">Users</div>
+			</button>
+			<button disabled class="HListItem">
+				<div class="ListItemIcon" style="background: url('/Apps/Settings/Icons/plugin.svg')"></div>
+				<div class="ListItemLabel">Updates</div>
+			</button>
+			<button disabled class="HListItem">
+				<div class="ListItemIcon" style="background: url('/Apps/Settings/Icons/plugin.svg')"></div>
+				<div class="ListItemLabel">Security</div>
+			</button>
+			<button disabled class="HListItem">
+				<div class="ListItemIcon" style="background: url('/Apps/Settings/Icons/backups-app.svg')"></div>
+				<div class="ListItemLabel">Backup</div>
+			</button>
+			<button disabled class="HListItem">
+				<div class="ListItemIcon" style="background: url('/Apps/Settings/Icons/power.svg')"></div>
+				<div class="ListItemLabel">Power</div>
+			</button>
+			<button disabled class="HListItem">
+				<div class="ListItemIcon" style="background: url('/Apps/Settings/Icons/clock.svg')"></div>
+				<div class="ListItemLabel">Time</div>
+			</button>
+			<button disabled class="HListItem">
+				<div class="ListItemIcon" style="background: url('/Apps/Settings/Icons/driver.svg')"></div>
+				<div class="ListItemLabel">Drivers</div>
+			</button>
+			<button disabled class="HListItem">
+				<div class="ListItemIcon"><i class="ri-flag-fill ri-lg"></i></div>
+				<div class="ListItemLabel">Startup</div>
+			</button>
+			<button disabled class="HListItem">
+				<div class="ListItemIcon"><i class="ri-terminal-box-fill ri-lg"></i></div>
+				<div class="ListItemLabel">Logs</div>
+			</button>
+		</div>
 	</div>
+	<div class="ListSection" onclick="parent.SettingsAppList()">
+		<h2>Apps</h2>
+		<div class="HList" name="SettingsAppHList" id="SettingsAppHList">
+		</div>

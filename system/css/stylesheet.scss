@@ -1,11 +1,11 @@
 @font-face {
-  font-family: "Roboto";
-  src: url("/system/fonts/Roboto/Roboto-Regular.ttf") format("truetype");
+  font-family: "Ubuntu";
+  src: url("/system/fonts/Ubuntu/Ubuntu-R.ttf") format("truetype");
 }
 
-/* Colours */
-/* Light mode */
-@media (prefers-color-scheme: light) {
+// /* Colours */
+// /* Light mode */
+// @media (prefers-color-scheme: light) {
   :root {
     --black: #111111;
     --white: #ffffff;
@@ -22,27 +22,27 @@
     --live: #335280;
     --brand: #e95420;
   }
-}
+// }
 
-/* Dark mode */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --black: #111111;
-    --white: #ffffff;
+// /* Dark mode */
+// @media (prefers-color-scheme: dark) {
+// :root {
+//     --black: #111111;
+//     --white: #ffffff;
 
-    --background: #111111;
-    --foreground: #3b3b3b;
+//     --background: #111111;
+//     --foreground: #3b3b3b;
 
-    --text-regular: #ffffff;
-    --text-secondary: #CDCDCD;
+//     --text-regular: #ffffff;
+//     --text-secondary: #CDCDCD;
 
-    --positive: #3eb34f;
-    --negative: #ed3146;
-    --neutral: #cdcdcd;
-    --live: #19b6ee;
-    --brand: #e95420;
-  }
-}
+//     --positive: #3eb34f;
+//     --negative: #ed3146;
+//     --neutral: #cdcdcd;
+//     --live: #19b6ee;
+//     --brand: #e95420;
+// }
+// }
 #BootStatus {
   margin-top: 0px;
   margin-right: auto;
@@ -131,7 +131,7 @@ h2 {
 }
 
 #AllApps {
-  transition: all 0.25s ease-in-out;
+  transition: all 0.3s ease-in-out;
   padding: 0.25em;
   flex-direction: row;
   align-items: flex-start;
@@ -144,9 +144,10 @@ h2 {
 }
 
 body {
-  font-family: "Roboto";
+  font-family: "Ubuntu";
   margin: 0px;
   width: 100vw;
+  height:100vh;
   display: grid;
   grid-auto-columns: 1fr;
   grid-auto-rows: 1fr;
@@ -182,15 +183,40 @@ button:hover {
   color: var(--text-regular);
   background: var(--foreground);
 }
+button:disabled {
+  opacity: 0.5;
+}
+button:disabled:hover {
+  color: var(--text-regular);
+  background: var(--background);
+}
+button:disabled:active {
+  color: var(--text-regular);
+  background: var(--background);
+}
 
 button:active {
   color: var(--background);
   background: var(--brand);
 }
-
+.DesktopSelector{
+  z-index: 100;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: none;
+  opacity: 0.5;
+  background: var(--black)
+}
+.DesktopSelector:hover {
+  opacity: 0
+}
 #Display {
-  transition: all 1s ease-in-out;
+  background: var(--black);
+  overflow: hidden !important;
+  transition: all 0.3s ease-in-out;
   height: 100vh;
+  width: 100vw;
   display: grid;
   grid-template-columns: min-content 1fr;
   grid-template-rows: 2em 1fr;
@@ -198,24 +224,92 @@ button:active {
     "TopBar TopBar"
     "Launcher Desktop";
   grid-area: Display;
-  background-size: cover;
 }
 
 #TopBar {
   z-index: 1000;
   grid-area: TopBar;
+  display: grid;
+  grid-template-columns: 4.5em 1fr min-content;
+  grid-template-rows: 1fr;
+  gap: 0.5em 0px;
+  padding: 0.25em 0em;
+  grid-template-areas:
+    "TopBarControls Menu System";
   background-color: var(--black);
 }
 #Desktop {
-  height: 100%;
   grid-area: Desktop;
-  display: inline-block;
+  display: grid;
+  position: relative;
+  gap: 0em;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  overflow: hidden;
+  width:200%;
+  height: 200%;
+  transition: scale 0.3s ease-out;
+  grid-template-areas:
+    "Desktop1 Desktop2"
+    "Desktop3 Desktop4"
+}
+.Desktop {
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+  transition: all 0.3s ease-out;
+}
+.DesktopOverview {
+  left: 0;
+  top: 0;
+  overflow: visible;
+  gap: 1em !important;
+  padding: 1em;
+  transition: all 0.3s ease-out;
+  transform-origin: top left;
+  scale: 0.5;
+}
+.DesktopSelector {
+  transition: opacity 0.3s ease-out;
+}
+
+.Desktop1 {
+  left: 0 !important;
+  top: 0 !important;
+  transform-origin: top left;
+}
+.Desktop2 {
+  left: -100% !important;
+  top: 0 !important;
+  transform-origin: top right;
+}
+.Desktop3 {
+  left: 0 !important;
+  top: -100% !important;
+  transform-origin: bottom left;
+}
+.Desktop4 {
+  left: -100% !important;
+  top: -100% !important;
+  transform-origin: bottom right;
+}
+#DesktopSelector1 {
+  grid-area: Desktop1;
+}
+#DesktopSelector2 {
+  grid-area: Desktop2;
+}
+#DesktopSelector3 {
+  grid-area: Desktop3;
+}
+#DesktopSelector4 {
+  grid-area: Desktop4;
 }
 #Dock {
   z-index: 1000;
   background-color: var(--black);
-  transition: all 0.25s ease-in-out;
-  overflow: visible;
+  transition: all 0.3s ease-in-out;
+  overflow: scrollY;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: min-content 1fr;
@@ -498,6 +592,7 @@ hr {
 .HListItem {
   height: fit-content;
   width: fit-content;
+  min-width: 6.5em;
   display: flex;
   flex-wrap: nowrap;
   font-size: 0.8em;
@@ -537,10 +632,12 @@ hr {
   animation: scale-out-bottom 1s cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
 }
 .AppContainer {
-  transform: translate(0px, 0px);
   display: inline-block;
   touch-action: none;
-  position: relative;
+  // margin-left: 50%;
+  // margin-top: 50%;
+  // translate: -50% -125%;
+  position: absolute;
   user-select: none;
   box-shadow: 0em 1em 1.5em -0.5em rgba(0, 0, 0, 0.1);
   background-repeat: repeat;
@@ -558,7 +655,7 @@ hr {
   border-radius: 0em;
   width: 100% !important;
   height: 100% !important;
-  transition: all 0.25s ease-out;
+  transition: all 0.3s ease-out;
 }
 .App {
   display: grid;
@@ -600,6 +697,9 @@ hr {
   button:hover {
     color: var(--text-regular);
   background: var(--background);
+  img {
+    filter:invert(1);
+  }
   }
   button:active {
     color: var(--background);
@@ -608,12 +708,13 @@ hr {
 }
 
 .TitleAndMenu {
-  grid-area: TitleAndMenu;
+  grid-area: Menu;
   display: inline-flex;
   font-weight: bold;
   color: white;
   flex-direction: row;
-  align-items: center;
+  align-items: middle;
+  padding-left: 0.5em;
 }
 
 .WindowDecoration {
@@ -649,6 +750,11 @@ hr {
     text-align: left;
     break-inside: avoid;
   }
+  button:hover {
+    img {
+      filter:invert(1);
+    }
+  }
 }
 
 .Controls {
@@ -679,6 +785,14 @@ hr {
       width: 0.9em;
       height: 0.9em;
     }
+  }
+  button:hover {
+    img {
+      filter:invert(1);
+    }
+  }
+  button:active {
+    background-color: var(--brand);
   }
 }
 
@@ -823,7 +937,7 @@ input {
   border-radius: 0.25em;
   border-style: none;
   background-size: cover;
-  transition: translate 250ms ease-in-out;
+  transition: translate 0.3s ease-in-out;
 }
 #AppList {
   justify-self: start;
@@ -850,7 +964,7 @@ input {
   border-radius: 0.25em;
   width: 4em;
   border-style: none;
-  transition: all 250ms ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 .DockIconGhost {
   display: inline-block;
@@ -868,7 +982,7 @@ input {
   border-radius: 0.25em;
   width: 1.5em;
   background-size: cover;
-  transition: translate 250ms ease-in-out;
+  transition: translate 0.3s ease-in-out;
 }
 .dropdown {
   position: relative;

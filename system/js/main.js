@@ -5,6 +5,7 @@ let UserSettings = []
 let AppCatelogue = []
 let CurrentUserName = "template"
 let Active = "Desktop"
+let CurrentWorkspace = 1
 
 function init() {
   // const request = new Request('/users/template/data/User.json');
@@ -36,14 +37,15 @@ function init() {
       SetWallpaper(UserSettings.Wallpaper.Wallpaper, UserSettings.Wallpaper.Variant, UserSettings.Wallpaper.Ext)
       displayPinnedList();
       displaySystem();
-
+      document.getElementById("WorkspaceSwitcherIcon").style.backgroundImage = String("url(/system/Icons/WorkspaceSwitcher/" + CurrentWorkspace + ".svg)");
+      console.log("Init Complete");
+      $('#BootStatus').text("Ready!");
+      
+      $('#BootScreen').remove();
       if (UserSettings.Sounds.Login == true) {
         var audio = new Audio('/system/sounds/Login.mp3');
         audio.play();
       }
-      console.log("Init Complete");
-      $('#BootStatus').text("Ready!");
-      $('#BootScreen').remove();
     }
   }
 
@@ -51,14 +53,31 @@ function init() {
 
 function SetActive(temp,appID) {
   Active = String(temp)
-  document.getElementById("TitleAndMenu").innerHTML = String(`<div class="TitleAndMenu">`+String(temp)+`</div>`)
-  if (document.getElementById(String(temp + "WindowDecoration")).style.display != "none") {
-    document.getElementById("TitleAndMenu").innerHTML = String(`<div class="TitleAndMenu">`+String(temp)+`</div>`)
+  if (Active != temp && Active != "Desktop"){
+  temp = String(temp + "WindowDecoration")
+  var copyID = document.getElementById(temp).childNodes[1].nextElementSibling
+  var clone = copyID.cloneNode(true)
+  console.log(String("clone= "+clone))
+
+  document.getElementById("TopBarMenu").appendChild(clone)
+
+  if (document.getElementById(temp).style.display == "none") {
+    copyID = document.getElementById(temp).childNodes[1]
+    clone = copyID.cloneNode(true)
+    document.getElementById("TopBarControls").appendChild(clone)
   }
-  else {
-    document.getElementById("TitleAndMenu").innerHTML = document.getElementById(temp + "WindowDecoration").innerHTML = String(`<div class="TitleAndMenu">`+String(temp)+`</div>`);
+}
+else if (Active == temp){
+  temp = String(temp + "WindowDecoration")
+  if (document.getElementById(temp).style.display == "none") {
+    copyID = document.getElementById(temp).childNodes[1]
+    clone = copyID.cloneNode(true)
+    document.getElementById("TopBarControls").appendChild(clone)
   }
-  
+} else if (Active == "Desktop"){
+  document.getElementById("TopBarControls").clear()
+}
+
 }
 
 function SetWallpaper(selection, variant, ext) {
@@ -71,7 +90,13 @@ function SetWallpaper(selection, variant, ext) {
   if (ext != null) {
     UserSettings.Wallpaper.Ext = ext
   }
-  temp = document.getElementById("Display");
+  temp = document.getElementById("Desktop1");
+  temp.style.backgroundImage = String("url(/users/" + UserSettings.Username + "/Backgrounds/" + UserSettings.Wallpaper.Wallpaper + "/" + UserSettings.Wallpaper.Variant + "." + UserSettings.Wallpaper.Ext);
+  temp = document.getElementById("Desktop2");
+  temp.style.backgroundImage = String("url(/users/" + UserSettings.Username + "/Backgrounds/" + UserSettings.Wallpaper.Wallpaper + "/" + UserSettings.Wallpaper.Variant + "." + UserSettings.Wallpaper.Ext);
+  temp = document.getElementById("Desktop3");
+  temp.style.backgroundImage = String("url(/users/" + UserSettings.Username + "/Backgrounds/" + UserSettings.Wallpaper.Wallpaper + "/" + UserSettings.Wallpaper.Variant + "." + UserSettings.Wallpaper.Ext);
+  temp = document.getElementById("Desktop4");
   temp.style.backgroundImage = String("url(/users/" + UserSettings.Username + "/Backgrounds/" + UserSettings.Wallpaper.Wallpaper + "/" + UserSettings.Wallpaper.Variant + "." + UserSettings.Wallpaper.Ext);
   console.log(String("url(/users/" + UserSettings.Username + "/Backgrounds/" + UserSettings.Wallpaper.Wallpaper + "/" + UserSettings.Wallpaper.Variant + "." + UserSettings.Wallpaper.Ext))
 }
@@ -94,21 +119,22 @@ const position = { x: 0, y: 0 }
 
 function FillWindow(temp) {
   if (document.getElementById(temp + "WindowDecoration").style.display != "none") {
-    document.getElementById("TitleAndMenu").innerHTML = document.getElementById(temp + "WindowDecoration").innerHTML;
     document.getElementById(temp + "WindowDecoration").style.display = "none";
     document.getElementById(temp + "App").classList.add("AppFullScreen")
-
+    
   }
   else {
     document.getElementById(temp + "WindowDecoration").style.display = "flex";
     document.getElementById("TitleAndMenu").innerHTML = ''
     document.getElementById(temp + "App").classList.remove("AppFullScreen")
+    document.getElementById("TopBarControls").innerHTML = ''
   }
-
+  SetActive(temp, String(temp+App))
 }
 
 function BringToFront(temp) {
-  (document.getElementById(temp + "App").style.zIndex = +1)
+  document.getElementById(temp + "App").style.zIndex = +1
+  SetActive(temp,(temp + "App"))
 }
 
 function dragMoveListener(event) {
@@ -146,6 +172,10 @@ interact('.resize-drag')
       interact.modifiers.restrictRect({
         restriction: 'parent',
         endOnly: true
+      }),
+      // minimum size
+      interact.modifiers.restrictSize({
+        min: { width: 300, height: 200 }
       })
     ],
   })
@@ -198,7 +228,7 @@ function ToggleSearch(searchApp) {
 }
 
 function LaunchSystem(systemApp) {
-  console.log(temp)
+  console.log(systemApp)
 }
 const sleep = (milliseconds) => {
   return new Promise(resolve => setTimeout(resolve, milliseconds))
@@ -214,7 +244,6 @@ function DeepLaunch(mainapp, jumppage) {
 
 function CloseWindow(closingApp) {
   closingApp.String
-  document.getElementById("TitleAndMenu").innerHTML = ''
   temp = String("#" + closingApp);
   $(temp + "App").addClass('closeApp')
   sleep(500).then(() => {
@@ -232,6 +261,10 @@ function LoadPage(targetapp, newpage) {
   console.log("Loading Page")
   $('#' + TargetApp + "ScreenContainer").empty();
   $('#' + TargetApp + "ScreenContainer").append('<embed name="' + TargetApp + 'Screen" rel="preload" style="width: 100%; height: 100%; overflow:scroll; border-radius: 0.5em; border: none;" class="Body" id="' + TargetApp + 'Screen" src="/Apps/' + TargetApp + '/Screens/' + NewPage + '.html"></embed>');
+
+  $(TargetApp + 'Screen').ready(function () {
+    SetActive(TargetApp,TargetApp + 'App')
+});
   if (NewPage != History[History.length-1]){
   History.push(NewPage)
   }
@@ -283,12 +316,9 @@ function LaunchWindow(launchingApp) {
       RunningApps.push(launchingApp)
       temp = RunningApps[RunningApps.length - 1]
       LoadPage(launchingApp,"index")
-      $("#Desktop").append('<div class="AppContainer resize-drag openApp" id="' + launchingApp + 'App"></div>')
-      $('#' + String(temp + 'App')).attr("onload",String('SetActive("'+ launchingApp+'","'+ launchingApp + 'App")'))
+      $('#' + String('Desktop' + CurrentWorkspace)).append('<div class="AppContainer resize-drag openApp" id="' + launchingApp + 'App"></div>')
       $('#' + String(temp + 'App')).load('/Apps/' + temp + '/App.html')
-      $('#' + String(temp + 'App')).ready(SetActive(launchingApp,launchingApp + 'App'))
-      $('#' + String(temp + 'App')).attr("onclick",String('SetActive("'+ launchingApp+'","'+ launchingApp + 'App")'))
-      
+      $('#' + String(temp + 'App')).attr("onclick",String('BringToFront("'+ launchingApp+'")'))
       $(temp + "App").removeClass("openApp");
     }
     else {
@@ -302,7 +332,6 @@ function LaunchWindow(launchingApp) {
     }
     $(String(temp + 'App')).removeClass('openApp');
     UpdateAppRunningIndicator(launchingApp)
-    
   }
 
   else {
@@ -373,4 +402,36 @@ function pause(milliseconds) {
   do {
     currentDate = Date.now();
   } while (currentDate - date < milliseconds);
+}
+function WorkspaceSwitcher () {
+  $("#Desktop").addClass("DesktopOverview")
+  $("#Desktop").removeClass("Desktop1")
+  $("#Desktop").removeClass("Desktop2")
+  $("#Desktop").removeClass("Desktop3")
+  $("#Desktop").removeClass("Desktop4")
+  document.getElementById("DesktopSelector1").style.display = "block"
+  document.getElementById("DesktopSelector2").style.display = "block"
+  document.getElementById("DesktopSelector3").style.display = "block"
+  document.getElementById("DesktopSelector4").style.display = "block"
+}
+function WorkspaceSwitcherSelect(Workspace) {
+  $("#Desktop").removeClass("DesktopOverview")
+  document.getElementById("DesktopSelector1").style.display = "none"
+  document.getElementById("DesktopSelector2").style.display = "none"
+  document.getElementById("DesktopSelector3").style.display = "none"
+  document.getElementById("DesktopSelector4").style.display = "none"
+  $("#Desktop").addClass(Workspace)
+  if (Workspace == "Desktop1") {
+    CurrentWorkspace = 1
+  }
+  if (Workspace == "Desktop2") {
+    CurrentWorkspace = 2
+  }
+  if (Workspace == "Desktop3") {
+    CurrentWorkspace = 3
+  }
+  if (Workspace == "Desktop4") {
+    CurrentWorkspace = 4
+  }
+  document.getElementById("WorkspaceSwitcherIcon").style.backgroundImage = String("url(/system/Icons/WorkspaceSwitcher/" + CurrentWorkspace + ".svg)");
 }

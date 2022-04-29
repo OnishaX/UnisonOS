@@ -7,6 +7,7 @@
 			"Category": "System",
 			"Version": "0.1",
 			"Developer": "Onisha Juhl",
+			"Keywords": ["Apps", "Store", "App Store", "Install", "Uninstall"],
 			"Description": "Apps is the go-to place to and and remove all of your apps for UnisonOS",
 			"removable": false
 		},
@@ -23,6 +24,7 @@
 			"Category": "Internet",
 			"Version": "0.1",
 			"Developer": "Onisha Juhl",
+			"Keywords": ["Browser", "Web", "Website", "Websites", "Browse"],
 			"Description": "Your hub for all of your apps",
 			"removable": false
 		},
@@ -31,6 +33,7 @@
 			"Category": "Music",
 			"Version": "0.1",
 			"Developer": "Onisha Juhl",
+			"Keywords": ["Player", "Play", "Media", "Song", "Songs", "Album", "Albums", "Track", "Tracks"],
 			"Description": "A player for your music.",
 			"removable": true
 		},
@@ -39,14 +42,16 @@
 			"Category": "Utilities",
 			"Version": "0.1",
 			"Developer": "Onisha Juhl",
+			"Keywords": ["Erros", "Log", "Logs", "Developer", "System", "Diagnostic", "Troubleshoot"],
 			"Description": "View recent errors",
 			"removable": true
 		},
 		"Files": {
-			"Title": "Music",
+			"Title": "Files",
 			"Category": "Utilities",
 			"Version": "0.1",
 			"Developer": "Onisha Juhl",
+			"Keywords": ["File", "Folder", "Folders", "Dir", "Home", "Document", "Documents", "Music", "Picture", "Pictures", "Network", "Shares"],
 			"Description": "Access your files.",
 			"removable": true
 		},
@@ -55,6 +60,7 @@
 			"Category": "Internet",
 			"Version": "0.1",
 			"Developer": "Onisha Juhl",
+			"Keywords": ["Mail", "Email", "Message", "Messages", "Inbox"],
 			"Description": "An email client for UnisonOS.",
 			"removable": true
 		},
@@ -63,6 +69,7 @@
 			"Category": "Office",
 			"Version": "0.1",
 			"Developer": "Onisha Juhl",
+			"Keywords": ["Cell", "Spreadsheet", "Spreadsheets", "Excel", "Sheets", "Number", "Numbers", "Editor"],
 			"Description": "A spreadsheet app for your spreadsheet needs.",
 			"removable": true
 		},
@@ -71,6 +78,7 @@
 			"Category": "Office",
 			"Version": "0.1",
 			"Developer": "Onisha Juhl",
+			"Keywords": ["Writer", "Word", "Page", "Pages", "Text", "Editor", "Documents", "Music", "Picture", "Pictures", "Letter", "txt"],
 			"Description": "A rich text editor.",
 			"removable": true
 		},
@@ -79,6 +87,7 @@
 			"Category": "Office",
 			"Version": "0.1",
 			"Developer": "Onisha Juhl",
+			"Keywords": ["Present", "Presentation", "Powerpoint", "Keynote", "Impress", "Editor", "Slideshow"],
 			"Description": "Make a great first impression with a Pitch presentation.",
 			"removable": true
 		},
@@ -87,6 +96,7 @@
 			"Category": "Video",
 			"Version": "0.1",
 			"Developer": "Onisha Juhl",
+			"Keywords": ["Movie", "Movies", "Videos", "Player", "Play", "Media", "Multimedia"],
 			"Description": "A player for your videos.",
 			"removable": true
 		},
@@ -95,6 +105,7 @@
 			"Category": "System",
 			"Version": "0.1",
 			"Developer": "Onisha Juhl",
+			"Keywords": ["Options", "Preferences","Manage", "Hardware", "Software"],
 			"Description": "All your settings in one place.",
 			"removable": false
 		}

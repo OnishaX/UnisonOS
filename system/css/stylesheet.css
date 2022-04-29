@@ -1,41 +1,20 @@
 @font-face {
-  font-family: "Roboto";
-  src: url("/system/fonts/Roboto/Roboto-Regular.ttf") format("truetype");
+  font-family: "Ubuntu";
+  src: url("/system/fonts/Ubuntu/Ubuntu-R.ttf") format("truetype");
 }
 
-/* Colours */
-/* Light mode */
-@media (prefers-color-scheme: light) {
-  :root {
-    --black: #111111;
-    --white: #ffffff;
-    --background: #ffffff;
-    --foreground: #f7f7f7;
-    --text-regular: #111111;
-    --text-secondary: #5d5d5d;
-    --positive: #0e8420;
-    --negative: #c7162b;
-    --neutral: #cdcdcd;
-    --live: #335280;
-    --brand: #e95420;
-  }
-}
-
-/* Dark mode */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --black: #111111;
-    --white: #ffffff;
-    --background: #111111;
-    --foreground: #3b3b3b;
-    --text-regular: #ffffff;
-    --text-secondary: #CDCDCD;
-    --positive: #3eb34f;
-    --negative: #ed3146;
-    --neutral: #cdcdcd;
-    --live: #19b6ee;
-    --brand: #e95420;
-  }
+:root {
+  --black: #111111;
+  --white: #ffffff;
+  --background: #ffffff;
+  --foreground: #f7f7f7;
+  --text-regular: #111111;
+  --text-secondary: #5d5d5d;
+  --positive: #0e8420;
+  --negative: #c7162b;
+  --neutral: #cdcdcd;
+  --live: #335280;
+  --brand: #e95420;
 }
 
 #BootStatus {
@@ -159,8 +138,8 @@ h2 {
 }
 
 #AllApps {
-  -webkit-transition: all 0.25s ease-in-out;
-  transition: all 0.25s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
   padding: 0.25em;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
@@ -180,9 +159,10 @@ h2 {
 }
 
 body {
-  font-family: "Roboto";
+  font-family: "Ubuntu";
   margin: 0px;
   width: 100vw;
+  height: 100vh;
   display: -ms-grid;
   display: grid;
   grid-auto-columns: 1fr;
@@ -235,15 +215,46 @@ button:hover {
   background: var(--foreground);
 }
 
+button:disabled {
+  opacity: 0.5;
+}
+
+button:disabled:hover {
+  color: var(--text-regular);
+  background: var(--background);
+}
+
+button:disabled:active {
+  color: var(--text-regular);
+  background: var(--background);
+}
+
 button:active {
   color: var(--background);
   background: var(--brand);
 }
 
+.DesktopSelector {
+  z-index: 100;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: none;
+  opacity: 0.5;
+  background: var(--black);
+}
+
+.DesktopSelector:hover {
+  opacity: 0;
+}
+
 #Display {
-  -webkit-transition: all 1s ease-in-out;
-  transition: all 1s ease-in-out;
+  background: var(--black);
+  overflow: hidden !important;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
   height: 100vh;
+  width: 100vw;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: min-content 1fr;
@@ -255,7 +266,6 @@ button:active {
   -ms-grid-row: 1;
   -ms-grid-column: 1;
   grid-area: Display;
-  background-size: cover;
 }
 
 #TopBar {
@@ -264,23 +274,123 @@ button:active {
   -ms-grid-column: 1;
   -ms-grid-column-span: 2;
   grid-area: TopBar;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 4.5em 1fr min-content;
+      grid-template-columns: 4.5em 1fr -webkit-min-content;
+      grid-template-columns: 4.5em 1fr min-content;
+  -ms-grid-rows: 1fr;
+      grid-template-rows: 1fr;
+  gap: 0.5em 0px;
+  padding: 0.25em 0em;
+      grid-template-areas: "TopBarControls Menu System";
   background-color: var(--black);
 }
 
 #Desktop {
-  height: 100%;
   -ms-grid-row: 2;
   -ms-grid-column: 2;
   grid-area: Desktop;
-  display: inline-block;
+  display: -ms-grid;
+  display: grid;
+  position: relative;
+  gap: 0em;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+  -ms-grid-rows: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+  overflow: hidden;
+  width: 200%;
+  height: 200%;
+  -webkit-transition: scale 0.3s ease-out;
+  transition: scale 0.3s ease-out;
+      grid-template-areas: "Desktop1 Desktop2" "Desktop3 Desktop4";
+}
+
+.Desktop {
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+  -webkit-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+}
+
+.DesktopOverview {
+  left: 0;
+  top: 0;
+  overflow: visible;
+  gap: 1em !important;
+  padding: 1em;
+  -webkit-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+  -webkit-transform-origin: top left;
+          transform-origin: top left;
+  scale: 0.5;
+}
+
+.DesktopSelector {
+  -webkit-transition: opacity 0.3s ease-out;
+  transition: opacity 0.3s ease-out;
+}
+
+.Desktop1 {
+  left: 0 !important;
+  top: 0 !important;
+  -webkit-transform-origin: top left;
+          transform-origin: top left;
+}
+
+.Desktop2 {
+  left: -100% !important;
+  top: 0 !important;
+  -webkit-transform-origin: top right;
+          transform-origin: top right;
+}
+
+.Desktop3 {
+  left: 0 !important;
+  top: -100% !important;
+  -webkit-transform-origin: bottom left;
+          transform-origin: bottom left;
+}
+
+.Desktop4 {
+  left: -100% !important;
+  top: -100% !important;
+  -webkit-transform-origin: bottom right;
+          transform-origin: bottom right;
+}
+
+#DesktopSelector1 {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: Desktop1;
+}
+
+#DesktopSelector2 {
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+  grid-area: Desktop2;
+}
+
+#DesktopSelector3 {
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+  grid-area: Desktop3;
+}
+
+#DesktopSelector4 {
+  -ms-grid-row: 2;
+  -ms-grid-column: 2;
+  grid-area: Desktop4;
 }
 
 #Dock {
   z-index: 1000;
   background-color: var(--black);
-  -webkit-transition: all 0.25s ease-in-out;
-  transition: all 0.25s ease-in-out;
-  overflow: visible;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  overflow: scrollY;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 1fr;
@@ -837,6 +947,7 @@ hr {
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
+  min-width: 6.5em;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -896,12 +1007,10 @@ hr {
 }
 
 .AppContainer {
-  -webkit-transform: translate(0px, 0px);
-          transform: translate(0px, 0px);
   display: inline-block;
   -ms-touch-action: none;
       touch-action: none;
-  position: relative;
+  position: absolute;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
@@ -923,8 +1032,8 @@ hr {
   border-radius: 0em;
   width: 100% !important;
   height: 100% !important;
-  -webkit-transition: all 0.25s ease-out;
-  transition: all 0.25s ease-out;
+  -webkit-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
 }
 
 .App {
@@ -992,6 +1101,11 @@ hr {
   background: var(--background);
 }
 
+.Sidebar button:hover img {
+  -webkit-filter: invert(1);
+          filter: invert(1);
+}
+
 .Sidebar button:active {
   color: var(--background);
   background: var(--brand);
@@ -1000,7 +1114,7 @@ hr {
 .TitleAndMenu {
   -ms-grid-row: 1;
   -ms-grid-column: 2;
-  grid-area: TitleAndMenu;
+  grid-area: Menu;
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
   display: inline-flex;
@@ -1010,9 +1124,10 @@ hr {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -webkit-box-align: middle;
+      -ms-flex-align: middle;
+          align-items: middle;
+  padding-left: 0.5em;
 }
 
 .WindowDecoration {
@@ -1070,6 +1185,11 @@ hr {
           break-inside: avoid;
 }
 
+.Toolbar button:hover img {
+  -webkit-filter: invert(1);
+          filter: invert(1);
+}
+
 .Controls {
   gap: 0.5em;
   padding: 0.5em;
@@ -1119,6 +1239,15 @@ hr {
 .Controls button img {
   width: 0.9em;
   height: 0.9em;
+}
+
+.Controls button:hover img {
+  -webkit-filter: invert(1);
+          filter: invert(1);
+}
+
+.Controls button:active {
+  background-color: var(--brand);
 }
 
 .ScreenHeaderIcon {
@@ -1338,8 +1467,8 @@ input {
   border-radius: 0.25em;
   border-style: none;
   background-size: cover;
-  -webkit-transition: translate 250ms ease-in-out;
-  transition: translate 250ms ease-in-out;
+  -webkit-transition: translate 0.3s ease-in-out;
+  transition: translate 0.3s ease-in-out;
 }
 
 #AppList {
@@ -1386,8 +1515,8 @@ input {
   border-radius: 0.25em;
   width: 4em;
   border-style: none;
-  -webkit-transition: all 250ms ease-in-out;
-  transition: all 250ms ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 
 .DockIconGhost {
@@ -1407,8 +1536,8 @@ input {
   border-radius: 0.25em;
   width: 1.5em;
   background-size: cover;
-  -webkit-transition: translate 250ms ease-in-out;
-  transition: translate 250ms ease-in-out;
+  -webkit-transition: translate 0.3s ease-in-out;
+  transition: translate 0.3s ease-in-out;
 }
 
 .dropdown {

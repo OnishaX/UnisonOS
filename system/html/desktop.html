@@ -7,9 +7,9 @@
   <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline' 'unsafe-eval' data: blob:;">
   <link rel="stylesheet" href="/system/css/stylesheet.css">
   <link rel="stylesheet" href="/system/css/Reset.css">
-  <script src="https://unpkg.com/interactjs/dist/interact.min.js"></script>
-  <script src="/system/js/jquery-3.6.0.min.js"></script>
-  <script src="/system/js/main.js" defer></script>
+  <script rel="preload" src="https://unpkg.com/interactjs/dist/interact.min.js"></script>
+  <script rel="preload" src="/system/js/jquery-3.6.0.min.js"></script>
+  <script rel="preload" src="/system/js/main.js" defer></script>
   <!-- <script src="https://raw.githack.com/SortableJS/Sortable/master/Sortable.js"></script> -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.2.20171210/classList.min.js"></script>
   <link rel="stylesheet" href="/system/css/bootstrap.min.css" />
@@ -18,27 +18,42 @@
 
 <body style="height: 100vh;" onload="init();">
   <div id="BootScreen">
-	<img src="/AppIcon.svg" style="height: 15em; margin:auto;">
-	<div class="Spinner"></div>
-				<p id="BootStatus"></p>
-			</img>
-		</div>
+    <img src="/AppIcon.svg" style="height: 15em; margin:auto;">
+    <div class="Spinner"></div>
+    <p id="BootStatus">Attempting Startup</p>
+    </img>
+  </div>
   <div id="Display" class="DisplayNormal">
     <div id="TopBar">
-      <div id="TitleAndMenu"></div>
+      <div id="TopBarControls"></div>
+      <div id="TopBarMenu"></div>
       <div id="System"></div>
     </div>
     <div id="Dash">
       <textbox id="DashSearch"></textbox>
     </div>
     <div id="Desktop">
-      
+      <div class="Desktop" id="Desktop1">
+        <div id="DesktopSelector1" class="DesktopSelector" onclick="WorkspaceSwitcherSelect('Desktop1')"></div>
+      </div>
+      <div class="Desktop" id="Desktop2">
+        <div id="DesktopSelector2" class="DesktopSelector" onclick="WorkspaceSwitcherSelect('Desktop2')"></div>
+      </div>
+      <div class="Desktop" id="Desktop3">
+        <div id="DesktopSelector3" class="DesktopSelector" onclick="WorkspaceSwitcherSelect('Desktop3')"></div>
+      </div>
+      <div class="Desktop" id="Desktop4">
+        <div id="DesktopSelector4" class="DesktopSelector" onclick="WorkspaceSwitcherSelect('Desktop4')"></div>
+      </div>
     </div>
     <div id="Dock">
       <div class="DockAppIcon" id="DashAppIcon" type="button" onclick="LaunchWindow(`Dash`)"
         style="display: flex; background-size: cover; background-image: url(/Apps/Dash/AppIcon.svg)">
       </div>
       <div id="AppList" class="grid">
+      </div>
+      <div class="DockAppIcon" id="WorkspaceSwitcherIcon" type="button" onclick="WorkspaceSwitcher()"
+        style="display: flex; background-size: cover">
       </div>
     </div>
   </div>
