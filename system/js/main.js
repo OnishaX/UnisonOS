@@ -334,11 +334,11 @@ function Dash(dashmod) {
     document.getElementById("Dash").style.display = "none"
   }
   else if (dashmod == "Toggle") {
-    if (document.getElementById("Dash").style.display == "none") {
-      document.getElementById("Dash").style.display = "block"
+    if (document.getElementById("Dash").style.display == "block") {
+      document.getElementById("Dash").style.display = "none"
     }
     else {
-      document.getElementById("Dash").style.display = "none"
+      document.getElementById("Dash").style.display = "block"
     }
   }
 }
