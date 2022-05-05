@@ -32,7 +32,7 @@ function init() {
       console.log(UserSettings)
 
       console.log("Applying " + UserSettings.Firstname + "'s Settings")
-      
+
       $('#BootStatus').text("Applying " + UserSettings.Firstname + "'s Settings");
       SetWallpaper(UserSettings.Wallpaper.Wallpaper, UserSettings.Wallpaper.Variant, UserSettings.Wallpaper.Ext)
       displayPinnedList();
@@ -40,7 +40,7 @@ function init() {
       document.getElementById("WorkspaceSwitcherIcon").style.backgroundImage = String("url(/system/Icons/WorkspaceSwitcher/" + CurrentWorkspace + ".svg)");
       console.log("Init Complete");
       $('#BootStatus').text("Ready!");
-      
+
       $('#BootScreen').remove();
       if (UserSettings.Sounds.Login == true) {
         var audio = new Audio('/system/sounds/Login.mp3');
@@ -51,33 +51,21 @@ function init() {
 
 }
 
-function SetActive(temp,appID) {
+function SetActive(temp, appID) {
+  console.log("Temp is " + temp)
+  console.log("Active is " + Active)
+  $('#TopBarMenu').empty();
+  $('#TopBarControls').empty();
+
+  if (Active == "Desktop") {
+  }
   Active = String(temp)
-  if (Active != temp && Active != "Desktop"){
-  temp = String(temp + "WindowDecoration")
-  var copyID = document.getElementById(temp).childNodes[1].nextElementSibling
-  var clone = copyID.cloneNode(true)
-  console.log(String("clone= "+clone))
-
-  document.getElementById("TopBarMenu").appendChild(clone)
-
-  if (document.getElementById(temp).style.display == "none") {
-    copyID = document.getElementById(temp).childNodes[1]
-    clone = copyID.cloneNode(true)
-    document.getElementById("TopBarControls").appendChild(clone)
+  $(temp + "WindowDecoration:last-child").appendTo( "#TopBarMenu")
+  
+  if (document.getElementById(temp + "WindowDecoration").classList.contains('AppFullScreen')) {
+    $(temp + "WindowDecoration:first-child" ).appendTo( "#TopBarControls")
   }
-}
-else if (Active == temp){
-  temp = String(temp + "WindowDecoration")
-  if (document.getElementById(temp).style.display == "none") {
-    copyID = document.getElementById(temp).childNodes[1]
-    clone = copyID.cloneNode(true)
-    document.getElementById("TopBarControls").appendChild(clone)
-  }
-} else if (Active == "Desktop"){
-  document.getElementById("TopBarControls").clear()
-}
-
+  
 }
 
 function SetWallpaper(selection, variant, ext) {
@@ -121,20 +109,18 @@ function FillWindow(temp) {
   if (document.getElementById(temp + "WindowDecoration").style.display != "none") {
     document.getElementById(temp + "WindowDecoration").style.display = "none";
     document.getElementById(temp + "App").classList.add("AppFullScreen")
-    
+
   }
   else {
     document.getElementById(temp + "WindowDecoration").style.display = "flex";
-    document.getElementById("TitleAndMenu").innerHTML = ''
     document.getElementById(temp + "App").classList.remove("AppFullScreen")
-    document.getElementById("TopBarControls").innerHTML = ''
   }
-  SetActive(temp, String(temp+App))
+  SetActive(temp, String(temp + 'App'))
 }
 
 function BringToFront(temp) {
   document.getElementById(temp + "App").style.zIndex = +1
-  SetActive(temp,(temp + "App"))
+  SetActive(temp, (temp + "App"))
 }
 
 function dragMoveListener(event) {
@@ -220,9 +206,9 @@ function ToggleSearch(searchApp) {
   console.log(temp)
 
   if (document.getElementById(searchApp + "Search").className == "search") {
-    $(temp).replaceWith(`'<button id="` + searchApp + 'Search"  type="button" class="searchOpen"><img onclick="ToggleSearch(' + '`' + searchApp + '`' + ')" src="/system/icons/Actions/Clear.svg"><input autofocus="autofocus"type="text"</button>')
+    $(temp).replaceWith(`<button id="` + searchApp + 'Search" type="button" class="searchOpen"><img onclick="ToggleSearch(' + '`' + searchApp + '`' + ')" src="/system/icons/Actions/Clear.svg"><input autofocus="autofocus"type="text"</button>')
   } else {
-    $(temp).replaceWith(`'<button id="` + searchApp + 'Search" onclick="ToggleSearch(' + '`' + searchApp + '`' + ')" type="button" class="search"><img src="/system/icons/Actions/Search.svg">Search</button>')
+    $(temp).replaceWith(`<button id="` + searchApp + 'Search" onclick="ToggleSearch(' + '`' + searchApp + '`' + ')" type="button" class="search"><img src="/system/icons/Actions/Search.svg">Search</button>')
   }
 
 }
@@ -263,25 +249,25 @@ function LoadPage(targetapp, newpage) {
   $('#' + TargetApp + "ScreenContainer").append('<embed name="' + TargetApp + 'Screen" rel="preload" style="width: 100%; height: 100%; overflow:scroll; border-radius: 0.5em; border: none;" class="Body" id="' + TargetApp + 'Screen" src="/Apps/' + TargetApp + '/Screens/' + NewPage + '.html"></embed>');
 
   $(TargetApp + 'Screen').ready(function () {
-    SetActive(TargetApp,TargetApp + 'App')
-});
-  if (NewPage != History[History.length-1]){
-  History.push(NewPage)
+    SetActive(TargetApp, TargetApp + 'App')
+  });
+  if (NewPage != History[History.length - 1]) {
+    History.push(NewPage)
   }
   console.log(History)
-  }
+}
 
-function HistoryBack(targetapp){
-  if (History.length > 1){
-  temp = History[History.length-2]
-  var TargetApp = String(targetapp);
-  var NewPage = String(temp);
-  History.pop(0)
-  console.log("Loading Page")
-  $('#' + TargetApp + "ScreenContainer").empty();
-  $('#' + TargetApp + "ScreenContainer").append('<embed name="' + TargetApp + 'Screen" rel="preload" style="width: 100%; height: 100%; overflow:scroll; border-radius: 0.5em; border: none;" class="Body" id="' + TargetApp + 'Screen" src="/Apps/' + TargetApp + '/Screens/' + NewPage + '.html"></embed>');
-  
-  console.log(History)
+function HistoryBack(targetapp) {
+  if (History.length > 1) {
+    temp = History[History.length - 2]
+    var TargetApp = String(targetapp);
+    var NewPage = String(temp);
+    History.pop(0)
+    console.log("Loading Page")
+    $('#' + TargetApp + "ScreenContainer").empty();
+    $('#' + TargetApp + "ScreenContainer").append('<embed name="' + TargetApp + 'Screen" rel="preload" style="width: 100%; height: 100%; overflow:scroll; border-radius: 0.5em; border: none;" class="Body" id="' + TargetApp + 'Screen" src="/Apps/' + TargetApp + '/Screens/' + NewPage + '.html"></embed>');
+
+    console.log(History)
   }
 }
 
@@ -315,10 +301,10 @@ function LaunchWindow(launchingApp) {
       // AdjustWindowTiling()
       RunningApps.push(launchingApp)
       temp = RunningApps[RunningApps.length - 1]
-      LoadPage(launchingApp,"index")
+      LoadPage(launchingApp, "index")
       $('#' + String('Desktop' + CurrentWorkspace)).append('<div class="AppContainer resize-drag openApp" id="' + launchingApp + 'App"></div>')
       $('#' + String(temp + 'App')).load('/Apps/' + temp + '/App.html')
-      $('#' + String(temp + 'App')).attr("onclick",String('BringToFront("'+ launchingApp+'")'))
+      $('#' + String(temp + 'App')).attr("onclick", String('BringToFront("' + launchingApp + '")'))
       $(temp + "App").removeClass("openApp");
     }
     else {
@@ -358,16 +344,16 @@ function Dash(dashmod) {
 }
 
 function displayPinnedList() {
-  console.log("displayAppList Triggered")
+  console.log("displayPinnedAPpList Triggered")
   $("#AppList").html('')
   for (let app of UserSettings.PinnedApps) {
     $("#AppList").append('<button class="DockAppIcon" onClick="LaunchWindow(`' + app + '`)" style="display: flex; align-items: middle; padding-top: 0px !importantpadding-bottom: 0px !important;background-size: cover; background-image: url(/Apps/' + app + '/AppIcon.svg)" id="' + app + 'PinnedAppIcon"></button>');
   }
   console.log("dock appended")
-  for (let app of RunningApps) {
-    $("#AppList").append('<button class="RunningAppIcon" onClick="LaunchWindow(`' + app + '`)" style="display: flex; align-items: middle; padding-top: 0px !importantpadding-bottom: 0px !important;background-size: cover; background-image: url(/Apps/' + app + '/AppIcon.svg)" id="' + app + 'PinnedAppIcon"></button>');
-  }
-  console.log("runningapp appended")
+  // for (let app of RunningApps) {
+  //   $("#AppList").append('<button class="RunningAppIcon" onClick="LaunchWindow(`' + app + '`)" style="display: flex; align-items: middle; padding-top: 0px !importantpadding-bottom: 0px !important;background-size: cover; background-image: url(/Apps/' + app + '/AppIcon.svg)" id="' + app + 'PinnedAppIcon"></button>');
+  // }
+  // console.log("runningapp appended")
 }
 function displayAppList(location) {
   console.log("displayAppList Triggered")
@@ -403,7 +389,7 @@ function pause(milliseconds) {
     currentDate = Date.now();
   } while (currentDate - date < milliseconds);
 }
-function WorkspaceSwitcher () {
+function WorkspaceSwitcher() {
   $("#Desktop").addClass("DesktopOverview")
   $("#Desktop").removeClass("Desktop1")
   $("#Desktop").removeClass("Desktop2")
@@ -435,3 +421,15 @@ function WorkspaceSwitcherSelect(Workspace) {
   }
   document.getElementById("WorkspaceSwitcherIcon").style.backgroundImage = String("url(/system/Icons/WorkspaceSwitcher/" + CurrentWorkspace + ".svg)");
 }
+function InstallApp(AppToInstall) {
+  UserSettings.InstalledApps.push(String(AppToInstall));
+  UserSettings.PinnedApps.push(String(AppToInstall));
+  refreshAppList("AppList")
+}
+function refreshAppList(parent) {
+  while (parent.firstChild) {
+    parent.removeChild(parent.firstChild);
+  }
+  displayPinnedList()
+}
+

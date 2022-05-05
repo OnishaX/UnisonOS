@@ -1,0 +1,26 @@
+<head>
+	<meta charset='utf-8'>
+	<title>Apps | Scour</title>
+	<link rel="stylesheet" href="/system/css/stylesheet.css">
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+		integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+</head>
+<div id="AppsApp" class="AppPage">
+	<div class="ListSection" style="background:none;">
+		<div class="ScreenHeaderSection">
+			<div class="ScreenHeaderIcon" style="background-image: url(/Apps/Scour/AppIcon.svg)">
+			</div>
+			<div class="ScreenHeaderTitle">
+				<h2>Scour</h2>
+			</div>
+			<div class="ScreenHeaderButton">
+				<button onclick="parent.InstallApp('Scour')"><img src="/system/icons/Actions/run-build-install.svg">Install</button></div>
+		</div>
+	</div>
+	<h2>Description</h2>
+	<p id="AppsPageDescription"></p>
+</div>
+</div>
+<script>
+$(AppsPageDescription).innerHTML(parent.AvailableApps.Scour.Description)
+</script>

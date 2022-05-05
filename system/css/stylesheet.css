@@ -163,15 +163,6 @@ body {
   margin: 0px;
   width: 100vw;
   height: 100vh;
-  display: -ms-grid;
-  display: grid;
-  grid-auto-columns: 1fr;
-  grid-auto-rows: 1fr;
-  -ms-grid-columns: 1fr;
-      grid-template-columns: 1fr;
-  -ms-grid-rows: 1fr;
-      grid-template-rows: 1fr;
-  gap: 0.5em 0px;
       grid-template-areas: "Display";
 }
 
@@ -212,7 +203,7 @@ button img {
 }
 
 button:hover {
-  color: var(--text-regular);
+  color: var(--brand);
   background: var(--foreground);
 }
 
@@ -853,9 +844,10 @@ button:active {
 }
 
 .ListSection {
+  padding: 1em;
   min-height: 8em;
-  -webkit-animation: fade-in 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
-          animation: fade-in 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
+  -webkit-animation: fade-in 0.3s ease-out both;
+          animation: fade-in 0.3s ease-out both;
   gap: 0.5em;
   overflow: scroll;
   -ms-grid-column-align: stretch;
@@ -902,25 +894,57 @@ hr {
 }
 
 .ScreenHeaderSection {
+  padding: 1em;
   height: 8em;
   white-space: nowrap;
   gap: 0.5em;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: nowrap;
-      flex-wrap: nowrap;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-align: left;
-      -ms-flex-align: left;
-          align-items: left;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 8em 1fr 1fr;
+      grid-template-columns: 8em 1fr 1fr;
+  -ms-grid-rows: 1fr;
+      grid-template-rows: 1fr;
+  gap: 0px 0px;
+      grid-template-areas: "ScreenHeaderIcon ScreenHeaderTitle ScreenHeaderButton";
 }
 
-.ScreenHeaderSection h2 {
+.ScreenHeaderTitle {
+  -ms-grid-column-align: start;
+      justify-self: start;
+  -ms-flex-item-align: end;
+      -ms-grid-row-align: end;
+      align-self: end;
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+  grid-area: ScreenHeaderTitle;
+}
+
+.ScreenHeaderTitle h2 {
   color: var(--text-regular);
+}
+
+.ScreenHeaderButton {
+  -ms-grid-column-align: end;
+      justify-self: end;
+  -ms-flex-item-align: end;
+      -ms-grid-row-align: end;
+      align-self: end;
+  -ms-grid-row: 1;
+  -ms-grid-column: 3;
+  grid-area: ScreenHeaderButton;
+}
+
+.ScreenHeaderButton button {
+  background: var(--brand);
+  color: var(--backgrond);
+}
+
+.ScreenHeaderButton button:hover {
+  background: var(--brand);
+  color: var(--backgrond);
 }
 
 .HList {
@@ -960,6 +984,7 @@ hr {
       -ms-flex-direction: column;
           flex-direction: column;
   padding: 0.5em;
+  padding-bottom: 1em;
 }
 
 .HListItem .ListItemIcon {
@@ -1057,7 +1082,7 @@ hr {
 .Sidebar {
   cursor: default;
   min-width: 10em;
-  gap: 0.5em;
+  gap: 0em;
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
@@ -1097,8 +1122,13 @@ hr {
   background: unset;
 }
 
+.Sidebar button img {
+  -webkit-filter: invert(1);
+          filter: invert(1);
+}
+
 .Sidebar button:hover {
-  color: var(--text-regular);
+  color: var(--brand);
   background: var(--background);
 }
 
@@ -1110,6 +1140,11 @@ hr {
 .Sidebar button:active {
   color: var(--background);
   background: var(--brand);
+}
+
+.Sidebar button:active img {
+  -webkit-filter: invert(0);
+          filter: invert(0);
 }
 
 .TitleAndMenu {
@@ -1255,27 +1290,11 @@ hr {
   background-size: contain !important;
   width: 8em;
   height: 8em;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  gap: 0.5em;
-  text-align: center;
-  line-height: 1em;
   border: none;
   border-radius: 0.25em;
-  white-space: nowrap;
-  font-size: 1em;
-  color: #ffffff;
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: ScreenHeaderIcon;
 }
 
 .search {
@@ -1401,7 +1420,7 @@ input {
 
 .Contents {
   cursor: default;
-  padding: 0.5em;
+  padding: 0em;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 1fr min-content;
@@ -1409,7 +1428,7 @@ input {
       grid-template-columns: 1fr min-content;
   -ms-grid-rows: 1fr;
       grid-template-rows: 1fr;
-  gap: 0.5em;
+  gap: 0em;
   grid-auto-flow: row;
       grid-template-areas: "Body Preview";
   -ms-grid-row: 3;
@@ -1857,5 +1876,92 @@ input {
   font-size: 1em;
   font-family: Ubuntu;
   color: var(--foreground);
+}
+
+.CoverFlow {
+  padding-top: 1em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: scroll;
+  -webkit-box-flex: 0;
+      -ms-flex-positive: 0;
+          flex-grow: 0;
+  height: 11em;
+  padding: 1em;
+  gap: 2em;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+}
+
+.CoverFlow .CoverFlowItem {
+  translate: 0 -0.5em;
+  background: var(--foreground);
+  -webkit-box-flex: 0;
+      -ms-flex-positive: 0;
+          flex-grow: 0;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  width: 20em;
+  padding-left: 1em;
+  padding-right: 1em;
+  border-radius: 0.25em;
+  height: 10em;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.CoverFlow .CoverFlowItem .ListItemIcon {
+  width: 5em;
+  height: 5em;
+  margin-bottom: 1em;
+}
+
+.CoverFlow .CoverFlowItem .ListItemLabel {
+  color: var(--text-regular);
+  font-weight: bold;
+}
+
+.CoverFlow .CoverFlowItem:hover {
+  -webkit-box-shadow: 0em 1em 1.5em -0.5em rgba(0, 0, 0, 0.1);
+          box-shadow: 0em 1em 1.5em -0.5em rgba(0, 0, 0, 0.1);
+  background: var(--backgrond);
+  -webkit-transform: scale(1.05);
+          transform: scale(1.05);
+}
+
+.CoverFlow .CoverFlowItem:hover .ListItemLabel {
+  color: var(--brand);
+}
+
+.CoverFlow .CoverFlowItem:active {
+  background: var(--brand);
+}
+
+.CoverFlow .CoverFlowItem:active .ListItemLabel {
+  color: var(--background);
 }
 /*# sourceMappingURL=stylesheet.css.map */

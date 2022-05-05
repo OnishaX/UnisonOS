@@ -1,0 +1,36 @@
+<head>
+	<meta charset='utf-8'>
+	<title>Settings | About</title>
+	<link rel="stylesheet" href="/system/css/stylesheet.css">
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+		integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+</head>
+<div id="SettingsApp" class="AppPage">
+	<div class="ListSection" style="background:none;">
+		<div class="ScreenHeaderSection">
+			<div class="ScreenHeaderIcon" style="background-image: url(/Apps/Settings/Icons/information.svg)">
+			</div>
+			<div class="ScreenHeaderTitle">
+				<h2>About</h2>
+			</div>
+			<div class="ScreenHeaderButton">
+				<!-- <button onclick="parent.InstallApp('Scour')"><img src="/system/icons/Actions/run-build-install.svg">Install</button> -->
+			</div>
+		</div>
+		<h2>Credit</h2>
+		<p id="AppsPageDescription">This project was made by Onisha Juhl</p>
+		<p id="AppsPageDescription">JSQuery 3.6.0</p>
+		<p id="AppsPageDescription">Interact.js</p>
+		<p id="AppsPageDescription">Bootstrap</p>
+		<p id="AppsPageDescription">Suru++ Dark Icons</p>
+		<br>
+		<p id="AppsPageDescription">This page is still under development. I'm going to add links to all the libraries
+			and
+			resouces used in this project soon.</p>
+		<p id="AppsPageDescription">This is a passion project is not intended for commercial use.</p>
+		<p id="AppsPageDescription">There are a LOT of bugs! but I'm still learning!</p>
+	</div>
+</div>
+<script>
+	$(AppsPageDescription).innerHTML(parent.AvailableApps.Scour.Description)
+</script>

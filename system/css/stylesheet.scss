@@ -148,12 +148,12 @@ body {
   margin: 0px;
   width: 100vw;
   height: 100vh;
-  display: grid;
-  grid-auto-columns: 1fr;
-  grid-auto-rows: 1fr;
-  grid-template-columns: 1fr;
-  grid-template-rows: 1fr;
-  gap: 0.5em 0px;
+  // display: grid;
+  // grid-auto-columns: 1fr;
+  // grid-auto-rows: 1fr;
+  // grid-template-columns: 1fr;
+  // grid-template-rows: 1fr;
+  // gap: 0.5em 0px;
   grid-template-areas: "Display";
 }
 button {
@@ -181,7 +181,7 @@ button {
   }
 }
 button:hover {
-  color: var(--text-regular);
+  color: var(--brand);
   background: var(--foreground);
 }
 button:disabled {
@@ -537,8 +537,9 @@ button:active {
   flex-grow: 0;
 }
 .ListSection {
+  padding: 1em;
   min-height: 8em;
-  animation: fade-in 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
+  animation: fade-in 0.3s ease-out both;
   gap: 0.5em;
   overflow: scroll;
   justify-self: stretch;
@@ -569,17 +570,40 @@ hr {
   margin-right: 0.5em;
 }
 .ScreenHeaderSection {
+  padding: 1em;
   height: 8em;
   white-space: nowrap;
   gap: 0.5em;
   display: flex;
-  flex-wrap: nowrap;
-  flex-direction: row;
-  align-items: left;
+  display: grid; 
+  grid-template-columns: 8em 1fr 1fr; 
+  grid-template-rows: 1fr; 
+  gap: 0px 0px; 
+  grid-template-areas: 
+    "ScreenHeaderIcon ScreenHeaderTitle ScreenHeaderButton";
+}
+.ScreenHeaderTitle {
+  justify-self: start; 
+  align-self: end; 
+  grid-area: ScreenHeaderTitle; 
   h2 {
-    color: var(--text-regular);
+    color: var(--text-regular)
   }
 }
+.ScreenHeaderButton {
+  justify-self: end; 
+  align-self: end; 
+  grid-area: ScreenHeaderButton;
+  button {
+    background: var(--brand);
+    color: var(--backgrond);
+  }
+  button:hover {
+    background: var(--brand);
+    color: var(--backgrond);
+  }
+}
+
 .HList {
   overflow: scroll;
   white-space: nowrap;
@@ -598,6 +622,7 @@ hr {
   font-size: 0.8em;
   flex-direction: column;
   padding: 0.5em;
+  padding-bottom: 1em;
   .ListItemIcon {
     height: 3em;
     width: 3em;
@@ -674,7 +699,7 @@ hr {
 .Sidebar {
   cursor: default;
   min-width: 10em;
-  gap: 0.5em;
+  gap: 0em;
   width: fit-content;
   justify-self: start;
   grid-area: Sidebar;
@@ -693,9 +718,12 @@ hr {
     border-radius: 0em;
     width: 100%;
     background: unset;
+    img {
+      filter: invert(1);
+    }
   }
   button:hover {
-    color: var(--text-regular);
+    color: var(--brand);
     background: var(--background);
     img {
       filter: invert(1);
@@ -704,6 +732,9 @@ hr {
   button:active {
     color: var(--background);
     background: var(--brand);
+    img {
+      filter: invert(0);
+    }
   }
 }
 
@@ -800,18 +831,9 @@ hr {
   background-size: contain !important;
   width: 8em;
   height: 8em;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  gap: 0.5em;
-  text-align: center;
-  line-height: 1em;
   border: none;
   border-radius: 0.25em;
-  white-space: nowrap;
-  font-size: 1em;
-  color: #ffffff;
+  grid-area: ScreenHeaderIcon; 
 }
 .search {
   background: none;
@@ -895,11 +917,11 @@ input {
 }
 .Contents {
   cursor: default;
-  padding: 0.5em;
+  padding: 0em;
   display: grid;
   grid-template-columns: 1fr min-content;
   grid-template-rows: 1fr;
-  gap: 0.5em;
+  gap: 0em;
   grid-auto-flow: row;
   grid-template-areas: "Body Preview";
   grid-area: Contents;
@@ -1199,5 +1221,59 @@ input {
     font-size: 1em;
     font-family: Ubuntu;
     color: var(--foreground);
+  }
+}
+.CoverFlow {
+padding-top: 1em;
+  display: flex;
+  overflow: scroll;
+  flex-grow: 0;
+  height: 11em;
+  padding: 1em;
+  gap: 2em;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-content: center;
+  align-items: center;
+  transition: all 0.3s ease-out;
+
+  .CoverFlowItem {
+    translate: 0 -0.5em;
+    background: var(--foreground);
+    flex-grow: 0;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 20em;
+    padding-left: 1em;
+    padding-right: 1em;
+    border-radius: 0.25em;
+    height: 10em;
+    align-items: center;
+    box-sizing: border-box;
+    .ListItemIcon {
+      width: 5em;
+      height: 5em;
+      margin-bottom: 1em;
+    }
+    .ListItemLabel {
+      color: var(--text-regular);
+      font-weight: bold;
+    }
+  }
+  .CoverFlowItem:hover {
+    box-shadow: 0em 1em 1.5em -0.5em rgba(0, 0, 0, 0.1);
+    background: var(--backgrond);
+    transform: scale(1.05);
+    .ListItemLabel {
+      color: var(--brand);
+    }
+  }
+  .CoverFlowItem:active {
+    background: var(--brand);
+    .ListItemLabel {
+      color: var(--background);
+    }
   }
 }

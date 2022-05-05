@@ -21,7 +21,7 @@
 		},
 		"PinnedApps": [
 			"Scour",
-			"Apps",
+			"Software_Centre",
 			"Music",
 			"Error",
 			"Files",
@@ -36,9 +36,9 @@
 			"Clock"
 		],
 		"InstalledApps": [
-			"Apps",
-			"Dash",
 			"Scour",
+			"Software Centre",
+			"Dash",
 			"Music",
 			"Error",
 			"Files",

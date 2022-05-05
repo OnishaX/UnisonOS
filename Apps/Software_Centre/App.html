@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang='en-GB'>
+
+<head>
+	<meta charset='utf-8'>
+	<title>Software Centre</title>
+	<link rel="stylesheet" href="/system/css/stylesheet.css">
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+		integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+	<div class="App">
+		<div id="Software_CentreWindowDecoration" class="WindowDecoration">
+			<div class="Controls">
+				<button type="button" onClick="CloseWindow('Software_Centre')"><img
+						src="/system/icons/windowControls/window-close-symbolic.svg"></button>
+				<button type="button" onclick="FillWindow('Software_Centre')"><img
+						src="/system/icons/windowControls/window-maximize-symbolic.svg"></button>
+				<button type="button" onClick="MinimiseWindow('Software_Centre')"><img
+						src="/system/icons/windowControls/window-minimize-symbolic.svg"></button>
+			</div>
+			<div class="TitleAndMenu"><p>Software Centre</p></div>
+		</div>
+		<div class="Sidebar">
+			<button type="button" onclick="LoadPage('Software_Centre','index')"><img
+				src="/system/icons/Actions/star.svg">Featured</button>
+				<button type="button" onclick="LoadPage('Software_Centre','categories')"><img
+					src="/system/icons/Actions/group.svg">Categories</button> 
+				<button type="button" onclick="LoadPage('Software_Centre','installed')"><img
+					src="/system/icons/Actions/run-build-install.svg">Installed</button>
+		</div>
+		<div class="Toolbar">
+			<div class="Tools">
+				<div class="ToolGroupH">
+					<button type="button" style="width: 2em;justify-content: center;"><img src="/system/icons/Actions/go-previous-symbolic.svg"></button>
+					<button type="button" style="width: 2em; justify-content: center;"><img src="/system/icons/Actions/go-next-symbolic.svg"></button>
+				</div>
+			</div>
+			<button id="Software_CentreSearch" onclick="ToggleSearch('Software_Centre')" type="button" class="search"><img
+					src="/system/icons/Actions/Search.svg">Search</button>
+		</div>
+		<div class="Contents" id="Software_CentreScreenContainer">
+			<embed name="Software_CentreScreen" rel="preload"
+				style="width: 100%; height: 100%; overflow:scroll; border-radius: 0.5em; border: none;" class="Body"
+				id="Software_CentreScreen" src="/Apps/Software_Centre/Screens/index.html" onerror="alert('Page Missing');">
+			</embed>
+		</div>
+	</div>
+	</div>
+	<script>
+		console.log("Loading App Catelogue")
+		PathToSettings = "/System/data/Apps.json";
+		jsonFile = new XMLHttpRequest();
+		jsonFile.open("GET", PathToSettings, true);
+		jsonFile.send();
+
+		jsonFile.onreadystatechange = function () {
+			if (jsonFile.readyState == 4 && jsonFile.status == 200) {
+				AppCatelogue = JSON.parse(jsonFile.responseText)
+			}
+		}
+		console.log("Availale Software_Centre:");
+  console.log(AppCatelogue)
+	</script>
+</body>
+
+</html>
